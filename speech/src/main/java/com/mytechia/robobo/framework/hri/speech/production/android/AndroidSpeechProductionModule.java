@@ -138,7 +138,7 @@ public class AndroidSpeechProductionModule implements ISpeechProductionModule {
 
         //TODO Duda: ¿Generar la lista de voces al crear el tts?
         //TODO Descartar las que requienren conexion a internet?
-        //TODO Metida interfaz ITTSVoice
+
         Collection<ITtsVoice> results = new ArrayList<>();
 
 
@@ -168,11 +168,11 @@ public class AndroidSpeechProductionModule implements ISpeechProductionModule {
      *  @param frameworkManager instance of the Robobo framework manager
      *  @throws InternalErrorException
      */
-    //TODO Igual estaba bien pasarle el locale de alguna forma (Por defecto el ingles)BUSCAR EL DEL SO
+
     public void startup(RoboboManager roboboManager) throws InternalErrorException {
         context = roboboManager.getApplicationContext();
 
-        //Default language od the OS
+        //Default language of the OS
         loc = Locale.getDefault();
 
 
@@ -226,12 +226,12 @@ public class AndroidSpeechProductionModule implements ISpeechProductionModule {
     //TODO Nuevos metodos, preguntar que se pone
     @Override
     public String getModuleInfo() {
-        return null;
+        return "Android Speech Production Module";
     }
 
     @Override
     public String getModuleVersion() {
-        return null;
+        return "0.1";
     }
 
 

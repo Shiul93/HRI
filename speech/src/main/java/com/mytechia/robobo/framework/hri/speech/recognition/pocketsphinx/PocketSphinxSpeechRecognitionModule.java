@@ -1,9 +1,14 @@
 package com.mytechia.robobo.framework.hri.speech.recognition.pocketsphinx;
 import android.content.Context;
+import android.os.AsyncTask;
+import android.os.Debug;
+import android.os.Environment;
 import android.util.Log;
+import android.widget.TextView;
 
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
+import com.mytechia.robobo.framework.hri.speech.R;
 import com.mytechia.robobo.framework.hri.speech.recognition.ASpeechRecognitionModule;
 
 
@@ -15,9 +20,7 @@ import java.util.AbstractCollection;
 import java.util.HashSet;
 
 
-
-
-
+import edu.cmu.pocketsphinx.Assets;
 import edu.cmu.pocketsphinx.Hypothesis;
 import edu.cmu.pocketsphinx.RecognitionListener;
 import edu.cmu.pocketsphinx.SpeechRecognizer;
@@ -31,12 +34,25 @@ import static edu.cmu.pocketsphinx.SpeechRecognizerSetup.defaultSetup;
 public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModule implements RecognitionListener {
 
     private SpeechRecognizer recognizer;
-    private static final String PHRASEFILENAME = "phrases.txt";
-
+    private static final String PHRASEFILENAME = "phrases.gram";
+    private String TAG = "SpeechRecognitionModule";
     private static final String KEYWORDSEARCH = "KWSEARCH";
+
+    private String threshold = " /1e-1/\n";
+    private Integer timeout = 700;
+
+    private static final String MOV_SEARCH = "MOVSEARCH";
     private AbstractCollection<String> recognizablePhrases;
     private static final Integer HASHSETSIZE = 128;
     private File phraseFile;
+
+    private Boolean hasStarted = false;
+    private Boolean paused = false;
+
+    private static final String FORECAST_SEARCH = "forecast";
+    private static final String DIGITS_SEARCH = "digits";
+    private static final String PHONE_SEARCH = "phones";
+    private static final String MENU_SEARCH = "menu";
 
     public  PocketSphinxSpeechRecognitionModule(){
         super();
@@ -67,6 +83,15 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     }
 
+    public void pauseRecognition(){
+        paused = true;
+        recognizer.stop();
+    }
+
+    public void resumeRecognition(){
+        paused = false;
+        recognizer.startListening(KEYWORDSEARCH);//, timeout);
+    }
     /**
      * Updates the pocketsphinx search with the contents of the recognizable phrases collection.
      * Should be called after addPhrase() and removePhrase()
@@ -81,18 +106,27 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
             writer.print("");
             writer.close();
             writer = new PrintWriter(phraseFile);
+            writer.print("");
             //Iterates over all the current phrases and adds them to the file
             for (String phrase:recognizablePhrases){
-                writer.append(phrase+"\n");
+                Log.d(TAG,"Adding phrase: "+phrase);
+                writer.append(phrase+threshold);
+
             }
             //Set the keyword search with the new file
+            writer.close();
             recognizer.addKeywordSearch(KEYWORDSEARCH,phraseFile);
         } catch (FileNotFoundException e) {
-            Log.e("PS_SpeechRecognition","Phrase file not initialized");
+            Log.e("PS_SpeechRecognition", "Phrase file not initialized");
             e.printStackTrace();
-
         }
-        recognizer.startListening(KEYWORDSEARCH);
+        try {
+            Log.d(TAG,phraseFile.list()[1]);
+        }catch (NullPointerException npe){
+            Log.d(TAG, "null array");
+        }
+
+        recognizer.startListening(KEYWORDSEARCH);//,timeout);
 
 
 
@@ -111,42 +145,62 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     }
 
     @Override
-    public void startup(RoboboManager roboboManager) throws InternalErrorException {
-
+    public void startup(final RoboboManager roboboManager) throws InternalErrorException {
+        Log.d(TAG,"Startup Recognition Module");
         //Create a new hashset for phrases
         recognizablePhrases = new HashSet<String>(HASHSETSIZE);
         //Get current directory for the app
         File appRootDir = roboboManager.getApplicationContext().getFilesDir();
         //Create a new text file for storing the phrases
-        phraseFile = new File(appRootDir,PHRASEFILENAME);
-        //Update search and start listening
-        updatePhrases();
+        phraseFile = new File(Environment.getExternalStorageDirectory(),PHRASEFILENAME);
+
+
+
+
+        // Recognizer initialization is a time-consuming and it involves IO,
+        // so we execute it in async task
+
+        new AsyncTask<Void, Void, Exception>() {
+            @Override
+            protected Exception doInBackground(Void... params) {
+                try {
+                    Log.d(TAG, "AT/----------");
+                    Log.d(TAG, "AT/Start AsyncTask");
+                    Assets assets = new Assets(roboboManager.getApplicationContext());
+                    Log.d(TAG,"AT/ "+assets.toString());
+                    File assetDir = assets.syncAssets();
+                    setupRecognizer(assetDir);
+
+                } catch (IOException e) {
+                    return e;
+                }
+                return null;
+            }
+
+            @Override
+            protected void onPostExecute(Exception result) {
+                if (result != null) {
+                    //throw new InternalErrorException("Could not start recognizer");
+                    Log.d(TAG,"AT/Could not start recognizer");
+                    Log.d(TAG,"AT/Exception: "+result.toString());
+                    Log.d(TAG,"AT/End");
+                } else {
+                    //TODO Manejar inicio
+                    Log.d(TAG,"AT/Starting keyword listener");
+                    //Update search and start listening
+                    updatePhrases();
+                    Log.d(TAG,"AT/End");
+                    Log.d(TAG, "AT/----------");
+                    hasStarted = true;
+                    notifyStartup();
+                }
+            }
+        }.execute();
+
 
     }
 
-    public void startupTest(Context context) throws InternalErrorException {
 
-        //Create a new hashset for phrases
-        //TODO Mirar lo de los assets
-
-        recognizablePhrases = new HashSet<String>(HASHSETSIZE);
-        //Assets assets = new Assets(context.this);
-        File assetDir = null;
-        try {
-            //assetDir = assets.syncAssets();
-            setupRecognizer(assetDir);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        //Get current directory for the app
-        File appRootDir = context.getFilesDir();
-        //Create a new text file for storing the phrases
-        phraseFile = new File(appRootDir,PHRASEFILENAME);
-        //Update search and start listening
-        updatePhrases();
-
-    }
 
     @Override
     public void shutdown() throws InternalErrorException {
@@ -169,8 +223,13 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         return null;
     }
 
+    @Override
+    public Boolean hasStarted(){
+        return hasStarted;
+    }
 
     private void setupRecognizer(File assetsDir) throws IOException {
+        Log.d(TAG, "Setting up recognizer");
         // The recognizer can be configured to perform multiple searches
         // of different kind and switch between them
 
@@ -182,7 +241,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
                         // To disable logging of raw audio comment out this call (takes a lot of space on the device)
                 .setRawLogDir(assetsDir)
-
+                .setFloat("-vad_threshold", 3.0)
                         // Threshold to tune for keyphrase to balance between false alarms and misses
                 .setKeywordThreshold(1e-45f)
 
@@ -193,10 +252,19 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         recognizer.addListener(this);
 
 
+        /*File keywordList = new File(assetsDir, "keywordlist.gram");
 
+        Log.d(TAG, keywordList.toString());
+        recognizer.addKeywordSearch(KEYWORDSEARCH,keywordList);
+
+
+        File movGrammar = new File(assetsDir, "movements.gram");
+        recognizer.addGrammarSearch(MOV_SEARCH, movGrammar);*/
 
 
     }
+
+
 
     @Override
     public void onBeginningOfSpeech() {
@@ -205,24 +273,40 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     @Override
     public void onEndOfSpeech() {
-
+        recognizer.stop();
     }
 
     @Override
     public void onPartialResult(Hypothesis hypothesis) {
+
+        String text = "null";
+        if (hypothesis != null){text = hypothesis.getHypstr();}
+        if (hypothesis == null || text.equals("null"))
+            return;
+        Log.d(TAG,"Recognized part "+text);
+
 
     }
 
     @Override
     public void onResult(Hypothesis hypothesis) {
         if (hypothesis != null) {
+
             String text = hypothesis.getHypstr();
+
+            Log.d(TAG,"Recognized "+text);
             long time = System.currentTimeMillis();
             notifyPhrase(text,time);
         }
+        else{Log.d(TAG,"Recognized nothing");}
 
+        if (! paused){
+            recognizer.startListening(KEYWORDSEARCH);//, timeout);
+        }
 
     }
+
+
 
     @Override
     public void onError(Exception e) {

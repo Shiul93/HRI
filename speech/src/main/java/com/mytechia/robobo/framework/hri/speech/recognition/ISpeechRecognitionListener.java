@@ -5,4 +5,6 @@ package com.mytechia.robobo.framework.hri.speech.recognition;
  */
 public interface ISpeechRecognitionListener {
     void phraseRecognized(String phrase, Long timestamp);
+
+    void onModuleStart();
 }

@@ -1,1 +1,1 @@
-include ':app', ':speech', ':touch'
+include ':app', ':speech', ':touch', ':vision'

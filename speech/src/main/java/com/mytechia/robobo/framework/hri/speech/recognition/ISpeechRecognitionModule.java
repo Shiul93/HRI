@@ -23,6 +23,23 @@ public interface ISpeechRecognitionModule extends IModule {
      * Clear all the phrases in the recognizer
      */
     void cleanPhrases();
+
+    /**
+     * Pauses the recognition
+     */
+    void pauseRecognition();
+
+    /**
+     * Resumes the keyword search
+     */
+    void resumeRecognition();
+
+    /**
+     * Checks if the recognizer has started
+     * @return True if it has started
+     */
+    Boolean hasStarted();
+
     void suscribe(ISpeechRecognitionListener listener);
     void unsuscribe(ISpeechRecognitionListener listener);
 

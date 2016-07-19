@@ -1,0 +1,5 @@
+#JSGF V1.0;
+grammar movements;
+<direction> =up|down|right|left;
+<ending> = now;
+public <movements> = <direction> <ending>;

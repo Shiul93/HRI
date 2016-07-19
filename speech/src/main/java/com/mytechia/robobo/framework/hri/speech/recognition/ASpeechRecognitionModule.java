@@ -25,4 +25,10 @@ public abstract class ASpeechRecognitionModule implements ISpeechRecognitionModu
             listener.phraseRecognized(phrase,timestamp);
         }
     }
+
+    protected void notifyStartup(){
+        for (ISpeechRecognitionListener listener:listeners){
+            listener.onModuleStart();
+        }
+    }
 }
