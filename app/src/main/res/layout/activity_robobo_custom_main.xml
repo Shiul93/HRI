@@ -28,4 +28,5 @@
         android:layout_below="@+id/imageView"
         android:layout_centerHorizontal="true"
         android:gravity="center" />
+
 </RelativeLayout>
