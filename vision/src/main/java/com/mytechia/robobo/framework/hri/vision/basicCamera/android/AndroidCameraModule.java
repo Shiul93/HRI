@@ -1,4 +1,4 @@
-package com.mytechia.robobo.framework.hri.vision.android;
+package com.mytechia.robobo.framework.hri.vision.basicCamera.android;
 
 import android.Manifest;
 import android.content.Context;
@@ -16,6 +16,7 @@ import android.os.Handler;
 import android.os.HandlerThread;
 import android.support.v4.app.ActivityCompat;
 import android.util.Log;
+import android.util.Range;
 import android.util.Size;
 import android.util.SparseIntArray;
 import android.view.Display;
@@ -25,15 +26,14 @@ import android.view.WindowManager;
 
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
-import com.mytechia.robobo.framework.hri.vision.ACameraModule;
-import com.mytechia.robobo.framework.hri.vision.ICameraModule;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.ACameraModule;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
 
 import org.jboss.netty.buffer.ChannelBufferOutputStream;
 import org.jboss.netty.buffer.ChannelBuffers;
 
-import java.nio.ByteBuffer;
+import java.io.IOException;
 import java.nio.ByteOrder;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -52,7 +52,7 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     private final static String LOGGER="Camera";
 
-    private static final int BUFFER_NUM_IMAGE=2;
+    private static final int BUFFER_NUM_IMAGE=15;
 
 
     public static final String CAMERA = "camera";
@@ -61,18 +61,9 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     public static final String CAMERA_INFO = "/camera_info";
 
-
     public static final String JPEG = "jpeg";
 
-//    private final String roboName;
-
-//    private Publisher<CompressedImage> imageCompressedPublisher;
-//
-//    private Publisher<CameraInfo> cameraInfoPublisher;
-
     private ChannelBufferOutputStream stream;
-
-//    private ConnectedNode connectedNode;
 
     private Context context;
 
@@ -131,7 +122,8 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     @Override
     public void shutdown() throws InternalErrorException {
-
+        closeCamera();
+        stopBackgroundThread();
     }
 
     @Override
@@ -230,11 +222,12 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
             StreamConfigurationMap configs= characteristics.get(CameraCharacteristics.SCALER_STREAM_CONFIGURATION_MAP);
 
+//            Size[] sizes = configs.getOutputSizes(ImageFormat.JPEG);
             Size[] sizes = configs.getOutputSizes(ImageFormat.JPEG);
 
             Arrays.sort(sizes, new CompareSizesByArea());
 
-            Size preferredSize= new Size(800, 600);
+            Size preferredSize= new Size(200, 150);
 
             int indexSelectedSize=0;
 
@@ -321,17 +314,22 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
             captureRequestBuilder.set(CaptureRequest.JPEG_ORIENTATION, sensorToDeviceRotation(mSensorOrientation, displayOrientation));
 
             captureRequestBuilder.set(CaptureRequest.JPEG_QUALITY, (byte)75);
+            captureRequestBuilder.set(CaptureRequest.CONTROL_AE_TARGET_FPS_RANGE, Range.create(20,30));
+
 
             captureRequest = captureRequestBuilder.build();
 
             try {
+
                 session.setRepeatingRequest(captureRequest, new CameraCaptureSessionCaptureCallback(), mBackgroundHandler);
+
             } catch (CameraAccessException ex) {
                 Log.e(LOGGER, "Error create capture request", ex);
                 return;
             }
 
         }
+
 
         @Override
         public void onConfigureFailed(CameraCaptureSession session) {
@@ -340,6 +338,10 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
 
     }
+
+    //endregion
+
+    //region Timer
 
     //endregion
 
@@ -362,7 +364,10 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
             android.media.Image mImage = reader.acquireNextImage();
 
-            publishCameraCompressedMessage(mImage);
+
+
+            sendImage(mImage);
+
 
         }
 
@@ -400,8 +405,12 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     private void startBackgroundThread() {
         mBackgroundThread = new HandlerThread("CameraBackgroundThread");
+
+        mBackgroundThread.setPriority(Thread.MAX_PRIORITY);
         mBackgroundThread.start();
+
         mBackgroundHandler = new Handler(mBackgroundThread.getLooper());
+
     }
 
 
@@ -429,35 +438,17 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     //region Send Images
 
-    private synchronized void publishCameraCompressedMessage(android.media.Image mImage) {
+    private synchronized void sendImage(android.media.Image mImage) {
 
-//        if(connectedNode==null){
-//            mImage.close();
-//            return;
-//        }
-//
-//        if(imageCompressedPublisher==null){
-//            mImage.close();
-//            return;
-//        }
-//
-//        if(cameraInfoPublisher==null){
-//            mImage.close();
-//            return;
-//        }
+
 
         Frame frame = new Frame();
 
 
-//        Time currentTime = connectedNode.getCurrentTime();
 
         String frameId = CAMERA;
 
-//        CompressedImage messageCompressedImage = imageCompressedPublisher.newMessage();
-//        messageCompressedImage.setFormat(JPEG);
-//        messageCompressedImage.getHeader().setStamp(currentTime);
-//        messageCompressedImage.getHeader().setFrameId(frameId);
-//        messageCompressedImage.getHeader().setSeq(sequence);
+
 
         int width= mImage.getWidth();
         int height= mImage.getHeight();
@@ -466,35 +457,20 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
         frame.setSeqNum(sequence);
         frame.setHeight(mImage.getHeight());
         frame.setWidth(mImage.getWidth());
-        mImage.getPlanes()[0].getBuffer();
+//        mImage.getPlanes()[0].getBuffer();
 
-        ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
+//        ByteBuffer buffer = mImage.getPlanes()[0].getBuffer();
 
-        stream.buffer().writeBytes(buffer);
+        stream.buffer().writeBytes(mImage.getPlanes()[0].getBuffer());//buffer);
 
         mImage.close();
 
-        //Copiamos la imagen en el mensaje
-//      messageCompressedImage.setData(stream.buffer().copy());
-        //Limpiamos el buffer
 
-        frame.setBitmap(Frame.decodeBytes(stream.buffer().copy().array()));
+
+        frame.setBitmap(Frame.decodeBytes(stream.buffer().array()));
+
         stream.buffer().clear();
 
-//        //Publicacion de la imagen
-//        imageCompressedPublisher.publish(messageCompressedImage);
-//
-//        //Definicion del camera info
-//        CameraInfo cameraInfo = cameraInfoPublisher.newMessage();
-//        cameraInfo.getHeader().setStamp(currentTime);
-//        cameraInfo.getHeader().setFrameId(frameId);
-//        cameraInfo.getHeader().setSeq(sequence);
-//
-//        cameraInfo.setWidth(width);
-//        cameraInfo.setHeight(height);
-//
-//        //Publicacion del camera info
-//        cameraInfoPublisher.publish(cameraInfo);
 
         notifyFrame(frame);
 
@@ -532,6 +508,41 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     }
 
+    private void closeCamera() {
+
+        Log.d(LOGGER, "Closing camera");
+
+        try {
+            mCameraOpenCloseLock.acquire();
+            if (null != mCaptureSession) {
+                mCaptureSession.close();
+                mCaptureSession = null;
+            }
+            if (null != cameraDevice) {
+                cameraDevice.close();
+                cameraDevice = null;
+            }
+            if (null != imageReader) {
+                imageReader.close();
+                imageReader = null;
+            }
+
+            if(stream!=null) {
+                try {
+                    stream.close();
+                } catch (IOException e) {
+                    Log.w(LOGGER, e);
+                }
+            }
+
+        } catch (InterruptedException e) {
+            throw new RuntimeException("Interrupted while trying to lock camera closing.", e);
+        } finally {
+            mCameraOpenCloseLock.release();
+        }
+
+
+    }
     //endregion
 
 

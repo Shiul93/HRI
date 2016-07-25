@@ -33,13 +33,13 @@ import static edu.cmu.pocketsphinx.SpeechRecognizerSetup.defaultSetup;
  */
 public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModule implements RecognitionListener {
 
+    //region VAR
     private SpeechRecognizer recognizer;
     private static final String PHRASEFILENAME = "phrases.gram";
     private String TAG = "SpeechRecognitionModule";
     private static final String KEYWORDSEARCH = "KWSEARCH";
 
     private String threshold = " /1e-1/\n";
-    private Integer timeout = 700;
 
     private static final String MOV_SEARCH = "MOVSEARCH";
     private AbstractCollection<String> recognizablePhrases;
@@ -49,10 +49,8 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     private Boolean hasStarted = false;
     private Boolean paused = false;
 
-    private static final String FORECAST_SEARCH = "forecast";
-    private static final String DIGITS_SEARCH = "digits";
-    private static final String PHONE_SEARCH = "phones";
-    private static final String MENU_SEARCH = "menu";
+
+    //endregion
 
     public  PocketSphinxSpeechRecognitionModule(){
         super();
@@ -82,16 +80,17 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         }
 
     }
-
+    @Override
     public void pauseRecognition(){
         paused = true;
         recognizer.stop();
     }
-
+    @Override
     public void resumeRecognition(){
         paused = false;
         recognizer.startListening(KEYWORDSEARCH);//, timeout);
     }
+    @Override
     /**
      * Updates the pocketsphinx search with the contents of the recognizable phrases collection.
      * Should be called after addPhrase() and removePhrase()
@@ -315,6 +314,14 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     @Override
     public void onTimeout() {
+
+    }
+    //TODO Permitir varias busquedas diferemtes?
+    public void setGrammarSearch(String searchName, File grammarFile){
+
+        recognizer.stop();
+        recognizer.addGrammarSearch(searchName, grammarFile);
+        recognizer.startListening(searchName);
 
     }
 }

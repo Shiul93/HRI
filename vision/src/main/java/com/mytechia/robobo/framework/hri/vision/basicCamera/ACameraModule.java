@@ -1,10 +1,8 @@
-package com.mytechia.robobo.framework.hri.vision;
+package com.mytechia.robobo.framework.hri.vision.basicCamera;
 
-import android.graphics.Bitmap;
-import android.media.Image;
 import android.util.Log;
 
-import com.mytechia.robobo.framework.hri.vision.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
 
 import java.util.HashSet;
 
@@ -24,7 +22,7 @@ public abstract class ACameraModule implements ICameraModule{
     }
 
     public void suscribe(ICameraListener listener){
-        Log.d("AV_module", "Suscribed:"+listener.toString());
+        Log.d("Cam_module", "Suscribed:"+listener.toString());
         listeners.add(listener);
     }
     public void unsuscribe(ICameraListener listener){

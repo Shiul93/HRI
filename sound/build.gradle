@@ -1,11 +1,10 @@
-apply plugin: 'com.android.application'
+apply plugin: 'com.android.library'
 
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
 
     defaultConfig {
-        applicationId "com.mytechia.robobo.framework.hri"
         minSdkVersion 21
         targetSdkVersion 23
         versionCode 1
@@ -21,11 +20,8 @@ android {
 
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile project(':touch')
-    compile project(':speech')
-    compile project(':sound')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.mytechia:robobo-framework:0.3.5'
-    compile project(':vision')
+    compile files('libs/TarsosDSP-Android-latest.jar')
 }

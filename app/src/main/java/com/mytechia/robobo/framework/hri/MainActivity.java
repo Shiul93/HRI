@@ -4,9 +4,9 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
-import android.media.Image;
-import android.os.Debug;
-import android.support.v7.app.AppCompatActivity;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.PointF;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -15,23 +15,23 @@ import android.view.TextureView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
+import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapDetectionModule;
+import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
 import com.mytechia.robobo.framework.hri.speech.production.ISpeechProductionModule;
-import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
 import com.mytechia.robobo.framework.hri.touch.ITouchListener;
 import com.mytechia.robobo.framework.hri.touch.ITouchModule;
 import com.mytechia.robobo.framework.hri.touch.TouchGestureDirection;
-import com.mytechia.robobo.framework.hri.vision.ICameraListener;
-import com.mytechia.robobo.framework.hri.vision.ICameraModule;
-import com.mytechia.robobo.framework.hri.vision.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraListener;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceDetectionModule;
+import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceListener;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 
-import java.util.logging.Logger;
-
-public class MainActivity extends Activity implements ITouchListener,ICameraListener{
+public class MainActivity extends Activity implements ITouchListener,ICameraListener,IFaceListener,IClapListener{
 
     private static final String TAG="MainActivity";
 
@@ -41,12 +41,14 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
     private ISpeechProductionModule speechProductionModule;
     private ITouchModule touchModule;
     private ICameraModule cameraModule;
+    private IFaceDetectionModule faceModule;
     private ISpeechRecognitionModule speechRecognitionModule = null;
-
+    private IClapDetectionModule clapModule = null;
     private TextView textView = null;
     private SurfaceView surfaceView = null;
     private ImageView imageView = null;
     private TextureView textureView = null;
+    private Frame actualFrame ;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -93,6 +95,8 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
             this.speechProductionModule= this.roboboManager.getModuleInstance(ISpeechProductionModule.class);
             this.touchModule = this.roboboManager.getModuleInstance(ITouchModule.class);
             this.cameraModule = this.roboboManager.getModuleInstance(ICameraModule.class);
+            this.faceModule = this.roboboManager.getModuleInstance(IFaceDetectionModule.class);
+            this.clapModule =this.roboboManager.getModuleInstance(IClapDetectionModule.class);
             //this.speechRecognitionModule = this.roboboManager.getModuleInstance(ISpeechRecognitionModule.class);
 
 
@@ -101,6 +105,8 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
             cameraModule.passTextureView(textureView);
             touchModule.suscribe(this);
             cameraModule.suscribe(this);
+            faceModule.suscribe(this);
+            clapModule.suscribe(this);
 
 
 
@@ -203,23 +209,75 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
     @Override
     public void onNewFrame(final Frame frame) {
 
-        Canvas canvas = new Canvas();
+        //Canvas canvas = new Canvas();
         float left = 500;
         float top = 500;
 //        canvas.drawBitmap(frame.getBitmap(),left,top,null);
 //        surfaceView.draw(canvas);
+//        runOnUiThread(new Runnable() {
+//            @Override
+//            public void run() {
+//
+//            imageView.setImageBitmap(frame.getBitmap());
+//
+//
+//            }
+//        });
+
+        actualFrame = frame;
+
+        Log.d(TAG,"New Frame");
+
+    }
+
+    @Override
+    public void onFaceDetected(final PointF faceCoords) {
+        Log.d(TAG, "FACE DETECTED");
+        Bitmap bm = Bitmap.createBitmap(actualFrame.getBitmap());
+        final Bitmap mutableBitmap = bm.copy(Bitmap.Config.ARGB_8888, true);
+
+        final Canvas canvas = new Canvas(mutableBitmap);
+
+        Paint paint = new Paint();
+        Paint paintred = new Paint();
+        paintred.setColor(Color.RED);
+        paint.setAntiAlias(true);
+        paint.setColor(Color.GREEN);
+        paint.setStyle(Paint.Style.STROKE);
+        //paint.setColor(Color.GREEN);
+
+        canvas.drawCircle((int)faceCoords.x,(int)faceCoords.y,(float)100,paint);
+        //paint.setColor(Color.TRANSPARENT);
+        canvas.drawCircle((int)faceCoords.x,(int)faceCoords.y,(float)5,paint);
+
+        canvas.drawCircle((int)faceCoords.x,(int)faceCoords.y,(float)4,paintred);
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
-            imageView.setImageBitmap(frame.getBitmap());
+                imageView.setImageBitmap(mutableBitmap);
+                textView.setText(String.format("FACE: (%f,%f)",faceCoords.x,faceCoords.y));
+
 
             }
         });
 
 
+    }
 
-        Log.d(TAG,"New Frame");
+    @Override
+    public void onClap() {
+        speechProductionModule.sayText("CLAP!!",ISpeechProductionModule.PRIORITY_HIGH);
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+
+                textView.setText("CLAP!!");
+
+            }
+        });
 
     }
 }

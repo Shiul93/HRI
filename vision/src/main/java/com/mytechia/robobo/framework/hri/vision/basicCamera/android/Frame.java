@@ -1,4 +1,4 @@
-package com.mytechia.robobo.framework.hri.vision.android;
+package com.mytechia.robobo.framework.hri.vision.basicCamera.android;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -55,6 +55,11 @@ public class Frame {
     }
 
     public static Bitmap decodeBytes(byte[] data){
-        return BitmapFactory.decodeByteArray(data, 0, data.length);
+        BitmapFactory.Options bitmapFactoryOptions=new BitmapFactory.Options();
+        bitmapFactoryOptions.inPreferredConfig=Bitmap.Config.RGB_565;
+        bitmapFactoryOptions.inPreferQualityOverSpeed=false;
+
+
+        return BitmapFactory.decodeByteArray(data, 0, data.length,bitmapFactoryOptions);
     }
 }

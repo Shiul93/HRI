@@ -1,4 +1,4 @@
-package com.mytechia.robobo.framework.hri.vision;
+package com.mytechia.robobo.framework.hri.vision.basicCamera;
 
 import android.view.TextureView;
 
