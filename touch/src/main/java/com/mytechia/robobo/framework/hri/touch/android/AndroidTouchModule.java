@@ -128,7 +128,7 @@ public class AndroidTouchModule extends ATouchModule implements GestureDetector.
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         //TODO Dar soporte a varios dedos,¿Pointer count y media de posiciones?
-        Log.d("AT_module","onFling");
+        Log.d("AT_module","onFling "+(motionEvent1.getEventTime()-motionEvent.getEventTime()));
         MotionEvent.PointerCoords coords = new MotionEvent.PointerCoords();
         motionEvent.getPointerCoords(0,coords);
         MotionEvent.PointerCoords coords1 = new MotionEvent.PointerCoords();

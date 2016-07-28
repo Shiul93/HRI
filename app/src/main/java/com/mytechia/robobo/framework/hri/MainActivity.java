@@ -17,9 +17,13 @@ import android.widget.TextView;
 
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
+
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
+import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchDetectionModule;
+import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 import com.mytechia.robobo.framework.hri.speech.production.ISpeechProductionModule;
+import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
 import com.mytechia.robobo.framework.hri.touch.ITouchListener;
 import com.mytechia.robobo.framework.hri.touch.ITouchModule;
@@ -31,7 +35,7 @@ import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceDetectionModu
 import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceListener;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 
-public class MainActivity extends Activity implements ITouchListener,ICameraListener,IFaceListener,IClapListener{
+public class MainActivity extends Activity implements ITouchListener,ICameraListener,IFaceListener,IClapListener, ISpeechRecognitionListener{
 
     private static final String TAG="MainActivity";
 
@@ -42,8 +46,11 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
     private ITouchModule touchModule;
     private ICameraModule cameraModule;
     private IFaceDetectionModule faceModule;
+    private IPitchDetectionModule pitchModule;
+    private ISoundDispatcherModule dispatcherModule;
     private ISpeechRecognitionModule speechRecognitionModule = null;
     private IClapDetectionModule clapModule = null;
+
     private TextView textView = null;
     private SurfaceView surfaceView = null;
     private ImageView imageView = null;
@@ -96,17 +103,23 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
             this.touchModule = this.roboboManager.getModuleInstance(ITouchModule.class);
             this.cameraModule = this.roboboManager.getModuleInstance(ICameraModule.class);
             this.faceModule = this.roboboManager.getModuleInstance(IFaceDetectionModule.class);
+            this.dispatcherModule = this.roboboManager.getModuleInstance(ISoundDispatcherModule.class);
             this.clapModule =this.roboboManager.getModuleInstance(IClapDetectionModule.class);
-            //this.speechRecognitionModule = this.roboboManager.getModuleInstance(ISpeechRecognitionModule.class);
+            //this.pitchModule = this.roboboManager.getModuleInstance(IPitchDetectionModule.class);
+
+
+            this.speechRecognitionModule = this.roboboManager.getModuleInstance(ISpeechRecognitionModule.class);
 
 
             //Log.d(TAG,speechProductionModule.toString());
-            //speechRecognitionModule.suscribe(this);
+            speechRecognitionModule.suscribe(this);
             cameraModule.passTextureView(textureView);
             touchModule.suscribe(this);
             cameraModule.suscribe(this);
             faceModule.suscribe(this);
             clapModule.suscribe(this);
+
+            dispatcherModule.runDispatcher();
 
 
 
@@ -123,7 +136,7 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
 
     }
 
-   /* @Override
+   @Override
     public void onModuleStart() {
         speechRecognitionModule.addPhrase("up");
         speechRecognitionModule.addPhrase("now");
@@ -131,7 +144,7 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
         speechRecognitionModule.addPhrase("down");
         speechRecognitionModule.addPhrase("robot");
         speechRecognitionModule.updatePhrases();
-    }*/
+    }
 
    /* @Override
     protected void onStop() {
@@ -169,13 +182,13 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
     }
 
 
-    /*@Override
+    @Override
     public void phraseRecognized(String phrase, Long timestamp) {
         //speechProductionModule.sayText(phrase,ISpeechProductionModule.PRIORITY_HIGH);
         Log.d(TAG,"Phrase recognized: "+phrase);
         textView.setText(phrase);
 
-    }*/
+    }
 
     @Override
     public void tap(Integer x, Integer y) {
@@ -266,15 +279,15 @@ public class MainActivity extends Activity implements ITouchListener,ICameraList
     }
 
     @Override
-    public void onClap() {
-        speechProductionModule.sayText("CLAP!!",ISpeechProductionModule.PRIORITY_HIGH);
+    public void onClap(final double time) {
+        speechProductionModule.sayText("CLAP!!",ISpeechProductionModule.PRIORITY_HIGH );
         runOnUiThread(new Runnable() {
 
             @Override
             public void run() {
 
 
-                textView.setText("CLAP!!");
+                textView.setText("CLAP!! Time:"+time);
 
             }
         });

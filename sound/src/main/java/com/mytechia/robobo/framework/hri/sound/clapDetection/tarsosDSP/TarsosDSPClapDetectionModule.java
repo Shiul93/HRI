@@ -3,8 +3,10 @@ package com.mytechia.robobo.framework.hri.sound.clapDetection.tarsosDSP;
 import android.util.Log;
 
 import com.mytechia.commons.framework.exception.InternalErrorException;
+import com.mytechia.commons.util.thread.Threads;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.AClapDetectionModule;
+import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 
 import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 import be.tarsos.dsp.onsets.OnsetHandler;
@@ -20,42 +22,51 @@ public class TarsosDSPClapDetectionModule extends AClapDetectionModule {
 
     private String TAG = "TarsosClapModule";
 
+    private PercussionOnsetDetector mPercussionDetector;
+
+    private ISoundDispatcherModule dispatcherModule;
+
     //endregion
 
     //region IModule methods
     @Override
     public void startup(RoboboManager manager) throws InternalErrorException {
-        AudioDispatcher mDispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,1024,0);
+        dispatcherModule = manager.getModuleInstance(ISoundDispatcherModule.class);
+
 
 
         double threshold = 8;
         double sensitivity = 20;
-        PercussionOnsetDetector mPercussionDetector = new PercussionOnsetDetector(22050, 1024,
+
+        mPercussionDetector = new PercussionOnsetDetector(22050, 2048,
                 new OnsetHandler() {
 
                     @Override
                     public void handleOnset(double time, double salience) {
                         Log.d(TAG, "Clap detected!");
-                        notifyClap();
+                        notifyClap(time);
                     }
                 }, sensitivity, threshold);
-        mDispatcher.addAudioProcessor(mPercussionDetector);
-        new Thread(mDispatcher).start();
+
+
+        dispatcherModule.addProcessor(mPercussionDetector);
     }
 
     @Override
     public void shutdown() throws InternalErrorException {
+        dispatcherModule.removeProcessor(mPercussionDetector);
+        mPercussionDetector.processingFinished();
 
     }
 
     @Override
     public String getModuleInfo() {
-        return null;
+        return "Clap detection Module";
     }
 
     @Override
     public String getModuleVersion() {
-        return null;
+        return "v0.1";
     }
     //endregion
 

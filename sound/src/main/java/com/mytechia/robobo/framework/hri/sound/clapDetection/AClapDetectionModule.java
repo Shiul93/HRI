@@ -24,9 +24,9 @@ public abstract class AClapDetectionModule implements IClapDetectionModule {
         listeners.remove(listener);
     }
 
-    public void notifyClap(){
+    public void notifyClap(double time){
         for(IClapListener listener:listeners){
-            listener.onClap();
+            listener.onClap(time);
         }
     }
 }
