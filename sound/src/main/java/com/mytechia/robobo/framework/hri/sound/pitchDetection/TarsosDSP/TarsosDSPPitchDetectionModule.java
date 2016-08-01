@@ -42,7 +42,12 @@ public class TarsosDSPPitchDetectionModule extends APitchDetectionModule{
             @Override
             public void handlePitch(PitchDetectionResult pitchDetectionResult,
                                     AudioEvent audioEvent) {
-                Log.d(TAG,(audioEvent.getTimeStamp() + " " +pitchDetectionResult.getPitch()));
+                double pitch = pitchDetectionResult.getPitch();
+                //Log.d(TAG,(audioEvent.getTimeStamp() + " " +pitch));
+
+                if (pitch>0){
+                    notifyPitch(pitch*2);
+                }
             }
         };
 

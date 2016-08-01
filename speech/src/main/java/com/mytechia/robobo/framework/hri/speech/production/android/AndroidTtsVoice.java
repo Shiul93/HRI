@@ -10,6 +10,10 @@ import java.util.Locale;
 /**
  * Created by luis on 2/5/16.
  */
+
+/**
+ * Implementation of the Tts voice interface for the Android TTS module
+ */
 public class AndroidTtsVoice implements ITtsVoice{
 
 

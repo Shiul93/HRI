@@ -16,9 +16,9 @@ public abstract class AFaceDetectionModule implements IFaceDetectionModule{
         listeners = new HashSet<IFaceListener>();
     }
 
-    protected void notifyFace(PointF coords){
+    protected void notifyFace(PointF coords, float eyesDistance){
         for (IFaceListener listener:listeners){
-            listener.onFaceDetected(coords);
+            listener.onFaceDetected(coords,eyesDistance);
         }
     }
 

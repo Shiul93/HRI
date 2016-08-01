@@ -19,9 +19,9 @@ public abstract class ATouchModule implements ITouchModule {
             listener.tap(x, y);
         }
     }
-    protected void notifyFling(TouchGestureDirection dir){
+    protected void notifyFling(TouchGestureDirection dir, double angle, long time, double distance){
         for (ITouchListener listener:listeners){
-            listener.fling(dir);
+            listener.fling(dir,angle,time,distance);
         }
     }
     protected void notifyCaress(TouchGestureDirection dir){

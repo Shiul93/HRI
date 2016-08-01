@@ -80,16 +80,21 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         }
 
     }
+
     @Override
     public void pauseRecognition(){
         paused = true;
         recognizer.stop();
     }
+
+
     @Override
     public void resumeRecognition(){
         paused = false;
         recognizer.startListening(KEYWORDSEARCH);//, timeout);
     }
+
+
     @Override
     /**
      * Updates the pocketsphinx search with the contents of the recognizable phrases collection.
@@ -166,9 +171,11 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
                     Log.d(TAG, "AT/----------");
                     Log.d(TAG, "AT/Start AsyncTask");
                     Assets assets = new Assets(roboboManager.getApplicationContext());
+
                     Log.d(TAG,"AT/ "+assets.toString());
                     File assetDir = assets.syncAssets();
                     setupRecognizer(assetDir);
+
 
                 } catch (IOException e) {
                     return e;
@@ -227,6 +234,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         return hasStarted;
     }
 
+
     private void setupRecognizer(File assetsDir) throws IOException {
         Log.d(TAG, "Setting up recognizer");
         // The recognizer can be configured to perform multiple searches
@@ -262,7 +270,6 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
 
     }
-
 
 
     @Override
@@ -306,7 +313,6 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     }
 
 
-
     @Override
     public void onError(Exception e) {
 
@@ -316,6 +322,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     public void onTimeout() {
 
     }
+
     //TODO Permitir varias busquedas diferemtes?
     public void setGrammarSearch(String searchName, File grammarFile){
 

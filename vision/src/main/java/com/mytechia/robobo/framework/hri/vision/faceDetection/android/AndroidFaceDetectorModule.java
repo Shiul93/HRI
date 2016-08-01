@@ -62,9 +62,10 @@ public class AndroidFaceDetectorModule extends AFaceDetectionModule implements I
         int facenumber = faceDetector.findFaces(frame.getBitmap(),faces);
         if (facenumber>0){
             PointF facecoord = new PointF();
+            float eyesDistance = 0;
             faces[0].getMidPoint(facecoord);
-
-            notifyFace(facecoord);
+            eyesDistance = faces[0].eyesDistance();
+            notifyFace(facecoord,eyesDistance);
         }
     }
     //endregion

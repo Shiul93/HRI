@@ -1,6 +1,8 @@
 package com.mytechia.robobo.framework.hri.touch.android;
 
 import android.content.Context;
+import android.graphics.Point;
+import android.graphics.PointF;
 import android.os.Looper;
 import android.support.v4.view.GestureDetectorCompat;
 import android.util.Log;
@@ -128,24 +130,42 @@ public class AndroidTouchModule extends ATouchModule implements GestureDetector.
     @Override
     public boolean onFling(MotionEvent motionEvent, MotionEvent motionEvent1, float v, float v1) {
         //TODO Dar soporte a varios dedos,¿Pointer count y media de posiciones?
-        Log.d("AT_module","onFling "+(motionEvent1.getEventTime()-motionEvent.getEventTime()));
+        long time =(motionEvent1.getEventTime()-motionEvent.getEventTime());
+        Log.d("AT_module","onFling "+time);
+        int x1,x2,y1,y2;
+
         MotionEvent.PointerCoords coords = new MotionEvent.PointerCoords();
         motionEvent.getPointerCoords(0,coords);
+
+        x1 = Math.round(coords.x);
+        y1 = Math.round(coords.y);
+
+
         MotionEvent.PointerCoords coords1 = new MotionEvent.PointerCoords();
         motionEvent1.getPointerCoords(0,coords1);
-        int motionx = Math.round(coords.x)-Math.round(coords1.x);
-        int motiony = Math.round(coords.y)-Math.round(coords1.y);
+
+        x2 = Math.round(coords1.x);
+        y2 = Math.round(coords1.y);
+        Log.d("AT_module","x1: "+x1+" x2: "+x2+" y1: "+y1+" y2: "+y2);
+        double distance = Math.sqrt(Math.pow((x2-x1),2)+Math.pow((y2-y1),2));
+        Log.d("AT_module","Distance: "+distance );
+        int motionx = x1-x2;
+        int motiony = y1-y2;
+        //y1 - y2 for top left reference system
+        double angle = Math.atan2((y1-y2),(x2-x1));
+        Log.d("AT_module","Angle: "+angle);
+        if (angle<0){angle = Math.PI +(Math.PI+angle);}
         if (Math.abs(motionx)>Math.abs(motiony)){
             if (motionx>=0){
-                notifyFling(TouchGestureDirection.LEFT);
+                notifyFling(TouchGestureDirection.LEFT,angle,time,distance);
             }else {
-                notifyFling(TouchGestureDirection.RIGHT);
+                notifyFling(TouchGestureDirection.RIGHT,angle,time,distance);
             }
         }else{
             if (motiony>=0){
-                notifyFling(TouchGestureDirection.UP);
+                notifyFling(TouchGestureDirection.UP,angle,time,distance);
             }else {
-                notifyFling(TouchGestureDirection.DOWN);
+                notifyFling(TouchGestureDirection.DOWN,angle,time,distance);
             }
         }
         return true;
