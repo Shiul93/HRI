@@ -137,5 +137,7 @@ public class SpeechRecognitionActivity extends Activity implements ISpeechRecogn
 
         speechRecognitionModule.updatePhrases();
 
+        speechRecognitionModule.setGrammarSearch("MovSearch","movements.gram");
+
     }
 }

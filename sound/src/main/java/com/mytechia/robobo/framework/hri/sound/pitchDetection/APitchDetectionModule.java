@@ -17,6 +17,12 @@ public abstract class APitchDetectionModule implements IPitchDetectionModule {
     public void unsuscribe(IPitchListener listener){
         listeners.remove(listener);
     }
+
+
+    /**
+     * Notifies when a pitch is detected
+     * @param freq The frequency of the sound
+     */
     public void notifyPitch(double freq){
         for (IPitchListener listener:listeners){
             listener.onPitchdetected(freq);

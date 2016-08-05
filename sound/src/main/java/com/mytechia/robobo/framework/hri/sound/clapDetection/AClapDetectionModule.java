@@ -13,6 +13,7 @@ public abstract class AClapDetectionModule implements IClapDetectionModule {
     public AClapDetectionModule(){
         listeners = new HashSet<IClapListener>();
     }
+
     @Override
     public void suscribe(IClapListener listener) {
         Log.d("FD_module", "Suscribed:"+listener.toString());
@@ -24,6 +25,11 @@ public abstract class AClapDetectionModule implements IClapDetectionModule {
         listeners.remove(listener);
     }
 
+
+    /**
+     * Notify the listeners of a clap
+     * @param time Moment of the detection
+     */
     public void notifyClap(double time){
         for(IClapListener listener:listeners){
             listener.onClap(time);

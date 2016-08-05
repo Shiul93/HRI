@@ -11,7 +11,7 @@ import com.mytechia.robobo.framework.IModule;
 public interface ITouchModule extends IModule{
     void suscribe(ITouchListener listener);
     void unsuscribe(ITouchListener listener);
-    boolean onTouchEvent(MotionEvent event);
+
 
     /**
      * Feeds the module with the events captured on the main activity

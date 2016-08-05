@@ -17,6 +17,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.AbstractCollection;
+import java.util.ArrayList;
 import java.util.HashSet;
 
 
@@ -45,6 +46,15 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     private AbstractCollection<String> recognizablePhrases;
     private static final Integer HASHSETSIZE = 128;
     private File phraseFile;
+    private File assetsDir;
+
+    private String hyp = "";
+
+    private HashSet<String> searches = new HashSet<String>();
+
+    private Context context;
+
+    private String currentSearch;
 
     private Boolean hasStarted = false;
     private Boolean paused = false;
@@ -153,6 +163,10 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         Log.d(TAG,"Startup Recognition Module");
         //Create a new hashset for phrases
         recognizablePhrases = new HashSet<String>(HASHSETSIZE);
+        searches.add(KEYWORDSEARCH);
+        currentSearch = KEYWORDSEARCH;
+
+        context = roboboManager.getApplicationContext();
         //Get current directory for the app
         File appRootDir = roboboManager.getApplicationContext().getFilesDir();
         //Create a new text file for storing the phrases
@@ -173,8 +187,8 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
                     Assets assets = new Assets(roboboManager.getApplicationContext());
 
                     Log.d(TAG,"AT/ "+assets.toString());
-                    File assetDir = assets.syncAssets();
-                    setupRecognizer(assetDir);
+                    assetsDir = assets.syncAssets();
+                    setupRecognizer(assetsDir);
 
 
                 } catch (IOException e) {
@@ -221,12 +235,12 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     @Override
     public String getModuleInfo() {
-        return null;
+        return "PocketSphinx Voice recognition module";
     }
 
     @Override
     public String getModuleVersion() {
-        return null;
+        return "v0.1";
     }
 
     @Override
@@ -259,15 +273,6 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         recognizer.addListener(this);
 
 
-        /*File keywordList = new File(assetsDir, "keywordlist.gram");
-
-        Log.d(TAG, keywordList.toString());
-        recognizer.addKeywordSearch(KEYWORDSEARCH,keywordList);
-
-
-        File movGrammar = new File(assetsDir, "movements.gram");
-        recognizer.addGrammarSearch(MOV_SEARCH, movGrammar);*/
-
 
     }
 
@@ -289,6 +294,8 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
         if (hypothesis != null){text = hypothesis.getHypstr();}
         if (hypothesis == null || text.equals("null"))
             return;
+
+        hyp = text;
         Log.d(TAG,"Recognized part "+text);
 
 
@@ -296,18 +303,19 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     @Override
     public void onResult(Hypothesis hypothesis) {
-        if (hypothesis != null) {
+        if ((hypothesis != null)&&(hyp.equals(hypothesis.getHypstr()))) {
 
             String text = hypothesis.getHypstr();
+            //TODO Filtrar por probabilidad
 
-            Log.d(TAG,"Recognized "+text);
+            Log.d(TAG,"Recognized "+text+" Prob: "+hypothesis.getBestScore());
             long time = System.currentTimeMillis();
             notifyPhrase(text,time);
         }
         else{Log.d(TAG,"Recognized nothing");}
 
         if (! paused){
-            recognizer.startListening(KEYWORDSEARCH);//, timeout);
+            recognizer.startListening(currentSearch);//, timeout);
         }
 
     }
@@ -323,12 +331,27 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     }
 
-    //TODO Permitir varias busquedas diferemtes?
-    public void setGrammarSearch(String searchName, File grammarFile){
+    //TODO Permitir varias busquedas diferentes?
+    public void setGrammarSearch(String searchName, String grammarFileName){
 
+//        if (!searches.contains(searchName)) {
+            searches.add(searchName);
+            File languageModel = new File(assetsDir, grammarFileName);
+            recognizer.stop();
+            recognizer.addGrammarSearch(searchName, languageModel);
+            recognizer.startListening(searchName);
+            currentSearch = searchName;
+//        }else{
+//            recognizer.stop();
+//            recognizer.startListening(searchName);
+//            currentSearch = searchName;
+//        }
+
+    }
+
+    public void setKeywordSearch(){
         recognizer.stop();
-        recognizer.addGrammarSearch(searchName, grammarFile);
-        recognizer.startListening(searchName);
-
+        currentSearch = KEYWORDSEARCH;
+        recognizer.startListening(KEYWORDSEARCH);
     }
 }

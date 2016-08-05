@@ -1,5 +1,8 @@
 #JSGF V1.0;
 grammar movements;
-<direction> =up|down|right|left;
+
+<starter> = rob;
+<direction> =front|back|up|down|right|left;
 <ending> = now;
-public <movements> = <direction> <ending>;
+
+public <movements> = <starter> <direction> <ending>;

@@ -10,5 +10,6 @@ public interface INoteDetectionModule extends IModule{
 
     public void unsuscribe(INoteListener listener);
 
-    public void notifyNote(Note note);
+
+
 }

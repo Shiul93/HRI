@@ -8,4 +8,7 @@ import com.mytechia.robobo.framework.IModule;
 public interface IClapDetectionModule extends IModule {
     public void suscribe(IClapListener listener);
     public void unsuscribe(IClapListener listener);
+
+
+
 }

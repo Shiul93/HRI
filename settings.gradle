@@ -1,1 +1,1 @@
-include ':app', ':speech', ':touch', ':vision', ':sound'
+include ':app', ':speech', ':touch', ':vision', ':sound', ':messaging', ':mailcore2-android-3'

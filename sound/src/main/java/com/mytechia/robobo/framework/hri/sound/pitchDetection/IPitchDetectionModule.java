@@ -10,7 +10,5 @@ public interface IPitchDetectionModule extends IModule {
     public void suscribe(IPitchListener listener);
 
     public void unsuscribe(IPitchListener listener);
-
-    public void notifyPitch(double freq);
-
+    
 }

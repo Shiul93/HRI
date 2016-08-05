@@ -10,16 +10,7 @@ import java.util.HashSet;
 public abstract class ANoteDetectionModule implements INoteDetectionModule {
     public HashSet<INoteListener> listeners;
 
-    public double freqToNote(double freq){
 
-        //freq = 440* 2^(n/12)
-        //http://www.intmath.com/trigonometric-graphs/music.php
-        double note = 0.0;
-
-        double noteaprox = (Math.log(freq/440.0)/Math.log(2))*12.0;
-
-        return noteaprox;
-    }
 
     public ANoteDetectionModule(){
         listeners = new HashSet<INoteListener>();
@@ -31,10 +22,53 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
         listeners.remove(listener);
     }
 
+    /**
+     * Notifies when an note is being played
+     * @param note The note being played
+     */
     public void notifyNote(Note note){
         for(INoteListener listener:listeners){
             listener.onNoteDetected(note);
 
         }
+    }
+
+    /**
+     * Notifies when a note stops playing
+     * @param note The note
+     * @param time The time elapsed by the note
+     */
+    public void notifyNoteEnd(Note note, long time){
+        for(INoteListener listener:listeners){
+            listener.onNoteEnd(note, time);
+
+        }
+    }
+
+    /**
+     * Notifies qhen a note starts playing
+     * @param note The note
+     */
+    public void notifyNewNote(Note note){
+        for(INoteListener listener:listeners){
+            listener.onNewNote(note);
+
+        }
+    }
+
+    /**
+     * Converts frequency into note index
+     * @param freq The frequency to be converted
+     * @return the index of the note
+     */
+    public double freqToNote(double freq){
+
+        //freq = 440* 2^(n/12)
+        //http://www.intmath.com/trigonometric-graphs/music.php
+        double note = 0.0;
+
+        double noteaprox = (Math.log(freq/440.0)/Math.log(2))*12.0;
+
+        return noteaprox;
     }
 }

@@ -25,6 +25,7 @@ public class TarsosDSPPitchDetectionModule extends APitchDetectionModule{
     private PitchProcessor pitchProcessor;
     private ISoundDispatcherModule dispatcherModule;
     private String TAG = "PitchDetectionModule";
+    private boolean previous = false;
     //endregion
 
     //region IModule methods
@@ -46,7 +47,13 @@ public class TarsosDSPPitchDetectionModule extends APitchDetectionModule{
                 //Log.d(TAG,(audioEvent.getTimeStamp() + " " +pitch));
 
                 if (pitch>0){
+                    previous = true;
                     notifyPitch(pitch*2);
+                }else {
+                    if (previous){
+                        previous = false;
+                        notifyPitch(-1);
+                    }
                 }
             }
         };

@@ -6,4 +6,8 @@ package com.mytechia.robobo.framework.hri.sound.noteDetection;
 public interface INoteListener {
 
     void onNoteDetected(Note note);
+
+    void onNoteEnd(Note note, long time);
+
+    void onNewNote(Note note);
 }

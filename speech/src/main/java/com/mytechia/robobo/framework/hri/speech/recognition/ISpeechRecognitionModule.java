@@ -40,6 +40,19 @@ public interface ISpeechRecognitionModule extends IModule {
      */
     Boolean hasStarted();
 
+    /**
+     * Switches to the default keyword search
+     */
+    void setKeywordSearch();
+
+    /**
+     * Switches to a grammar based search
+     * @param searchName Id of the search
+     * @param grammarFileName Name of the file containing the grammar, with extension,
+     *                        located on assets/sync
+     */
+    void setGrammarSearch(String searchName, String grammarFileName);
+
     void suscribe(ISpeechRecognitionListener listener);
     void unsuscribe(ISpeechRecognitionListener listener);
 

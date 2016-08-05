@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
 
+import com.mytechia.robobo.framework.hri.messaging.IMessagingModule;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteDetectionModule;
@@ -51,12 +52,14 @@ public class MainActivity extends Activity implements INoteListener{
     private ISoundDispatcherModule dispatcherModule;
     private IPitchDetectionModule pitchModule;
     private INoteDetectionModule noteDetectionModule;
+    private IMessagingModule msgModule;
 
     private TextView textView = null;
     private SurfaceView surfaceView = null;
     private ImageView imageView = null;
     private TextureView textureView = null;
     private Frame actualFrame ;
+    private Note prevNote;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -100,6 +103,7 @@ public class MainActivity extends Activity implements INoteListener{
         try {
             this.dispatcherModule = this.roboboManager.getModuleInstance(ISoundDispatcherModule.class);
             this.noteDetectionModule = this.roboboManager.getModuleInstance(INoteDetectionModule.class);
+            this.msgModule = this.roboboManager.getModuleInstance(IMessagingModule.class);
         } catch (ModuleNotFoundException e) {
             e.printStackTrace();
         }
@@ -108,13 +112,14 @@ public class MainActivity extends Activity implements INoteListener{
         dispatcherModule.runDispatcher();
 
 
+
     }
 
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-
+        //msgModule.sendMessage("TEST","lfllamas93@gmail.com");
         return super.onTouchEvent(event);
     }
 
@@ -142,6 +147,36 @@ public class MainActivity extends Activity implements INoteListener{
 
 
                 textView.setText(note.toString());
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onNoteEnd(final Note note,final long time) {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+
+                textView.setText(note.toString()+" END Time: "+time);
+
+            }
+        });
+
+    }
+
+    @Override
+    public void onNewNote(final Note note) {
+        runOnUiThread(new Runnable() {
+
+            @Override
+            public void run() {
+
+
+                textView.setText(note.toString()+" NEW");
 
             }
         });
