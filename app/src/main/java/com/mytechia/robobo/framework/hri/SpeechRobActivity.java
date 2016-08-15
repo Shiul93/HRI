@@ -16,7 +16,7 @@ import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 import com.mytechia.robobo.rob.BluetoothRobInterfaceModule;
 import com.mytechia.robobo.rob.movement.IRobMovementModule;

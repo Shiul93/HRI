@@ -10,14 +10,9 @@ import android.widget.TextView;
 
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
-import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteDetectionModule;
-import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteListener;
-import com.mytechia.robobo.framework.hri.sound.noteDetection.Note;
-import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchDetectionModule;
-import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
 import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 
 public class SpeechRecognitionActivity extends Activity implements ISpeechRecognitionListener{

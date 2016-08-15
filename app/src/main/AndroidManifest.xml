@@ -18,13 +18,35 @@
         <activity
             android:name=".FaceMessageActivity"
             android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".ColorDetectActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".SpeechRobActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".VigilanteRobActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".MusicRobActivity"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity android:name=".MenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
     </application>
 
 </manifest>

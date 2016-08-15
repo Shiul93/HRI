@@ -14,6 +14,7 @@ import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchListener;
 /**
  * Created by luis on 30/7/16.
  */
+//TODO Quizas renombrar esto, no usa la libreria directamente
 public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implements IPitchListener{
 
     private IPitchDetectionModule pitchDetectionModule;
@@ -85,9 +86,11 @@ public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implement
                 for (Note note1 : Note.values()) {
                     //Get the note from the index
                     if (note1.index == noteindex) {
+
                         if(note1 != lastNote){
 
                             if (lastNote!=null){
+                                Log.d(TAG,"lastNote!=null");
                                 endTime = System.currentTimeMillis();
                                 notifyNoteEnd(lastNote,endTime-startTime);
                                 Log.d(TAG,"ENDNOTE "+lastNote.toString()+" Time elapsed:"+(endTime-startTime)+" ms");
@@ -101,13 +104,15 @@ public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implement
                         notifyNote(note1);
                     }
                 }
-            }else{
-                //TODO Probar esto
-                endTime = System.currentTimeMillis();
-                notifyNoteEnd(lastNote,endTime-startTime);
-                lastNote = null;
-
             }
+//            }else{
+//                //TODO Probar esto
+//                Log.d(TAG,"Fallo en diffvalue Lastnote: "+lastNote.toString());
+//                endTime = System.currentTimeMillis();
+//                notifyNoteEnd(lastNote,endTime-startTime);
+//                lastNote = null;
+//
+//            }
         }
     }
     //endregion

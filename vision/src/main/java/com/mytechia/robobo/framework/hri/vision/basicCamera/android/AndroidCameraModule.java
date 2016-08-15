@@ -27,6 +27,7 @@ import android.view.WindowManager;
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ACameraModule;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
 
 import org.jboss.netty.buffer.ChannelBufferOutputStream;
@@ -45,6 +46,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Created by luis on 19/7/16.
+ * https://github.com/jayrambhia/AsynCamera
  */
 public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
@@ -137,17 +139,6 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
     }
     //endregion
 
-    //region ICameraModule Methods
-    @Override
-    public void foto() {
-
-    }
-
-    @Override
-    public void passTextureView(TextureView tv) {
-
-    }
-    //endregion
 
     //region ConfigureCamera
 
@@ -191,6 +182,11 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     }
 
+    @Override
+    public void signalInit() {
+
+    }
+
     //endregion
 
     //region Callbacks and Listeners
@@ -227,7 +223,7 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
             Arrays.sort(sizes, new CompareSizesByArea());
 
-            Size preferredSize= new Size(200, 150);
+            Size preferredSize= new Size(640, 480);
 
             int indexSelectedSize=0;
 

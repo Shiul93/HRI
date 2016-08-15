@@ -30,7 +30,7 @@ public abstract class AClapDetectionModule implements IClapDetectionModule {
      * Notify the listeners of a clap
      * @param time Moment of the detection
      */
-    public void notifyClap(double time){
+    protected void notifyClap(double time){
         for(IClapListener listener:listeners){
             listener.onClap(time);
         }

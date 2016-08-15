@@ -8,7 +8,7 @@ import java.util.HashSet;
  * Created by luis on 30/7/16.
  */
 public abstract class ANoteDetectionModule implements INoteDetectionModule {
-    public HashSet<INoteListener> listeners;
+    private HashSet<INoteListener> listeners;
 
 
 
@@ -26,7 +26,7 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
      * Notifies when an note is being played
      * @param note The note being played
      */
-    public void notifyNote(Note note){
+    protected void notifyNote(Note note){
         for(INoteListener listener:listeners){
             listener.onNoteDetected(note);
 
@@ -38,7 +38,7 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
      * @param note The note
      * @param time The time elapsed by the note
      */
-    public void notifyNoteEnd(Note note, long time){
+    protected void notifyNoteEnd(Note note, long time){
         for(INoteListener listener:listeners){
             listener.onNoteEnd(note, time);
 
@@ -49,7 +49,7 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
      * Notifies qhen a note starts playing
      * @param note The note
      */
-    public void notifyNewNote(Note note){
+    protected void notifyNewNote(Note note){
         for(INoteListener listener:listeners){
             listener.onNewNote(note);
 
@@ -61,7 +61,7 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
      * @param freq The frequency to be converted
      * @return the index of the note
      */
-    public double freqToNote(double freq){
+    protected double freqToNote(double freq){
 
         //freq = 440* 2^(n/12)
         //http://www.intmath.com/trigonometric-graphs/music.php

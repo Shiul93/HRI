@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.mytechia.robobo.framework.hri.MainActivity"
-    android:background="#b62525">
+    android:background="#b62525"
+    android:id="@+id/rellayout">
 
     <ImageView
         android:layout_width="match_parent"

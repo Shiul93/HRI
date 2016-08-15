@@ -32,10 +32,10 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
     public void sendMessage(String text, String addresee) {
         Log.d(TAG,"SENDMESSAGE");
         BackgroundMail.newBuilder(context)
-                .withUsername("--------")
-                .withPassword("--------")
+                .withUsername("roboboplatform@gmail.com")
+                .withPassword("robpasswd")
                 .withMailto(addresee)
-                .withSubject("ROBOBO NOTIFICATION")
+                .withSubject("ROBOBO NOTIFICATION, ID:"+ new RandomString(10).nextString())
                 .withBody(text)
                 .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
                     @Override
@@ -57,10 +57,10 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
         String imagepath = saveToExternalStorage(photoAtachment);
         Log.d(TAG,"SENDMESSAGE");
         BackgroundMail.newBuilder(context)
-                .withUsername("--------")
-                .withPassword("--------")
+                .withUsername("roboboplatform@gmail.com")
+                .withPassword("robpasswd")
                 .withMailto(addresee)
-                .withSubject("ROBOBO NOTIFICATION")
+                .withSubject("ROBOBO NOTIFICATION, ID:"+ new RandomString(10).nextString())
                 .withBody(text)
                 .withAttachments(imagepath)
                 .withOnSuccessCallback(new BackgroundMail.OnSuccessCallback() {
@@ -149,4 +149,36 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
         return "v0.1";
     }
     //endregion
+    private class RandomString {
+
+        private  final char[] symbols;
+
+         {
+            StringBuilder tmp = new StringBuilder();
+            for (char ch = '0'; ch <= '9'; ++ch)
+                tmp.append(ch);
+            for (char ch = 'a'; ch <= 'z'; ++ch)
+                tmp.append(ch);
+            symbols = tmp.toString().toCharArray();
+        }
+
+        private final Random random = new Random();
+
+        private final char[] buf;
+
+        public RandomString(int length) {
+            if (length < 1)
+                throw new IllegalArgumentException("length < 1: " + length);
+            buf = new char[length];
+        }
+
+        public String nextString() {
+            for (int idx = 0; idx < buf.length; ++idx)
+                buf[idx] = symbols[random.nextInt(symbols.length)];
+            return new String(buf);
+        }
+    }
+
+
 }
+

@@ -28,7 +28,7 @@ import com.mytechia.robobo.framework.hri.touch.ITouchModule;
 import com.mytechia.robobo.framework.hri.touch.TouchGestureDirection;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraListener;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceDetectionModule;
 import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceListener;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
@@ -111,7 +111,7 @@ public class MainActivityBackup extends Activity implements ITouchListener,ICame
 
             //Log.d(TAG,speechProductionModule.toString());
             speechRecognitionModule.suscribe(this);
-            cameraModule.passTextureView(textureView);
+            //cameraModule.passTextureView(textureView);
             touchModule.suscribe(this);
             cameraModule.suscribe(this);
             faceModule.suscribe(this);
@@ -191,7 +191,7 @@ public class MainActivityBackup extends Activity implements ITouchListener,ICame
     @Override
     public void tap(Integer x, Integer y) {
         Log.d(TAG,"TAP");
-        cameraModule.foto();
+        //cameraModule.foto();
         speechProductionModule.sayText("TAP",ISpeechProductionModule.PRIORITY_HIGH);
         textView.setText(String.format("TAP: (%d,%d)",x,y));
     }

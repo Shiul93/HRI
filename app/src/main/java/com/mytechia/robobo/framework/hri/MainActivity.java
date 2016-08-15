@@ -1,18 +1,10 @@
 package com.mytechia.robobo.framework.hri;
 
 import android.app.Activity;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.PointF;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MotionEvent;
 import android.view.SurfaceView;
 import android.view.TextureView;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -20,24 +12,12 @@ import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
 
 import com.mytechia.robobo.framework.hri.messaging.IMessagingModule;
-import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapDetectionModule;
-import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteListener;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.Note;
 import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
-import com.mytechia.robobo.framework.hri.speech.production.ISpeechProductionModule;
-import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
-import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
-import com.mytechia.robobo.framework.hri.touch.ITouchListener;
-import com.mytechia.robobo.framework.hri.touch.ITouchModule;
-import com.mytechia.robobo.framework.hri.touch.TouchGestureDirection;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraListener;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
-import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
-import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceDetectionModule;
-import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceListener;
+import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 
 public class MainActivity extends Activity implements INoteListener{

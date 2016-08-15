@@ -224,12 +224,14 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
 
     @Override
     public void shutdown() throws InternalErrorException {
+        if (recognizer != null){
         //Cancel the listening
         recognizer.cancel();
         //Shutdown the recognizer
         recognizer.shutdown();
         //Delete the phrase file
         phraseFile.delete();
+        }
 
     }
 

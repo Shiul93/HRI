@@ -2,8 +2,6 @@ package com.mytechia.robobo.framework.hri.vision.basicCamera;
 
 import android.util.Log;
 
-import com.mytechia.robobo.framework.hri.vision.basicCamera.android.Frame;
-
 import java.util.HashSet;
 
 /**
