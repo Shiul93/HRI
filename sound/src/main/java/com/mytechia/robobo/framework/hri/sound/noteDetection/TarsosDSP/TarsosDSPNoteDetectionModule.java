@@ -1,5 +1,6 @@
 package com.mytechia.robobo.framework.hri.sound.noteDetection.TarsosDSP;
 
+import android.content.res.AssetManager;
 import android.os.SystemClock;
 import android.provider.Settings;
 import android.util.Log;
@@ -10,6 +11,10 @@ import com.mytechia.robobo.framework.hri.sound.noteDetection.ANoteDetectionModul
 import com.mytechia.robobo.framework.hri.sound.noteDetection.Note;
 import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchListener;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 /**
  * Created by luis on 30/7/16.
@@ -34,6 +39,19 @@ public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implement
     //region IModule methods
     @Override
     public void startup(RoboboManager manager) throws InternalErrorException {
+        Properties properties = new Properties();
+        AssetManager assetManager = manager.getApplicationContext().getAssets();
+
+        try {
+            InputStream inputStream = assetManager.open("sound.properties");
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        minThreshold = Double.parseDouble(properties.getProperty("minThreshold"));
+        maxThreshold = Double.parseDouble(properties.getProperty("maxThreshold"));
+
+
         pitchDetectionModule = manager.getModuleInstance(IPitchDetectionModule.class);
         pitchDetectionModule.suscribe(this);
     }

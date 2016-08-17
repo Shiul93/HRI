@@ -46,7 +46,7 @@ String TAG = "MENU_ACTIVITY";
             }
         });
 
-        final Button button3 = (Button) findViewById(R.id.button3);
+        final Button button3 = (Button) findViewById(R.id.button4);
         button3.setText("Vigilante Rob Activity");
         button3.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -56,7 +56,7 @@ String TAG = "MENU_ACTIVITY";
             }
         });
 
-        final Button button4 = (Button) findViewById(R.id.button4);
+        final Button button4 = (Button) findViewById(R.id.button5);
         button4.setText("Music Rob Activity");
         button4.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {

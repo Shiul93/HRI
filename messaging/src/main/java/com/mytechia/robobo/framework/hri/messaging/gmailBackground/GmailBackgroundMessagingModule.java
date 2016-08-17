@@ -2,6 +2,7 @@ package com.mytechia.robobo.framework.hri.messaging.gmailBackground;
 
 import android.content.Context;
 import android.content.ContextWrapper;
+import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.os.Environment;
 import android.util.Log;
@@ -14,6 +15,8 @@ import com.mytechia.robobo.framework.hri.messaging.AMessagingModule;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 import java.util.Random;
 
 /**
@@ -23,17 +26,18 @@ import java.util.Random;
 public class GmailBackgroundMessagingModule extends AMessagingModule {
 
     //region VAR
-    Context context;
-    String TAG = "GmailMessagingModule";
-
+    private Context context;
+    private String TAG = "GmailMessagingModule";
+    private String mailDirection;
+    private String mailPassword;
     //endregion
     //region IMessagingModule Methods
     @Override
     public void sendMessage(String text, String addresee) {
         Log.d(TAG,"SENDMESSAGE");
         BackgroundMail.newBuilder(context)
-                .withUsername("roboboplatform@gmail.com")
-                .withPassword("robpasswd")
+                .withUsername(mailDirection)
+                .withPassword(mailPassword)
                 .withMailto(addresee)
                 .withSubject("ROBOBO NOTIFICATION, ID:"+ new RandomString(10).nextString())
                 .withBody(text)
@@ -57,8 +61,8 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
         String imagepath = saveToExternalStorage(photoAtachment);
         Log.d(TAG,"SENDMESSAGE");
         BackgroundMail.newBuilder(context)
-                .withUsername("roboboplatform@gmail.com")
-                .withPassword("robpasswd")
+                .withUsername(mailDirection)
+                .withPassword(mailPassword)
                 .withMailto(addresee)
                 .withSubject("ROBOBO NOTIFICATION, ID:"+ new RandomString(10).nextString())
                 .withBody(text)
@@ -79,29 +83,6 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
 
     }
 
-    private String saveToInternalStorage(Bitmap bitmapImage){
-        ContextWrapper cw = new ContextWrapper(context);
-        // path to /data/data/yourapp/app_data/imageDir
-        File directory = cw.getDir("imageDir", Context.MODE_PRIVATE);
-        // Create imageDir
-        File mypath=new File(directory,"profile.jpg");
-
-        FileOutputStream fos = null;
-        try {
-            fos = new FileOutputStream(mypath);
-            // Use the compress method on the BitMap object to write image to the OutputStream
-            bitmapImage.compress(Bitmap.CompressFormat.PNG, 100, fos);
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                fos.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return directory.getAbsolutePath();
-    }
 
     private String saveToExternalStorage(Bitmap bm){
         String root = Environment.getExternalStorageDirectory().toString();
@@ -131,6 +112,20 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
     //region IModule Methods
     @Override
     public void startup(RoboboManager manager) throws InternalErrorException {
+
+        Properties properties = new Properties();
+        AssetManager assetManager = manager.getApplicationContext().getAssets();
+
+        try {
+            InputStream inputStream = assetManager.open("messaging.properties");
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        mailDirection = properties.getProperty("emailaccount");
+        mailPassword = properties.getProperty("emailpasswd");
+
+
         context = manager.getApplicationContext();
     }
 

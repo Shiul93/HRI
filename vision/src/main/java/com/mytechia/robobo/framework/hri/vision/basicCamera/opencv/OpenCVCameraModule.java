@@ -15,6 +15,8 @@ import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ACameraModule;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 
+
+import org.opencv.android.OpenCVLoader;
 import org.opencv.android.BaseLoaderCallback;
 import org.opencv.android.CameraBridgeViewBase;
 import org.opencv.android.JavaCameraView;

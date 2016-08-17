@@ -1,5 +1,6 @@
 package com.mytechia.robobo.framework.hri.vision.colorDetection;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 
 import java.util.HashSet;
@@ -20,9 +21,9 @@ public abstract class AColorDetectionModule implements IColorDetectionModule {
         listeners.remove(listener);
     }
 
-    protected void notifyColor(int color){
+    protected void notifyColor(int colorrgb, int nearest_color, int x, int y, int height, int width, Bitmap borders){
         for (IColorListener listener:listeners){
-            listener.onNewColor(color);
+            listener.onNewColor(colorrgb,nearest_color,x,y,height,width,borders);
 
         }
     }

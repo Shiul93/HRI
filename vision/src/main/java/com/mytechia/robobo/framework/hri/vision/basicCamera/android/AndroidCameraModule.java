@@ -3,6 +3,7 @@ package com.mytechia.robobo.framework.hri.vision.basicCamera.android;
 import android.Manifest;
 import android.content.Context;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.graphics.ImageFormat;
 import android.hardware.camera2.CameraAccessException;
 import android.hardware.camera2.CameraCaptureSession;
@@ -34,11 +35,13 @@ import org.jboss.netty.buffer.ChannelBufferOutputStream;
 import org.jboss.netty.buffer.ChannelBuffers;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Properties;
 import java.util.concurrent.Semaphore;
 import java.util.concurrent.TimeUnit;
 
@@ -79,6 +82,9 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
     private CameraCaptureSession mCaptureSession;
 
+    private int resolution_height = 640;
+    private int resolution_width = 480;
+
     /**
      * prevent the app from exiting before closing the camera.
      */
@@ -107,6 +113,20 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
     @Override
     public void startup(RoboboManager manager) throws InternalErrorException {
         this.context = manager.getApplicationContext();
+
+        Properties properties = new Properties();
+        AssetManager assetManager = manager.getApplicationContext().getAssets();
+
+        try {
+            InputStream inputStream = assetManager.open("vision.properties");
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        resolution_height = Integer.parseInt(properties.getProperty("resolution_height"));
+        resolution_width = Integer.parseInt(properties.getProperty("resolution_width"));
+
+
 
 //        Bundle roboboOptions = roboboFramework.getOptions();
 //        roboName=roboboOptions.getString(RoboboRosModule.ROBOBO_NAME, "");
@@ -223,7 +243,7 @@ public class AndroidCameraModule extends ACameraModule implements ICameraModule{
 
             Arrays.sort(sizes, new CompareSizesByArea());
 
-            Size preferredSize= new Size(640, 480);
+            Size preferredSize= new Size(resolution_height, resolution_height);
 
             int indexSelectedSize=0;
 

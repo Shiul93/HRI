@@ -1,8 +1,15 @@
 package com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.TarsosDSP;
 
+import android.content.res.AssetManager;
+import android.util.Log;
+
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ASoundDispatcherModule;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import be.tarsos.dsp.AudioDispatcher;
 import be.tarsos.dsp.AudioProcessor;
@@ -16,6 +23,12 @@ public class TarsosDSPSoundDispatcherModule extends ASoundDispatcherModule {
     private String TAG = "TarsosDispatcherModule";
     private AudioDispatcher dispatcher;
     private Thread dispatcherThread;
+
+    private int samplerate = 22050;
+
+    private int buffersize = 2048;
+
+    private int overlap = 0;
 
     //region SoundDispatcherModule methods
     @Override
@@ -44,7 +57,20 @@ public class TarsosDSPSoundDispatcherModule extends ASoundDispatcherModule {
     //region IModule Methods
     @Override
     public void startup(RoboboManager manager) throws InternalErrorException {
-        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(22050,2048,0);
+        Properties properties = new Properties();
+        AssetManager assetManager = manager.getApplicationContext().getAssets();
+
+        try {
+            InputStream inputStream = assetManager.open("sound.properties");
+            properties.load(inputStream);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        samplerate = Integer.parseInt(properties.getProperty("samplerate"));
+        buffersize = Integer.parseInt(properties.getProperty("buffersize"));
+        overlap = Integer.parseInt(properties.getProperty("overlap"));
+        Log.d(TAG,"Properties loaded: "+samplerate+" "+buffersize+" "+overlap);
+        dispatcher = AudioDispatcherFactory.fromDefaultMicrophone(samplerate,buffersize,overlap);
     }
 
     @Override
