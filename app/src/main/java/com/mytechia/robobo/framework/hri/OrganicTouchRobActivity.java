@@ -16,22 +16,21 @@ import android.widget.TextView;
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
-import com.mytechia.robobo.framework.hri.sound.emotionSound.IEmotionSoundModule;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.INoteListener;
 import com.mytechia.robobo.framework.hri.sound.noteDetection.Note;
 import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.pitchDetection.IPitchListener;
 import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
-import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
-import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
+import com.mytechia.robobo.framework.hri.touch.ITouchListener;
+import com.mytechia.robobo.framework.hri.touch.ITouchModule;
+import com.mytechia.robobo.framework.hri.touch.TouchGestureDirection;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 import com.mytechia.robobo.rob.BluetoothRobInterfaceModule;
 import com.mytechia.robobo.rob.movement.IRobMovementModule;
 import com.mytechia.robobo.rob.util.RoboboDeviceSelectionDialog;
 
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.NoSuchElementException;
@@ -41,7 +40,7 @@ import java.util.TimerTask;
 /**
  * Created by luis on 3/8/16.
  */
-public class MusicRobActivity extends Activity implements IPitchListener,INoteListener {
+public class OrganicTouchRobActivity extends Activity implements ITouchListener {
 
     private static final String TAG="MusicActivity";
 
@@ -55,10 +54,7 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
 
 
     private IRobMovementModule movementModule;
-    private ISoundDispatcherModule dispatcher;
-    private INoteDetectionModule noteDetectionModule;
-    private IPitchDetectionModule pitchModule;
-    private IEmotionSoundModule emotionSoundMoudle;
+    private ITouchModule touchModule;
 
     private TextView textView = null;
     private SurfaceView surfaceView = null;
@@ -68,15 +64,14 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
 
     private RelativeLayout rellayout = null;
 
-    private ArrayList<String> scale = new ArrayList<>(5);
-    private String triggerNote = "A";
-    private boolean recording = false;
     private boolean executing = false;
 
     private Timer timer;
     private TimerTask waitTask;
 
-    private LinkedList<NoteCommand> commandList;
+    private LinkedList<MovCommand> commandList;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,29 +89,20 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
         timer = new Timer();
         waitTask = new WaitTask();
 
-        commandList = new LinkedList<>();
-        scale.add("A");
-        scale.add("C");
-        scale.add("D");
-        scale.add("E");
-        scale.add("G");
 
 
         try {
-            this.dispatcher = this.roboboManager.getModuleInstance(ISoundDispatcherModule.class);
-            this.noteDetectionModule = this.roboboManager.getModuleInstance(INoteDetectionModule.class);
+
+
             this.movementModule = this.roboboManager.getModuleInstance(IRobMovementModule.class);
-            this.pitchModule = this.roboboManager.getModuleInstance(IPitchDetectionModule.class);
-            this.emotionSoundMoudle = this.roboboManager.getModuleInstance(IEmotionSoundModule.class);
+            this.touchModule = this.roboboManager.getModuleInstance(ITouchModule.class);
+
 
         } catch (ModuleNotFoundException e) {
             e.printStackTrace();
         }
-        pitchModule.suscribe(this);
-        noteDetectionModule.suscribe(this);
-        emotionSoundMoudle.playSound(IEmotionSoundModule.BOOOOO_SOUND);
 
-        dispatcher.runDispatcher();
+
 
 
 
@@ -127,6 +113,7 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
     @Override
     public boolean onTouchEvent(MotionEvent event) {
 
+        touchModule.feedTouchEvent(event);
         return super.onTouchEvent(event);
     }
 
@@ -148,46 +135,46 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
 
 
 
-    public void executeCommands(LinkedList<NoteCommand> commands) {
-        try {
-
-            NoteCommand command = commands.pop();
-            waitTask = new WaitTask();
-            Log.d(TAG, "Executing command "+command.toString());
-
-
-            if (command.note.note ==( "C")){
-                movementModule.moveForwardsTime((short)60,command.duration*2);
-                timer.schedule(waitTask,(command.duration*2)+100);
-            }
-            if (command.note.note ==( "D")){
-                movementModule.moveBackwardsTime((short)60,command.duration);
-                timer.schedule(waitTask,command.duration+100);
-            }
-            if (command.note.note == "E"){
-                movementModule.turnLeftTime((short)60,(command.duration*2));
-                timer.schedule(waitTask,(command.duration*2)+100);
-            }
-            if (command.note.note ==( "G")){
-                movementModule.turnRightTime((short)60,(command.duration*2));
-                timer.schedule(waitTask,(command.duration*2)+100);
-
-            }
-
-        } catch (InternalErrorException e){
-
-        } catch (NoSuchElementException e){
-            executing = false;
-            runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-
-                    rellayout.setBackgroundColor(Color.RED);
-
-
-                }
-            });
-        }
+    public void executeCommands(LinkedList<MovCommand> commands) {
+//        try {
+//
+//            NoteCommand command = commands.pop();
+//            waitTask = new WaitTask();
+//            Log.d(TAG, "Executing command "+command.toString());
+//
+//
+//            if (command.note.note ==( "C")){
+//                movementModule.moveForwardsTime((short)60,command.duration*2);
+//                timer.schedule(waitTask,(command.duration*2)+100);
+//            }
+//            if (command.note.note ==( "D")){
+//                movementModule.moveBackwardsTime((short)60,command.duration);
+//                timer.schedule(waitTask,command.duration+100);
+//            }
+//            if (command.note.note == "E"){
+//                movementModule.turnLeftTime((short)60,(command.duration*2));
+//                timer.schedule(waitTask,(command.duration*2)+100);
+//            }
+//            if (command.note.note ==( "G")){
+//                movementModule.turnRightTime((short)60,(command.duration*2));
+//                timer.schedule(waitTask,(command.duration*2)+100);
+//
+//            }
+//
+//        } catch (InternalErrorException e){
+//
+//        } catch (NoSuchElementException e){
+//            executing = false;
+//            runOnUiThread(new Runnable() {
+//                @Override
+//                public void run() {
+//
+//                    rellayout.setBackgroundColor(Color.RED);
+//
+//
+//                }
+//            });
+//        }
 
     }
 
@@ -242,7 +229,7 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
             @Override
             public void run() {
                 //wait to dialog shown during the startup of the framework and the bluetooth connection
-                waitDialog = ProgressDialog.show(MusicRobActivity.this,
+                waitDialog = ProgressDialog.show(OrganicTouchRobActivity.this,
                         "Conectando","conectando", true);
             }
         });
@@ -294,63 +281,29 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
 
     }
 
-    @Override
-    public void onNoteDetected(Note note) {
-    }
+
+
+
+
 
     @Override
-    public void onNoteEnd(Note note, long time) {
-        Log.d(TAG,"Note: "+note.note);
-        if (!executing) {
-            if (note.note == (triggerNote)) {
-                if ((recording)&&(time>100)) {
-                    recording = false;
-                    executing = true;
-                    Log.d(TAG,"executing");
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                            rellayout.setBackgroundColor(Color.BLUE);
-
-
-                        }
-                    });
-                    executeCommands(commandList);
-                } else {
-                    Log.d(TAG,"recording");
-                    recording = true;
-                    runOnUiThread(new Runnable() {
-                        @Override
-                        public void run() {
-
-                           rellayout.setBackgroundColor(Color.GREEN);
-
-
-                        }
-                    });
-                }
-            } else {
-                if (recording) {
-                    if (scale.contains(note.note)) {
-                        Log.d(TAG,"adding command");
-                        commandList.add(new NoteCommand(note, time));
-                    } else {
-                        //Bad note
-                    }
-                }
-            }
-
-        }
-    }
-
-    @Override
-    public void onNewNote(Note note) {
+    public void tap(Integer x, Integer y) {
 
     }
 
     @Override
-    public void onPitchdetected(double freq) {
+    public void touch(Integer x, Integer y) {
+
+    }
+
+    @Override
+    public void fling(TouchGestureDirection dir, double angle, long time, double distance) {
+
+
+    }
+
+    @Override
+    public void caress(TouchGestureDirection dir) {
 
     }
 
@@ -362,13 +315,49 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
         public void run() {
             executeCommands(commandList);
         }
+
     }
-    private class NoteCommand{
-        public Note note;
-        public  long duration;
-        public NoteCommand(Note note, long duration){
-            this.note = note;
-            this.duration=duration;
+
+    private class MovCommand{
+        private String type;
+        private short power;
+        private int distance;
+
+
+        public MovCommand(String type, short power, int distance){
+            this.type = type;
+            this.power = power;
+            this.distance = distance;
         }
+        public void execute(){
+            try {
+                if (type.equals("turn")){
+
+                        movementModule.turnLeftAngle(power,distance);
+                }
+
+                if (type.equals("advance")){
+
+                    movementModule.turnLeftAngle(power,distance);
+                }
+
+                if (type.equals("pan")){
+
+                    movementModule.movePan(distance);
+                }
+
+                if (type.equals("tilt")){
+
+                    movementModule.moveTilt(distance);
+                }
+
+
+
+            } catch (InternalErrorException e) {
+                e.printStackTrace();
+            }
+        }
+
+
     }
 }

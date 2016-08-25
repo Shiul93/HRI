@@ -191,7 +191,7 @@ public class AndroidSpeechProductionModule implements ISpeechProductionModule {
     }
 
 
-    //TODO Nuevos metodos, preguntar que se pone
+
     @Override
     public String getModuleInfo() {
         return "Android Speech Production Module";

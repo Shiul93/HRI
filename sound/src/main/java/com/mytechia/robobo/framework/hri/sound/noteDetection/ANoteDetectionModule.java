@@ -67,7 +67,7 @@ public abstract class ANoteDetectionModule implements INoteDetectionModule {
         //http://www.intmath.com/trigonometric-graphs/music.php
         double note = 0.0;
 
-        double noteaprox = (Math.log(freq/440.0)/Math.log(2))*12.0;
+        double noteaprox = (Math.log(freq/220.0)/Math.log(2))*12.0;
 
         return noteaprox;
     }

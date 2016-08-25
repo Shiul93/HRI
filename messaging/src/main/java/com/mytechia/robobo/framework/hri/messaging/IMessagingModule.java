@@ -9,7 +9,7 @@ import com.mytechia.robobo.framework.IModule;
  */
 public interface IMessagingModule extends IModule {
 
-    //TODO Harcodear cuenta o configurar?
+
     /**
      * Sends a text via email
      * @param text The message

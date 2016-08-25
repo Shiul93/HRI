@@ -111,9 +111,9 @@ public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implement
                                 Log.d(TAG,"lastNote!=null");
                                 endTime = System.currentTimeMillis();
                                 notifyNoteEnd(lastNote,endTime-startTime);
-                                Log.d(TAG,"ENDNOTE "+lastNote.toString()+" Time elapsed:"+(endTime-startTime)+" ms");
+                               // Log.d(TAG,"ENDNOTE "+lastNote.toString()+" Time elapsed:"+(endTime-startTime)+" ms");
                             }
-                            Log.d(TAG,"NEWNOTE "+note1.toString());
+                            //Log.d(TAG,"NEWNOTE "+note1.toString());
                             notifyNewNote(note1);
                             startTime = System.currentTimeMillis();
 

@@ -144,6 +144,7 @@ public class ColorDetectActivity extends Activity implements ICameraListener, IC
     @Override
     public void onNewFrame(final Frame frame) {
         lastFrame = frame;
+        //TODO CAMBIAR ESTO ROLLO LISTENERS
         colorModule.processFrame(frame.getBitmap());
 
 
@@ -186,8 +187,11 @@ public class ColorDetectActivity extends Activity implements ICameraListener, IC
         Paint paintred = new Paint();
         paintred.setColor(Color.RED);
         paint.setAntiAlias(true);
-        paint.setColor(Color.GREEN);
+        paint.setColor(Color.RED);
         paint.setStyle(Paint.Style.STROKE);
+
+
+
         //paint.setColor(Color.GREEN);
 
         canvas.drawRect(new Rect(x,y,x+width,y+height),paint);

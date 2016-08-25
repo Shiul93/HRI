@@ -56,8 +56,8 @@ public class TarsosDSPClapDetectionModule extends AClapDetectionModule {
         }
         samplerate = Integer.parseInt(properties.getProperty("samplerate"));
         buffersize = Integer.parseInt(properties.getProperty("buffersize"));
-        sensitivity = Integer.parseInt(properties.getProperty("sensitivity"));
-        threshold = Integer.parseInt(properties.getProperty("threshold"));
+        sensitivity = Integer.parseInt(properties.getProperty("clap_sensitivity"));
+        threshold = Integer.parseInt(properties.getProperty("clap_threshold"));
 
         Log.d(TAG,"Properties loaded: "+samplerate+" "+buffersize);
 
