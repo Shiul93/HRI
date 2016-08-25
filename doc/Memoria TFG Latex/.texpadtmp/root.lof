@@ -1,0 +1,36 @@
+\relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \textsf {\textbf {Figura}}\hfill \textsf {\textbf {P\'agina}}\endgraf 
+\select@language {spanish}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Introducci\IeC {\'o}n}{1}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Contextualizaci\IeC {\'o}n}{3}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces Robobo 1.0}}{4}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Robobo 2.0}}{5}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Disposici\IeC {\'o}n de los sensores en el ROBOBO 2.0}}{6}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Estructura de ROBOBO! framework dentro del entorno ROBOBO}}{7}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Interacci\IeC {\'o}n Humano Robot}{9}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de una jaula de seguridad para un robot industrial}}{10}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Robot terapeutico Paro}}{12}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema de caracter\IeC {\'\i }sticas del robot NAO}}{13}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sistema quir\IeC {\'u}rgico daVinci}}{14}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Robot mascota Aibo de Sony}}{15}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Robot mascota Smartpet de Bandai}}{15}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Beebot}}{16}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Escornabot}}{16}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Kit b\IeC {\'a}sico Lego Mindstorms EV3}}{17}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Desarrollo}{21}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{25}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Modulo SpeechProduction}}{28}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces M\IeC {\'o}dulo Touch}}{30}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Evaluaci\IeC {\'o}n}{39}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Conclusiones}{41}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Diagramas}{43}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Instalaci\IeC {\'o}n}{45}
+\addvspace {10\p@ }
+\contentsline {xchapter}{Manual de uso}{47}

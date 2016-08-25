@@ -1,0 +1,73 @@
+This is BibTeX, Version 0.99d (TeX Live 2016)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
+The top-level auxiliary file: /Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.aux
+A level-1 auxiliary file: cover.aux
+A level-1 auxiliary file: draft.aux
+A level-1 auxiliary file: director-agreement.aux
+A level-1 auxiliary file: dedication.aux
+A level-1 auxiliary file: gratefulnesses.aux
+A level-1 auxiliary file: abstract.aux
+A level-1 auxiliary file: keywords.aux
+A level-1 auxiliary file: introduction.aux
+A level-1 auxiliary file: contextualization.aux
+A level-1 auxiliary file: human-robot-interaction.aux
+A level-1 auxiliary file: implementation.aux
+A level-1 auxiliary file: evaluation.aux
+A level-1 auxiliary file: conclusions.aux
+A level-1 auxiliary file: appendix.aux
+The style file: IEEEtran.bst
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Database file #1: ../bibliography.bib
+Warning--I didn't find a database entry for "opencv"
+-- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
+-- http://www.michaelshell.org/tex/ieeetran/bibtex/
+-- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
+Warning--empty journal in corrales2012cooperative
+
+Done.
+You've used 17 entries,
+            4087 wiz_defined-function locations,
+            913 strings with 9752 characters,
+and the built_in function-call counts, 6922 in all, are:
+= -- 524
+> -- 78
+< -- 22
++ -- 49
+- -- 11
+* -- 268
+:= -- 1090
+add.period$ -- 34
+call.type$ -- 17
+change.case$ -- 29
+chr.to.int$ -- 51
+cite$ -- 18
+duplicate$ -- 604
+empty$ -- 678
+format.name$ -- 15
+if$ -- 1581
+int.to.chr$ -- 0
+int.to.str$ -- 17
+missing$ -- 124
+newline$ -- 76
+num.names$ -- 4
+pop$ -- 364
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 2
+skip$ -- 543
+stack$ -- 0
+substring$ -- 160
+swap$ -- 352
+text.length$ -- 5
+text.prefix$ -- 0
+top$ -- 5
+type$ -- 17
+warning$ -- 1
+while$ -- 11
+width$ -- 19
+write$ -- 152
+(There were 2 warnings)

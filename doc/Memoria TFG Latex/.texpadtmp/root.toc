@@ -1,0 +1,51 @@
+\relax \fontsize {10.95}{13.6}\selectfont \abovedisplayskip 11\p@ plus3\p@ minus6\p@ \abovedisplayshortskip \z@ plus3\p@ \belowdisplayshortskip 6.5\p@ plus3.5\p@ minus3\p@ \def \leftmargin \leftmargini \parsep 5\p@ plus2.5\p@ minus\p@ \topsep 10\p@ plus4\p@ minus6\p@ \itemsep 5\p@ plus2.5\p@ minus\p@ {\leftmargin \leftmargini \topsep 9\p@ plus3\p@ minus5\p@ \parsep 4.5\p@ plus2\p@ minus\p@ \itemsep \parsep }\belowdisplayskip \abovedisplayskip \hfill \textsf {\textbf {P\'agina}}\endgraf 
+\select@language {spanish}
+\contentsline {chapter}{\numberline {1}Introducci\IeC {\'o}n}{1}
+\contentsline {chapter}{\numberline {2}Contextualizaci\IeC {\'o}n}{3}
+\contentsline {section}{\numberline {2.1}Proyecto D.R.E.A.M.}{3}
+\contentsline {section}{\numberline {2.2}Plataforma ROBOBO 2.0}{3}
+\contentsline {subsection}{\numberline {2.2.1}ROBOBO! Framework}{7}
+\contentsline {chapter}{\numberline {3}Interacci\IeC {\'o}n Humano Robot}{9}
+\contentsline {section}{\numberline {3.1}Introducci\IeC {\'o}n}{9}
+\contentsline {subsection}{\numberline {3.1.1}HRI en la industria}{10}
+\contentsline {subsection}{\numberline {3.1.2}HRI en robots asistenciales}{11}
+\contentsline {subsection}{\numberline {3.1.3}HRI en robots de entretenimiento}{13}
+\contentsline {subsection}{\numberline {3.1.4}HRI en robots educativos}{16}
+\contentsline {section}{\numberline {3.2}Interacci\IeC {\'o}n con robots educativos}{18}
+\contentsline {section}{\numberline {3.3}Soluci\IeC {\'o}n para el ROBOBO}{18}
+\contentsline {chapter}{\numberline {4}Desarrollo}{21}
+\contentsline {section}{\numberline {4.1}Arquitectura Global}{21}
+\contentsline {subsection}{\numberline {4.1.1}Estructura de un m\IeC {\'o}dulo}{22}
+\contentsline {section}{\numberline {4.2}Metodolog\IeC {\'\i }a}{23}
+\contentsline {subsection}{\numberline {4.2.1}Primera iteraci\IeC {\'o}n}{23}
+\contentsline {subsection}{\numberline {4.2.2}Segunda iteraci\IeC {\'o}n}{23}
+\contentsline {subsection}{\numberline {4.2.3}Tercera iteraci\IeC {\'o}n}{24}
+\contentsline {section}{\numberline {4.3}Librer\IeC {\'\i }as de interacci\IeC {\'o}n}{25}
+\contentsline {subsection}{\numberline {4.3.1}Paquete Speech}{25}
+\contentsline {subsubsection}{\numberline {4.3.1.1}M\IeC {\'o}dulo recognition}{25}
+\contentsline {subsubsection}{\numberline {4.3.1.2}M\IeC {\'o}dulo Production}{28}
+\contentsline {subsection}{\numberline {4.3.2}Paquete Touch}{30}
+\contentsline {subsubsection}{\numberline {4.3.2.1}M\IeC {\'o}dulo Touch}{30}
+\contentsline {subsection}{\numberline {4.3.3}Paquete Sound}{32}
+\contentsline {subsubsection}{\numberline {4.3.3.1}M\IeC {\'o}dulo Sound Dispatcher}{32}
+\contentsline {subsubsection}{\numberline {4.3.3.2}M\IeC {\'o}dulo Pitch Detection}{32}
+\contentsline {subsubsection}{\numberline {4.3.3.3}M\IeC {\'o}dulo Note Detection}{33}
+\contentsline {subsubsection}{\numberline {4.3.3.4}M\IeC {\'o}dulo Clap Detection}{34}
+\contentsline {subsubsection}{\numberline {4.3.3.5}M\IeC {\'o}dulo NoteGenerator}{34}
+\contentsline {subsubsection}{\numberline {4.3.3.6}M\IeC {\'o}dulo EmotionSound}{35}
+\contentsline {subsection}{\numberline {4.3.4}Paquete Vision}{36}
+\contentsline {subsubsection}{\numberline {4.3.4.1}M\IeC {\'o}dulo Basic Camera}{36}
+\contentsline {subsubsection}{\numberline {4.3.4.2}M\IeC {\'o}dulo Face Detection}{36}
+\contentsline {subsubsection}{\numberline {4.3.4.3}M\IeC {\'o}dulo ColorDetector}{37}
+\contentsline {paragraph}{\numberline {4.3.4.3.1}OpenCV}{37}
+\contentsline {subsection}{\numberline {4.3.5}Paquete Messaging}{37}
+\contentsline {subsubsection}{\numberline {4.3.5.1}M\IeC {\'o}dulo email}{37}
+\contentsline {chapter}{\numberline {5}Evaluaci\IeC {\'o}n}{39}
+\contentsline {section}{\numberline {5.1}Comparativa}{39}
+\contentsline {section}{\numberline {5.2}Problemas conocidos}{39}
+\contentsline {chapter}{\numberline {6}Conclusiones}{41}
+\contentsline {section}{\numberline {6.1}Trabajo Futuro}{41}
+\contentsline {chapter}{\numberline {A}Diagramas}{43}
+\contentsline {chapter}{\numberline {B}Instalaci\IeC {\'o}n}{45}
+\contentsline {chapter}{\numberline {C}Manual de uso}{47}
+\contentsline {chapter}{Bibliograf\'{\i }a}{49}
