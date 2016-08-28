@@ -9,7 +9,9 @@ import com.mytechia.robobo.framework.IModule;
  */
 public interface IColorDetectionModule extends IModule {
     //TODO Procesar externamente o invocar al cameramodule dentro?
-    void processFrame(Bitmap bmp);
+
     void suscribe(IColorListener listener);
     void unsuscribe(IColorListener listener);
+    void startDetection();
+    void pauseDetection();
 }

@@ -1,2 +1,2 @@
-include ':app', ':speech', ':touch', ':vision', ':sound', ':messaging'
+include ':app', ':speech', ':touch', ':vision', ':sound', ':messaging', ':simonexamplerobobo', ':surveillanceroboboexample'
 include ':openCVLibrary310'

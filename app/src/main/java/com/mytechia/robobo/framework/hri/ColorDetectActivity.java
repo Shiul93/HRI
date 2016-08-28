@@ -110,6 +110,7 @@ public class ColorDetectActivity extends Activity implements ICameraListener, IC
 
         camModule.suscribe(this);
         colorModule.suscribe(this);
+        colorModule.startDetection();
 
         camModule.signalInit();
 
@@ -145,7 +146,7 @@ public class ColorDetectActivity extends Activity implements ICameraListener, IC
     public void onNewFrame(final Frame frame) {
         lastFrame = frame;
         //TODO CAMBIAR ESTO ROLLO LISTENERS
-        colorModule.processFrame(frame.getBitmap());
+
 
 
 
@@ -169,39 +170,22 @@ public class ColorDetectActivity extends Activity implements ICameraListener, IC
     }
 
     @Override
-    public void onNewColor(final int colorrgb,final int nearest_color,final int x, final int y, final int height, final int width, final Bitmap borders) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
+    public void onNewColor(final int colorrgb,final int nearest_color) {
 
 
 
-            }
-        });
-        Bitmap bm = borders;
-        final Bitmap mutableBitmap = bm.copy(Bitmap.Config.ARGB_8888, true);
-
-        final Canvas canvas = new Canvas(mutableBitmap);
-
-        Paint paint = new Paint();
-        Paint paintred = new Paint();
-        paintred.setColor(Color.RED);
-        paint.setAntiAlias(true);
-        paint.setColor(Color.RED);
-        paint.setStyle(Paint.Style.STROKE);
 
 
 
-        //paint.setColor(Color.GREEN);
 
-        canvas.drawRect(new Rect(x,y,x+width,y+height),paint);
+
 
 
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
 
-                imageView.setImageBitmap(mutableBitmap);
+                imageView.setImageBitmap(lastFrame.getBitmap());
 
                 rellayout.setBackgroundColor(nearest_color);
 

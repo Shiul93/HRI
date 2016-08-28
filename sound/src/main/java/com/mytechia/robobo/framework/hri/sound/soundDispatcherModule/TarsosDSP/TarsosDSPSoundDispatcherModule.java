@@ -5,7 +5,7 @@ import android.util.Log;
 
 import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
-import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ASoundDispatcherModule;
+import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -18,7 +18,7 @@ import be.tarsos.dsp.io.android.AudioDispatcherFactory;
 /**
  * Created by luis on 26/7/16.
  */
-public class TarsosDSPSoundDispatcherModule extends ASoundDispatcherModule {
+public class TarsosDSPSoundDispatcherModule implements ISoundDispatcherModule {
 
     private String TAG = "TarsosDispatcherModule";
     private AudioDispatcher dispatcher;

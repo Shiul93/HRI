@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  24 AUG 2016 21:08
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  28 AUG 2016 12:43
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -508,7 +508,7 @@ Package minitoc Info: I0002
 
 \openout3 = `root.mtc'.
 
- (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.mtc0)
+ (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.mtc0)
 Package minitoc Info: I0012
 (minitoc)             Long extensions (Unix-like) will be used.
 Package minitoc Info: I0031
@@ -1018,11 +1018,11 @@ Package csquotes Info: Checking for multilingual support...
 Package csquotes Info: ... found 'babel' package.
 Package csquotes Info: Adjusting default style.
 Package csquotes Info: Redefining alias 'default' -> 'spanish'.
- (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/cover.aux)
+ (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/cover.aux)
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
- (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/draft.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/director-agreement.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/dedication.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/gratefulnesses.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/abstract.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/keywords.aux)
-(/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/introduction.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/contextualization.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/human-robot-interaction.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/implementation.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/evaluation.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/conclusions.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/appendix.aux))
+ (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/draft.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/director-agreement.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/dedication.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/gratefulnesses.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/abstract.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/keywords.aux)
+(/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/introduction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/contextualization.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/human-robot-interaction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/implementation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/evaluation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/conclusions.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/appendix.aux))
 \openout1 = `root.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -1218,7 +1218,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 3--4
 
 ] [4
 
-] (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.toc
+] (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.toc
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
  [1
@@ -1229,19 +1229,21 @@ LaTeX Info: Redefining \% on input line 2.
 
 LaTeX Info: Redefining \. on input line 60.
 LaTeX Info: Redefining \% on input line 60.
- [2] (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.lof
+ [2] (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.lof
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
-)
+ [3
+
+])
 \tf@lof=\write7
 \openout7 = `root.lof'.
 
- [3
-
-]
+LaTeX Info: Redefining \. on input line 61.
+LaTeX Info: Redefining \% on input line 61.
+ [4]
 LaTeX Info: Redefining \. on input line 63.
 LaTeX Info: Redefining \% on input line 63.
- [4
+ [5
 
 ]
 \openout2 = `introduction.aux'.
@@ -1264,19 +1266,19 @@ Cap\'{\i }tulo 2.
 LaTeX Font Info:    Try loading font information for OT1+pag on input line 11.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pag.fd
 File: ot1pag.fd 2001/06/04 font definitions for OT1/pag.
-) <imagenes/robobo1_0.PNG, id=79, 583.17876pt x 398.48875pt>
+) <imagenes/robobo1_0.PNG, id=82, 583.17876pt x 398.48875pt>
 File: imagenes/robobo1_0.PNG Graphic file (type png)
  <use imagenes/robobo1_0.PNG>
 Package pdftex.def Info: imagenes/robobo1_0.PNG used on input line 24.
 (pdftex.def)             Requested size: 330.05322pt x 225.52963pt.
- [3] <imagenes/robobo_rob.JPG, id=85, 3276.24pt x 2457.18pt>
+ [3] <imagenes/robobo_rob.JPG, id=88, 3276.24pt x 2457.18pt>
 File: imagenes/robobo_rob.JPG Graphic file (type jpg)
  <use imagenes/robobo_rob.JPG>
 Package pdftex.def Info: imagenes/robobo_rob.JPG used on input line 45.
 (pdftex.def)             Requested size: 330.05322pt x 247.53207pt.
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
- [4 <./imagenes/robobo1_0.PNG>] <imagenes/robobo_2_sensors.png, id=90, 621.32124pt x 394.47375pt>
+ [4 <./imagenes/robobo1_0.PNG>] <imagenes/robobo_2_sensors.png, id=93, 621.32124pt x 394.47375pt>
 File: imagenes/robobo_2_sensors.png Graphic file (type png)
  <use imagenes/robobo_2_sensors.png>
 Package pdftex.def Info: imagenes/robobo_2_sensors.png used on input line 60.
@@ -1289,7 +1291,7 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 65.
 LaTeX Info: Redefining \. on input line 66.
 LaTeX Info: Redefining \% on input line 66.
- [5 <./imagenes/robobo_rob.JPG>] <imagenes/robobo_framework.png, id=94, 635.37375pt x 728.7225pt>
+ [5 <./imagenes/robobo_rob.JPG>] <imagenes/robobo_framework.png, id=97, 635.37375pt x 728.7225pt>
 File: imagenes/robobo_framework.png Graphic file (type png)
  <use imagenes/robobo_framework.png>
 Package pdftex.def Info: imagenes/robobo_framework.png used on input line 86.
@@ -1311,19 +1313,19 @@ LaTeX Info: Redefining \% on input line 1.
 
 ]
 Cap\'{\i }tulo 3.
-[9] <imagenes/robotcell.jpeg, id=110, 605.26125pt x 295.1025pt>
+[9] <imagenes/robotcell.jpeg, id=113, 605.26125pt x 295.1025pt>
 File: imagenes/robotcell.jpeg Graphic file (type jpg)
  <use imagenes/robotcell.jpeg>
 Package pdftex.def Info: imagenes/robotcell.jpeg used on input line 36.
 (pdftex.def)             Requested size: 412.56497pt x 201.15334pt.
 LaTeX Info: Redefining \. on input line 42.
 LaTeX Info: Redefining \% on input line 42.
- [10 <./imagenes/robotcell.jpeg>] <imagenes/parorobot.JPG, id=114, 542.025pt x 286.06876pt>
+ [10 <./imagenes/robotcell.jpeg>] <imagenes/parorobot.JPG, id=117, 542.025pt x 286.06876pt>
 File: imagenes/parorobot.JPG Graphic file (type jpg)
  <use imagenes/parorobot.JPG>
 Package pdftex.def Info: imagenes/parorobot.JPG used on input line 57.
 (pdftex.def)             Requested size: 330.05322pt x 174.20049pt.
- <imagenes/naorobot.jpg, id=115, 803.0pt x 420.57124pt>
+ <imagenes/naorobot.jpg, id=118, 803.0pt x 420.57124pt>
 File: imagenes/naorobot.jpg Graphic file (type jpg)
  <use imagenes/naorobot.jpg>
 Package pdftex.def Info: imagenes/naorobot.jpg used on input line 65.
@@ -1333,19 +1335,19 @@ LaTeX Info: Redefining \% on input line 70.
  [11]
 LaTeX Info: Redefining \. on input line 77.
 LaTeX Info: Redefining \% on input line 77.
- [12 <./imagenes/parorobot.JPG>] <imagenes/davincisystem.jpg, id=122, 1204.5pt x 808.52063pt>
+ [12 <./imagenes/parorobot.JPG>] <imagenes/davincisystem.jpg, id=126, 1204.5pt x 808.52063pt>
 File: imagenes/davincisystem.jpg Graphic file (type jpg)
  <use imagenes/davincisystem.jpg>
 Package pdftex.def Info: imagenes/davincisystem.jpg used on input line 81.
 (pdftex.def)             Requested size: 412.56497pt x 276.92899pt.
 LaTeX Info: Redefining \. on input line 94.
 LaTeX Info: Redefining \% on input line 94.
- [13 <./imagenes/naorobot.jpg>] <imagenes/aiborobot.jpg, id=127, 1204.5pt x 1204.5pt>
+ [13 <./imagenes/naorobot.jpg>] <imagenes/aiborobot.jpg, id=130, 1204.5pt x 1204.5pt>
 File: imagenes/aiborobot.jpg Graphic file (type jpg)
  <use imagenes/aiborobot.jpg>
 Package pdftex.def Info: imagenes/aiborobot.jpg used on input line 97.
 (pdftex.def)             Requested size: 206.28249pt x 206.26938pt.
- <imagenes/bandaismartpet.jpg, id=128, 501.875pt x 401.5pt>
+ <imagenes/bandaismartpet.jpg, id=131, 501.875pt x 401.5pt>
 File: imagenes/bandaismartpet.jpg Graphic file (type jpg)
  <use imagenes/bandaismartpet.jpg>
 Package pdftex.def Info: imagenes/bandaismartpet.jpg used on input line 103.
@@ -1355,28 +1357,28 @@ LaTeX Info: Redefining \% on input line 110.
  [14 <./imagenes/davincisystem.jpg>]
 LaTeX Info: Redefining \. on input line 110.
 LaTeX Info: Redefining \% on input line 110.
- [15 <./imagenes/aiborobot.jpg> <./imagenes/bandaismartpet.jpg>] <imagenes/beebot.png, id=135, 192.72pt x 109.3686pt>
+ [15 <./imagenes/aiborobot.jpg> <./imagenes/bandaismartpet.jpg>] <imagenes/beebot.png, id=138, 192.72pt x 109.3686pt>
 File: imagenes/beebot.png Graphic file (type png)
  <use imagenes/beebot.png>
 Package pdftex.def Info: imagenes/beebot.png used on input line 115.
 (pdftex.def)             Requested size: 185.65297pt x 105.35811pt.
- <imagenes/escornabot.jpg, id=136, 803.0pt x 602.25pt>
+ <imagenes/escornabot.jpg, id=139, 803.0pt x 602.25pt>
 File: imagenes/escornabot.jpg Graphic file (type jpg)
  <use imagenes/escornabot.jpg>
 Package pdftex.def Info: imagenes/escornabot.jpg used on input line 122.
 (pdftex.def)             Requested size: 185.65297pt x 139.24055pt.
 LaTeX Info: Redefining \. on input line 137.
 LaTeX Info: Redefining \% on input line 137.
- [16 <./imagenes/beebot.png> <./imagenes/escornabot.jpg>] <imagenes/legoev3.jpg, id=141, 622.325pt x 434.62375pt>
+ [16 <./imagenes/beebot.png> <./imagenes/escornabot.jpg>] <imagenes/legoev3.jpg, id=144, 622.325pt x 434.62375pt>
 File: imagenes/legoev3.jpg Graphic file (type jpg)
  <use imagenes/legoev3.jpg>
 Package pdftex.def Info: imagenes/legoev3.jpg used on input line 143.
 (pdftex.def)             Requested size: 330.05322pt x 230.50865pt.
-LaTeX Info: Redefining \. on input line 156.
-LaTeX Info: Redefining \% on input line 156.
+LaTeX Info: Redefining \. on input line 158.
+LaTeX Info: Redefining \% on input line 158.
  [17 <./imagenes/legoev3.jpg>]
-LaTeX Info: Redefining \. on input line 168.
-LaTeX Info: Redefining \% on input line 168.
+LaTeX Info: Redefining \. on input line 170.
+LaTeX Info: Redefining \% on input line 170.
  [18])
 LaTeX Info: Redefining \. on input line 74.
 LaTeX Info: Redefining \% on input line 74.
@@ -1401,110 +1403,179 @@ LaTeX Info: Redefining \% on input line 79.
  [23]
 LaTeX Info: Redefining \. on input line 112.
 LaTeX Info: Redefining \% on input line 112.
- [24] <imagenes/ISpeechRecognitionModule.png, id=168, 537.00626pt x 245.91875pt>
-File: imagenes/ISpeechRecognitionModule.png Graphic file (type png)
- <use imagenes/ISpeechRecognitionModule.png>
-Package pdftex.def Info: imagenes/ISpeechRecognitionModule.png used on input line 125.
-(pdftex.def)             Requested size: 330.05322pt x 151.14719pt.
-LaTeX Info: Redefining \. on input line 141.
-LaTeX Info: Redefining \% on input line 141.
- [25 <./imagenes/ISpeechRecognitionModule.png>]
+ [24] <imagenes/diagramas/SpeechRecognitionModule.png, id=172, 981.6675pt x 901.3675pt>
+File: imagenes/diagramas/SpeechRecognitionModule.png Graphic file (type png)
+ <use imagenes/diagramas/SpeechRecognitionModule.png>
+Package pdftex.def Info: imagenes/diagramas/SpeechRecognitionModule.png used on input line 125.
+(pdftex.def)             Requested size: 412.56497pt x 378.81932pt.
 LaTeX Info: Redefining \. on input line 145.
 LaTeX Info: Redefining \% on input line 145.
- [26]
+ [25]
+LaTeX Info: Redefining \. on input line 145.
+LaTeX Info: Redefining \% on input line 145.
+ [26 <./imagenes/diagramas/SpeechRecognitionModule.png>]
 LaTeX Info: Redefining \. on input line 187.
 LaTeX Info: Redefining \% on input line 187.
- [27] <imagenes/ISpeechProductionModule.png, id=180, 347.2975pt x 238.8925pt>
-File: imagenes/ISpeechProductionModule.png Graphic file (type png)
- <use imagenes/ISpeechProductionModule.png>
-Package pdftex.def Info: imagenes/ISpeechProductionModule.png used on input line 194.
-(pdftex.def)             Requested size: 247.54149pt x 170.27827pt.
-LaTeX Info: Redefining \. on input line 210.
-LaTeX Info: Redefining \% on input line 210.
- [28 <./imagenes/ISpeechProductionModule.png>]
+ [27] <imagenes/diagramas/SpeechProductionModule.png, id=183, 925.4575pt x 756.8275pt>
+File: imagenes/diagramas/SpeechProductionModule.png Graphic file (type png)
+ <use imagenes/diagramas/SpeechProductionModule.png>
+Package pdftex.def Info: imagenes/diagramas/SpeechProductionModule.png used on input line 194.
+(pdftex.def)             Requested size: 412.56497pt x 337.39346pt.
+LaTeX Info: Redefining \. on input line 202.
+LaTeX Info: Redefining \% on input line 202.
+ [28 <./imagenes/diagramas/SpeechProductionModule.png>]
 LaTeX Info: Redefining \. on input line 219.
 LaTeX Info: Redefining \% on input line 219.
- [29] <imagenes/ITouchModule.png, id=188, 322.20375pt x 140.525pt>
-File: imagenes/ITouchModule.png Graphic file (type png)
- <use imagenes/ITouchModule.png>
-Package pdftex.def Info: imagenes/ITouchModule.png used on input line 225.
-(pdftex.def)             Requested size: 247.54149pt x 107.96655pt.
-LaTeX Info: Redefining \. on input line 253.
-LaTeX Info: Redefining \% on input line 253.
- [30 <./imagenes/ITouchModule.png>]
+ [29] <imagenes/diagramas/TouchModule.png, id=191, 1134.2375pt x 953.5625pt>
+File: imagenes/diagramas/TouchModule.png Graphic file (type png)
+ <use imagenes/diagramas/TouchModule.png>
+Package pdftex.def Info: imagenes/diagramas/TouchModule.png used on input line 225.
+(pdftex.def)             Requested size: 412.56497pt x 346.84703pt.
+LaTeX Info: Redefining \. on input line 240.
+LaTeX Info: Redefining \% on input line 240.
+ [30 <./imagenes/diagramas/TouchModule.png>]
 LaTeX Info: Redefining \. on input line 255.
 LaTeX Info: Redefining \% on input line 255.
- [31]
-Overfull \hbox (3.56915pt too wide) in paragraph at lines 270--271
+ [31] <imagenes/diagramas/SoundDispatcherModule.png, id=201, 660.4675pt x 499.8675pt>
+File: imagenes/diagramas/SoundDispatcherModule.png Graphic file (type png)
+ <use imagenes/diagramas/SoundDispatcherModule.png>
+Package pdftex.def Info: imagenes/diagramas/SoundDispatcherModule.png used on input line 263.
+(pdftex.def)             Requested size: 412.56497pt x 312.25624pt.
+LaTeX Info: Redefining \. on input line 273.
+LaTeX Info: Redefining \% on input line 273.
+ [32 <./imagenes/diagramas/SoundDispatcherModule.png>]
+Overfull \hbox (3.56915pt too wide) in paragraph at lines 276--277
 \OT1/cmr/m/it/12 ASoundDispatcherModule \twelverm im-ple-men-ta \OT1/cmr/m/it/12 ISo-und-Dis-pat-cher-Mo-du-le\twelverm , pe-se a es-tar vac^^S^^Pa
 
 \hbox(8.33331+2.33331)x412.56497, glue set - 1.0 []
 
-LaTeX Info: Redefining \. on input line 280.
-LaTeX Info: Redefining \% on input line 280.
-[32]
-LaTeX Info: Redefining \. on input line 301.
-LaTeX Info: Redefining \% on input line 301.
+<imagenes/diagramas/PitchDetectionModule.png, id=206, 861.2175pt x 692.5875pt>
+File: imagenes/diagramas/PitchDetectionModule.png Graphic file (type png)
+ <use imagenes/diagramas/PitchDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/PitchDetectionModule.png used on input line 285.
+(pdftex.def)             Requested size: 412.56497pt x 331.79356pt.
+ <imagenes/diagramas/NoteDetectionModule.png, id=207, 941.5175pt x 845.1575pt>
+File: imagenes/diagramas/NoteDetectionModule.png Graphic file (type png)
+ <use imagenes/diagramas/NoteDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/NoteDetectionModule.png used on input line 300.
+(pdftex.def)             Requested size: 412.56497pt x 370.33582pt.
+LaTeX Info: Redefining \. on input line 306.
+LaTeX Info: Redefining \% on input line 306.
  [33]
-LaTeX Info: Redefining \. on input line 317.
-LaTeX Info: Redefining \% on input line 317.
- [34]
-LaTeX Info: Redefining \. on input line 323.
-LaTeX Info: Redefining \% on input line 323.
- [35]
-LaTeX Info: Redefining \. on input line 338.
-LaTeX Info: Redefining \% on input line 338.
- [36]
+LaTeX Info: Redefining \. on input line 306.
+LaTeX Info: Redefining \% on input line 306.
+ [34 <./imagenes/diagramas/PitchDetectionModule.png>]
+LaTeX Info: Redefining \. on input line 306.
+LaTeX Info: Redefining \% on input line 306.
+ [35 <./imagenes/diagramas/NoteDetectionModule.png>] <imagenes/diagramas/ClapDetectionModule.png, id=219, 941.5175pt x 612.2875pt>
+File: imagenes/diagramas/ClapDetectionModule.png Graphic file (type png)
+ <use imagenes/diagramas/ClapDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/ClapDetectionModule.png used on input line 320.
+(pdftex.def)             Requested size: 412.56497pt x 268.29555pt.
+ <imagenes/diagramas/NoteGenerationModule.png, id=220, 973.6375pt x 859.21pt>
+File: imagenes/diagramas/NoteGenerationModule.png Graphic file (type png)
+ <use imagenes/diagramas/NoteGenerationModule.png>
+Package pdftex.def Info: imagenes/diagramas/NoteGenerationModule.png used on input line 331.
+(pdftex.def)             Requested size: 412.56497pt x 364.0778pt.
+LaTeX Info: Redefining \. on input line 334.
+LaTeX Info: Redefining \% on input line 334.
+ [36] <imagenes/diagramas/EmotionSoundModule.png, id=225, 740.7675pt x 477.785pt>
+File: imagenes/diagramas/EmotionSoundModule.png Graphic file (type png)
+ <use imagenes/diagramas/EmotionSoundModule.png>
+Package pdftex.def Info: imagenes/diagramas/EmotionSoundModule.png used on input line 346.
+(pdftex.def)             Requested size: 412.56497pt x 266.09969pt.
+LaTeX Info: Redefining \. on input line 349.
+LaTeX Info: Redefining \% on input line 349.
+ [37 <./imagenes/diagramas/ClapDetectionModule.png>]
+LaTeX Info: Redefining \. on input line 349.
+LaTeX Info: Redefining \% on input line 349.
+ [38 <./imagenes/diagramas/NoteGenerationModule.png>]
+LaTeX Info: Redefining \. on input line 359.
+LaTeX Info: Redefining \% on input line 359.
+ [39 <./imagenes/diagramas/EmotionSoundModule.png>] <imagenes/diagramas/BasicCameraModule.png, id=238, 965.6075pt x 965.6075pt>
+File: imagenes/diagramas/BasicCameraModule.png Graphic file (type png)
+ <use imagenes/diagramas/BasicCameraModule.png>
+Package pdftex.def Info: imagenes/diagramas/BasicCameraModule.png used on input line 366.
+(pdftex.def)             Requested size: 412.56497pt x 412.56575pt.
+ <imagenes/diagramas/FaceDetectionModule.png, id=239, 997.7275pt x 764.8575pt>
+File: imagenes/diagramas/FaceDetectionModule.png Graphic file (type png)
+ <use imagenes/diagramas/FaceDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/FaceDetectionModule.png used on input line 378.
+(pdftex.def)             Requested size: 412.56497pt x 316.2662pt.
+LaTeX Info: Redefining \. on input line 386.
+LaTeX Info: Redefining \% on input line 386.
+ [40]
+LaTeX Info: Redefining \. on input line 386.
+LaTeX Info: Redefining \% on input line 386.
+ [41 <./imagenes/diagramas/BasicCameraModule.png>]
+LaTeX Info: Redefining \. on input line 386.
+LaTeX Info: Redefining \% on input line 386.
+ [42 <./imagenes/diagramas/FaceDetectionModule.png>] <imagenes/diagramas/ColorDetectionModule.png, id=252, 909.3975pt x 767.86874pt>
+File: imagenes/diagramas/ColorDetectionModule.png Graphic file (type png)
+ <use imagenes/diagramas/ColorDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/ColorDetectionModule.png used on input line 391.
+(pdftex.def)             Requested size: 412.56497pt x 348.36147pt.
 
-LaTeX Warning: Citation `opencv' on page 37 undefined on input line 346.
 
-LaTeX Info: Redefining \. on input line 363.
-LaTeX Info: Redefining \% on input line 363.
-[37]
-LaTeX Info: Redefining \. on input line 363.
-LaTeX Info: Redefining \% on input line 363.
- [38])
+LaTeX Warning: Citation `opencv' on page 43 undefined on input line 399.
+
+LaTeX Info: Redefining \. on input line 402.
+LaTeX Info: Redefining \% on input line 402.
+[43 <./imagenes/diagramas/ColorDetectionModule.png>] <imagenes/diagramas/MessagingModule.png, id=257, 596.2275pt x 756.8275pt>
+File: imagenes/diagramas/MessagingModule.png Graphic file (type png)
+ <use imagenes/diagramas/MessagingModule.png>
+Package pdftex.def Info: imagenes/diagramas/MessagingModule.png used on input line 414.
+(pdftex.def)             Requested size: 288.79422pt x 366.58742pt.
+LaTeX Info: Redefining \. on input line 422.
+LaTeX Info: Redefining \% on input line 422.
+ [44]
+LaTeX Info: Redefining \. on input line 422.
+LaTeX Info: Redefining \% on input line 422.
+ [45 <./imagenes/diagramas/MessagingModule.png>])
 \openout2 = `evaluation.aux'.
 
  (./evaluation.tex
-Cap\'{\i }tulo 5.
-) [39
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [46
 
 
 
 ]
+Cap\'{\i }tulo 5.
+) [47]
 \openout2 = `conclusions.aux'.
 
  (./conclusions.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [40
+ [48
 
 
 
 ]
 Cap\'{\i }tulo 6.
-) [41]
+) [49]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
 LaTeX Info: Redefining \. on input line 2.
 LaTeX Info: Redefining \% on input line 2.
- [42
+ [50
 
 
 
 ]
 Ap\'{e}ndice A.
-[43] [44
+[51] [52
 
 ]
 Ap\'{e}ndice B.
-[45] [46
+[53] [54
 
 ]
 Ap\'{e}ndice C.
-[47]) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.bbl [48
+[55]) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.bbl [56
 
 
 ]
@@ -1525,7 +1596,7 @@ Overfull \hbox (25.70393pt too wide) in paragraph at lines 60--63
 
 \hbox(9.0+3.0)x370.78763, glue set - 1.0 []
 
-[49]
+[57]
 Underfull \hbox (badness 10000) in paragraph at lines 78--80
 []\twelverm ``Cmu sp-hinx open sour-ce speech re-cog-ni-tion kit,''
 
@@ -1551,27 +1622,27 @@ Package minitoc(hints) Warning: W0024
 
 LaTeX Info: Redefining \. on input line 90.
 LaTeX Info: Redefining \% on input line 90.
-[50] (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/cover.aux)
+[58] (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/cover.aux)
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
- (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/draft.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/director-agreement.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/dedication.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/gratefulnesses.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/abstract.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/keywords.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/introduction.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/contextualization.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/human-robot-interaction.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/implementation.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/evaluation.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/conclusions.aux) (/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/appendix.aux))
+ (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/draft.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/director-agreement.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/dedication.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/gratefulnesses.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/abstract.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/keywords.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/introduction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/contextualization.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/human-robot-interaction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/implementation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/evaluation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/conclusions.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/appendix.aux))
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 10859 strings out of 493014
- 144735 string characters out of 6133352
- 261468 words of memory out of 5000000
- 13756 multiletter control sequences out of 15000+600000
+ 10920 strings out of 493014
+ 146856 string characters out of 6133352
+ 261583 words of memory out of 5000000
+ 13806 multiletter control sequences out of 15000+600000
  49926 words of font info for 173 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  39i,11n,45p,883b,525s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb>
-Output written on "/Users/luis/Library/Mobile Documents/com~apple~CloudDocs/Memoria TFG Latex/.texpadtmp/root.pdf" (68 pages, 3566185 bytes).
+Output written on "/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.pdf" (77 pages, 4178772 bytes).
 PDF statistics:
- 303 PDF objects out of 1000 (max. 8388607)
- 193 compressed objects within 2 object streams
+ 353 PDF objects out of 1000 (max. 8388607)
+ 213 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 86 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 136 words of extra memory for PDF output out of 10000 (max. 10000000)
 

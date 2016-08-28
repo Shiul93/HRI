@@ -21,16 +21,26 @@
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Kit b\IeC {\'a}sico Lego Mindstorms EV3}}{17}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Desarrollo}{21}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{25}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Modulo SpeechProduction}}{28}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{26}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces M\IeC {\'o}dulo SpeechProduction}}{28}
 \contentsline {figure}{\numberline {4.3}{\ignorespaces M\IeC {\'o}dulo Touch}}{30}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{32}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{34}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{35}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{37}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{38}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{39}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces M\IeC {\'o}dulo BasicCamera}}{41}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces M\IeC {\'o}dulo FaceDetection}}{42}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{43}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces M\IeC {\'o}dulo Email}}{45}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Evaluaci\IeC {\'o}n}{39}
+\contentsline {xchapter}{Evaluaci\IeC {\'o}n}{47}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{41}
+\contentsline {xchapter}{Conclusiones}{49}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Diagramas}{43}
+\contentsline {xchapter}{Diagramas}{51}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Instalaci\IeC {\'o}n}{45}
+\contentsline {xchapter}{Instalaci\IeC {\'o}n}{53}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Manual de uso}{47}
+\contentsline {xchapter}{Manual de uso}{55}

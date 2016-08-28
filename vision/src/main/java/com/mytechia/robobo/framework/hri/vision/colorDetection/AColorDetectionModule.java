@@ -21,9 +21,16 @@ public abstract class AColorDetectionModule implements IColorDetectionModule {
         listeners.remove(listener);
     }
 
-    protected void notifyColor(int colorrgb, int nearest_color, int x, int y, int height, int width, Bitmap borders){
+//    protected void notifyColor(int colorrgb, int nearest_color, int x, int y, int height, int width, Bitmap borders){
+//        for (IColorListener listener:listeners){
+//            listener.onNewColor(colorrgb,nearest_color,x,y,height,width,borders);
+//
+//        }
+//    }
+
+    protected void notifyColor(int colorrgb, int nearest_color){
         for (IColorListener listener:listeners){
-            listener.onNewColor(colorrgb,nearest_color,x,y,height,width,borders);
+            listener.onNewColor(colorrgb,nearest_color);
 
         }
     }

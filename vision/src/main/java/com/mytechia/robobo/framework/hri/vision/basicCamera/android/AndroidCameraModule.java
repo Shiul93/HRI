@@ -51,7 +51,7 @@ import java.util.concurrent.TimeUnit;
  * Created by luis on 19/7/16.
  * https://github.com/jayrambhia/AsynCamera
  */
-public class AndroidCameraModule extends ACameraModule implements ICameraModule{
+public class AndroidCameraModule extends ACameraModule {
 
     //region VAR
 

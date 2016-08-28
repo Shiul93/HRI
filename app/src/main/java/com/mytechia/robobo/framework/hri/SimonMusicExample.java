@@ -38,6 +38,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.NoSuchElementException;
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 
 public class SimonMusicExample extends Activity implements INoteListener, INotePlayListener, IClapListener {
@@ -67,6 +69,8 @@ public class SimonMusicExample extends Activity implements INoteListener, INoteP
     private boolean playingnotes = false;
     private boolean listening = false;
 
+    Timer timer = new Timer();
+    TimerTask speechTask;
 
     private boolean seeingLight = false;
 
@@ -330,28 +334,28 @@ public class SimonMusicExample extends Activity implements INoteListener, INoteP
     Note generateRandomNote(){
         int foo = generateRandom(0,4);
         int octave = generateRandom(5,6);
-        String not = "";
+        String nota = "";
 
         switch (foo){
             case 0:
-                not = "A";
+                nota = "A";
                 break;
             case 1:
-                not = "C";
+                nota = "C";
                 break;
             case 2:
-                not = "D";
+                nota = "D";
                 break;
             case 3:
-                not = "E";
+                nota = "E";
                 break;
             case 4:
-                not = "G";
+                nota = "G";
                 break;
         }
 
         for(Note n:Note.values()){
-            if ((n.note.equals(not))&&(n.octave==octave)){
+            if ((n.note.equals(nota))&&(n.octave==octave)){
                 return n;
 
             }
@@ -375,13 +379,16 @@ public class SimonMusicExample extends Activity implements INoteListener, INoteP
         playing = true;
         notes = new ArrayList<Note>();
         notes.add(generateRandomNote());
-        playNoteSequence();
+        sayPhrase();
+
+        //playNoteSequence();
 
     }
 
     void continueGame(){
         notes.add(generateRandomNote());
-        playNoteSequence();
+        sayPhrase();
+        //playNoteSequence();
     }
 
     void gameOver(){
@@ -391,6 +398,40 @@ public class SimonMusicExample extends Activity implements INoteListener, INoteP
         emotionSoundModule.playSound(IEmotionSoundModule.RIMSHOT_SOUND);
         emotionModule.setTemporalEmotion(Emotion.SAD,3000,Emotion.NORMAL);
 
+    }
+
+
+    void sayPhrase(){
+        int phrase = generateRandom(0,5);
+        switch (phrase){
+            case 0:
+                speechModule.sayText("Check this out!",0);
+                break;
+            case 1:
+                speechModule.sayText("Try this!",0);
+                break;
+            case 2:
+                speechModule.sayText("Follow me if you can!",0);
+                break;
+            case 3:
+                speechModule.sayText("Play this!",0);
+                break;
+            case 4:
+                speechModule.sayText("Repeat after me!",0);
+                break;
+        }
+        speechTask = new WaitForSpeech();
+        timer.schedule(speechTask,2000);
+    }
+
+    private class WaitForSpeech extends TimerTask {
+
+
+
+        @Override
+        public void run() {
+            playNoteSequence();
+        }
     }
 
     //endregion

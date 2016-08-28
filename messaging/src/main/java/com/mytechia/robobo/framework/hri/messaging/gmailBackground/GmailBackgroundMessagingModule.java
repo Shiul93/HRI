@@ -76,7 +76,7 @@ public class GmailBackgroundMessagingModule extends AMessagingModule {
                 .withOnFailCallback(new BackgroundMail.OnFailCallback() {
                     @Override
                     public void onFail() {
-                        Log.d(TAG,"Send Fail");
+                        Log.e(TAG,"Send Fail");
                     }
                 })
                 .send();
