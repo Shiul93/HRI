@@ -19,28 +19,33 @@
 \contentsline {figure}{\numberline {3.7}{\ignorespaces Beebot}}{16}
 \contentsline {figure}{\numberline {3.8}{\ignorespaces Escornabot}}{16}
 \contentsline {figure}{\numberline {3.9}{\ignorespaces Kit b\IeC {\'a}sico Lego Mindstorms EV3}}{17}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Robot Zowi de BQ}}{18}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Robot Thymio}}{19}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Robots Dash y Dot}}{20}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Desarrollo}{21}
-\contentsline {figure}{\numberline {4.1}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{26}
-\contentsline {figure}{\numberline {4.2}{\ignorespaces M\IeC {\'o}dulo SpeechProduction}}{28}
-\contentsline {figure}{\numberline {4.3}{\ignorespaces M\IeC {\'o}dulo Touch}}{30}
-\contentsline {figure}{\numberline {4.4}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{32}
-\contentsline {figure}{\numberline {4.5}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{34}
-\contentsline {figure}{\numberline {4.6}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{35}
-\contentsline {figure}{\numberline {4.7}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{37}
-\contentsline {figure}{\numberline {4.8}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{38}
-\contentsline {figure}{\numberline {4.9}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{39}
-\contentsline {figure}{\numberline {4.10}{\ignorespaces M\IeC {\'o}dulo BasicCamera}}{41}
-\contentsline {figure}{\numberline {4.11}{\ignorespaces M\IeC {\'o}dulo FaceDetection}}{42}
-\contentsline {figure}{\numberline {4.12}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{43}
-\contentsline {figure}{\numberline {4.13}{\ignorespaces M\IeC {\'o}dulo Email}}{45}
+\contentsline {xchapter}{Desarrollo}{23}
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Estructura de paquetes dentro del paquete HRI del Robobo}}{24}
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Paquete Speech}}{28}
+\contentsline {figure}{\numberline {4.3}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{29}
+\contentsline {figure}{\numberline {4.4}{\ignorespaces M\IeC {\'o}dulo SpeechProduction}}{32}
+\contentsline {figure}{\numberline {4.5}{\ignorespaces M\IeC {\'o}dulo Touch}}{34}
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Paquete Sound}}{36}
+\contentsline {figure}{\numberline {4.7}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{37}
+\contentsline {figure}{\numberline {4.8}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{38}
+\contentsline {figure}{\numberline {4.9}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{39}
+\contentsline {figure}{\numberline {4.10}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{41}
+\contentsline {figure}{\numberline {4.11}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{42}
+\contentsline {figure}{\numberline {4.12}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{43}
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Paquete Vision}}{45}
+\contentsline {figure}{\numberline {4.14}{\ignorespaces M\IeC {\'o}dulo BasicCamera}}{46}
+\contentsline {figure}{\numberline {4.15}{\ignorespaces M\IeC {\'o}dulo FaceDetection}}{47}
+\contentsline {figure}{\numberline {4.16}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{48}
+\contentsline {figure}{\numberline {4.17}{\ignorespaces M\IeC {\'o}dulo Email}}{50}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Evaluaci\IeC {\'o}n}{47}
+\contentsline {xchapter}{Resultados}{51}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{49}
+\contentsline {xchapter}{Conclusiones}{53}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Diagramas}{51}
+\contentsline {xchapter}{Instalaci\IeC {\'o}n}{55}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Instalaci\IeC {\'o}n}{53}
-\addvspace {10\p@ }
-\contentsline {xchapter}{Manual de uso}{55}
+\contentsline {xchapter}{Manual de uso}{57}

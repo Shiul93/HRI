@@ -145,12 +145,39 @@
 	\label{fig:legoev3}
 \end{figure} 
 
-En la llamada educación especial la robótica también esta siendo empleada con éxito, por ejemplo el robot NAO (figura \ref{fig:naorobot}), del que se habló en la sección anterior, se utiliza para educar a niños con trastornos de espectro autista. El éxito de este tipo de educación viene dada debido a que la interacción con el robot, al ser programada, resulta predecible para el alumno, creando un entorno estable y pautado que resulta óptimo en este tipo de trastornos. La interacción en este caso se da en forma de movimientos preprogramados y mediante los leds de los ojos del robot, que cambian de color segun las emociones que intenta expresar el robot, lo cual ayuda al alumno a ejercitar uno de las mayores dificultades dadas por el autismo, la dificultad de establecer relaciones empáticas.
+En la llamada educación especial la robótica también esta siendo empleada con éxito, por ejemplo el robot NAO (figura \ref{fig:naorobot}), del que se habló en la sección anterior, se utiliza para educar a niños con trastornos de espectro autista. El éxito de este tipo de educación viene dada debido a que la interacción con el robot, al ser programada, resulta predecible para el alumno, creando un entorno estable y pautado que resulta óptimo en este tipo de trastornos. La interacción en este caso se da en forma de movimientos preprogramados y mediante los leds de los ojos del robot, que cambian de color según las emociones que intenta expresar el robot, lo cual ayuda al alumno a ejercitar uno de las mayores dificultades dadas por el autismo, la dificultad de establecer relaciones empáticas.
  %todo continuar esto mirar mail de gervasio
- Entre otros ejemplos de robots educativos podemos encontrar el Zowi de BQ
  
-  Ejemplos de diferentes robots y modos de interacción... Industriales, guías de museo, asistenciales, educativos
+
  
+   \begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/zowi.png}
+	\caption{Robot Zowi de BQ}
+	\label{fig:zowi}
+\end{figure} 
+
+ Entre otros ejemplos de robots educativos podemos encontrar el Zowi(figura \ref{fig:zowi}) de la empresa española BQ. Zowi es un robot educativo enfocado a niños, cuanta con un sensor de ultrasonidos para medir distancias, un micrófono que le permite detectar sonidos, una pequeña matriz de leds a modo de boca, que permite comunicarse mediante expresiones faciales, y con cuatro servos posicionados en forma de dos piernas que permiten moverse al robot.
+ El robot viene con varios juegos para niños instalados de serie, y cuanta además con una aplicación de control para smartphones. Zowi puede ser empleado para enseñar programación a niños con un lenguaje gráfico similar a Scratch\cite{scratch}, Bitbloq\cite{bitbloq}.
+ 
+  \begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/tymio.jpg}
+	\caption{Robot Thymio}
+	\label{fig:thymio}
+\end{figure} 
+ Otro robot educativo es el Thymio(figura \ref{fig:thymio}). Este robot cuenta con gran variedad de sensores, de distancia, acelerómetros, temperatura, control por infrarrojos, seguidores de lineas y micrófono, y con dos ruedas compatibles con las piezas de lego. La interacción con el usuario se realiza a través de los 39 leds RGB situados por todo el chasis, 5 teclas capacitivas que se encuentran en la parte superior del robot y los sensores citados anteriormente. El robot está pensado para enseñar programación a los niños de diferentes rangos de edad, para ello provee 3 lenguajes diferentes de programación, Visual Programming Language (VPL) para los niños a partir de 6 años, Blockly, un lenguaje de programación gráfico semejante a Scratch desarrollado por Google, para niños a partir de 9 y programación textual mediante el software Aseba Studio para niños a partir de 12 años.
+ 
+ Dash and Dot (figura \ref{fig:dashanddot}) son una pareja de robots educativos fabricados por Wonder Workshop enfocados a niños de poca edad. Dash cuenta con una plataforma motorizada equipada con sensores de distancia,\enquote{orejas} motorizadas, tres micrófonos, un altavoz, un \enquote{ojo circular} con 12 leds blancos, leds rgb en las \enquote{orejas} y \enquote{pecho}. Dot en cambio, es una alternativa más económica que solo incluye la \enquote{cabeza} de Dash. Gracias a la gran cantidad de actuadores, Dash, y en menor medida Dot, cuentan con diversas formas de interacción con los niños, desde el movimiento del robot, habla a través del altavoz,  gestos con los leds del ojo e incluso, mediante accesorios vendidos de forma separada, tocando un pequeño xilófono o lanzando pelotas con una pequeña catapulta, Dot además cuenta con un accesorio \enquote{orejas de conejo} que le permite suplir la falta de plataforma motorizada y moverse. Estos robots están pensados para enseñar programación a los niños, y cuentan con varias aplicaciones diseñadas para este cometido, \textit{Path}, que permite a los niños dibujar la ruta que desean que tome el robot, \textit{Wonder}, un lenguaje visual de programación y \textit{Blockly}, el lenguaje de programación por bloques desarrollado por Google.
+ 
+   \begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/dashanddot.jpg}
+	\caption{Robots Dash y Dot}
+	\label{fig:dashanddot}
+\end{figure} 
+ 
+   
  %\section{Interacción con robots educativos}
  %\label{sec:hri-robots-educativos}
  %Ejemplos específicos de robots educativos
@@ -160,13 +187,13 @@ En la llamada educación especial la robótica también esta siendo empleada con
  
  La plataforma ROBOBO, cuenta con características que permiten realizar diversas maneras de interacción, el hecho de estar basado en un smartphone, pone todas las capacidades del mismo a disposición a la hora de interactuar con los usuarios. Partiendo del hardware con el que se cuenta, base motorizada \textit{ROB} y smartphone \textit{OBO} , se han definido, en una analogía a los sentidos, una serie de paquetes para dotar al ROBOBO de diversas funcionalidades de interacción.
  
- El primero de estos paquetes sería el paquete de habla. Siendo el habla, probablemente, la principal forma de interacción que se da entre los humanos, parece lógico que, teniendo la capacidad de proceso de un smartphone moderno, dotar al robot ya no solo de la capacidad de producir habla, sino de entender texto hablado es un concepto interesante. Este paquete daría al robot la posibilidad de comunicación bidireccional con los humanos, además de darle al robot cierta personalidad más \enquote{orgánica} , haciéndolo más atractivo, por ejemplo, a los niños.
+ El primero de estos paquetes sería el paquete de habla, que en la sección anterior se pudo ver su aplicación en robots como Nao, Dash y Dot. Siendo el habla, probablemente, la principal forma de interacción que se da entre los humanos, parece lógico que, teniendo la capacidad de proceso de un smartphone moderno, dotar al robot ya no solo de la capacidad de producir habla, sino de entender texto hablado es un concepto interesante. Este paquete daría al robot la posibilidad de comunicación bidireccional con los humanos, además de darle al robot cierta personalidad más \enquote{orgánica} , haciéndolo más atractivo, por ejemplo, a los niños.
  
- El segundo, de forma análoga al sentido del tacto, teniendo una \enquote{piel artificial} cómo es la pantalla táctil del teléfono, dar la capacidad al robot de sentir toques y caricias parece una idea interesante a la hora de llevar una interacción cercana con el robot.
+ El segundo, de forma análoga al sentido del tacto, teniendo una \enquote{piel artificial} cómo es la pantalla táctil del teléfono, dar la capacidad al robot de sentir toques y caricias parece una idea interesante a la hora de llevar una interacción cercana con el robot, este tipo de interacción mediante toques en la pantalla táctil es similar al del SmartPet, y de una manera más general, al sentido del tacto del robot Paro o el Aibo.
  
- El tercero, siguiendo la analogía con los sentidos, sería el sentido del oído. La capacidad de producir y reconocer sonidos abre puertas a tipos de interacción interesantes. Por ejemplo, la capacidad de reaccionar ante sonidos fuertes como palmadas o la capacidad de reconocer notas musicales podrían permitir al robot comunicarse mediante el uso de la música, y estando el ROBOBO enfocado directamente a la educación, esta clase de interacción podría emplearse para la enseñanza musical en la educación infantil y primaria.
+ El tercero, siguiendo la analogía con los sentidos, sería el sentido del oído. La capacidad de producir y reconocer sonidos abre puertas a tipos de interacción interesantes. Por ejemplo, la capacidad de reaccionar ante sonidos fuertes como palmadas o la capacidad de reconocer notas musicales podrían permitir al robot comunicarse mediante el uso de la música, y estando el ROBOBO enfocado directamente a la educación, esta clase de interacción podría emplearse para la enseñanza musical en la educación infantil y primaria. También, la producción de sonidos, es una forma de comunicación que parece adecuada a la hora de interactuar con niños, ya sea mediante sonidos básicos (risas, alarmas, abucheos...)  como a través de notas musicales, que podría usarse en conjunto con la capacidad de reconocimiento de las mismas a la hora de la enseñanza musical. Esta capacidad de producir música se puede ver en el robot Dash mediante el módulo del xilófono y la de detección de música y palmadas en el Zowi.
  
- El cuarto paquete, teniendo hoy en día todos los smartphones como mínimo una cámara, busca dotar al ROBOBO de sentido de la vista. Con este sentido, el robot podría detectar la presencia de gente y a que distancia se encuentran y de esta manera adaptar su comportamiento a su entorno, por ejemplo, alejándose si nota que alguien esta muy cerca o siguiendo con la \enquote{cara} a la gente a su alrededor. La capacidad de discernir diferentes colores también es una habilidad interesante de cara a la educación de niños muy pequeños.
+ El cuarto paquete, teniendo hoy en día todos los smartphones como mínimo una cámara, busca dotar al ROBOBO de sentido de la vista. Con este sentido, el robot podría detectar la presencia de gente y a que distancia se encuentran y de esta manera adaptar su comportamiento a su entorno, por ejemplo, alejándose si nota que alguien esta muy cerca o siguiendo con la \enquote{cara} a la gente a su alrededor. La capacidad de discernir diferentes colores también es una habilidad interesante de cara a la educación de niños muy pequeños. La capacidad de detección de caras y colores se pudo encontrar en los robots más complejos vistos en la sección anterior, como Nao o Aibo, que cuentan con cámaras en su cabeza.
  
  Por último, teniendo la capacidad de conectarse a internet del smartphone, parece interesante dotar al robot de la capacidad de comunicarse a través de la red. El correo electrónico es un sistema de comunicación muy extendido y casi obligatorio hoy en día, así que, dada la extensión del sistema, y la cantidad de usuarios con los que cuenta, parece la opción correcta para este tipo de comunicación.
  

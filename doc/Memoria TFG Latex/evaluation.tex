@@ -1,5 +1,5 @@
-\chapter{Evaluación}
-\label{chap:evaluation}
+\chapter{Resultados}
+\label{chap:results}
 \vspace{0.5cm}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -7,11 +7,20 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
  
-
-\section{Comparativa}
+\lettrine{E}{n} este capítulo se expondrán los resultados y el funcionamiento de los módulos desarrollados en este trabajo mediante tres aplicaciones de ejemplo.
+\section{Ejemplos de uso}
+\subsection{Simon dice músical}
+\subsection{Robobo Vigilante}
+\subsection{Robobo Mascota}
 
 
 \section{Problemas conocidos}
+\begin{itemize}
+	\item La tasa de refresco del módulo \textit{BasicCamera} es baja y varía mucho entre terminales móviles.
+	\item El \textit{ColorDetectionModule} puede confundirse si el fondo no es homogéneo, se recomienda usar tarjetas con colores sobre fondo blanco.
+	\item El \textit{EmailModule} puede causar el bloqueo de la cuenta de Gmail si esta no es configurada previamente para usar mediante IMAP.
+	\item El \textit{TouchModule} requiere el paso explícito de los TouchEvents de la actividad en pantalla.
+\end{itemize}
 \label{sec:known_issues}
     
 
