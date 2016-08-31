@@ -11,6 +11,7 @@ A level-1 auxiliary file: keywords.aux
 A level-1 auxiliary file: introduction.aux
 A level-1 auxiliary file: contextualization.aux
 A level-1 auxiliary file: human-robot-interaction.aux
+A level-1 auxiliary file: tech_fundaments.aux
 A level-1 auxiliary file: implementation.aux
 A level-1 auxiliary file: evaluation.aux
 A level-1 auxiliary file: conclusions.aux
@@ -22,7 +23,7 @@ Reallocated singl_function (elt_size=4) to 100 items from 50.
 Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
 Reallocated singl_function (elt_size=4) to 100 items from 50.
 Database file #1: ../bibliography.bib
-I was expecting a `,' or a `}'---line 108 of file ../bibliography.bib
+I was expecting a `,' or a `}'---line 110 of file ../bibliography.bib
  :   
  :   howpublished = {\url{http://bitbloq.bq.com/}}
 (Error may have been on previous line)
@@ -36,7 +37,7 @@ Warning--empty journal in corrales2012cooperative
 Done.
 You've used 18 entries,
             4087 wiz_defined-function locations,
-            916 strings with 9794 characters,
+            917 strings with 9813 characters,
 and the built_in function-call counts, 7204 in all, are:
 = -- 541
 > -- 79

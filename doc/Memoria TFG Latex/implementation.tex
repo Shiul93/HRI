@@ -8,6 +8,24 @@
 % Objetivo: Exponer las partes relevantes de la implementación                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TODO Introducción al capitulo
+
+\section{Modelo conceptual para el subsistema de interacción}
+ \label{sec:modelo-conceptual}
+ 
+ La plataforma ROBOBO, cuenta con características que permiten realizar diversas maneras de interacción, el hecho de estar basado en un smartphone, pone todas las capacidades del mismo a disposición a la hora de interactuar con los usuarios. Partiendo del hardware con el que se cuenta, base motorizada \textit{ROB} y smartphone \textit{OBO} , se han definido, en una analogía a los sentidos, una serie de paquetes para dotar al ROBOBO de diversas funcionalidades de interacción.
+ 
+ El primero de estos paquetes sería el paquete de habla, que en la sección anterior se pudo ver su aplicación en robots como Nao, Dash y Dot. Siendo el habla, probablemente, la principal forma de interacción que se da entre los humanos, parece lógico que, teniendo la capacidad de proceso de un smartphone moderno, dotar al robot ya no solo de la capacidad de producir habla, sino de entender texto hablado es un concepto interesante. Este paquete daría al robot la posibilidad de comunicación bidireccional con los humanos, además de darle al robot cierta personalidad más \enquote{orgánica} , haciéndolo más atractivo, por ejemplo, a los niños.
+ 
+ El segundo, de forma análoga al sentido del tacto, teniendo una \enquote{piel artificial} cómo es la pantalla táctil del teléfono, dar la capacidad al robot de sentir toques y caricias parece una idea interesante a la hora de llevar una interacción cercana con el robot, este tipo de interacción mediante toques en la pantalla táctil es similar al del SmartPet, y de una manera más general, al sentido del tacto del robot Paro o el Aibo.
+ 
+ El tercero, siguiendo la analogía con los sentidos, sería el sentido del oído. La capacidad de producir y reconocer sonidos abre puertas a tipos de interacción interesantes. Por ejemplo, la capacidad de reaccionar ante sonidos fuertes como palmadas o la capacidad de reconocer notas musicales podrían permitir al robot comunicarse mediante el uso de la música, y estando el ROBOBO enfocado directamente a la educación, esta clase de interacción podría emplearse para la enseñanza musical en la educación infantil y primaria. También, la producción de sonidos, es una forma de comunicación que parece adecuada a la hora de interactuar con niños, ya sea mediante sonidos básicos (risas, alarmas, abucheos...)  como a través de notas musicales, que podría usarse en conjunto con la capacidad de reconocimiento de las mismas a la hora de la enseñanza musical. Esta capacidad de producir música se puede ver en el robot Dash mediante el módulo del xilófono y la de detección de música y palmadas en el Zowi.
+ 
+ El cuarto paquete, teniendo hoy en día todos los smartphones como mínimo una cámara, busca dotar al ROBOBO de sentido de la vista. Con este sentido, el robot podría detectar la presencia de gente y a que distancia se encuentran y de esta manera adaptar su comportamiento a su entorno, por ejemplo, alejándose si nota que alguien esta muy cerca o siguiendo con la \enquote{cara} a la gente a su alrededor. La capacidad de discernir diferentes colores también es una habilidad interesante de cara a la educación de niños muy pequeños. La capacidad de detección de caras y colores se pudo encontrar en los robots más complejos vistos en la sección anterior, como Nao o Aibo, que cuentan con cámaras en su cabeza.
+ 
+ Por último, teniendo la capacidad de conectarse a internet del smartphone, parece interesante dotar al robot de la capacidad de comunicarse a través de la red. El correo electrónico es un sistema de comunicación muy extendido y casi obligatorio hoy en día, así que, dada la extensión del sistema, y la cantidad de usuarios con los que cuenta, parece la opción correcta para este tipo de comunicación.
+ 
+ %%todo Partir desde la plataforma, desarrollar los diferentes métodos de interacción en función de las capacidades. En función del hardware.
+
 \section{Arquitectura Global}
 \label{sec:globalArchitecture}
 El sistema de interacción humana del sistema ROBOBO fue desarrollado de una forma modular, de manera que las diferentes funcionalidades puedan ser utilizadas de manera separada.
@@ -15,7 +33,7 @@ El sistema de interacción humana del sistema ROBOBO fue desarrollado de una for
 La gestión de los módulos la realiza el Framework Robobo, que proporciona una interfaz común que debe ser implementada
 
 
-Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec:hri-solucion-robobo} se ha implementado en forma de módulo Android, y cada funcionalidad especifica ha sido integrada en módulos que implementan IModule, interfaz común para los módulos del ROBOBO , para poder ser manejados por el ROBOBO! Framework\cite{RoboboFramework}.
+Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec:modelo-conceptual} se ha implementado en forma de módulo Android, y cada funcionalidad especifica ha sido integrada en módulos que implementan IModule, interfaz común para los módulos del ROBOBO , para poder ser manejados por el ROBOBO! Framework\cite{RoboboFramework}.
 
 \begin{figure}
 	\centering
@@ -227,6 +245,19 @@ Dado que el inicio del reconocedor de voz se realiza de manera asíncrona, es ne
 	\caption{Módulo SpeechProduction}
 	\label{fig:speech-production-module}
 \end{figure}
+\begin{lstlisting}
+public interface ISpeechProductionModule extends IModule {
+    Integer PRIORITY_HIGH = 1;
+    Integer PRIORITY_LOW = 0;
+    void sayText(String text, Integer priority);
+    void setLocale(Locale newloc);
+    void selectVoice(String name) throws VoiceNotFoundException;
+    void selectTtsVoice(ITtsVoice voice) throws VoiceNotFoundException;
+    Collection<ITtsVoice> getVoices();
+    Collection<String> getStringVoices();
+}
+
+\end{lstlisting}
 
 El módulo production(figura \ref{fig:speech-production-module}) permite al usuario producir voz a partir de texto de manera simple.
 Provee la interfaces \textit{ISpeechProductionModule} y \textit{ITtsVoice}, así como la excepción \textit{VoiceNotFoundException}.

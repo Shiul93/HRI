@@ -95,6 +95,7 @@ public class SpeechRobActivity extends Activity implements ISpeechRecognitionLis
         }
 
 
+        Log.d(TAG, roboboManager.getAllModules().toString());
         speechRecognitionModule.suscribe(this);
 
     }

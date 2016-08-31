@@ -25,13 +25,9 @@
 ``D.r.e.a.m. project,'' \url{http://www.robotsthatdream.eu/}, accessed:
   2016-15-6.
 
-\bibitem{RoboboFramework}
-``Robobo framework,'' \url{https://bitbucket.org/mytechia/robobo-framework},
-  accessed: 2016-07-13.
-
 \bibitem{Ros}
 ``Robot operating system (ros),'' \url{http://www.ros.org/}, accessed:
-  2016-07-14.
+  2016-08-14.
 
 \bibitem{goodrich2007human}
 M.~A. Goodrich and A.~C. Schultz, ``Human-robot interaction: a survey,''
@@ -41,7 +37,7 @@ M.~A. Goodrich and A.~C. Schultz, ``Human-robot interaction: a survey,''
 \bibitem{vwaccident2015}
 ``Worker at volkswagen plant killed in robot accident,''
   \url{http://www.ft.com/cms/s/0/0c8034a6-200f-11e5-aa5a-398b2169cf79.html},
-  accessed: 2016-07-19.
+  accessed: 2016-08-19.
 
 \bibitem{corrales2012cooperative}
 J.~A. Corrales~Ram{\'o}n, G.~J. Garc{\'\i}a~G{\'o}mez, F.~Torres~Medina, and
@@ -50,27 +46,31 @@ J.~A. Corrales~Ram{\'o}n, G.~J. Garc{\'\i}a~G{\'o}mez, F.~Torres~Medina, and
 
 \bibitem{ifr-service-robots}
 ``Definition of service robots,'' \url{http://www.ifr.org/service-robots/ },
-  accessed: 2016-07-19.
+  accessed: 2016-08-19.
 
 \bibitem{parorobots}
 ``Paro robots,'' \url{http://www.parorobots.com/index.asp}, accessed:
-  2016-07-19.
+  2016-08-19.
 
 \bibitem{naorobots}
 ``Nao robot, aldebaran robotics,''
   \url{https://www.ald.softbankrobotics.com/en/cool-robots/nao/find-out-more-about-nao},
-  accessed: 2016-07-19.
+  accessed: 2016-08-19.
 
 \bibitem{aibo}
 ``Sony aibo | the history of the robotic dog,''
-  \url{http://www.sony-aibo.com/}, accessed: 2016-07-21.
+  \url{http://www.sony-aibo.com/}, accessed: 2016-08-21.
 
 \bibitem{scratch}
 ``Scratch language project main page,'' \url{https://scratch.mit.edu/},
-  accessed: 2016-07-20.
+  accessed: 2016-08-20.
 
 \bibitem{bitbloq}
-``Lenguaje gráfico bitbloq,'' accessed: 2016-07-28.
+``Lenguaje gráfico bitbloq,'' accessed: 2016-08-28.
+
+\bibitem{RoboboFramework}
+``Robobo framework,'' \url{https://bitbucket.org/mytechia/robobo-framework},
+  accessed: 2016-08-13.
 
 \bibitem{six2014tarsosdsp}
 J.~Six, O.~Cornelis, and M.~Leman, ``{TarsosDSP, a Real-Time Audio Processing
@@ -79,11 +79,11 @@ J.~Six, O.~Cornelis, and M.~Leman, ``{TarsosDSP, a Real-Time Audio Processing
 
 \bibitem{cmusphinx}
 ``Cmu sphinx open source speech recognition kit,''
-  \url{http://cmusphinx.sourceforge.net/}, accessed: 2016-07-6.
+  \url{http://cmusphinx.sourceforge.net/}, accessed: 2016-08-6.
 
 \bibitem{JSFGGrammar}
 ``Jspeech grammar format,'' \url{https://www.w3.org/TR/jsgf/}, accessed:
-  2016-07-6.
+  2016-08-6.
 
 \bibitem{de_YINa_f2002}
 \BIBentryALTinterwordspacing

@@ -1,85 +1,16 @@
-\chapter{Contextualización}
-\label{chap:contextualizacion}
+\chapter{Fundamentos teóricos}
+\label{chap:fundamentos-teoricos}
 \vspace{0.5cm}
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-% Objetivo: Contar cómo estaba la situación antes de empezar,                  %
-%           t0do lo que se hizo para familiarizarse con las tecnologías,       %
-%           casarlas, etc.                                                     %
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\lettrine{E}{n} este capítulo se introducen los conceptos necesarios para la contextualización del trabajo. Se hablará sobre el proyecto D.R.E.A.M.\cite{dream_project} en el que se enmarca el proyecto ROBOBO, y sobre el trabajo previo en el robot.
 
 
-\section{Proyecto D.R.E.A.M.}
-\label{sec:dreamproyect}
-%todo Pedir info sobre esto (Dream)
-Este trabajo fin de grado se enmarca dentro del proyecto europeo de investigación DREAM (Deferred Restructuring of Experience in Autonomous Machines) que se lleva a cabo en el Grupo Integrado de Ingeniería (GII). El objetivo global de dicho proyecto consiste en el desarrollo de una arquitectura cognitiva que permita a los dispositivos robóticos realizar tareas de aprendizaje y optimización de sus comportamientos. En particular, estas tareas se realizarán tanto durante el período de actividad como durante el período de inactividad de los robots (aprendizaje en fase de sueño) en analogía al funcionamiento del cerebro en lo seres humanos durante los períodos de sueño.
-
-\section{Plataforma ROBOBO 2.0}
-\label{sec:roboboplatform}
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/robobo1_0.PNG}
-	\caption{Robobo 1.0}
-	\label{fig:robobo_1_0}
-\end{figure}
-
-La primera versión de la plataforma fue desarrollada por el Grupo Integrado de Ingeniería de la UDC, el ROBOBO 1.0 (Figura \ref{fig:robobo_1_0}) , sirvió como versión conceptual para comprobar la viabilidad del sistema plataforma + smartphone, y presentaba las siguientes características:
-
-\begin{itemize}
-
-	\item 9 LEDs (diodos emisores de luz) RGB para interactuar con el usuario, que cambiaban de color con la proximidad de objetos.
-	\item 9 sensores IR de proximidad para proporcionar capacidad de movimiento autónomo: 2 en la parte frontal, 4 en los laterales y los últimos tres en la parte trasera; de manera que proporcionaba una visión general del entorno.
-	\item 2 motores paso a paso (convierten impulsos eléctricos en desplazamientos angulares discretos, es decir, pueden avanzar un ángulo concreto en función de la señal recibida) que aplicaban movimiento a las ruedas, con un paso de 1/8, con gran precisión de giro.
-	\item Compatibilidad con dispositivos Android.
-	\item Capacidad de interacción con otros dispositivos ROS.
-	\item Conexión USB para la comunicación con el teléfono inteligente.
-
-\end{itemize}
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/robobo_rob.JPG}
-	\caption{Robobo 2.0}
-	\label{fig:robobo_2_0}
-\end{figure} 
-
-La segunda versión, el ROBOBO 2.0 (figura \ref{fig:robobo_2_0}) , fue desarrollada para solventar las carencias de la primera versión y añadir ciertas mejoras. Tras este rediseño, las características del robot pasaron a ser:
-
-\begin{itemize}
-	\item LEDs: pasan a ser 21, 9 de ellos formando una matriz de comunicación para dar una información avanzada mediante colores y formas.
-	\item Motores de las ruedas: Pasan a ser motores de corriente continua, menos voluminosos y más eficientes energéticamente. Cada motor cuenta con un encoder magnético, que transforma el movimiento del motor en pulsos eléctricos, que pueden ser interpretados por la parte software del robot.
-	\item Comunicación: Se elimina la comunicación USB a favor de una conexión Bluetooth, lo cual permite utilizar diferentes smartphones con distintas posiciones de los puertos.
-	\item Plataforma universal para smartphones: Se incluye un adaptador universal para teléfonos moviles, montado sobre una plataforma motorizada que permite el movimiento del snartphone sobre el chasis del robot. Esta plataforma tiene dos grados de libertad, rotación e inclinación.
-	\item Sensores: Modificadas tanto el tipo, la cantidad y la posición. Se colocaron en la siguiente disposición (figura \ref{fig:robobo_2_0_sensors}):
-	\item \begin{figure}
-	\centering
-	\includegraphics[width=0.8\linewidth]{imagenes/robobo_2_sensors.png}
-	\caption{Disposición de los sensores en el ROBOBO 2.0}
-	\label{fig:robobo_2_0_sensors}
-\end{figure} 
-	\begin{itemize}
-	\item 3 sensores para la detección de colisiones en la parte delantera; uno frontal y los otros dos cercanos a las ruedas, de tal forma que el ROBOBO no pudiera chocar, frontalmente con ninguna superficie.
-	\item 2 sensores inclinados hacia abajo para la detección de caídas, en la parte delantera, colocados cerca de las ruedas, es decir, la zona con mayor peligro de caídas.
-	\item 2 sensores de caídas y 2 de colisiones, de forma similar a los anteriores, en la zona anterior del robot. 
-	
-	\end{itemize}
-	\item Unión sensores-microcontrolador: se han cambiado las resistencias pull-up anteriores por un multiplexor. Se consigue, así, un único elemento de muchas entradas y una única salida capaz de permitir la transmisión de una, y solo una, de las entradas hacia la salida.
-
-	\item Microcontrolador: PIC32MX534F064H, de la familia de microcontroladores de 32 bits, económico, con alta capacidad de procesamiento, diversidad de interfaces de comunicación y multitud de puertos de entrada y salida; además de que su entorno de desarrollo y su compilador son gratuitos. Este microcontrolador se programa mediante el protocolo de comunicación I2C y logra el contacto entre sensores y microcontrolador mediante buses línea de reloj “SCL” y buses línea de datos “SDA”.
+\lettrine{E}{n} este capítulo se introducen los fundamentos teóricos sobre los que se realizará el trabajo, en concreto acerca del ROBOBO! Framework, un framework de desarrollo creado específicamente para el ROBOBO.
+%Este capítulo debería pasar a ser "Fundamentos teóricos o Conceptos previos" y debería incluir una descripción del ROBOBO Framework, qué usa (Android, ROS, etc)
 
 
 
-
-\end{itemize}
-
-
-
-
-\subsection{ROBOBO! Framework}
+\section{ROBOBO! Framework}
+\label{sec:robobo-framework}
 
 \begin{figure}
 	\centering
@@ -87,9 +18,111 @@ La segunda versión, el ROBOBO 2.0 (figura \ref{fig:robobo_2_0}) , fue desarroll
 	\caption{Estructura de ROBOBO! framework dentro del entorno ROBOBO}
 	\label{fig:robobo_framework_estructure}
 \end{figure}
+El ROBOBO! Framework es el marco de trabajo empleado para desarrollar el software para el ROBOBO y cuyas funcionalidades se expandirán mediante los módulos de interacción que se desarrollarán en este trabajo. 
+El framework está enfocado al desarrollo de aplicaciones Android, sistema operativo del que se hablará en la sección \ref{subsec:android}, mediante el lenguaje de programación Java.
+ 
+En la figura \ref{fig:robobo_framework_estructure} se puede ver como se estructura el sistema ROBOBO y cual es el rol del framework dentro del mismo.
 
-El ROBOBO! Framework\cite{RoboboFramework} es el framework de desarrollo usado para desarrollas aplicaciones para el ROBOBO. Está diseñado de manera modular, de forma que facilita la extensión del mismo con nuevos módulos. Está publicado con una licencia libre LGPL v3.
-Ofrece el módulo \textit{rob-interface-module}, que permite la comunicación entre la plataforma robotizada (denominada ROB, figura \ref{fig:robobo_2_0}) y el smartphone (denominado OBO en el sistema). También proporciona el módulo \textit{ros-module} que sirve de interfaz entre el robot y ROS \cite{Ros}.
+La \textit{ROBOBO! Custom App}, de la figura, representa la aplicación final que el usuario instalará en su teléfono móvil y está construida sobre el framework, utilizando los diferentes módulos que este ofrece.
+
+Dentro del framework se pueden encontrar diferentes módulos que proporcionan funcionalidades para el desarrollo de aplicaciones. Dos de ellos resultan especialmente importantes:
+
+\paragraph*{ros-module:\\}
+	 El \textit{ros-module}, proporciona una interfaz para pasar de acciones nativas del ROBOBO a conceptos propios de ROS, servicios o temas. Este modulo da acceso desde ROS a: 
+	\begin{itemize}
+		\item Las funcionalidades del ROB
+		\item Los módulos del ROBOBO
+		\item La cámara del dispositivo
+		\item Los datos de los sensores del Smartphone
+	\end{itemize} 
+	Permite desarrollar tanto aplicaciones remotas, que no están alojadas en el smartphone pero  hacen uso de los servicios o temas ejecutándose en el ROBOBO, como aplicaciones ROS nativas.
+	
+Más adelante, en la sección \ref{subsec:ros}, se hablará con mas detalle de ROS .
+
+\paragraph*{rob-interface-module:\\}
+Este modulo nos permite obtener la interfaz de control de bajo nivel del robot, la clase \textit{IRob}(figura \ref{fig:irob}) , mediante el uso de esta interfaz se puede:
+
+Recibir mensajes periódicos del estado del ROB:
+\begin{itemize}
+	\item Datos de los sensores de infrarrojos
+	\item Información de detección de caídas
+	\item Datos del movimiento de los motores
+	\item Estado de la batería
+\end{itemize}
+
+Enviar comandos al ROB:
+\begin{itemize}
+	\item Movimiento de los motores
+	\item Cambio de colores de los LEDs
+	\item Modificación de la periodicidad de los mensajes de estado
+	\item Cambiar el modo del ROB
+\end{itemize}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/diagramas/IRob.png}
+	\caption{Clase IRob}
+	\label{fig:irob}
+\end{figure}
+Existen módulos para facilitar el uso del robot y evitar tener que usar la clase IRob, un ejemplo es el \textit{rob-movement-module}(figura \ref{fig:irob-movement}) que proporciona una interfaz de alto nivel para manejar los movimientos del robot.
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.9\linewidth]{imagenes/diagramas/IRobMovementModule.png}
+	\caption{Clase IRobMovementModule}
+	\label{fig:irob-movement}
+\end{figure}
+
+
+
+{\color{red} No tengo muy claro como funciona la parte que va dentro del ROB}
+
+En el ROB se encuentra la \textit{obo-interface}, cuya finalidad es mantener la comunicación con el smartphone, y una serie de módulos programados en el firmware de la plataforma como la odometría y la detección de caídas.
+%El ROBOBO! Framework es el framework de desarrollo usado para desarrollar aplicaciones para el ROBOBO en terminales móviles Android. Está diseñado de manera modular, de forma que facilita la extensión del mismo con nuevos módulos. Está publicado con una licencia libre LGPL v3 en Bitbucket\cite{RoboboFramework}.
+%Ofrece el módulo \textit{rob-interface-module}, que permite la comunicación entre la plataforma robotizada (denominada ROB, figura \ref{fig:robobo_2_0}) y el smartphone (denominado OBO en el sistema) mediante el protocolo Bluetooth. También proporciona el módulo \textit{ros-module} que sirve de interfaz entre el robot y ROS \cite{Ros}.
+
+El ROBOBO! Framework sigue una filosofía modular, para ello proporciona una interfaz común, \textit{IModule}(figura \ref{fig:imodule}), para los módulos que permite al framework gestionar el arranque y la finalización de los mismos
+
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/diagramas/IModule.png}
+	\caption{Interfaz IModule}
+	\label{fig:imodule}
+\end{figure}
+\subsection{Android}
+\label{subsec:android}
+%todo cambiar esto
+
+
+Android es un sistema operativo de código abierto desarrollado por Google enfocado a dispositivos móviles. Actualmente es el sistema operativo más extendido en cuanto a terminales móviles, ocupando un 82.8\% de la cuota de mercado en el segundo cuarto de 2015 (IDC, Aug 2015) y contando la tienda de aplicaciones de la plataforma, la  Play Store, a Junio de 2016 con 2.2 millones de aplicaciones disponibles.
+Dados estos datos de extensión y con la capacidad de cómputo y sensorización de los teléfonos se escogió este sistema como base para el ROBOBO.
+Android está construido sobre un núcleo Linux sobre el cual corre el \textit{Android Runtime}(ART) o en versiones anteriores del sistema operativo la máquina virtual \textit{Dalvik}, siendo estos los entornos de ejecución de las propias aplicaciones Android.
+
+
+\subsection{ROS}
+\label{subsec:ros}
+%todo cambiar esto
+%\textbf{Sacado de la wikipedia a modo de placeholder}\\
+
+El Sistema Operativo Robótico\cite{Ros} , por sus siglas en inglés ROS, es un framework libre de desarrollo de software para robots que provee los servicios que se podrían esperar de un sistema operativo, tales como la abstracción del hardware, la gestión de dispositivos a bajo nivel, implementación de funcionalidades comunes, paso de mensajes entre procesos y gestión de paquetes, sin embargo, ROS no es un sistema operativo y debe ejecutarse sobre un entorno Linux.
+ROS esta organizado en forma de grafo en el cual los diferentes procesos procesan datos en red. En esta red podemos encontrar diferentes elementos:
+\begin{itemize}
+	\item Nodos:procesos que realizan una computación. Un sistema de control robótico suele contar con multitud de ellos que procesan datos en paralelo.
+	\item Master: provee servicios de registro de nombres y consulta al resto del grafo computacional, funciona como punto de encuentro entre varios nodos.
+	
+	\item Servidor de parámetros: permite almacenar datos bajo un indice en una ubicación central, es parte del Master.
+	\item Mensajes: Sistema de comunicación entre nodos, estructuras de datos formadas por tipos simples.
+	\item Temas(topics): Semejante a un bus de datos, permite la generación de mensajes y la suscripción al mismo por parte de un nodo para recibirlos.
+	\item Servicios: Mecanismo que permite a un nodo recibir peticiones y responderlas de manera concreta.
+	\item Bolsas(bags): formato para almacenar y reproducir mensajes. Permite la reutilización de datos como los de sensorización para ser empleados posteriormente en desarrollo o pruebas.
+\end{itemize}
+
+ROS cuenta con una amplia comunidad a lo largo del mundo que contribuye de manera activa al proyecto. 
+El repositorio de software de ROS contiene multitud de paquetes que proporcionan funcionalidades de forma simple, de manera que el programador pueda centrarse en el desarrollo del control de su robot sin tener que preocuparse de implementar los algoritmos y técnicas más comunes.
+
+La funcionalidad de utilizar ROS en el ROBOBO esta provista por el módulo del ROBOBO! Framework \textit{ros-module} que  emplea la librería \textbf{rosjava} para este cometido.
 
 
 
