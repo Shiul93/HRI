@@ -68,18 +68,21 @@ J.~A. Corrales~Ram{\'o}n, G.~J. Garc{\'\i}a~G{\'o}mez, F.~Torres~Medina, and
 \bibitem{bitbloq}
 ``Lenguaje gráfico bitbloq,'' accessed: 2016-08-28.
 
-\bibitem{RoboboFramework}
-``Robobo framework,'' \url{https://bitbucket.org/mytechia/robobo-framework},
-  accessed: 2016-08-13.
+\bibitem{cmusphinx}
+``Cmu sphinx open source speech recognition kit,''
+  \url{http://cmusphinx.sourceforge.net/}, accessed: 2016-08-6.
 
 \bibitem{six2014tarsosdsp}
 J.~Six, O.~Cornelis, and M.~Leman, ``{TarsosDSP, a Real-Time Audio Processing
   Framework in Java},'' in \emph{{Proceedings of the 53rd AES Conference (AES
   53rd)}}, 2014.
 
-\bibitem{cmusphinx}
-``Cmu sphinx open source speech recognition kit,''
-  \url{http://cmusphinx.sourceforge.net/}, accessed: 2016-08-6.
+\bibitem{itseez2015opencv}
+``Open source computer vision library,'' \url{https://github.com/opencv}, 2015.
+
+\bibitem{RoboboFramework}
+``Robobo framework,'' \url{https://bitbucket.org/mytechia/robobo-framework},
+  accessed: 2016-08-13.
 
 \bibitem{JSFGGrammar}
 ``Jspeech grammar format,'' \url{https://www.w3.org/TR/jsgf/}, accessed:
@@ -96,8 +99,5 @@ A.~de~Cheveign{\'e} and H.~Kawahara, ``Yin, a fundamental frequency estimator
 \bibitem{gmailbg}
 ``Gmail background library,''
   \url{https://github.com/yesidlazaro/GmailBackground}, accessed: 2016-08-4.
-
-\bibitem{itseez2015opencv}
-``Open source computer vision library,'' \url{https://github.com/opencv}, 2015.
 
 \end{thebibliography}

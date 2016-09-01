@@ -28,7 +28,6 @@ I was expecting a `,' or a `}'---line 110 of file ../bibliography.bib
  :   howpublished = {\url{http://bitbloq.bq.com/}}
 (Error may have been on previous line)
 I'm skipping whatever remains of this entry
-Warning--I didn't find a database entry for "opencv"
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
@@ -37,7 +36,7 @@ Warning--empty journal in corrales2012cooperative
 Done.
 You've used 18 entries,
             4087 wiz_defined-function locations,
-            917 strings with 9813 characters,
+            916 strings with 9807 characters,
 and the built_in function-call counts, 7204 in all, are:
 = -- 541
 > -- 79

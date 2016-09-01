@@ -37,7 +37,7 @@
 \contentsline {figure}{\numberline {5.6}{\ignorespaces Paquete Sound}}{46}
 \contentsline {figure}{\numberline {5.7}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{47}
 \contentsline {figure}{\numberline {5.8}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{48}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{49}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{50}
 \contentsline {figure}{\numberline {5.10}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{51}
 \contentsline {figure}{\numberline {5.11}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{52}
 \contentsline {figure}{\numberline {5.12}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{53}
@@ -47,9 +47,12 @@
 \contentsline {figure}{\numberline {5.16}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{58}
 \contentsline {figure}{\numberline {5.17}{\ignorespaces M\IeC {\'o}dulo Email}}{60}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Resultados y pruebas}{61}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Escala pentatonica menor de La}}{63}
+\contentsline {xchapter}{Resultados y pruebas}{63}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Escala pentatonica menor de La}}{65}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{65}
+\contentsline {xchapter}{Conclusiones}{69}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Manual de uso}{67}
+\contentsline {xchapter}{Manual de uso}{71}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Declaraci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{71}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Instanciaci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{73}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Paso de los TouchEvents al m\IeC {\'o}dulo Touch}}{75}

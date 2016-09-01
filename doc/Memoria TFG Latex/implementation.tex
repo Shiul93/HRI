@@ -58,6 +58,8 @@ Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec
 		\item Módulo ClapDetectionModule: Módulo que permite la detección de sonidos percusivos.
 		\item Módulo PitchDetection: Módulo que permite la estimación de la frecuencia de un sonido.
 		\item Módulo NoteDetection: Módulo que detecta notas musicales a partir de frecuencias.
+		\item Módulo NoteGenerator: Módulo que genera tonos correspondientes a notas musicales.
+		\item Módulo Emotionsound: Módulo que permite la reproducción de una serie de sonidos prefijados con el objetivo de expresar sentimientos.
 		\end{itemize}
 	\item Paquete Vision: Gestiona el sentido de la vista del robot.
 	\begin{itemize}
@@ -73,20 +75,20 @@ Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec
 \end{itemize}
 
 
-Cada paquete se distribuye en forma de librería Android.
+Cada paquete se distribuye en forma de librería Android dentro del paquete HRI del ROBOBO! Framework.
 
 \subsection{Estructura de un módulo}
 
-Todos los módulos comparten una estructura de paquetes similar, un paquete con el nombre del módulo , que contiene la interfaz del módulo (de la forma \textit{INombreModulo}) que extiende la clase \textit{IModule}, una clase abstracta (\textit{ANombreModulo}) que implementa la interfaz anterior y gestiona labores comunes como la suscripción a los Listeners, y los paquetes de las diferentes implementaciones especificas. Opcionalmente, este paquete también podrá contener la interfaz de los listeners, y clases de utilidad como enumerados.
+Todos los módulos comparten una estructura de paquetes similar, un paquete con el nombre del módulo , que contiene la interfaz del módulo (de la forma \textit{INombreModulo}) que extiende la clase \textit{IModule}, una clase abstracta opcional (\textit{ANombreModulo}) que implementa la interfaz anterior y gestiona labores comunes como la suscripción a los Listeners, y los paquetes de las diferentes implementaciones especificas. Opcionalmente, este paquete también podrá contener la interfaz de los listeners, y clases de utilidad como enumerados.
 
-Las implementaciones de los módulos tienen el nombre \textit{NombreImplementacionNombreModulo}, y deben extender la clase abstracta citada anteriormente.
+Las implementaciones de los módulos tienen el nombre \textit{NombreImplementacionNombreModulo}, y deben extender la clase abstracta o la interfaz del módulo en caso de carecer de la primera.
 
 \section{Metodología}
 
 La metodología seguida fue un proceso iterativo en el cual en cada iteración se fueron añadiendo nuevos módulos de interacción y realizando correcciones en los módulos ya implementados.
 \subsection{Primera iteración}
 
-En esta primera iteración el trabajo de desarrollo se centró en los paquetes de producción de habla (Módulo \textit{Speech}) y el de tacto (Módulo \textit{Touch}. Se implementaron las funcionalidades básicas de cada módulo:
+En esta primera iteración el trabajo de desarrollo se centró en los paquetes de producción y reconocimiento de habla (Paquete \textit{Speech}) y el de tacto (Paquete \textit{Touch}. Se implementaron las funcionalidades básicas de cada módulo:
 \begin{itemize}
 	\item \textit{SpeechProductionModule}: Se implementaron las funcionalidades de síntesis de voz, selección de voces y de localización.
 	\item \textit{SpeechRecognitionModule}: Se implementó el reconocimiento básico por palabras clave.
@@ -182,7 +184,7 @@ Provee las Interfaces \textit{ISpeechRecognitionModule} y \textit{ISpeechRecogni
 \textit{ISpeechRecognitionModule} ofrece la declaración de métodos de configuración del reconocedor de  voz y de suscripción de listeners.
 
 
-Especificamente permite:
+Esta interfaz proporciona funcionalidades de:
 \begin{itemize}
  	\item Añadir y eliminar palabras reconocibles.
  	\item Actualizar el listado interno de frases
@@ -197,7 +199,7 @@ Especificamente permite:
 
 \textit{ISpeechRecognitionListener} es la interfaz que deben implementar las clases para ser notificados de los eventos que produce el módulo de reconocimiento.
 
-Especificamente notifica cuando:
+Las clases suscritas este listener son notificadas cuando:
 \begin{itemize}
 	\item El reconocedor ha sido inicializado
 	\item Una frase ha sido detectada
@@ -221,10 +223,11 @@ Especificamente notifica cuando:
 \paragraph*{Pocketsphinx\\}
 
 
-Se ha decidido realizar la implementación del módulo utilizando la librería CMU Sphinx \cite{cmusphinx}, desarrollada por la Universidad de Carnegie Mellon.
+Se ha decidido realizar la implementación del módulo utilizando la librería CMU Sphinx \cite{cmusphinx}, desarrollada por la Universidad de Carnegie Mellon que se ha presentado en la sección \ref{subsec:sphinx}.
 Específicamente se utiliza PocketSphinx, una versión de CMU Sphinx ligera, diseñada para su uso en sistemas embebidos.
 
 PocketSphinx permite varios tipos de búsqueda diferentes, pero al contrario que las versiones más completas de la librería, sólo permite tener una búsqueda activa al mismo tiempo.
+
 Entre los modos de búsqueda que ofrece se encuentran la búsqueda por Keywords y la búsqueda por Gramáticas, que son las que son ofrecidas por la interfaz del módulo. Adicionalmente PS también permite el uso de búsquedas por fonemas, pero no se ha contemplado su uso.
 
 El módulo se llama  \textit{PocketSphinxSpeechRecognitionModule}, extiende \textit{ASpeechRecognitionModule} e implementa la interfaz \textit{RecognitionListener} que provee PocketSphinx.
@@ -239,13 +242,16 @@ Dado que el inicio del reconocedor de voz se realiza de manera asíncrona, es ne
 
 %%%%%%%%%%%%%%
 \subsubsection{Módulo Production}
+
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/diagramas/SpeechProductionModule.png}
 	\caption{Módulo SpeechProduction}
 	\label{fig:speech-production-module}
 \end{figure}
-\begin{lstlisting}
+
+\begin{lstlisting}[language=Java][frame=single]
+
 public interface ISpeechProductionModule extends IModule {
     Integer PRIORITY_HIGH = 1;
     Integer PRIORITY_LOW = 0;
@@ -259,11 +265,12 @@ public interface ISpeechProductionModule extends IModule {
 
 \end{lstlisting}
 
+
 El módulo production(figura \ref{fig:speech-production-module}) permite al usuario producir voz a partir de texto de manera simple.
 Provee la interfaces \textit{ISpeechProductionModule} y \textit{ITtsVoice}, así como la excepción \textit{VoiceNotFoundException}.
-La primera contiene las declaraciones de los métodos del módulo en sí, la segunda provee una forma de representar las diferentes voces a utilizar por el módulo.
+La primera contiene las declaraciones de los métodos del módulo en sí, la segunda proporciona una forma de representar las diferentes voces a utilizar por el módulo.
 
-Las funcionalidades que provee la interfaz son:
+Las funcionalidades que facilita la interfaz son:
 
 \begin{itemize}
 	\item Pronunciar un texto
@@ -310,7 +317,7 @@ El módulo(figura \ref{fig:touch-module}) contiene las interfaces \textit{ITouch
 \end{itemize}
 
 
-\textit{ITouchModule} es la interfaz que debe cualquier implementación del módulo. El único método remarcable de la misma es \textit{FeedTouchEvent}, en el cual se le pasan los eventos táctiles al módulo desde la aplicación principal, que debe sobrecargar el método \textit{OnTouchEvent} de la clase \textit{Activity}, esto es debido a que el módulo no puede extender la clase \textit{Activity}.
+\textit{ITouchModule} es la interfaz que debe cualquier implementación del módulo. El único método destacado de la misma es \textit{FeedTouchEvent}, en el cual se le pasan los eventos táctiles al módulo desde la aplicación principal, que debe sobrecargar el método \textit{OnTouchEvent} de la clase \textit{Activity}, esto es debido a que el módulo no puede extender la clase \textit{Activity}.
 
 \paragraph*{Detección táctil de Android\\}
 
@@ -327,7 +334,7 @@ Se implementó una simple aplicación que mostraba por pantalla los diferentes e
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Sound}
-Este subsistema contiene los módulos(figura \ref{fig:sound-package} que realizan diversas tareas de reconocimiento de audio.  Han sido implementadas detección de tonos, notas musicales y palmadas.
+Este subsistema contiene los módulos(figura \ref{fig:sound-package} que realizan diversas tareas de reconocimiento y producción de audio.  Han sido implementadas tanto detección de tonos, notas musicales y palmadas, como síntesis de notas musicales y producción de sonidos prefijados.
 \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/diagramas/Sound.png}
@@ -351,10 +358,12 @@ El paquete contiene en su interior \textit{ISoundDispatcherModule}, la interfaz 
 	\item Iniciar el procesado de audio
 	\item Parar el procesado de audio
 \end{itemize}
-\textit{ASoundDispatcherModule} implementa \textit{ISoundDispatcherModule}, pese a estar vacía se conserva para mantener la estructura común de los módulos.
+
 \paragraph*{TarsosDSP\\}
-La implementación se realiza en el módulo \textit{TarsosDSPSoundDispatcherModule}, que extiende la clase \textit{ASoundDispatcherModule}.
+La implementación se realiza en el módulo \textit{TarsosDSPSoundDispatcherModule}, que implementa la interfaz \textit{ISoundDispatcherModule}.
 En su interior se crea un objeto \textit{AudioDispatcher}, que se encarga del procesado del audio, y al que pueden añadirse distintos procesadores de audio.
+
+Los parámetros del objeto soundDispatcher pueden indicarse en el archivo sound.properties, pudiendo fijar el la tasa de muestreo(samplerate), el tamaño del buffer(buffer) y el solapado entre ventanas de audio(overlap).
 
 %%%%%%%%%%%%%%
 \subsubsection{Módulo Pitch Detection}
@@ -368,7 +377,7 @@ PitchDetection(figura \ref{fig:pitch-detection-module}) permite detectar la frec
 En su interior encontramos la interfaz \textit{IPitchDetectionModule} y la clase abstracta \textit{APitchDetectionModule}, que gestionan la suscripción de listeners a los eventos. También se encuentra \textit{IPitchListener}, que debe ser implementada por cualquier clase que desee recibir notificaciones del módulo de detección de tonos.
 
 \paragraph*{TarsosDSP \\}
-La implementación del módulo se ha realizado en la clase \textit{TarsosDSPPitchDetectionModule}. Esta implementación depende del módulo SoundDispatcher, ya que en su inicialización se registra a si mismo en el susodicho modulo.
+La implementación del módulo se ha realizado en la clase \textit{TarsosDSPPitchDetectionModule}. Esta implementación depende del módulo SoundDispatcher, ya que en su inicialización se registra a su procesador de audio en el soundDispatcher.
 %TODO No se muy bien como redactar esto
 Esta implementación utiliza el algoritmo YIN \cite{de_YINa_f2002} para la detección de frecuencias. La implementación del algoritmo viene dada por la propia librería TarsosDSP. El módulo genera un evento con la frecuencia cuando un sonido es detectado, y al terminar la detección devuelve un -1.
 
@@ -392,7 +401,7 @@ En su interior encontramos la interfaz del módulo \textit{INoteDetectionModule}
  
  \paragraph*{TarsosDSP\\}%todo realmente no usa la libreria directamente
  
- \textit{TarsosDSPNoteDetectionModule} extiende \textit{ANoteDetectionModule} e implementa \textit{IPitchListener}. Simplemente convierte los tonos detectados a notas musicales, filtra las notas desafinadas y controla los inicios y finalizaciones de las notas, generando eventos de los cuales serán notificados los listeners.
+ \textit{TarsosDSPNoteDetectionModule} extiende \textit{ANoteDetectionModule} e implementa \textit{IPitchListener}. Simplemente convierte los tonos detectados a notas musicales, filtra las notas desafinadas(descarta las que se desvían un 10\% respecto al indice) y controla los inicios y finalizaciones de las notas, generando eventos de los cuales serán notificados los listeners.
  
 %%%%%%%%%%%%%%
 \subsubsection{Módulo Clap Detection}
@@ -404,7 +413,7 @@ En su interior encontramos la interfaz del módulo \textit{INoteDetectionModule}
 \end{figure}
 El módulo ClapDetection(figura \ref{fig:clap-detection-module}) permite detectar ruidos percusivos tales como palmadas. Igual que el PitchDetection, depende directamente del módulo SoundDispatcher para su funcionamiento. En su interior se encuentra la interfaz del módulo, \textit{IClapDetectionModule}, la clase abstracta \textit{AClapDetectionModule} y la interfaz del listener, \textit{IClapListener}. Las clases que implementen este listener recibirán una notificación cada vez que se detecte una palmada.
 \paragraph*{TarsosDSP\\} 
-La implementación del módulo, contenida en \textit{TarsosDSPClapDetectionModule}, emplea el objeto provisto por la librería TarsosDSP \textit{PercussionOnsetDetector}, que es registrado en el \textit{DispatcherModule} activo en ese momento. Este objeto permite la detección de sonidos percusivos, como palmadas de una forma sencilla.
+La implementación del módulo, contenida en \textit{TarsosDSPClapDetectionModule}, emplea el objeto provisto por la librería TarsosDSP \textit{PercussionOnsetDetector}, que es registrado en el \textit{DispatcherModule} activo en ese momento. Este objeto permite la detección de sonidos percusivos, como palmadas, de una forma sencilla.
 
 %%%%%%%%%%%%%%
 \subsubsection{Módulo NoteGenerator}
@@ -414,12 +423,12 @@ La implementación del módulo, contenida en \textit{TarsosDSPClapDetectionModul
 	\caption{Módulo NoteGenerator}
 	\label{fig:note-generator-module}
 \end{figure}
-El módulo NoteGenerator(figura \ref{fig:note-generator-module}) provee una forma de sintetizar tonos musicales y hacer sonar secuencias de notas.
-En su interior se encuentra la interfaz del módulo \textit{INoteGeneratorModule} que define las funcionalidades del módulo, la clase abstracta \textit{ANoteGeneratorModule} que gestiona la suscripción a los listeners. La interfaz del listener se encuentra en \textit{INotePlayListener} y su finalidad es notificar cuando una nota o una secuencia de notas termina de reproducirse. La clase \textit{Note} es la representación de las notas musicales en el sistema, contiene la nota, el índice y la octava.
+El módulo NoteGenerator(figura \ref{fig:note-generator-module}) provee una forma de sintetizar tonos musicales y reproducir secuencias de notas.
+En su interior se encuentra la interfaz del módulo \textit{INoteGeneratorModule} que define las funcionalidades del módulo y la clase abstracta \textit{ANoteGeneratorModule} que gestiona la suscripción a los listeners. La interfaz del listener se encuentra en \textit{INotePlayListener} y su finalidad es notificar cuando una nota o una secuencia de notas termina de reproducirse. La clase \textit{Note} es la representación de las notas musicales en el sistema, contiene la nota, el índice y la octava.
 
 \paragraph*{Android\\}
 
-La implementación especifica del módulo se encuentra en AndroidNoteGeneratorModule y se ha realizado mediante la clase \textit{AudioTrack}. El objeto \textit{AudioTrack} se crea sample a sample utilizando la ecuación de una onda senoidal de la frecuencia de la nota requerida. La reproducción de secuencias se implementa mediante el uso de las clases \textit{Timer} y \textit{TimerTask}
+La implementación especifica del módulo se encuentra en \textit{AndroidNoteGeneratorModule} y se ha realizado mediante la clase \textit{AudioTrack} proporcionada por la API de Android. El objeto \textit{AudioTrack} se crea sample a sample utilizando la ecuación de una onda senoidal de la frecuencia de la nota requerida. La reproducción de secuencias se implementa mediante el uso de las clases \textit{Timer} y \textit{TimerTask}
 
 %%%%%%%%%%%%%%
 \subsubsection{Módulo EmotionSound}
@@ -430,8 +439,9 @@ La implementación especifica del módulo se encuentra en AndroidNoteGeneratorMo
 	\label{fig:emotion-sound-module}
 \end{figure}
 El módulo EmotionSound(figura \ref{fig:emotion-sound-module}) busca proporcionar una manera de reproducir una serie de sonidos prefijados para expresar diferentes emociones.
-La interfaz del módulo esta definida en \textit{IEmotionSoundModule}, y en ella están definidos, en forma de constantes, los sonidos utilizables.
-Los sonidos se encuentran en el directorio raw de la carpeta res del paquete Sound.
+La interfaz del módulo esta definida en \textit{IEmotionSoundModule}, y en ella se declaran, en forma de constantes, los sonidos utilizables.
+Los sonidos se encuentran en el directorio /raw de la carpeta /res del paquete Sound.
+
 \paragraph*{Android\\}
 
 La implementación de este módulo se ha realizado mediante la clase \textit{MediaPlayer} provista por la API de Android, que permite reproducir diferentes recursos audiovisuales. El módulo está definido en la clase \textit{AndroidEmotionSoundModule}.
@@ -439,7 +449,7 @@ La implementación de este módulo se ha realizado mediante la clase \textit{Med
 
 \subsubsection*{Ejemplos de desarrollo}
 
-Para la prueba de los módulos de sonido se realizaron dos ejemplos básicos, una aplicación simple en la que el usuario introduce un texto y el teléfono lo pronuncia y un sistema de control mediante voz en el que el usuario le daba ordenes básicas al Robobo mediante la voz y este, al terminar la frase, ejecutaba los movimientos indicados.
+Para probar la detección de notas musicales se desarrolló un control mediante música en el que el usuario ejecutaba una secuencia de notas musicales en una escala, cada una correspondiendo a una acción de movimiento, y al recibir la nota de cierre de secuencia, el ROBOBO ejecutaba los movimientos indicados.
 
 
 
@@ -493,9 +503,9 @@ Para implementar este módulo se ha empleado la clase \textit{FaceDetector} prov
 \end{figure}
 Este módulo(figura \ref{fig:color-detection-module}) provee la funcionalidad de detección de colores sobre fondos con alto contraste. La interfaz del módulo se puede encontrar en \textit{IColorDetectionModule}, la clase abstracta \textit{AColorDetectionModule} gestiona los listeners en los que será notificada la detección de los colores. La interfaz de dicho listener se encuentra en la clase \textit{IColorListener} y debe ser implementada por toda clase que desee recibir las notificaciones de los colores.
 
-\paragraph{OpenCV}
+\paragraph*{OpenCV\\}
 
-Para realizar la implementación de este módulo se ha empleado la librería OpenCV\cite{opencv} una de las más usadas en visión por computador. Este módulo, contenido en \textit{OpenCVColorDetectionModule} realiza los siguientes pasos para la detección de colores:
+Para realizar la implementación de este módulo se ha empleado la librería OpenCV\cite{itseez2015opencv} (sección \ref{subsec:opencv}) una de las más usadas en visión por computador. Este módulo, contenido en \textit{OpenCVColorDetectionModule} realiza los siguientes pasos para la detección de colores:
 \begin{itemize}
 	\item Detección de bordes mediante el algoritmo de Canny, obteniendo el contorno con mayor area.
 	\item Creación de una máscara binaria con el área detectada
@@ -504,6 +514,12 @@ Para realizar la implementación de este módulo se ha empleado la librería Ope
 	\item Filtrado por la varianza del color, si supera 1.1 es descartado
 	\item Clasificación del color detectado
 \end{itemize}
+%%%%%%%%%%%%%%
+
+\subsubsection*{Ejemplos de desarrollo}
+
+Se desarrolló una aplicación que podría considerarse el primer prototipo del ejemplo \textit{ROBOBO Vigilante}(sección \ref{subsec:robobo-vigilante}) que cuando detectaba una cara en la imagen capturada por la cámara mandaba un mensaje por correo electrónico al usuario adjuntando la imagen.
+Para probar el módulo de detección de color se programó una pequeña aplicación que cambiaba el color de fondo de la pantalla acorde al color detectado por el módulo.
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Messaging}
@@ -520,8 +536,12 @@ El subsistema Messaging aglomera las diferentes opciones de comunicación por me
 El módulo Email(figura \ref{fig:email-module}) permite al usuario la comunicación mediante correo electrónico, pudiendo mandar tanto texto como imágenes, por ejemplo, las capturadas con el módulo \textit{BasicCamera}.
 
 \paragraph*{GmailBackground\\}
-Para implementar el módulo, se ha empleado la librería GmailBackGround \cite{gmailbg}, que permite el envío de mensajes de correo electrónico con una cuenta de Gmail. El módulo se encuentra en la clase \textit{GmailBackgroundMessagingModule}.
+Para implementar el módulo, se ha empleado la librería GmailBackGround \cite{gmailbg} la cual se presento en la sección \ref{subsec:gmail-background} de este trabajo , que permite el envío de mensajes de correo electrónico con una cuenta de Gmail. El módulo se encuentra en la clase \textit{GmailBackgroundMessagingModule}.
 \newpage
+
+\subsubsection*{Ejemplos de desarrollo}
+
+Se aprovechó la aplicación de prueba comentada en la sección anterior para comprobar el correcto funcionamiento del módulo de mensajería.
 
 
 

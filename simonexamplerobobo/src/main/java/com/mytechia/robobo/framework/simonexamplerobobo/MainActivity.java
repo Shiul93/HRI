@@ -6,11 +6,14 @@ package com.mytechia.robobo.framework.simonexamplerobobo;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
 
+import com.mytechia.commons.framework.exception.InternalErrorException;
 import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
 import com.mytechia.robobo.framework.hri.emotion.Emotion;
@@ -27,6 +30,10 @@ import com.mytechia.robobo.framework.hri.sound.noteGeneration.Note;
 import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 import com.mytechia.robobo.framework.hri.speech.production.ISpeechProductionModule;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
+import com.mytechia.robobo.rob.BluetoothRobInterfaceModule;
+import com.mytechia.robobo.rob.IRobInterfaceModule;
+import com.mytechia.robobo.rob.movement.IRobMovementModule;
+import com.mytechia.robobo.rob.util.RoboboDeviceSelectionDialog;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -42,6 +49,8 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
     private RoboboServiceHelper roboboHelper;
     private RoboboManager robobo;
 
+    private ProgressDialog waitDialog;
+
     private String TAG = "MUSICEXAMPLE";
 
     private IEmotionModule emotionModule;
@@ -51,6 +60,9 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
     private IEmotionSoundModule emotionSoundModule;
     private ISoundDispatcherModule soundDispatcherModule;
     private IClapDetectionModule clapDetectionModule;
+
+    private IRobInterfaceModule interfaceModule;
+    private IRobMovementModule movementModule;
 
 
     private static Random r = new Random();
@@ -66,6 +78,9 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
 
     Timer timer = new Timer();
     TimerTask speechTask;
+    Timer timermovement = new Timer();
+    TimerTask movTask;
+    int negatecount = 0;
 
     private boolean seeingLight = false;
 
@@ -77,8 +92,9 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        roboboHelper = new RoboboServiceHelper(this, new RoboboApplication());
-        roboboHelper.bindRoboboService(new Bundle());
+//        roboboHelper = new RoboboServiceHelper(this, new RoboboApplication());
+//        roboboHelper.bindRoboboService(new Bundle());
+        showRoboboDeviceSelectionDialog();
 
     }
 
@@ -123,7 +139,8 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
             }catch (NoSuchElementException e){
                 Log.d(TAG,"EndList");
                 listening = false;
-                continueGame();
+                movTask = new AsienteClass();
+                timermovement.schedule(movTask,0);
             }
 
 
@@ -174,6 +191,7 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
         if ((!ready)&&(!playing)){
             Log.d(TAG,"READY");
             ready = true;
+            emotionModule.setCurrentEmotion(Emotion.SMYLING);
             speechModule.sayText("Ready",0);
         }
 
@@ -211,31 +229,14 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
     //region App Initialization things
 
 
-    private class RoboboApplication implements RoboboServiceHelper.Listener {
-
-        @Override
-        public void onRoboboManagerStarted(RoboboManager roboboManager) {
-            robobo = roboboManager;
-            startApplication();
-        }
-
-        @Override
-        public void onError(String s) {
-            Log.e("ROBOBO-APP", s);
-        }
-    }
 
 
-    protected void startApplication() {
+
+    protected void startRoboboApplication() {
 
         roboboHelper.launchDisplayActivity(WebGLEmotionDisplayActivity.class);
 
-
-
-
-
         try {
-
             soundDispatcherModule=
                     robobo.getModuleInstance(ISoundDispatcherModule.class);
             emotionModule =
@@ -250,10 +251,10 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
                     robobo.getModuleInstance(IEmotionSoundModule.class);
             clapDetectionModule=
                     robobo.getModuleInstance(IClapDetectionModule.class);
-
-
-
-
+            movementModule=
+                    robobo.getModuleInstance(IRobMovementModule.class);
+            interfaceModule=
+                    robobo.getModuleInstance(IRobInterfaceModule.class);
         }
         catch(ModuleNotFoundException e) {
             final Exception ex = e;
@@ -268,11 +269,117 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
         clapDetectionModule.suscribe(this);
         noteGeneratorModule.suscribe(this);
         noteDetectionModule.suscribe(this);
+
+        try {
+            interfaceModule.getRobInterface().resetPanTiltOffset();
+        } catch (InternalErrorException e) {
+            e.printStackTrace();
+        }
         soundDispatcherModule.runDispatcher();
 
+    }
+
+    private void showRoboboDeviceSelectionDialog() {
+
+        RoboboDeviceSelectionDialog dialog = new RoboboDeviceSelectionDialog();
+        dialog.setListener(new RoboboDeviceSelectionDialog.Listener() {
+            @Override
+            public void roboboSelected(String roboboName) {
+
+                final String roboboBluetoothName = roboboName;
+
+                //start the framework in background
+                AsyncTask<Void, Void, Void> launchRoboboService =
+                        new AsyncTask<Void, Void, Void>() {
+                            @Override
+                            protected Void doInBackground(Void... params) {
+                                launchAndConnectRoboboService(roboboBluetoothName);
+                                return null;
+                            }
+                        };
+                launchRoboboService.execute();
+
+            }
+
+            @Override
+            public void selectionCancelled() {
+
+            }
+
+            @Override
+            public void bluetoothIsDisabled() {
+                finish();
+            }
+
+        });
+        dialog.show(getFragmentManager(),"BLUETOOTH-DIALOG");
+
+    }
+
+
+    private void launchAndConnectRoboboService(String roboboBluetoothName) {
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                //wait to dialog shown during the startup of the framework and the bluetooth connection
+                waitDialog = ProgressDialog.show(MainActivity.this,
+                        "Conectando","conectando", true);
+            }
+        });
+
+
+        //we use the RoboboServiceHelper class to manage the startup and binding
+        //of the Robobo Manager service and Robobo modules
+        roboboHelper = new RoboboServiceHelper(this, new RoboboServiceHelper.Listener() {
+            @Override
+            public void onRoboboManagerStarted(RoboboManager robobom) {
+
+                //the robobo service and manager have been started up
+                robobo = robobom;
+
+                //dismiss the wait dialog
+                waitDialog.dismiss();
+
+                //start the "custom" robobo application
 
 
 
+
+
+
+
+
+                startRoboboApplication();
+
+            }
+
+            @Override
+            public void onError(String errorMsg) {
+
+                final String error = errorMsg;
+
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        //dismiss the wait dialog
+                        waitDialog.dismiss();
+
+                        //show an error dialog
+
+
+                    }
+                });
+
+            }
+
+        });
+
+        //start & bind the Robobo service
+        Bundle options = new Bundle();
+        options.putString(BluetoothRobInterfaceModule.ROBOBO_BT_NAME_OPTION, roboboBluetoothName);
+        roboboHelper.bindRoboboService(options);
 
     }
 
@@ -392,6 +499,8 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
         playingnotes = false;
         emotionSoundModule.playSound(IEmotionSoundModule.RIMSHOT_SOUND);
         emotionModule.setTemporalEmotion(Emotion.SAD,3000,Emotion.NORMAL);
+        movTask = new NegateClass();
+        timermovement.schedule(movTask,100);
 
     }
 
@@ -428,6 +537,128 @@ public class MainActivity extends Activity implements INoteListener, INotePlayLi
             playNoteSequence();
         }
     }
+
+    //endregion
+
+    //region Movement Things
+
+    private class NegateClass extends TimerTask{
+
+        @Override
+        public void run() {
+            try {
+                switch (negatecount) {
+                    case 0:
+                        negatecount++;
+
+                            movementModule.movePan((short)9,165);
+                            movTask = new NegateClass();
+                            timermovement.schedule(movTask,300);
+
+
+                        break;
+                    case 1:
+                        negatecount++;
+                        movementModule.movePan((short)9,195);
+                        movTask = new NegateClass();
+                        timermovement.schedule(movTask,600);
+                        break;
+                    case 2:
+                        negatecount++;
+
+                        movementModule.movePan((short)9,165);
+                        movTask = new NegateClass();
+                        timermovement.schedule(movTask,600);
+
+
+                        break;
+                    case 3:
+                        negatecount++;
+                        movementModule.movePan((short)9,195);
+                        movTask = new NegateClass();
+                        timermovement.schedule(movTask,600);
+                        break;
+                    case 4:
+                        negatecount++;
+                        movementModule.movePan((short)9,180);
+                        movTask = new NegateClass();
+                        timermovement.schedule(movTask,300);
+
+                        break;
+                    case 5:
+                        negatecount=0;
+
+                        break;
+
+                }
+            } catch (InternalErrorException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private class AsienteClass extends TimerTask{
+
+        @Override
+        public void run() {
+            try {
+                switch (negatecount) {
+                    case 0:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount++;
+
+                        movementModule.moveTilt((short)9,95);
+                        movTask = new AsienteClass();
+                        timermovement.schedule(movTask,300);
+
+
+                        break;
+                    case 1:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount++;
+                        movementModule.moveTilt((short)9,80);
+                        movTask = new AsienteClass();
+                        timermovement.schedule(movTask,600);
+                        break;
+                    case 2:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount++;
+
+                        movementModule.moveTilt((short)9,95);
+                        movTask = new AsienteClass();
+                        timermovement.schedule(movTask,600);
+
+
+                        break;
+                    case 3:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount++;
+                        movementModule.moveTilt((short)9,80);
+                        movTask = new AsienteClass();
+                        timermovement.schedule(movTask,600);
+                        break;
+                    case 4:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount++;
+                        movementModule.moveTilt((short)9,90);
+                        movTask = new AsienteClass();
+                        timermovement.schedule(movTask,500);
+
+                        break;
+                    case 5:
+                        Log.d(TAG, "NegateCount: "+negatecount);
+                        negatecount=0;
+                        continueGame();
+                        break;
+
+                }
+            } catch (InternalErrorException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+
 
     //endregion
 

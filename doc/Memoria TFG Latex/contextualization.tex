@@ -76,9 +76,18 @@ Existen módulos para facilitar el uso del robot y evitar tener que usar la clas
 
 
 
-{\color{red} No tengo muy claro como funciona la parte que va dentro del ROB}
 
-En el ROB se encuentra la \textit{obo-interface}, cuya finalidad es mantener la comunicación con el smartphone, y una serie de módulos programados en el firmware de la plataforma como la odometría y la detección de caídas.
+
+En la base ROB se encuentra un software escrito en C, que representa el firmware de ROB y se encarga de tres tareas diferentes:
+\begin{itemize}
+	\item Gestionar la comunicación (vía Bluetooth) con el Smartphone a través de la rob-interface. Esta comunicación se hace a través de un protocolo binario muy reducido que permite al smartphone enviar comandos al ROB, que esté ejecuta en cuanto los recibe. Además, el ROB envía periódicamente (con una periodicidad programada por el OBO) información de los sensores y dispositivos al OBO, para que desde el smartphone se pueda conocer, en tiempo real, el estado del ROB. 
+	\item Controlar los diferentes dispositivos hardware de los que dispone: sensores infrarrojos, motores y luces LED. 
+	\item Ejecutar una serie de módulos de control para la detección de caídas o impactos contra objetos.
+
+\end{itemize}
+
+
+%En el ROB se encuentra la \textit{obo-interface}, cuya finalidad es mantener la comunicación con el smartphone, y una serie de módulos programados en el firmware de la plataforma como la odometría y la detección de caídas.
 %El ROBOBO! Framework es el framework de desarrollo usado para desarrollar aplicaciones para el ROBOBO en terminales móviles Android. Está diseñado de manera modular, de forma que facilita la extensión del mismo con nuevos módulos. Está publicado con una licencia libre LGPL v3 en Bitbucket\cite{RoboboFramework}.
 %Ofrece el módulo \textit{rob-interface-module}, que permite la comunicación entre la plataforma robotizada (denominada ROB, figura \ref{fig:robobo_2_0}) y el smartphone (denominado OBO en el sistema) mediante el protocolo Bluetooth. También proporciona el módulo \textit{ros-module} que sirve de interfaz entre el robot y ROS \cite{Ros}.
 
@@ -109,12 +118,12 @@ Android está construido sobre un núcleo Linux sobre el cual corre el \textit{A
 El Sistema Operativo Robótico\cite{Ros} , por sus siglas en inglés ROS, es un framework libre de desarrollo de software para robots que provee los servicios que se podrían esperar de un sistema operativo, tales como la abstracción del hardware, la gestión de dispositivos a bajo nivel, implementación de funcionalidades comunes, paso de mensajes entre procesos y gestión de paquetes, sin embargo, ROS no es un sistema operativo y debe ejecutarse sobre un entorno Linux.
 ROS esta organizado en forma de grafo en el cual los diferentes procesos procesan datos en red. En esta red podemos encontrar diferentes elementos:
 \begin{itemize}
-	\item Nodos:procesos que realizan una computación. Un sistema de control robótico suele contar con multitud de ellos que procesan datos en paralelo.
+	\item Nodos: procesos que realizan una computación. Un sistema de control robótico suele contar con multitud de ellos que procesan datos en paralelo.
 	\item Master: provee servicios de registro de nombres y consulta al resto del grafo computacional, funciona como punto de encuentro entre varios nodos.
 	
 	\item Servidor de parámetros: permite almacenar datos bajo un indice en una ubicación central, es parte del Master.
-	\item Mensajes: Sistema de comunicación entre nodos, estructuras de datos formadas por tipos simples.
-	\item Temas(topics): Semejante a un bus de datos, permite la generación de mensajes y la suscripción al mismo por parte de un nodo para recibirlos.
+	\item Mensajes: sistema de comunicación entre nodos, estructuras de datos formadas por tipos simples.
+	\item Temas(topics): semejante a un bus de datos, permite la generación de mensajes y la suscripción al mismo por parte de un nodo para recibirlos.
 	\item Servicios: Mecanismo que permite a un nodo recibir peticiones y responderlas de manera concreta.
 	\item Bolsas(bags): formato para almacenar y reproducir mensajes. Permite la reutilización de datos como los de sensorización para ser empleados posteriormente en desarrollo o pruebas.
 \end{itemize}

@@ -12,7 +12,8 @@
 Para probar el correcto funcionamiento de los módulos de interacción, a parte de los ejemplos de desarrollo que se comentaron en el capítulo \ref{sec:InteractionLibraries}, se desarrollaron tres aplicaciones Android que utilizan en conjunto los diferentes módulos de interacción.
 
 \subsection{Simon dice músical}
-El primero de los ejemplos desarrollados es un juego educativo musical, similar al juego Simón, en el que los participantes deben repetir una secuencia de colores que se va ampliando en cada iteración de la partida, pero utilizando notas musicales. El objetivo final de este juego es que el usuario consiga asociar los tonos escuchados con la nota músical correspondiente, además de ejercitar la memoria.
+\label{subsec:simon-musical}
+El primero de los ejemplos desarrollados es un juego educativo musical, similar al juego Simón, en el que los participantes deben repetir una secuencia de colores que se va ampliando en cada iteración de la partida, pero utilizando notas musicales. El objetivo final de este juego es que el usuario consiga asociar los tonos escuchados con la nota musical correspondiente, además de ejercitar la memoria.
 En este ejemplo se han utilizado los siguientes módulos:
 
 \begin{itemize}
@@ -22,7 +23,7 @@ En este ejemplo se han utilizado los siguientes módulos:
 	\item ClapDetectionModule: Se utiliza para iniciar el juego, una primera palmada prepara al robot y la segunda inicia el juego.
 	\item EmotionSoundModule: Diferentes sonidos son reproducidos en función del resultado del juego.
 	\item NoteGeneratorModule: Se emplea para generar los diferentes tonos que debe reconocer el jugador.
-	\item VoiceProductionModule: Se usa para dar información al usuario y dar una mayor sensación de interacción con el robot
+	\item SpeechProductionModule: Se usa para dar información al usuario y dar una mayor sensación de interacción con el robot
 \end{itemize}
 
 Además de los módulos creados en este trabajo, se emplean varios módulos que provee el ROBOBO! Framework:
@@ -30,7 +31,7 @@ Además de los módulos creados en este trabajo, se emplean varios módulos que 
 \begin{itemize}
 	\item EmotionModule: Provee la cara del robot, con la posibilidad de cambiar sus expresiones, es la interfaz gráfica que se le muestra al usuario.
 	\item DefaultMovementModule: Permite el uso de la plataforma robótica de forma simple, permitiendo el movimiento del robot.
-	\item IRobInterfaceModule: Provee un método para obtener la clase IRob, que se emplea para un control más avanzado del Rob, por ejemplo, para utilizar los leds de la base.
+	\item IRobInterfaceModule: Proporciona un método para obtener la clase IRob, que se emplea para un control más avanzado del Rob, por ejemplo, para utilizar los leds de la base.
 \end{itemize}
 
 El jugador inicia la partida dando una palmada, momento en el que el robot pronunciará a través del modulo de voz \enquote{Ready}, una segunda palmada comenzará la partida en si, el robot dirá una frase retando al usuario, por ejemplo \enquote{follow me if you can}, y procederá a reproducir un tono musical. En el momento en el que termine el tono, cambiará la cara dando a entender que está escuchando al usuario, en el momento en el que el jugador termine de producir la nota se comprueba si corresponde al tono original, si coincide el robot realizará una pequeña celebración y volverá a producir tonos, añadiendo uno más a los reproducidos anteriormente. En caso de que el jugador falle, el robot pondrá cara de disgusto, producirá un sonido de abucheo y volverá al estado inicial, esperando a una palmada para iniciar el juego.
@@ -44,8 +45,48 @@ En esta implementación del juego, para que tenga una sonoridad agradable, solam
 	\label{fig:pentatonic-scale}
 \end{figure} 
 
-\subsection{Robobo Vigilante}
-\subsection{Robobo Mascota}
+
+\subsection{ROBOBO Vigilante}
+\label{subsec:robobo-vigilante}
+El siguiente ejemplo es un sistema de seguridad que utiliza las capacidades del ROBOBO de reconocer caras, detectar sonidos, producir sonidos y mandar correos electrónicos a modo de cámara de seguridad con aviso automático.
+En este ejemplo se han utilizado los siguientes módulos desarrollados en el trabajo:
+
+\begin{itemize}
+	\item SoundDispatcherModule: Necesario para el funcionamiento de los módulos de sonido
+	\item ClapDetectionModule: Se usa, con un umbral de detección sensible, para detectar sonidos en la zona.
+	\item EmotionSoundModule: Diferentes sonidos son reproducidos en función del resultado del juego.
+	\item SpeechProductionModule: Se usa para dar información al usuario y dar una mayor sensación de interacción con el robot
+	\item SpeechRecognitionModule: Usado para activar y desactivar el modo de vigilancia
+	\item BasicCameraModule: Permite la captura de imágenes desde la cámara en segundo plano
+	\item FaceDetectionModule: Permite la detección de caras para poder notificar al usuario.
+	\item MessagingModule: Usado para comunicar al usuario por correo electrónico cualquier posible intrusión del espacio vigilado.
+\end{itemize}
+
+Además de los módulos creados en este trabajo, se emplean varios módulos proporcionados ROBOBO! Framework:
+
+\begin{itemize}
+	\item EmotionModule: Provee la cara del robot, con la posibilidad de cambiar sus expresiones, es la interfaz gráfica que se le muestra al usuario.
+	\item DefaultMovementModule: Permite el uso de la plataforma robótica de forma simple, permitiendo el movimiento del robot.
+	\item IRobInterfaceModule: Proporciona un método para obtener la clase IRob, que se emplea para un control más avanzado del ROB, por ejemplo, para utilizar los leds de la base.
+\end{itemize}
+
+El usuario activará el modo de vigilancia mediante comandos de voz, con la frase \enquote{Rob activate now}, en este momento el \textit{Pan} del ROB comenzará a girar describiendo un arco de 180 grados y se activarán los diferentes sistemas de seguridad.
+Con el modo de seguridad activado, y la configuración por defecto, el  robot notificará al usuario cada vez que detecte una cara enviándole un correo electrónico una notificación con una imagen adjunta de la cara que hizo saltar el detector. También enviará un correo al usuario en caso de detectar varios sonidos bruscos en un determinado intervalo de tiempo.
+En el momento en que es detectado un intruso, el ROB activará las luces de alarma, parpadeo en azul y rojo, activará una alarma acústica y pondrá una expresión de enfado en su cara.
+Los modos de actuación del robot podrán ser configurados mediante voz, siempre y cuando el modo de vigilancia esté desactivado, mediante los siguientes comandos:
+\begin{itemize}
+	\item \textit{Rob switch silent mode}: En este modo el ROBOBO no se mueve ni activa ninguna clase de alarma que pueda ser detectada por el intruso, pero sigue notificando al usuario.
+	\item \textit{Rob switch face detection}: Activa y desactiva los avisos por detección de caras.
+	\item \textit{Rob switch sound detection}: Activa y desactiva las alarmas por detección de sonidos
+	\item \textit{Rob switch movement}: Activa y desactiva el movimiento del robot.
+\end{itemize}
+También podrá consultar el estado de las opciones de vigilancia mediante el comando de voz \textit{Rob status}.
+Para desactivar la vigilancia se utilizará el comando \textit{Rob deactivate now}
+Este ejemplo no trata de ser un sistema de seguridad eficaz, sino demostrar una posible aplicación de los módulos desarrollados en este trabajo.
+
+\subsection{ROBOBO Mascota}
+\label{subsec:robobo-mascota}
+
 
 
 \section{Problemas conocidos}

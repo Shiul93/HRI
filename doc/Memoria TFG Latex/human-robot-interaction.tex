@@ -24,21 +24,22 @@
  	\item Interacción próxima
  \end{itemize}
  
- La interacción remota suele ser referida como control supervisado o teleoperación, dependiendo de si el robot es autónomo con supervisión de un humano, que interviene en caso de necesidad, o si el robot es controlado por el humano directamente. Este tipo de interacción puede verse en robots de tipo industrial o en vehículos autónomos, cómo los llamados Drones del ejercito.
+ La interacción remota suele ser referida como control supervisado o teleoperación, dependiendo de si el robot es autónomo con supervisión de un humano, que interviene en caso de necesidad, o si el robot es controlado por el humano directamente. Este tipo de interacción puede verse en robots de tipo industrial o en vehículos autónomos, cómo los llamados Drones del ejército.
  
  La interacción próxima es aquella en la que el robot interactúa directamente con el humano, llegando incluso a haber interacción física. Este tipo de interacción incluye elementos emotivos y sociales, y se puede encontrar en, por ejemplo, los robots asistenciales o educativos. Este tipo de interacción es la que se tratará en este trabajo, en el cual se diseñarán diferentes sistemas de interacción para la plataforma ROBOBO.
  
  \subsection{HRI en la industria}
  
- Generalmente, en los procesos industriales, la interacción entre los robots y los operadores suele ser remota, los sistemas se programan para realizar una tarea y el humano solamente interviene en caso de necesidad, sin embargo pueden darse casos de interacción próxima con los robots. Uno de estos casos podría ser el aprendizaje de tareas mediante demostración, proceso mediante el cual, un operador humano realiza una tarea, por ejemplo moviendo manualmente el brazo de un robot, para que el controlador aprenda a realizar esa tarea. Este tipo de interacción permite que los robots aprendan comportamientos de alto nivel difícilmente programables.\\
- Sin embargo a la hora de realizar tareas de forma cooperativa entre robots y humanos, la interacción cercana con robots industriales conlleva riesgos importantes, como pudo verse en el accidente del 2015\cite{vwaccident2015} en la planta de Volkswagen cerca de Kassel, Alemania, en el que un operario fué golpeado por un brazo industrial  durante su instalación, resultando en la muerte del técnico.
+ Generalmente, en los procesos industriales, la interacción entre los robots y los operadores suele ser remota, los sistemas se programan para realizar una tarea y el humano solamente interviene en caso de necesidad, sin embargo pueden darse casos de interacción próxima con los robots. Uno de estos casos podría ser el aprendizaje de tareas mediante demostración, proceso mediante el cual, un operador humano realiza una tarea, por ejemplo moviendo manualmente el brazo de un robot, para que el controlador aprenda a realizar esa tarea. Este tipo de interacción permite que los robots aprendan comportamientos de alto nivel difícilmente programables.
+ 
+ Sin embargo a la hora de realizar tareas de forma cooperativa entre robots y humanos, la interacción cercana con robots industriales conlleva riesgos importantes, como pudo verse en el accidente del 2015\cite{vwaccident2015} en la planta de Volkswagen cerca de Kassel, Alemania, en el que un operario fue golpeado por un brazo industrial  durante su instalación, resultando en la muerte del técnico.
   \begin{figure}
 	\centering
 	\includegraphics[width=1\linewidth]{imagenes/robotcell.jpeg}
 	\caption{Esquema de una jaula de seguridad para un robot industrial}
 	\label{fig:robot-cell}
 \end{figure} 
- Para evitar esta clase de accidentes, se está buscando la consciencia del entorno en los manipuladores robóticos, para poder adaptar sus reacciones al contexto actual. Este tipo de consciencia no solo disminuye los riesgos de operación, sino que también disminuye los costes espaciales, ya que los robots no requerirían de jaulas de seguridad (figura \ref{fig:robot-cell}) , también la productividad se vería afectada positivamente, ya que tareas imposibles de realizar para un robot y para un humano individualmente, pueden llevarse a cabo mediante la llamada robótica cooperativa.
+ Para evitar esta clase de accidentes, se está buscando la consciencia del entorno en los manipuladores robóticos, para poder adaptar sus reacciones al contexto actual. Este tipo de consciencia no solo disminuye los riesgos de operación, sino que también disminuye los costes espaciales, ya que los robots no requerirían de jaulas de seguridad (figura \ref{fig:robot-cell}), también la productividad se vería afectada positivamente, ya que tareas imposibles de realizar para un robot y para un humano individualmente, pueden llevarse a cabo mediante la llamada robótica cooperativa.
  En \textit{Cooperative Tasks between Humans and Robots in Industrial Environments}\cite{corrales2012cooperative} presentan un sistema de robótica cooperativa en el que un operador y un robot colaboran de manera cercana para llevar a cabo diferentes tareas, de manera que el robot realiza las tareas repetitivas y peligrosas, mientras que el humano lleva a cabo las tareas que requieren de cierta precisión o inteligencia con la que no cuenta el robot. En este sistema el operador lleva un traje de posicionamiento, que permite al robot conocer su posición, pudiendo así adaptar sus movimientos de manera que el humano no corra riesgos.
  
  
@@ -128,7 +129,7 @@
 \end{minipage}
 \end{figure}
 
- Enfocados a la educación infantil nos podemos encontrar con robots cómo el BeeBot(figura \ref{fig:beebot}) o su alternativa libre, el Escornabot(figura \ref{fig:escornabot}),la finalidad de estos robots es la introducción a los niños a la programación, en forma de pensamiento secuencial, y a la resolución de problemas. En esta clase de robots la interacción está limitada a la introducción de comandos en la botonera de la parte superior del robot, que serán traducidos a movimientos del robot posteriormente.  
+ Enfocados a la educación infantil nos podemos encontrar con robots cómo el BeeBot(figura \ref{fig:beebot}) o su alternativa libre, el Escornabot(figura \ref{fig:escornabot}), el cometido de estos robots es introducir los niños a la programación, en forma de pensamiento secuencial, y a la resolución de problemas. En esta clase de robots la interacción está limitada a la introducción de comandos en la botonera de la parte superior del robot, que serán traducidos a movimientos del robot posteriormente.  
 
  En la educación primaria y secundaria los robots utilizados ya adquieren una mayor complejidad y suelen emplearse para una introducción real a la programación, generalmente utilizando lenguajes gráficos de muy alto nivel como Scratch\cite{scratch}. Uno de los robots más relevantes en este ámbito es el kit Mindstorms de Lego (figura \ref{fig:legoev3}) , que no solo permite programar el robot, sino también construirlo. El Lego Mindstorms cuenta con diferentes sensores y actuadores que ofrecen diversas maneras de interacción con el robot:
  \begin{itemize}
@@ -146,7 +147,7 @@
 	\label{fig:legoev3}
 \end{figure} 
 
-En la llamada educación especial la robótica también esta siendo empleada con éxito, por ejemplo el robot NAO (figura \ref{fig:naorobot}), del que se habló en la sección anterior, se utiliza para educar a niños con trastornos de espectro autista. El éxito de este tipo de educación viene dada debido a que la interacción con el robot, al ser programada, resulta predecible para el alumno, creando un entorno estable y pautado que resulta óptimo en este tipo de trastornos. La interacción en este caso se da en forma de movimientos preprogramados y mediante los leds de los ojos del robot, que cambian de color según las emociones que intenta expresar el robot, lo cual ayuda al alumno a ejercitar uno de las mayores dificultades dadas por el autismo, la dificultad de establecer relaciones empáticas.
+En la llamada educación especial la robótica también está siendo empleada con éxito, por ejemplo el robot NAO (figura \ref{fig:naorobot}), del que se habló en la sección anterior, se utiliza para educar a niños con trastornos de espectro autista. El éxito de este tipo de educación viene dada debido a que la interacción con el robot, al ser programada, resulta predecible para el alumno, creando un entorno estable y pautado que resulta óptimo en este tipo de trastornos. La interacción en este caso se da en forma de movimientos preprogramados y mediante los leds de los ojos del robot, que cambian de color según las emociones que intenta expresar el robot, lo cual ayuda al alumno a ejercitar uno de las mayores dificultades dadas por el autismo, la dificultad de establecer relaciones empáticas.
  %todo continuar esto mirar mail de gervasio
  
 
@@ -167,7 +168,7 @@ En la llamada educación especial la robótica también esta siendo empleada con
 	\caption{Robot Thymio}
 	\label{fig:thymio}
 \end{figure} 
- Otro robot educativo es el Thymio(figura \ref{fig:thymio}). Este robot cuenta con gran variedad de sensores, de distancia, acelerómetros, temperatura, control por infrarrojos, seguidores de lineas y micrófono, y con dos ruedas compatibles con las piezas de lego. La interacción con el usuario se realiza a través de los 39 leds RGB situados por todo el chasis, 5 teclas capacitivas que se encuentran en la parte superior del robot y los sensores citados anteriormente. El robot está pensado para enseñar programación a los niños de diferentes rangos de edad, para ello provee 3 lenguajes diferentes de programación, Visual Programming Language (VPL) para los niños a partir de 6 años, Blockly, un lenguaje de programación gráfico semejante a Scratch desarrollado por Google, para niños a partir de 9 y programación textual mediante el software Aseba Studio para niños a partir de 12 años.
+ Otro robot educativo es el Thymio(figura \ref{fig:thymio}). Este robot cuenta con gran variedad de sensores, de distancia, acelerómetros, temperatura, control por infrarrojos, seguidores de lineas y micrófono, y con dos ruedas compatibles con las piezas de lego. La interacción con el usuario se realiza a través de los 39 leds RGB situados por todo el chasis, 5 teclas capacitivas que se encuentran en la parte superior del robot y los sensores citados anteriormente. El robot está pensado para enseñar programación a los niños de diferentes rangos de edad, para ello se pueden emplear 3 lenguajes diferentes de programación, Visual Programming Language (VPL) para los niños a partir de 6 años, Blockly, un lenguaje de programación gráfico semejante a Scratch desarrollado por Google, para niños a partir de 9 y programación textual mediante el software Aseba Studio para niños a partir de 12 años.
  
  Dash and Dot (figura \ref{fig:dashanddot}) son una pareja de robots educativos fabricados por Wonder Workshop enfocados a niños de poca edad. Dash cuenta con una plataforma motorizada equipada con sensores de distancia,\enquote{orejas} motorizadas, tres micrófonos, un altavoz, un \enquote{ojo circular} con 12 leds blancos, leds rgb en las \enquote{orejas} y \enquote{pecho}. Dot en cambio, es una alternativa más económica que solo incluye la \enquote{cabeza} de Dash. Gracias a la gran cantidad de actuadores, Dash, y en menor medida Dot, cuentan con diversas formas de interacción con los niños, desde el movimiento del robot, habla a través del altavoz,  gestos con los leds del ojo e incluso, mediante accesorios vendidos de forma separada, tocando un pequeño xilófono o lanzando pelotas con una pequeña catapulta, Dot además cuenta con un accesorio \enquote{orejas de conejo} que le permite suplir la falta de plataforma motorizada y moverse. Estos robots están pensados para enseñar programación a los niños, y cuentan con varias aplicaciones diseñadas para este cometido, \textit{Path}, que permite a los niños dibujar la ruta que desean que tome el robot, \textit{Wonder}, un lenguaje visual de programación y \textit{Blockly}, el lenguaje de programación por bloques desarrollado por Google.
  
@@ -178,11 +179,11 @@ En la llamada educación especial la robótica también esta siendo empleada con
 	\label{fig:dashanddot}
 \end{figure} 
  
-   
- %\section{Interacción con robots educativos}
- %\label{sec:hri-robots-educativos}
- %Ejemplos específicos de robots educativos
  
+ \subsection{Conclusión}
+   
+Cómo se pudo apreciar en las secciones anteriores de este capítulo, el campo de la interacción humano robot es amplio y crucial en la evolución de la robótica por ello el desarrollo de nuevas formas de interacción permitirá el avance y la implantación de la misma en ámbitos generales de la sociedad, sin limitarse a nichos como puede ser la industria o la educación.
+En el ROBOBO, se tomarán como ejemplos alguno de los robots comentados anteriormente para desarrollar un sistema de HRI completo y funcional que permita una interacción fluida con el robot.
 
  
 

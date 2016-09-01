@@ -25,11 +25,11 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.4.0'
     compile 'com.mytechia:robobo-framework:0.3.5'
-    compile 'com.mytechia:robobo-rob-module:0.2.3'
     compile 'com.mytechia:robobo-hri-emotion-module:0.1.1'
     compile project(':sound')
     compile project(':vision')
     compile project(':messaging')
     compile project(':speech')
-
+    compile 'com.mytechia:robobo-rob-module:0.2.3'
+    compile 'com.mytechia:robobo-rob-interface:0.2.3'
 }
