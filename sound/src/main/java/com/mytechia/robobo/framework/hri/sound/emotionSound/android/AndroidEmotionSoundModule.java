@@ -65,7 +65,9 @@ public class AndroidEmotionSoundModule implements IEmotionSoundModule {
 
     @Override
     public void shutdown() throws InternalErrorException {
-        mediaPlayer.release();
+        if (mediaPlayer != null) {
+            mediaPlayer.release();
+        }
 
     }
 

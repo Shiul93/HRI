@@ -43,6 +43,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     private String threshold = " /1e-1/\n";
 
     private static final String MOV_SEARCH = "MOVSEARCH";
+
     private AbstractCollection<String> recognizablePhrases;
     private static final Integer HASHSETSIZE = 128;
     private File phraseFile;
@@ -101,7 +102,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
     @Override
     public void resumeRecognition(){
         paused = false;
-        recognizer.startListening(KEYWORDSEARCH);//, timeout);
+        recognizer.startListening(currentSearch);//, timeout);
     }
 
 
@@ -140,6 +141,7 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
             Log.d(TAG, "null array");
         }
 
+        currentSearch = KEYWORDSEARCH;
         recognizer.startListening(KEYWORDSEARCH);//,timeout);
 
 

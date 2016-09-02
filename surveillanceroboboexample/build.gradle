@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        exclude 'META-INF/maven/com.mytechia/robobo-rob-interface/pom.xml'
+        exclude 'META-INF/maven/com.mytechia/robobo-rob-interface/pom.properties'
+    }
 
 }
 

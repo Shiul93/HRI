@@ -24,6 +24,8 @@ import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
 import com.mytechia.robobo.framework.hri.sound.emotionSound.IEmotionSoundModule;
 import com.mytechia.robobo.framework.hri.sound.soundDispatcherModule.ISoundDispatcherModule;
 import com.mytechia.robobo.framework.hri.speech.production.ISpeechProductionModule;
+import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionListener;
+import com.mytechia.robobo.framework.hri.speech.recognition.ISpeechRecognitionModule;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.Frame;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraListener;
 import com.mytechia.robobo.framework.hri.vision.basicCamera.ICameraModule;
@@ -34,6 +36,7 @@ import com.mytechia.robobo.rob.BluetoothRobInterfaceModule;
 import com.mytechia.robobo.rob.IRob;
 import com.mytechia.robobo.rob.IRobInterfaceModule;
 import com.mytechia.robobo.rob.LEDsModeEnum;
+import com.mytechia.robobo.rob.comm.StreamProcessor;
 import com.mytechia.robobo.rob.movement.IRobMovementModule;
 import com.mytechia.robobo.rob.util.RoboboDeviceSelectionDialog;
 import com.mytechia.robobo.util.Color;
@@ -44,7 +47,7 @@ import java.util.TimerTask;
 /**
  * Created by luis on 3/8/16.
  */
-public class MainActivity extends Activity implements IFaceListener,ICameraListener,IClapListener {
+public class MainActivity extends Activity implements IFaceListener,ICameraListener,IClapListener,ISpeechRecognitionListener {
 
     private static final String TAG="MainActivity";
 
@@ -65,9 +68,13 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
     private IEmotionSoundModule emotionSoundModule;
     private ISoundDispatcherModule soundDispatcherModule;
     private IClapDetectionModule clapDetectionModule;
+    private ISpeechRecognitionModule speechRecognitionModule;
+    private ISpeechProductionModule speechProductionModule;
 
     private IRobInterfaceModule interfaceModule;
     private IRobMovementModule movementModule;
+
+
 
     private TextView textView = null;
     private SurfaceView surfaceView = null;
@@ -79,11 +86,22 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
     Timer sweepTimer = new Timer();
     Timer policeTimer = new Timer();
     Timer stopTimer = new Timer();
+    Timer speechTimer = new Timer();
+    Timer alarmTimer = new Timer();
+
+    TimerTask alarmTask;
+    TimerTask speechTask;
     TimerTask stopTask;
     TimerTask sweepTask;
     TimerTask policeTask;
     private boolean direction = false;
     private boolean lights = false;
+
+    private boolean active = false;
+    private boolean silentmode = false;
+    private boolean facedetection = true;
+    private boolean sounddetection = true;
+    private boolean movement = true;
 
     private long lastDetection = 0;
 
@@ -101,16 +119,16 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
         try {
             Log.d(TAG,"MARCA 0");
 
-            soundDispatcherModule=
-                    roboboManager.getModuleInstance(ISoundDispatcherModule.class);
+//            soundDispatcherModule=
+//                    roboboManager.getModuleInstance(ISoundDispatcherModule.class);
             emotionModule =
                     roboboManager.getModuleInstance(IEmotionModule.class);
             speechModule =
                     roboboManager.getModuleInstance(ISpeechProductionModule.class);
             emotionSoundModule=
                     roboboManager.getModuleInstance(IEmotionSoundModule.class);
-            clapDetectionModule=
-                    roboboManager.getModuleInstance(IClapDetectionModule.class);
+//            clapDetectionModule=
+//                    roboboManager.getModuleInstance(IClapDetectionModule.class);
             interfaceModule=
                     roboboManager.getModuleInstance(IRobInterfaceModule.class);
             cameraModule=
@@ -121,22 +139,29 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
                     roboboManager.getModuleInstance(IRobMovementModule.class);
             msgModule=
                     roboboManager.getModuleInstance(IMessagingModule.class);
+            speechRecognitionModule=
+                    roboboManager.getModuleInstance(ISpeechRecognitionModule.class);
+            speechProductionModule=
+                    roboboManager.getModuleInstance(ISpeechProductionModule.class);
 
         } catch (ModuleNotFoundException e) {
             e.printStackTrace();
         }
+        speechRecognitionModule.suscribe(this);
         Log.d(TAG,"MARCA 1");
         cameraModule.suscribe(this);
         Log.d(TAG,"MARCA 2");
         faceDetector.suscribe(this);
         Log.d(TAG,"MARCA 3");
-        clapDetectionModule.suscribe(this);
+//        clapDetectionModule.suscribe(this);
         Log.d(TAG,"MARCA 4");
 
 
         Log.d(TAG,"MARCA 5");
         iRob =interfaceModule.getRobInterface();
         Log.d(TAG,"MARCA 6");
+
+
 
         try {
             movementModule.moveTilt((short)5,90);
@@ -154,7 +179,7 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
 //        },5000);
 
 
-        soundDispatcherModule.runDispatcher();
+//        soundDispatcherModule.runDispatcher();
 
 
 
@@ -258,8 +283,7 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
 
 
 
-                sweepTask = new SweepTask();
-                sweepTimer.scheduleAtFixedRate(sweepTask,2000,5000);
+
 
 
 
@@ -299,15 +323,23 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
 
     @Override
     public void onFaceDetected(PointF faceCoords, float eyesDistance) {
-        if ((System.currentTimeMillis()-lastDetection)>10000) {
-            lastDetection = System.currentTimeMillis();
-            policeTask = new PoliceTask();
-            policeTimer.scheduleAtFixedRate(policeTask,2000,200);
-            emotionModule.setTemporalEmotion(Emotion.ANGRY,10000,Emotion.NORMAL);
-            stopTimer.schedule(new StopTask(),10000);
-            emotionSoundModule.playSound(IEmotionSoundModule.ALERT_SOUND);
-            //msgModule.sendMessage("FACE DETECTED", "lfllamas93@gmail.com", actualFrame.getBitmap());
-        }}
+        if (facedetection&&active) {
+            if ((System.currentTimeMillis() - lastDetection) > 10000) {
+                lastDetection = System.currentTimeMillis();
+
+                if (!silentmode) {
+                    policeTask = new PoliceTask();
+                    policeTimer.scheduleAtFixedRate(policeTask, 2000, 200);
+
+                    stopTimer.schedule(new StopTask(), 10000);
+                    emotionSoundModule.playSound(IEmotionSoundModule.ALERT_SOUND);
+                    alarmTimer.schedule(new AlarmTask(),1000);
+                }
+                emotionModule.setTemporalEmotion(Emotion.ANGRY, 10000, Emotion.NORMAL);
+                msgModule.sendMessage("FACE DETECTED", "lfllamas93@gmail.com", actualFrame.getBitmap());
+            }
+        }
+    }
 
     @Override
     public void onNewFrame(Frame frame) {
@@ -321,25 +353,116 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
 
     }
 
+    @Override
+    public void phraseRecognized(String phrase, Long timestamp) {
+        String status = "";
+        if (!active){
+        if (phrase.equals("rob activate now")) {
+            msgModule.sendMessage("Surveillance mode activated", "lfllamas93@gmail.com");
+
+            active = true;
+            speechProductionModule.sayText("Surveillance mode is now active",ISpeechProductionModule.PRIORITY_HIGH);
+            startSurveillance();
+
+        }
+
+        if (phrase.equals("rob switch silent mode now")) {
+            silentmode = !silentmode;
+            if (silentmode){
+                status = "active";
+            }else{
+                status = "disabled";
+            }
+            speechProductionModule.sayText("Silent mode is now "+status,ISpeechProductionModule.PRIORITY_HIGH);
+
+
+        }
+        if (phrase.equals("rob switch face detection now")) {
+            facedetection = !facedetection;
+            if (facedetection){
+                status = "active";
+            }else{
+                status = "disabled";
+            }
+            speechProductionModule.sayText("Face detection is now "+status,ISpeechProductionModule.PRIORITY_HIGH);
+
+        }
+        if (phrase.equals("rob switch sound detection now")) {
+
+            sounddetection = !sounddetection;
+            if (sounddetection){
+                status = "active";
+            }else{
+                status = "disabled";
+            }
+            speechProductionModule.sayText("Sound detection is now "+status,ISpeechProductionModule.PRIORITY_HIGH);
+
+
+        }
+        if (phrase.equals("rob switch movement now")) {
+            movement = !movement;
+            if (movement){
+                status = "active";
+            }else{
+                status = "disabled";
+            }
+            speechProductionModule.sayText("Movement is now "+status,ISpeechProductionModule.PRIORITY_HIGH);
+
+        }
+        }
+        else {
+            if (phrase.equals("rob deactivate now")) {
+                active = false;
+                speechProductionModule.sayText("Surveillance mode is now disabled",ISpeechProductionModule.PRIORITY_HIGH);
+                msgModule.sendMessage("Surveillance mode disabled", "lfllamas93@gmail.com");
+                sweepTimer.cancel();
+            }else{
+                msgModule.sendMessage(" ALARM! Tried to change configuration while active! ALARM! ", "lfllamas93@gmail.com");
+            }
+        }
+        speechRecognitionModule.pauseRecognition();
+        speechTask = new WaitForSpeechTask();
+        speechTimer.schedule(speechTask,3000);
+
+
+    }
+
+    @Override
+    public void onModuleStart() {
+        speechRecognitionModule.setGrammarSearch("voicecontrolsearch","voicecontrol.gram");
+
+    }
+
+    public void startSurveillance(){
+        if (movement&&!silentmode) {
+            sweepTask = new SweepTask();
+            sweepTimer=new Timer();
+            sweepTimer.scheduleAtFixedRate(sweepTask, 2000, 5000);
+        }
+
+    }
+
 
     class SweepTask extends TimerTask {
 
         @Override
         public void run() {
             Log.d(TAG,"SweepTask");
-            if (direction){
-                try {
-                    movementModule.movePan((short)5,120);
-                    direction = !direction;
-                } catch (InternalErrorException e) {
-                    e.printStackTrace();
-                }
-            }else{
-                try {
-                    movementModule.movePan((short)5,240);
-                    direction = !direction;
-                } catch (InternalErrorException e) {
-                    e.printStackTrace();
+            if (movement) {
+                if (direction) {
+                    try {
+                        movementModule.movePan((short) 5, 120);
+                        direction = !direction;
+                    } catch (InternalErrorException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    try {
+                        movementModule.movePan((short) 5, 240);
+                        direction = !direction;
+                    } catch (InternalErrorException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         }
@@ -429,6 +552,22 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
             } catch (InternalErrorException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    class WaitForSpeechTask extends TimerTask{
+
+        @Override
+        public void run() {
+            speechRecognitionModule.resumeRecognition();
+        }
+    }
+
+    class AlarmTask extends TimerTask{
+
+        @Override
+        public void run() {
+            emotionSoundModule.playSound(IEmotionSoundModule.ALARM_SOUND);
         }
     }
 

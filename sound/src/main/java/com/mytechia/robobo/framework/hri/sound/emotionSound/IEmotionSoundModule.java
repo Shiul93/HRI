@@ -14,5 +14,9 @@ public interface IEmotionSoundModule extends IModule {
     int ALARM_SOUND = 4;
     int RIMSHOT_SOUND = 5;
 
+    /**
+     * Plays a prefixed emotion sound
+     * @param Sound  The sound to be played
+     */
     void playSound(int Sound);
 }
