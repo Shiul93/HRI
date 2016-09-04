@@ -163,8 +163,10 @@ public class MainActivity extends Activity implements IFaceListener,ICameraListe
 
 
 
+
+
         try {
-            movementModule.moveTilt((short)5,90);
+            movementModule.moveTilt((short)5,95);
         } catch (InternalErrorException e) {
             e.printStackTrace();
         }

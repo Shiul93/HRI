@@ -9,74 +9,75 @@
 \contentsline {section}{\numberline {1.4}Herramientas utilizadas}{7}
 \contentsline {chapter}{\numberline {2}Fundamentos te\IeC {\'o}ricos}{9}
 \contentsline {section}{\numberline {2.1}ROBOBO! Framework}{9}
-\contentsline {subsection}{\numberline {2.1.1}Android}{13}
-\contentsline {subsection}{\numberline {2.1.2}ROS}{14}
-\contentsline {chapter}{\numberline {3}Antecedentes}{17}
-\contentsline {section}{\numberline {3.1}Interacci\IeC {\'o}n humano robot}{17}
-\contentsline {subsection}{\numberline {3.1.1}HRI en la industria}{18}
-\contentsline {subsection}{\numberline {3.1.2}HRI en robots asistenciales}{19}
-\contentsline {subsection}{\numberline {3.1.3}HRI en robots de entretenimiento}{21}
-\contentsline {subsection}{\numberline {3.1.4}HRI en robots educativos}{24}
-\contentsline {subsection}{\numberline {3.1.5}Conclusi\IeC {\'o}n}{27}
-\contentsline {chapter}{\numberline {4}Fundamentos tecnol\IeC {\'o}gicos}{29}
-\contentsline {subsection}{\numberline {4.0.1}Sphinx}{29}
-\contentsline {subsection}{\numberline {4.0.2}TarsosDSP}{29}
-\contentsline {subsection}{\numberline {4.0.3}OpenCV}{30}
-\contentsline {subsection}{\numberline {4.0.4}Gmail Background}{30}
-\contentsline {chapter}{\numberline {5}Desarrollo}{31}
-\contentsline {section}{\numberline {5.1}Modelo conceptual para el subsistema de interacci\IeC {\'o}n}{31}
-\contentsline {section}{\numberline {5.2}Arquitectura Global}{33}
-\contentsline {subsection}{\numberline {5.2.1}Estructura de un m\IeC {\'o}dulo}{35}
-\contentsline {section}{\numberline {5.3}Metodolog\IeC {\'\i }a}{35}
-\contentsline {subsection}{\numberline {5.3.1}Primera iteraci\IeC {\'o}n}{35}
-\contentsline {subsection}{\numberline {5.3.2}Segunda iteraci\IeC {\'o}n}{36}
-\contentsline {subsection}{\numberline {5.3.3}Tercera iteraci\IeC {\'o}n}{36}
-\contentsline {subsection}{\numberline {5.3.4}Cuarta iteraci\IeC {\'o}n}{37}
-\contentsline {section}{\numberline {5.4}Librer\IeC {\'\i }as de interacci\IeC {\'o}n}{38}
-\contentsline {subsection}{\numberline {5.4.1}Paquete Speech}{38}
-\contentsline {subsubsection}{\numberline {5.4.1.1}M\IeC {\'o}dulo recognition}{38}
-\contentsline {subsubsection}{\numberline {5.4.1.2}M\IeC {\'o}dulo Production}{41}
-\contentsline {subsection}{\numberline {5.4.2}Paquete Touch}{44}
-\contentsline {subsubsection}{\numberline {5.4.2.1}M\IeC {\'o}dulo Touch}{44}
-\contentsline {subsection}{\numberline {5.4.3}Paquete Sound}{46}
-\contentsline {subsubsection}{\numberline {5.4.3.1}M\IeC {\'o}dulo Sound Dispatcher}{46}
-\contentsline {subsubsection}{\numberline {5.4.3.2}M\IeC {\'o}dulo Pitch Detection}{48}
-\contentsline {subsubsection}{\numberline {5.4.3.3}M\IeC {\'o}dulo Note Detection}{49}
-\contentsline {subsubsection}{\numberline {5.4.3.4}M\IeC {\'o}dulo Clap Detection}{51}
-\contentsline {subsubsection}{\numberline {5.4.3.5}M\IeC {\'o}dulo NoteGenerator}{52}
-\contentsline {subsubsection}{\numberline {5.4.3.6}M\IeC {\'o}dulo EmotionSound}{53}
-\contentsline {subsection}{\numberline {5.4.4}Paquete Vision}{55}
-\contentsline {subsubsection}{\numberline {5.4.4.1}M\IeC {\'o}dulo Basic Camera}{55}
-\contentsline {subsubsection}{\numberline {5.4.4.2}M\IeC {\'o}dulo Face Detection}{57}
-\contentsline {subsubsection}{\numberline {5.4.4.3}M\IeC {\'o}dulo ColorDetector}{58}
-\contentsline {subsection}{\numberline {5.4.5}Paquete Messaging}{59}
-\contentsline {subsubsection}{\numberline {5.4.5.1}M\IeC {\'o}dulo email}{59}
-\contentsline {chapter}{\numberline {6}Resultados y pruebas}{63}
-\contentsline {section}{\numberline {6.1}Ejemplos de uso}{63}
-\contentsline {subsection}{\numberline {6.1.1}Simon dice m\IeC {\'u}sical}{63}
-\contentsline {subsection}{\numberline {6.1.2}ROBOBO Vigilante}{65}
-\contentsline {subsection}{\numberline {6.1.3}ROBOBO Mascota}{67}
-\contentsline {section}{\numberline {6.2}Problemas conocidos}{67}
-\contentsline {chapter}{\numberline {7}Conclusiones}{69}
-\contentsline {section}{\numberline {7.1}Trabajo Futuro}{69}
-\contentsline {chapter}{\numberline {A}Manual de uso}{71}
-\contentsline {section}{\numberline {A.1}Carga de m\IeC {\'o}dulos}{71}
-\contentsline {section}{\numberline {A.2}Librer\IeC {\'\i }a Speech}{72}
-\contentsline {subsection}{\numberline {A.2.1}M\IeC {\'o}dulo Production}{72}
-\contentsline {subsection}{\numberline {A.2.2}M\IeC {\'o}dulo Recognition}{72}
-\contentsline {section}{\numberline {A.3}Librer\IeC {\'\i }a Touch}{74}
-\contentsline {subsection}{\numberline {A.3.1}M\IeC {\'o}dulo Touch}{74}
-\contentsline {section}{\numberline {A.4}Librer\IeC {\'\i }a Vision}{74}
-\contentsline {subsection}{\numberline {A.4.1}M\IeC {\'o}dulo BasicCamera}{74}
-\contentsline {subsection}{\numberline {A.4.2}M\IeC {\'o}dulo FaceDetection}{75}
-\contentsline {subsection}{\numberline {A.4.3}M\IeC {\'o}dulo ColorDetection}{75}
-\contentsline {section}{\numberline {A.5}Librer\IeC {\'\i }a Sound}{76}
-\contentsline {subsection}{\numberline {A.5.1}M\IeC {\'o}dulo SoundDispatcher}{76}
-\contentsline {subsection}{\numberline {A.5.2}M\IeC {\'o}dulo PitchDetection }{76}
-\contentsline {subsection}{\numberline {A.5.3}M\IeC {\'o}dulo ClapDetection}{77}
-\contentsline {subsection}{\numberline {A.5.4}M\IeC {\'o}dulo NoteDetection}{77}
-\contentsline {subsection}{\numberline {A.5.5}M\IeC {\'o}dulo NoteGenerator}{77}
-\contentsline {subsection}{\numberline {A.5.6}M\IeC {\'o}dulo EmotionSound}{78}
-\contentsline {section}{\numberline {A.6}Librer\IeC {\'\i }a Messaging}{78}
-\contentsline {subsection}{\numberline {A.6.1}M\IeC {\'o}dulo Messaging}{78}
-\contentsline {chapter}{Bibliograf\'{\i }a}{79}
+\contentsline {subsection}{\numberline {2.1.1}Android}{15}
+\contentsline {subsection}{\numberline {2.1.2}ROS}{16}
+\contentsline {chapter}{\numberline {3}Antecedentes}{19}
+\contentsline {section}{\numberline {3.1}Interacci\IeC {\'o}n humano robot}{19}
+\contentsline {subsection}{\numberline {3.1.1}HRI en la industria}{20}
+\contentsline {subsection}{\numberline {3.1.2}HRI en robots asistenciales}{21}
+\contentsline {subsection}{\numberline {3.1.3}HRI en robots de entretenimiento}{23}
+\contentsline {subsection}{\numberline {3.1.4}HRI en robots educativos}{26}
+\contentsline {subsection}{\numberline {3.1.5}Conclusi\IeC {\'o}n}{29}
+\contentsline {chapter}{\numberline {4}Fundamentos tecnol\IeC {\'o}gicos}{31}
+\contentsline {section}{\numberline {4.1}Sphinx}{31}
+\contentsline {section}{\numberline {4.2}TarsosDSP}{31}
+\contentsline {section}{\numberline {4.3}OpenCV}{32}
+\contentsline {section}{\numberline {4.4}Gmail Background}{32}
+\contentsline {chapter}{\numberline {5}Desarrollo}{33}
+\contentsline {section}{\numberline {5.1}Capacidades de interacci\IeC {\'o}n del ROBOBO}{33}
+\contentsline {section}{\numberline {5.2}Modelo conceptual para el subsistema de interacci\IeC {\'o}n}{34}
+\contentsline {section}{\numberline {5.3}Arquitectura Global}{37}
+\contentsline {subsection}{\numberline {5.3.1}Estructura de un m\IeC {\'o}dulo}{39}
+\contentsline {section}{\numberline {5.4}Metodolog\IeC {\'\i }a}{39}
+\contentsline {subsection}{\numberline {5.4.1}Primera iteraci\IeC {\'o}n}{39}
+\contentsline {subsection}{\numberline {5.4.2}Segunda iteraci\IeC {\'o}n}{40}
+\contentsline {subsection}{\numberline {5.4.3}Tercera iteraci\IeC {\'o}n}{40}
+\contentsline {subsection}{\numberline {5.4.4}Cuarta iteraci\IeC {\'o}n}{41}
+\contentsline {section}{\numberline {5.5}Librer\IeC {\'\i }as de interacci\IeC {\'o}n}{42}
+\contentsline {subsection}{\numberline {5.5.1}Paquete Speech}{42}
+\contentsline {subsubsection}{\numberline {5.5.1.1}M\IeC {\'o}dulo recognition}{42}
+\contentsline {subsubsection}{\numberline {5.5.1.2}M\IeC {\'o}dulo Production}{45}
+\contentsline {subsection}{\numberline {5.5.2}Paquete Touch}{48}
+\contentsline {subsubsection}{\numberline {5.5.2.1}M\IeC {\'o}dulo Touch}{48}
+\contentsline {subsection}{\numberline {5.5.3}Paquete Sound}{50}
+\contentsline {subsubsection}{\numberline {5.5.3.1}M\IeC {\'o}dulo Sound Dispatcher}{50}
+\contentsline {subsubsection}{\numberline {5.5.3.2}M\IeC {\'o}dulo Pitch Detection}{52}
+\contentsline {subsubsection}{\numberline {5.5.3.3}M\IeC {\'o}dulo Note Detection}{53}
+\contentsline {subsubsection}{\numberline {5.5.3.4}M\IeC {\'o}dulo Clap Detection}{55}
+\contentsline {subsubsection}{\numberline {5.5.3.5}M\IeC {\'o}dulo NoteGenerator}{56}
+\contentsline {subsubsection}{\numberline {5.5.3.6}M\IeC {\'o}dulo EmotionSound}{57}
+\contentsline {subsection}{\numberline {5.5.4}Paquete Vision}{59}
+\contentsline {subsubsection}{\numberline {5.5.4.1}M\IeC {\'o}dulo Basic Camera}{59}
+\contentsline {subsubsection}{\numberline {5.5.4.2}M\IeC {\'o}dulo Face Detection}{61}
+\contentsline {subsubsection}{\numberline {5.5.4.3}M\IeC {\'o}dulo ColorDetector}{62}
+\contentsline {subsection}{\numberline {5.5.5}Paquete Messaging}{66}
+\contentsline {subsubsection}{\numberline {5.5.5.1}M\IeC {\'o}dulo email}{66}
+\contentsline {chapter}{\numberline {6}Resultados y pruebas}{69}
+\contentsline {section}{\numberline {6.1}Ejemplos de uso}{69}
+\contentsline {subsection}{\numberline {6.1.1}Simon dice musical}{69}
+\contentsline {subsection}{\numberline {6.1.2}ROBOBO Vigilante}{74}
+\contentsline {subsection}{\numberline {6.1.3}ROBOBO Mascota}{77}
+\contentsline {section}{\numberline {6.2}Problemas conocidos}{77}
+\contentsline {chapter}{\numberline {7}Conclusiones}{79}
+\contentsline {section}{\numberline {7.1}Trabajo Futuro}{79}
+\contentsline {chapter}{\numberline {A}Manual de uso}{81}
+\contentsline {section}{\numberline {A.1}Carga de m\IeC {\'o}dulos}{81}
+\contentsline {section}{\numberline {A.2}Librer\IeC {\'\i }a Speech}{82}
+\contentsline {subsection}{\numberline {A.2.1}M\IeC {\'o}dulo Production}{82}
+\contentsline {subsection}{\numberline {A.2.2}M\IeC {\'o}dulo Recognition}{82}
+\contentsline {section}{\numberline {A.3}Librer\IeC {\'\i }a Touch}{84}
+\contentsline {subsection}{\numberline {A.3.1}M\IeC {\'o}dulo Touch}{84}
+\contentsline {section}{\numberline {A.4}Librer\IeC {\'\i }a Vision}{84}
+\contentsline {subsection}{\numberline {A.4.1}M\IeC {\'o}dulo BasicCamera}{84}
+\contentsline {subsection}{\numberline {A.4.2}M\IeC {\'o}dulo FaceDetection}{85}
+\contentsline {subsection}{\numberline {A.4.3}M\IeC {\'o}dulo ColorDetection}{85}
+\contentsline {section}{\numberline {A.5}Librer\IeC {\'\i }a Sound}{86}
+\contentsline {subsection}{\numberline {A.5.1}M\IeC {\'o}dulo SoundDispatcher}{86}
+\contentsline {subsection}{\numberline {A.5.2}M\IeC {\'o}dulo PitchDetection }{86}
+\contentsline {subsection}{\numberline {A.5.3}M\IeC {\'o}dulo ClapDetection}{87}
+\contentsline {subsection}{\numberline {A.5.4}M\IeC {\'o}dulo NoteDetection}{87}
+\contentsline {subsection}{\numberline {A.5.5}M\IeC {\'o}dulo NoteGenerator}{87}
+\contentsline {subsection}{\numberline {A.5.6}M\IeC {\'o}dulo EmotionSound}{88}
+\contentsline {section}{\numberline {A.6}Librer\IeC {\'\i }a Messaging}{88}
+\contentsline {subsection}{\numberline {A.6.1}M\IeC {\'o}dulo Messaging}{88}
+\contentsline {chapter}{Bibliograf\'{\i }a}{89}

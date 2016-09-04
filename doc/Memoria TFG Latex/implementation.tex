@@ -8,13 +8,52 @@
 % Objetivo: Exponer las partes relevantes de la implementación                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %TODO Introducción al capitulo
+\section{Capacidades de interacción del ROBOBO}
+\label{sec:capacidades-interactivas}
+
+El ROBOBO siendo una combinación de Smartphone (OBO) y base motorizada (ROB) presenta un gran potencial de formas de interacción.
+
+El OBO, pone a nuestra disposición todas las características de un teléfono inteligente moderno que, diseñado específicamente para su uso por humanos, ofrece múltiples posibilidades y capacidades que facilitan el desarrollo de un sistema de interacción.
+\begin{itemize}
+	\item \textbf{Gran capacidad de procesado de datos}, que nos permite procesar, por ejemplo, las imágenes capturadas por la cámara para desarrollar métodos de interacción complejos, como detección de caras o colores
+	\item Variedad de sensores:
+	\begin{itemize}
+		\item \textbf{Acelerómetro, giroscopio y magnetómetro}, permiten al robot tener conciencia de su posición espacial
+		\item \textbf{Sensores de luz ambiente}, que permiten reaccionar a los cambios lumínicos del entorno
+		\item \textbf{Micrófono}, que permite escuchar su entorno y actuar en consecuencia
+		\item \textbf{Cámara frontal y trasera}, que permiten capturar imágenes y procesarlas posteriomente
+	\end{itemize}
+	\item \textbf{Pantalla táctil de alta resolución}, que permite interacción en dos direcciones, ya sea mediante gestos táctiles como mediante gráficos en la pantalla
+	\item \textbf{Conexión a internet}, que permite al robot comunicarse a través de este medio.
+	\item \textbf{Altavoces}, permiten interacción mediante sonidos, música y habla.
+\end{itemize}
+
+
+El ROB, cuyo esquema de sensores y actuadores podemos ver en la figura \ref{fig:rob-schema}, proporciona multitud de posibilidades de interacción ya sea mediante sus motores, por ejemplo mediante bailes y gestos, como utilizando los 9 leds RGB que se encuentran a lo largo del chasis para expresar diferentes cosas.
+
+Combinando ambas partes se obtiene un robot con un gran potencial para establecer interacción con personas.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/rob_schema.png}
+	\caption{Esquema de sensores y actuadores del ROB}
+	\label{fig:rob-schema}
+\end{figure}
+
+%Gervasio: Las secciones 5.1 y 5.2 las veo bastante bien, pero me falta un analisis del Robobo en terminas de sus capadiaddes de interacción. Es decir, en la 5.1 entras ya muy a saco, ya vas al granto, queremos esto, estoy y esto.
+%Creo que quedaría bien añadir una sección anterior en la que presentas al ROBOBO (como en la 2) pero en términos de sus capacidades de interacción. Por ejemplo (pero con más chicha):
+%- En el OBO, gracias a que es un Smartphone, tenemos una gran variedad de hardware pensado para interactuar con personas, por ejemplo la pantalla táctil que tal y cual, altavoces para XXX, cámara… además tenemos una gran capacida de preocsamiento, etc.
+%- En el ROB tenemos difrentes capacidades de movimiento para interactuar con “gestos” del robot, bailes, etc., LEDs para indicar cosas, etc.
+%A partir de ahí vas a la 5.1, donde dices, “Ok, con todo lo anterior vamos a hacer un sistema de interacción con estos ‘sentidos’, siguiendo los ejemplos”.
 
 \section{Modelo conceptual para el subsistema de interacción}
  \label{sec:modelo-conceptual}
  
- La plataforma ROBOBO, cuenta con características que permiten realizar diversas maneras de interacción, el hecho de estar basado en un smartphone, pone todas las capacidades del mismo a disposición a la hora de interactuar con los usuarios. Partiendo del hardware con el que se cuenta, base motorizada \textit{ROB} y smartphone \textit{OBO} , se han definido, en una analogía a los sentidos, una serie de paquetes para dotar al ROBOBO de diversas funcionalidades de interacción.
+ %La plataforma ROBOBO, cuenta con características que permiten realizar diversas maneras de interacción, el hecho de estar basado en un smartphone, pone todas las capacidades del mismo a disposición a la hora de interactuar con los usuarios. 
  
- El primero de estos paquetes sería el paquete de habla, que en la sección anterior se pudo ver su aplicación en robots como Nao, Dash y Dot. Siendo el habla, probablemente, la principal forma de interacción que se da entre los humanos, parece lógico que, teniendo la capacidad de proceso de un smartphone moderno, dotar al robot ya no solo de la capacidad de producir habla, sino de entender texto hablado es un concepto interesante. Este paquete daría al robot la posibilidad de comunicación bidireccional con los humanos, además de darle al robot cierta personalidad más \enquote{orgánica} , haciéndolo más atractivo, por ejemplo, a los niños.
+ Partiendo de las características expuestas en el punto anterior y basándose en los ejemplos de interacción mostrados en el capítulo anterior se han definido, en una analogía a los sentidos, una serie de paquetes para dotar al ROBOBO de diversas funcionalidades de interacción.
+ 
+ El primero de estos paquetes sería el \enquote{sentido} de habla, que en la sección anterior se pudo ver su aplicación en robots como Nao, Dash y Dot. Siendo el habla, probablemente, la principal forma de interacción que se da entre los humanos, parece lógico que, teniendo la capacidad de proceso de un smartphone moderno, dotar al robot ya no solo de la capacidad de producir habla, sino de entender texto hablado es un concepto interesante. Este paquete daría al robot la posibilidad de comunicación bidireccional con los humanos, además de darle al robot cierta personalidad más \enquote{orgánica} , haciéndolo más atractivo, por ejemplo, a los niños.
  
  El segundo, de forma análoga al sentido del tacto, teniendo una \enquote{piel artificial} cómo es la pantalla táctil del teléfono, dar la capacidad al robot de sentir toques y caricias parece una idea interesante a la hora de llevar una interacción cercana con el robot, este tipo de interacción mediante toques en la pantalla táctil es similar al del SmartPet, y de una manera más general, al sentido del tacto del robot Paro o el Aibo.
  
@@ -28,12 +67,12 @@
 
 \section{Arquitectura Global}
 \label{sec:globalArchitecture}
-El sistema de interacción humana del sistema ROBOBO fue desarrollado de una forma modular, de manera que las diferentes funcionalidades puedan ser utilizadas de manera separada.
+El sistema de interacción humana del sistema ROBOBO fue desarrollado de una forma modular, de manera que las diferentes funcionalidades puedan ser utilizadas de forma separada.
 
-La gestión de los módulos la realiza el Framework Robobo, que proporciona una interfaz común que debe ser implementada
+La gestión de los módulos la realiza el ROBOBO! Framework(sección \ref{sec:robobo-framework}), que proporciona una interfaz común que debe ser implementada por todos ellos.
 
 
-Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec:modelo-conceptual} se ha implementado en forma de módulo Android, y cada funcionalidad especifica ha sido integrada en módulos que implementan IModule, interfaz común para los módulos del ROBOBO , para poder ser manejados por el ROBOBO! Framework\cite{RoboboFramework}.
+Cada \enquote{sentido} de los elaborados conceptualmente en la sección \ref{sec:modelo-conceptual} se ha implementado en forma de módulo librería de Android, y cada funcionalidad especifica ha sido integrada en módulos que implementan IModule, interfaz común para los módulos del ROBOBO , para poder ser manejados por el ROBOBO! Framework\cite{RoboboFramework}.
 
 \begin{figure}
 	\centering
@@ -161,6 +200,7 @@ A continuación se hablará sobre los detalles de implementación de las diferen
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Speech}
+\label{subsec:speech-package}
 Este subsistema gestiona todas las labores que tienen que ver con la generación o detención del habla. En su interior encapsula dos paquetes diferentes (figura \ref{fig:speech-package}) , Production y Recognition, que contienen respectivamente los módulos de producción y reconocimiento del habla.
 \begin{figure}
 	\centering
@@ -250,20 +290,7 @@ Dado que el inicio del reconocedor de voz se realiza de manera asíncrona, es ne
 	\label{fig:speech-production-module}
 \end{figure}
 
-\begin{lstlisting}[language=Java][frame=single]
 
-public interface ISpeechProductionModule extends IModule {
-    Integer PRIORITY_HIGH = 1;
-    Integer PRIORITY_LOW = 0;
-    void sayText(String text, Integer priority);
-    void setLocale(Locale newloc);
-    void selectVoice(String name) throws VoiceNotFoundException;
-    void selectTtsVoice(ITtsVoice voice) throws VoiceNotFoundException;
-    Collection<ITtsVoice> getVoices();
-    Collection<String> getStringVoices();
-}
-
-\end{lstlisting}
 
 
 El módulo production(figura \ref{fig:speech-production-module}) permite al usuario producir voz a partir de texto de manera simple.
@@ -289,6 +316,21 @@ La implementación de la interfaz se ha realizado con las librerías del propio 
 \subsubsection*{Ejemplos de desarrollo}
 
 Para la prueba de los módulos de voz se realizaron dos ejemplos básicos, una aplicación simple en la que el usuario introduce un texto y el teléfono lo pronuncia y un sistema de control mediante voz en el que el usuario le daba ordenes básicas al Robobo mediante la voz y este, al terminar la frase, ejecutaba los movimientos indicados.
+A continuación se puede observar una muestra del log de la aplicación de control por voz:
+
+\begin{verbatim}
+D/SpeechRecognitionModule: Recognized part rob
+D/SpeechRecognitionModule: Recognized part rob front
+D/SpeechRecognitionModule: Recognized part rob front now
+I/SpeechRecognizer: Stop recognition
+D/SpeechRecognitionModule: Recognized rob front now Prob: -4730
+D/SpeechROB: rob front now
+D/ROB-INTERFACE: Move forwards: 50 - 360
+I/SpeechRecognizer: Start recognition "MovSearch"
+D/SpeechRecognizer: Starting decoding
+\end{verbatim}
+
+En este log se puede ver cómo el reconocedor detecta las tres partes de la frase, detiene el reconocimiento al detectar una frase válida en la gramática, se ejecuta un movimiento a través del módulo \textit{Rob-Interface} y se reanuda la escucha.
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Touch}
@@ -449,7 +491,30 @@ La implementación de este módulo se ha realizado mediante la clase \textit{Med
 
 \subsubsection*{Ejemplos de desarrollo}
 
-Para probar la detección de notas musicales se desarrolló un control mediante música en el que el usuario ejecutaba una secuencia de notas musicales en una escala, cada una correspondiendo a una acción de movimiento, y al recibir la nota de cierre de secuencia, el ROBOBO ejecutaba los movimientos indicados.
+Para probar la detección de notas musicales se desarrolló un control mediante música en el que el usuario ejecutaba una secuencia de notas musicales en una escala, cada una correspondiendo a una acción de movimiento, y al recibir la nota de cierre de secuencia, el ROBOBO ejecutaba los movimientos indicados. A continuación se muestra un ejemplo de log de la ejecución:
+
+\begin{verbatim}
+D/MusicActivity: Note: A
+D/MusicActivity: recording
+D/MusicActivity: Note: As
+D/MusicActivity: Note: D
+D/MusicActivity: adding command
+D/MusicActivity: Note: Ds
+D/MusicActivity: Note: E
+D/MusicActivity: adding command
+D/MusicActivity: Note: G
+D/MusicActivity: adding command
+D/MusicActivity: Note: A
+D/MusicActivity: executing
+D/MusicActivity: Executing command $NoteCommand@14bb8f87
+D/ROB-INTERFACE: Move backwards: 60 - 861
+D/MusicActivity: Executing command $NoteCommand@3016eb4
+D/ROB-INTERFACE: Turn left: 60 - 1816
+D/MusicActivity: Executing command $NoteCommand@a8f2add
+D/ROB-INTERFACE: Turn right: 60 - 1816
+\end{verbatim} 
+
+Se puede ver como la nota A(La) abre la secuencia de comandos, As(La sostenido) y Ds(Re sostenido) son ignorados al no estar en la escala definida (A, C, D, E, G), son añadidos tres comandos de movimiento (Corespondientes a las notas D(Re), E(Mi) y G(Sol)) y la nota A cierra la secuencia de comandos que serán ejecutados a través de la \textit{Rob-Interface}.
 
 
 
@@ -518,9 +583,48 @@ Para realizar la implementación de este módulo se ha empleado la librería Ope
 
 \subsubsection*{Ejemplos de desarrollo}
 
-Se desarrolló una aplicación que podría considerarse el primer prototipo del ejemplo \textit{ROBOBO Vigilante}(sección \ref{subsec:robobo-vigilante}) que cuando detectaba una cara en la imagen capturada por la cámara mandaba un mensaje por correo electrónico al usuario adjuntando la imagen.
-Para probar el módulo de detección de color se programó una pequeña aplicación que cambiaba el color de fondo de la pantalla acorde al color detectado por el módulo.
+Se desarrolló una aplicación que podría considerarse el primer prototipo del ejemplo \textit{ROBOBO Vigilante}(sección \ref{subsec:robobo-vigilante}) que cuando detectaba una cara en la imagen capturada por la cámara mandaba un mensaje por correo electrónico al usuario adjuntando la imagen, se puede ver un ejemplo de este mensaje en la figura \ref{fig:mail-example}.
+Para probar el módulo de detección de color se programó una pequeña aplicación que cambiaba el color de fondo de la pantalla acorde al color detectado por el módulo(figuras \ref{fig:blue_color},\ref{fig:cyan_color},\ref{fig:red_color},\ref{fig:green_color}).
 
+\begin{figure}
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{imagenes/color_detection_blue.png}
+\caption{Color azul detectado}
+\label{fig:blue_color}
+
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{imagenes/color_detection_cyan.png}
+
+\caption{Color cían detectado}
+\label{fig:cyan_color}
+
+\end{minipage}
+\end{figure}
+
+\begin{figure}
+\centering
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{imagenes/color_detection_red.png}
+\caption{Color rojo detectado}
+\label{fig:red_color}
+
+\end{minipage}\hfill
+\begin{minipage}{0.45\textwidth}
+\centering
+\includegraphics[width=1\linewidth]{imagenes/color_detection_green.png}
+
+\caption{Color verde detectado}
+\label{fig:green_color}
+
+\end{minipage}
+\end{figure}
+
+\newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Messaging}
 El subsistema Messaging aglomera las diferentes opciones de comunicación por mensajería de texto.
@@ -536,14 +640,19 @@ El subsistema Messaging aglomera las diferentes opciones de comunicación por me
 El módulo Email(figura \ref{fig:email-module}) permite al usuario la comunicación mediante correo electrónico, pudiendo mandar tanto texto como imágenes, por ejemplo, las capturadas con el módulo \textit{BasicCamera}.
 
 \paragraph*{GmailBackground\\}
-Para implementar el módulo, se ha empleado la librería GmailBackGround \cite{gmailbg} la cual se presento en la sección \ref{subsec:gmail-background} de este trabajo , que permite el envío de mensajes de correo electrónico con una cuenta de Gmail. El módulo se encuentra en la clase \textit{GmailBackgroundMessagingModule}.
-\newpage
+Para implementar el módulo, se ha empleado la librería GmailBackGround \cite{gmailbg} la cual se presentó en la sección \ref{subsec:gmail-background} de este trabajo , que permite el envío de mensajes de correo electrónico con una cuenta de Gmail. El módulo se encuentra en la clase \textit{GmailBackgroundMessagingModule}.
+
 
 \subsubsection*{Ejemplos de desarrollo}
 
 Se aprovechó la aplicación de prueba comentada en la sección anterior para comprobar el correcto funcionamiento del módulo de mensajería.
 
-
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/mail_example.png}
+	\caption{Ejemplo de correo electrónico enviado}
+	\label{fig:mail-example}
+\end{figure}
 
 
 

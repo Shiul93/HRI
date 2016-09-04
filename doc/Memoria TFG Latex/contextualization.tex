@@ -4,7 +4,7 @@
 
 
 
-\lettrine{E}{n} este capítulo se introducen los fundamentos teóricos sobre los que se realizará el trabajo, en concreto acerca del ROBOBO! Framework, un framework de desarrollo creado específicamente para el ROBOBO.
+\lettrine{E}{n} este capítulo se introduce la base teórica sobre los que la se desarrollará el trabajo, en concreto acerca del ROBOBO! Framework, un framework de desarrollo creado específicamente para el ROBOBO.
 %Este capítulo debería pasar a ser "Fundamentos teóricos o Conceptos previos" y debería incluir una descripción del ROBOBO Framework, qué usa (Android, ROS, etc)
 
 
@@ -12,18 +12,33 @@
 \section{ROBOBO! Framework}
 \label{sec:robobo-framework}
 
+
 \begin{figure}
 	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/robobo_framework.png}
+	\includegraphics[width=0.7\linewidth]{imagenes/rob_obo.JPG}
+	\caption{ROBOBO completo,Base robotizada(ROB) + smartphone(OBO)}
+	\label{fig:rob_obo}
+\end{figure}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.7\linewidth]{imagenes/robobo_framework_2.png}
 	\caption{Estructura de ROBOBO! framework dentro del entorno ROBOBO}
 	\label{fig:robobo_framework_estructure}
 \end{figure}
-El ROBOBO! Framework es el marco de trabajo empleado para desarrollar el software para el ROBOBO y cuyas funcionalidades se expandirán mediante los módulos de interacción que se desarrollarán en este trabajo. 
+
+
+
+
+El ROBOBO! Framework es el marco de trabajo empleado para desarrollar el software para el ROBOBO, formado por la base robotizada ROB y un smartphone OBO(figura \ref{fig:rob_obo}) y cuyas funcionalidades se expandirán mediante los módulos de interacción que se desarrollarán en este trabajo. 
+
 El framework está enfocado al desarrollo de aplicaciones Android, sistema operativo del que se hablará en la sección \ref{subsec:android}, mediante el lenguaje de programación Java.
  
 En la figura \ref{fig:robobo_framework_estructure} se puede ver como se estructura el sistema ROBOBO y cual es el rol del framework dentro del mismo.
 
 La \textit{ROBOBO! Custom App}, de la figura, representa la aplicación final que el usuario instalará en su teléfono móvil y está construida sobre el framework, utilizando los diferentes módulos que este ofrece.
+
+
 
 Dentro del framework se pueden encontrar diferentes módulos que proporcionan funcionalidades para el desarrollo de aplicaciones. Dos de ellos resultan especialmente importantes:
 
@@ -64,6 +79,16 @@ Enviar comandos al ROB:
 	\caption{Clase IRob}
 	\label{fig:irob}
 \end{figure}
+
+
+En la base ROB se encuentra un software escrito en C, que representa el firmware de ROB y se encarga de tres tareas diferentes:
+\begin{itemize}
+	\item Gestionar la comunicación (vía Bluetooth) con el Smartphone a través de la obo-interface. Esta comunicación se hace a través de un protocolo binario muy reducido que permite al smartphone enviar comandos al ROB, que este ejecuta en cuanto los recibe. Además, el ROB envía periódicamente (con una periodicidad programada por el OBO) información de los sensores y dispositivos al OBO, para que desde el smartphone se pueda conocer, en tiempo real, el estado del ROB. 
+	\item Controlar los diferentes dispositivos hardware de los que dispone: sensores infrarrojos, motores y luces LED. 
+	\item Ejecutar una serie de módulos de control para la detección de caídas o impactos contra objetos.
+
+\end{itemize}
+
 Existen módulos para facilitar el uso del robot y evitar tener que usar la clase IRob, un ejemplo es el \textit{rob-movement-module}(figura \ref{fig:irob-movement}) que proporciona una interfaz de alto nivel para manejar los movimientos del robot.
 
 
@@ -78,21 +103,14 @@ Existen módulos para facilitar el uso del robot y evitar tener que usar la clas
 
 
 
-En la base ROB se encuentra un software escrito en C, que representa el firmware de ROB y se encarga de tres tareas diferentes:
-\begin{itemize}
-	\item Gestionar la comunicación (vía Bluetooth) con el Smartphone a través de la rob-interface. Esta comunicación se hace a través de un protocolo binario muy reducido que permite al smartphone enviar comandos al ROB, que esté ejecuta en cuanto los recibe. Además, el ROB envía periódicamente (con una periodicidad programada por el OBO) información de los sensores y dispositivos al OBO, para que desde el smartphone se pueda conocer, en tiempo real, el estado del ROB. 
-	\item Controlar los diferentes dispositivos hardware de los que dispone: sensores infrarrojos, motores y luces LED. 
-	\item Ejecutar una serie de módulos de control para la detección de caídas o impactos contra objetos.
 
-\end{itemize}
 
 
 %En el ROB se encuentra la \textit{obo-interface}, cuya finalidad es mantener la comunicación con el smartphone, y una serie de módulos programados en el firmware de la plataforma como la odometría y la detección de caídas.
 %El ROBOBO! Framework es el framework de desarrollo usado para desarrollar aplicaciones para el ROBOBO en terminales móviles Android. Está diseñado de manera modular, de forma que facilita la extensión del mismo con nuevos módulos. Está publicado con una licencia libre LGPL v3 en Bitbucket\cite{RoboboFramework}.
 %Ofrece el módulo \textit{rob-interface-module}, que permite la comunicación entre la plataforma robotizada (denominada ROB, figura \ref{fig:robobo_2_0}) y el smartphone (denominado OBO en el sistema) mediante el protocolo Bluetooth. También proporciona el módulo \textit{ros-module} que sirve de interfaz entre el robot y ROS \cite{Ros}.
-
-El ROBOBO! Framework sigue una filosofía modular, para ello proporciona una interfaz común, \textit{IModule}(figura \ref{fig:imodule}), para los módulos que permite al framework gestionar el arranque y la finalización de los mismos
-
+\paragraph*{ }
+A la hora de desarrollar nuevas funcionalidades el ROBOBO! Framework sigue una filosofía modular, para ello proporciona al programador una interfaz común, \textit{IModule}(figura \ref{fig:imodule}), que todo módulo que vaya a residir dentro del framework debe implementar. Esta interfaz proporciona las cabeceras de los métodos a los que el framework llamará tanto al cargar cómo descargar los módulos.
 
 \begin{figure}
 	\centering
@@ -106,7 +124,8 @@ El ROBOBO! Framework sigue una filosofía modular, para ello proporciona una int
 
 
 Android es un sistema operativo de código abierto desarrollado por Google enfocado a dispositivos móviles. Actualmente es el sistema operativo más extendido en cuanto a terminales móviles, ocupando un 82.8\% de la cuota de mercado en el segundo cuarto de 2015 (IDC, Aug 2015) y contando la tienda de aplicaciones de la plataforma, la  Play Store, a Junio de 2016 con 2.2 millones de aplicaciones disponibles.
-Dados estos datos de extensión y con la capacidad de cómputo y sensorización de los teléfonos se escogió este sistema como base para el ROBOBO.
+Dados estos datos de extensión y con la capacidad de cómputo y sensorización de los teléfonos  este sistema como base para el ROBOBO.
+
 Android está construido sobre un núcleo Linux sobre el cual corre el \textit{Android Runtime}(ART) o en versiones anteriores del sistema operativo la máquina virtual \textit{Dalvik}, siendo estos los entornos de ejecución de las propias aplicaciones Android.
 
 

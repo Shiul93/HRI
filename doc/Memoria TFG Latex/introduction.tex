@@ -10,7 +10,7 @@
  \label{sec:intro-motivation}
  
  %En el punto 1.1 debes poner algo así (escrito por mi, lo puedes usar):El Grupo Integrado de Ingeniería (GII) de la Universidade da Coruña (UDC) viene desarrollando una línea de investigación en Robótica y Cognición desde hace más de 15 años, que tiene como objetivo general desarrollar sistemas reales que puedan responder con el mayor grado de autonomía posible a las condiciones cambiantes del medio, sin tener que precisar de la ayuda de un operador o programador para establecer las nuevas estrategias necesarias para la consecución de la tarea encomendada. Esta línea de investigación tiene otra línea derivada que se denomina Mecanismos Cognitivos, en la cual se centra en el estudio e implementación de funcionalidades cognitivas de alto nivel en robots autónomos, utilizando los procesos cognitivos humanos como inspiración para desarrollar un mecanismo cognitivo completo para un robot. Uno de los proyectos asociados a la línea de Mecanismos Cognitivos es DREAM\cite{dream_project} (Deferred Restructuring of Experience in Autonomous Machines), financiado por la Unión Europea, y que se centra en la integración de procesos cognitivos basados en el sueño dentro de una arquitectura cognitiva para robots autónomos. El objetivo de utilizar estos procesos reside en la capacidad de consolidar el aprendizaje adquirido durante la operación en "tiempo de vida" que se ha visto que existe en los procesos asociados al sueño en el cerebro humano. De esta forma, la experiencia adquirida por el robot se analiza y procesa en otra escala temporal que proporciona nuevas representaciones de más alto nivel. Uno de los principales problemas a solucionar en el proyecto DREAM se centra en el aprendizaje a partir de la interacción con humanos. En este sentido, se requieren numerosos datos de interacción en tiempo real en diversas situaciones para poder mejorar la arquitectura, y para lograrlos se ha diseñado la iniciativa \enquote{adopt a robot}. Esta iniciativa se centra en proporcionar a los centros educativos un robot de bajo coste que contenga la arquitectura cognitiva desarrollada en el DREAM, de modo que los alumnos puedan interactuar con el robot libremente y se consiga gran variedad de datos para mejorar dicha arquitectura. Este robot está en desarrollo actualmente en el GII bajo el nombre de ROBOBO, y es en el que se centrará el presente TFG.
- El ROBOBO se basa en el uso de una plataforma motorizada y sensorizada, llamada ROB en el sistema, que se conecta a un Smartphone, llamado OBO, que se encarga del procesado de los datos recogidos desde la plataforma y de controlar las acciones de la misma. Este tipo de arquitectura presenta numerosas ventajas que resultaron interesantes a la hora de escogerlo para su uso en DREAM:
+ El ROBOBO se basa en el uso de una plataforma motorizada y sensorizada, llamada ROB en el sistema, que se conecta a un Smartphone, llamado OBO. Este tipo de arquitectura presenta numerosas ventajas que resultaron interesantes a la hora de escogerlo:
  \begin{itemize}
  	\item Bajo coste de la plataforma
  	\item Gran capacidad de sensorización, cualquier smartphone de gama media cuenta con acelerómetros, giroscopios, gps, cámara y micrófono, y de comunicaciones, wifi, gsm y bluetooth.
@@ -31,7 +31,7 @@ La primera versión de la plataforma  desarrollada por el GII fue el ROBOBO 1.0 
 
 \begin{itemize}
 
-	\item 9 LEDs (diodos emisores de luz) RGB para interactuar con el usuario, que cambiaban de color con la proximidad de objetos.
+	\item 8 LEDs (diodos emisores de luz) RGB para interactuar con el usuario, que cambiaban de color con la proximidad de objetos.
 	\item 9 sensores IR de proximidad para proporcionar capacidad de movimiento autónomo: 2 en la parte frontal, 4 en los laterales y los últimos tres en la parte trasera; de manera que proporcionaba una visión general del entorno.
 	\item 2 motores paso a paso (convierten impulsos eléctricos en desplazamientos angulares discretos, es decir, pueden avanzar un ángulo concreto en función de la señal recibida) que aplicaban movimiento a las ruedas, con un paso de 1/8, con gran precisión de giro.
 	\item Compatibilidad con dispositivos Android.
@@ -79,12 +79,12 @@ La segunda versión, el ROBOBO 2.0 (figura \ref{fig:robobo_2_0}), trata de solve
 
 \end{itemize}
 
-Esta versión del ROBOBO, aún en pleno desarrollo, es la que se utilizará en este trabajo de final de grado que se centrará en el desarrollo de  librerías de interacción básica entre el robot y humanos, enfocándose específicamente en interacción por voz, táctil, sonido e imagen, dando lugar a módulos simples que más tarde podrán se combinados en comportamientos interactivos más complejos. El desarrollo fundamental de este trabajo se realizará en Android, ya que inicialmente el ROBOBO solo soportará teléfonos con este sistema operativo. 
+Esta versión del ROBOBO, aún en pleno desarrollo, es la que se utilizará en este trabajo de final de grado que se centrará en el desarrollo de  librerías de interacción básica entre el robot y humanos, enfocándose específicamente en interacción por voz, táctil, sonido e imagen, dando lugar a módulos simples que más tarde podrán ser combinados en comportamientos interactivos más complejos. El desarrollo fundamental de este trabajo se realizará en Android, ya que inicialmente el ROBOBO solo soportará teléfonos con este sistema operativo. 
 %Para terminar este punto 1.1 de Motivación, deberías comentar que la versión 2.0 está en pleno desarrollo y poner algo parecido a lo que pusimos en el anteproyecto:%En este trabajo Fin de Grado se deberán implementar diversas librerías de interacción básica del robot con humanos, centradas fundamentalmente en interacción por voz, imagen y gestos con el smartphone. El desarrollo fundamental de este trabajo se realizará en Android, ya que inicialmente el ROBOBO solo soportará teléfonos con este sistema operativo. Se comenzará por desarrollar módulos de interacción simples que más tarde serán combinados para dar lugar a comportamientos interactivos más complejos.%Durante el desarrollo de estas librerías podrá ser necesaria la interacción con el software de control de bajo nivel de la plataforma, de modo que se ajuste este a los requerimientos de los comportamientos más complejos.
 
  \section{Objetivos}
  \label{sec:intro-objetives}
- El objetivo de este proyecto, como se comentó en la sección anterior, es el desarrollo de librerías que permitan una interacción básica entre el ROBOBO y humanos. Estas librerías serán desarrolladas en Android, sistema operativo que soporta el ROBOBO a día de hoy. Se desarrollarán 5 librerías Android, cada una enfocada a un tipo de interacción diferente con el robot:
+ El objetivo de este proyecto, como se comentó en la sección anterior, es el \textit{desarrollo de librerías que permitan una interacción básica entre el ROBOBO y humanos}. Estas librerías serán desarrolladas en Android, sistema operativo que soporta el ROBOBO a día de hoy. Se desarrollarán 5 librerías Android, cada una enfocada a un tipo de interacción diferente con el robot:
  \begin{itemize}
  	\item Librería de interacción por voz
  	\item Librería de interacción por sonido
@@ -119,6 +119,10 @@ Esta versión del ROBOBO, aún en pleno desarrollo, es la que se utilizará en e
  Para la creación de los diagramas se ha empleado el software \textbf{StarUML}.
  
  Para la redacción de la memoria se ha empleado el software \textbf{Texpad}.
+ 
+ Una unidad del \textbf{robot ROBOBO 2.0} para realizar pruebas.
+ 
+ Un Smartphone \textbf{BQ Aquaris M5} para realizar pruebas.
  
  
  

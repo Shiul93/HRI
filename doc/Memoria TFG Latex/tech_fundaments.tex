@@ -1,8 +1,10 @@
 \chapter{Fundamentos tecnológicos}
 \label{chap:fundamentos-tecnologicos}
 
+\lettrine{A} la hora de desarrollar los módulos de  interacción, para cubrir las limitaciones de la API de Android que aun siendo extensa no proporciona funcionalidades para todo, se han empleado una serie de librerías adicionales. 
 
- \subsection{Sphinx}
+En este capítulo se explicarán brevemente estas librerías y su rol dentro del subsistema de interacción desarrollado en este trabajo.
+ \section{Sphinx}
  \label{subsec:sphinx}
 
  
@@ -10,6 +12,8 @@
  En este trabajo se emplea una versión ligera de Sphinx adaptada a dispositivos móviles, Pocket Sphinx, con el modelo acústico y el diccionario para el idioma inglés.
  
  La capacidad de reconocer voz sin la necesidad de una conexión a internet constante favoreció a esta librería frente a otras, como podría ser el sistema de reconocimiento vocal de Google.
+ 
+ Esta librería se ha usado para implementar el módulo de detección de habla, que se explica con detenimiento en la sección \ref{subsec:speech-package}.
  %CMU Sphinx (acortado como Sphinx), es el término general para describir un grupo de sistemas de reconocimiento de voz desarrollado en la Universidad de Carnegie Mellon. Incluye una serie de programas para reconocimiento de voz (Sphinx 2 - 4) y un entrenador modelo acústico (SphinxTrain).
 
 %En el año 2000, el grupo de Sphinx se comprometió a desarrollar varios componentes para reconocimiento de voz, incluyendo Sphinx 2 y más tarde Sphinx 3 (en 2001). Los decodificadores de voz vienen con modelos acústicos y aplicaciones de ejemplo. Los recursos disponibles incluyen además el software para el entrenamiento de modelos acústicos, la compilación de un modelo de lenguaje y un diccionario de pronunciación en dominio público llamado cmudict.
@@ -17,7 +21,7 @@
 %Sphinx abarca una serie de sistemas de software, inicio como sphinx 1, luego se produjeron las versiones 2, 3, 4 y Pocket Sphinx, todas tienen aplicaciones diferentes, aunque su función es la misma, el reconocimiento del habla, todas ellas se describen a continuación.
 
  
- \subsection{TarsosDSP}
+ \section{TarsosDSP}
   \label{subsec:tarsos-dsp}
  TarsosDSP\cite{six2014tarsosdsp} es una librería en Java, de código libre, para procesado de sonido.
  La librería proporciona una serie de métodos de procesado musical entre los que se encuentran:
@@ -31,7 +35,7 @@
  En este trabajo esta librería ha sido escogida para la implementación varios de los módulos de la librería de interacción por sonido dada la simplicidad de uso  y la buena documentación de la misma.
  %TarsosDSP is a Java library for audio processing. Its aim is to provide an easy-to-use interface to practical music processing algorithms implemented, as simply as possible, in pure Java and without any other external dependencies. The library tries to hit the sweet spot between being capable enough to get real tasks done but compact and simple enough to serve as a demonstration on how DSP algorithms works. TarsosDSP features an implementation of a percussion onset detector and a number of pitch detection algorithms: YIN, the Mcleod Pitch method and a “Dynamic Wavelet Algorithm Pitch Tracking” algorithm. Also included is a Goertzel DTMF decoding algorithm, a time stretch algorithm (WSOLA), resampling, filters, simple synthesis, some audio effects, and a pitch shifting algorithm.
  
- \subsection{OpenCV}
+ \section{OpenCV}
   \label{subsec:opencv}
  OpenCV\cite{itseez2015opencv} es una librería de código libre de visión artificial ampliamente extendida y con una gran comunidad detrás.
  Esta librería originalmente está desarrollada en C++, sin embargo existen numerosos ports para los lenguajes de programación más comunes, en nuestro caso se usará el port a Java.
@@ -45,8 +49,18 @@
 
 %El proyecto pretende proporcionar un entorno de desarrollo fácil de utilizar y altamente eficiente. Esto se ha logrado realizando su programación en código C y C++ optimizados, aprovechando además las capacidades que proveen los procesadores multinúcleo. OpenCV puede además utilizar el sistema de primitivas de rendimiento integradas de Intel, un conjunto de rutinas de bajo nivel específicas para procesadores Intel (IPP).
  
- \subsection{Gmail Background}
+ \section{Gmail Background}
   \label{subsec:gmail-background}
  
- Gmail Background es una librería creada por el usuario de Github \textit{yesidlazaro} que permite el envío de correos electrónicos programaticamente sin interacción del usuario desde cuentas de Gmail de manera sencilla.
+ Gmail Background\cite{gmailbg} es una librería creada por el usuario de Github \textit{yesidlazaro} que permite el envío de correos electrónicos programaticamente sin interacción del usuario desde cuentas de Gmail de manera sencilla.
+ 
+ Esta librería fue empleada a la hora de implementar el módulo de mensajería y se escogió por su simplicidad de uso. 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
  

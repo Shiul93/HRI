@@ -80,6 +80,10 @@ J.~Six, O.~Cornelis, and M.~Leman, ``{TarsosDSP, a Real-Time Audio Processing
 \bibitem{itseez2015opencv}
 ``Open source computer vision library,'' \url{https://github.com/opencv}, 2015.
 
+\bibitem{gmailbg}
+``Gmail background library,''
+  \url{https://github.com/yesidlazaro/GmailBackground}, accessed: 2016-08-4.
+
 \bibitem{RoboboFramework}
 ``Robobo framework,'' \url{https://bitbucket.org/mytechia/robobo-framework},
   accessed: 2016-08-13.
@@ -95,9 +99,5 @@ A.~de~Cheveign{\'e} and H.~Kawahara, ``Yin, a fundamental frequency estimator
   2002. [Online]. Available:
   \url{http://audition.ens.fr/adc/pdf/2002\_JASA\_YIN.pdf}
 \BIBentrySTDinterwordspacing
-
-\bibitem{gmailbg}
-``Gmail background library,''
-  \url{https://github.com/yesidlazaro/GmailBackground}, accessed: 2016-08-4.
 
 \end{thebibliography}

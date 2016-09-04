@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  1 SEP 2016 21:21
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  4 SEP 2016 16:57
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1259,8 +1259,8 @@ LaTeX Info: Redefining \% on input line 2.
  [1
 
 ]
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
+LaTeX Info: Redefining \. on input line 61.
+LaTeX Info: Redefining \% on input line 61.
  [2])
 \tf@toc=\write6
 \openout6 = `root.toc'.
@@ -1346,368 +1346,387 @@ Cap\'{\i }tulo 2.
 LaTeX Font Info:    Try loading font information for OT1+pag on input line 7.
 (/usr/local/texlive/2016/texmf-dist/tex/latex/psnfss/ot1pag.fd
 File: ot1pag.fd 2001/06/04 font definitions for OT1/pag.
-) <imagenes/robobo_framework.png, id=114, 635.37375pt x 728.7225pt>
-File: imagenes/robobo_framework.png Graphic file (type png)
- <use imagenes/robobo_framework.png>
-Package pdftex.def Info: imagenes/robobo_framework.png used on input line 17.
-(pdftex.def)             Requested size: 247.54149pt x 283.91153pt.
+) <imagenes/rob_obo.JPG, id=114, 2457.18pt x 3276.24pt>
+File: imagenes/rob_obo.JPG Graphic file (type jpg)
+ <use imagenes/rob_obo.JPG>
+Package pdftex.def Info: imagenes/rob_obo.JPG used on input line 18.
+(pdftex.def)             Requested size: 288.79422pt x 385.03325pt.
+ <imagenes/robobo_framework_2.png, id=115, 388.5717pt x 731.8542pt>
+File: imagenes/robobo_framework_2.png Graphic file (type png)
+ <use imagenes/robobo_framework_2.png>
+Package pdftex.def Info: imagenes/robobo_framework_2.png used on input line 25.
+(pdftex.def)             Requested size: 288.79422pt x 543.93108pt.
  [9]
-LaTeX Info: Redefining \. on input line 33.
-LaTeX Info: Redefining \% on input line 33.
- [10 <./imagenes/robobo_framework.png>]
-Overfull \hbox (1.84593pt too wide) in paragraph at lines 38--39
+LaTeX Info: Redefining \. on input line 47.
+LaTeX Info: Redefining \% on input line 47.
+ [10 <./imagenes/rob_obo.JPG>]
+LaTeX Info: Redefining \. on input line 47.
+LaTeX Info: Redefining \% on input line 47.
+ [11 <./imagenes/robobo_framework_2.png>]
+Overfull \hbox (1.84593pt too wide) in paragraph at lines 53--54
 \twelverm Permite desa-rro-llar tan-to apli-ca-cio-nes re-mo-tas, que no est^^San alo-ja-das en el smartp-
 
 \hbox(8.33331+2.33331)x412.56497, glue set - 1.0 []
 
-<imagenes/diagramas/IRob.png, id=124, 639.38875pt x 422.57875pt>
+<imagenes/diagramas/IRob.png, id=127, 639.38875pt x 422.57875pt>
 File: imagenes/diagramas/IRob.png Graphic file (type png)
  <use imagenes/diagramas/IRob.png>
-Package pdftex.def Info: imagenes/diagramas/IRob.png used on input line 63.
+Package pdftex.def Info: imagenes/diagramas/IRob.png used on input line 78.
 (pdftex.def)             Requested size: 371.30595pt x 245.3989pt.
- <imagenes/diagramas/IRobMovementModule.png, id=125, 400.49625pt x 317.185pt>
+LaTeX Info: Redefining \. on input line 87.
+LaTeX Info: Redefining \% on input line 87.
+ [12] <imagenes/diagramas/IRobMovementModule.png, id=131, 400.49625pt x 317.185pt>
 File: imagenes/diagramas/IRobMovementModule.png Graphic file (type png)
  <use imagenes/diagramas/IRobMovementModule.png>
-Package pdftex.def Info: imagenes/diagramas/IRobMovementModule.png used on input line 72.
+Package pdftex.def Info: imagenes/diagramas/IRobMovementModule.png used on input line 97.
 (pdftex.def)             Requested size: 371.30595pt x 294.0836pt.
-LaTeX Info: Redefining \. on input line 84.
-LaTeX Info: Redefining \% on input line 84.
- [11]
-LaTeX Info: Redefining \. on input line 84.
-LaTeX Info: Redefining \% on input line 84.
- [12 <./imagenes/diagramas/IRob.png> <./imagenes/diagramas/IRobMovementModule.png>] <imagenes/diagramas/IModule.png, id=134, 300.12125pt x 191.71625pt>
+LaTeX Info: Redefining \. on input line 114.
+LaTeX Info: Redefining \% on input line 114.
+ [13 <./imagenes/diagramas/IRob.png>]
+LaTeX Info: Redefining \. on input line 114.
+LaTeX Info: Redefining \% on input line 114.
+ [14 <./imagenes/diagramas/IRobMovementModule.png>] <imagenes/diagramas/IModule.png, id=140, 300.12125pt x 191.71625pt>
 File: imagenes/diagramas/IModule.png Graphic file (type png)
  <use imagenes/diagramas/IModule.png>
-Package pdftex.def Info: imagenes/diagramas/IModule.png used on input line 99.
+Package pdftex.def Info: imagenes/diagramas/IModule.png used on input line 117.
 (pdftex.def)             Requested size: 288.79422pt x 184.496pt.
-LaTeX Info: Redefining \. on input line 111.
-LaTeX Info: Redefining \% on input line 111.
- [13 <./imagenes/diagramas/IModule.png>]
-Overfull \hbox (1.6216pt too wide) in paragraph at lines 121--122
+LaTeX Info: Redefining \. on input line 139.
+LaTeX Info: Redefining \% on input line 139.
+ [15 <./imagenes/diagramas/IModule.png>]
+Overfull \hbox (1.6216pt too wide) in paragraph at lines 140--141
 []\twelverm Nodos: pro-ce-sos que rea-li-zan una compu-taci^^Son. Un sis-te-ma de con-trol rob^^Soti-
 
 \hbox(8.33331+2.33331)x383.19028, glue set - 1.0 []
 
-LaTeX Info: Redefining \. on input line 129.
-LaTeX Info: Redefining \% on input line 129.
-[14])
+LaTeX Info: Redefining \. on input line 154.
+LaTeX Info: Redefining \% on input line 154.
+[16])
 LaTeX Info: Redefining \. on input line 97.
 LaTeX Info: Redefining \% on input line 97.
- [15]
+ [17]
 \openout2 = `human-robot-interaction.aux'.
 
  (./human-robot-interaction.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
- [16
+ [18
 
 
 
 ]
 Cap\'{\i }tulo 3.
-[17] <imagenes/robotcell.jpeg, id=152, 605.26125pt x 295.1025pt>
+[19] <imagenes/robotcell.jpeg, id=158, 605.26125pt x 295.1025pt>
 File: imagenes/robotcell.jpeg Graphic file (type jpg)
  <use imagenes/robotcell.jpeg>
 Package pdftex.def Info: imagenes/robotcell.jpeg used on input line 38.
 (pdftex.def)             Requested size: 412.56497pt x 201.15334pt.
 LaTeX Info: Redefining \. on input line 44.
 LaTeX Info: Redefining \% on input line 44.
- [18 <./imagenes/robotcell.jpeg>] <imagenes/parorobot.JPG, id=156, 542.025pt x 286.06876pt>
+ [20 <./imagenes/robotcell.jpeg>] <imagenes/parorobot.JPG, id=162, 542.025pt x 286.06876pt>
 File: imagenes/parorobot.JPG Graphic file (type jpg)
  <use imagenes/parorobot.JPG>
 Package pdftex.def Info: imagenes/parorobot.JPG used on input line 59.
 (pdftex.def)             Requested size: 330.05322pt x 174.20049pt.
- <imagenes/naorobot.jpg, id=157, 803.0pt x 420.57124pt>
+ <imagenes/naorobot.jpg, id=163, 803.0pt x 420.57124pt>
 File: imagenes/naorobot.jpg Graphic file (type jpg)
  <use imagenes/naorobot.jpg>
 Package pdftex.def Info: imagenes/naorobot.jpg used on input line 67.
 (pdftex.def)             Requested size: 412.56497pt x 216.08643pt.
 LaTeX Info: Redefining \. on input line 72.
 LaTeX Info: Redefining \% on input line 72.
- [19]
+ [21]
 LaTeX Info: Redefining \. on input line 79.
 LaTeX Info: Redefining \% on input line 79.
- [20 <./imagenes/parorobot.JPG>] <imagenes/davincisystem.jpg, id=164, 1204.5pt x 808.52063pt>
+ [22 <./imagenes/parorobot.JPG>] <imagenes/davincisystem.jpg, id=171, 1204.5pt x 808.52063pt>
 File: imagenes/davincisystem.jpg Graphic file (type jpg)
  <use imagenes/davincisystem.jpg>
 Package pdftex.def Info: imagenes/davincisystem.jpg used on input line 83.
 (pdftex.def)             Requested size: 412.56497pt x 276.92899pt.
 LaTeX Info: Redefining \. on input line 96.
 LaTeX Info: Redefining \% on input line 96.
- [21 <./imagenes/naorobot.jpg>] <imagenes/aiborobot.jpg, id=168, 1204.5pt x 1204.5pt>
+ [23 <./imagenes/naorobot.jpg>] <imagenes/aiborobot.jpg, id=175, 1204.5pt x 1204.5pt>
 File: imagenes/aiborobot.jpg Graphic file (type jpg)
  <use imagenes/aiborobot.jpg>
 Package pdftex.def Info: imagenes/aiborobot.jpg used on input line 99.
 (pdftex.def)             Requested size: 206.28249pt x 206.26938pt.
- <imagenes/bandaismartpet.jpg, id=169, 501.875pt x 401.5pt>
+ <imagenes/bandaismartpet.jpg, id=176, 501.875pt x 401.5pt>
 File: imagenes/bandaismartpet.jpg Graphic file (type jpg)
  <use imagenes/bandaismartpet.jpg>
 Package pdftex.def Info: imagenes/bandaismartpet.jpg used on input line 105.
 (pdftex.def)             Requested size: 206.28249pt x 165.02652pt.
 LaTeX Info: Redefining \. on input line 112.
 LaTeX Info: Redefining \% on input line 112.
- [22 <./imagenes/davincisystem.jpg>]
+ [24 <./imagenes/davincisystem.jpg>]
 LaTeX Info: Redefining \. on input line 112.
 LaTeX Info: Redefining \% on input line 112.
- [23 <./imagenes/aiborobot.jpg> <./imagenes/bandaismartpet.jpg>] <imagenes/beebot.png, id=177, 192.72pt x 109.3686pt>
+ [25 <./imagenes/aiborobot.jpg> <./imagenes/bandaismartpet.jpg>] <imagenes/beebot.png, id=183, 192.72pt x 109.3686pt>
 File: imagenes/beebot.png Graphic file (type png)
  <use imagenes/beebot.png>
 Package pdftex.def Info: imagenes/beebot.png used on input line 117.
 (pdftex.def)             Requested size: 185.65297pt x 105.35811pt.
- <imagenes/escornabot.jpg, id=178, 803.0pt x 602.25pt>
+ <imagenes/escornabot.jpg, id=184, 803.0pt x 602.25pt>
 File: imagenes/escornabot.jpg Graphic file (type jpg)
  <use imagenes/escornabot.jpg>
 Package pdftex.def Info: imagenes/escornabot.jpg used on input line 124.
 (pdftex.def)             Requested size: 185.65297pt x 139.24055pt.
 LaTeX Info: Redefining \. on input line 139.
 LaTeX Info: Redefining \% on input line 139.
- [24 <./imagenes/beebot.png> <./imagenes/escornabot.jpg>] <imagenes/legoev3.jpg, id=183, 622.325pt x 434.62375pt>
+ [26 <./imagenes/beebot.png> <./imagenes/escornabot.jpg>] <imagenes/legoev3.jpg, id=189, 622.325pt x 434.62375pt>
 File: imagenes/legoev3.jpg Graphic file (type jpg)
  <use imagenes/legoev3.jpg>
 Package pdftex.def Info: imagenes/legoev3.jpg used on input line 145.
 (pdftex.def)             Requested size: 330.05322pt x 230.50865pt.
- <imagenes/zowi.png, id=184, 489.32813pt x 489.32813pt>
+ <imagenes/zowi.png, id=190, 489.32813pt x 489.32813pt>
 File: imagenes/zowi.png Graphic file (type png)
  <use imagenes/zowi.png>
 Package pdftex.def Info: imagenes/zowi.png used on input line 157.
 (pdftex.def)             Requested size: 247.54149pt x 247.54553pt.
 LaTeX Info: Redefining \. on input line 164.
 LaTeX Info: Redefining \% on input line 164.
- [25 <./imagenes/legoev3.jpg>] <imagenes/tymio.jpg, id=188, 1204.5pt x 738.76pt>
+ [27 <./imagenes/legoev3.jpg>] <imagenes/tymio.jpg, id=194, 1204.5pt x 738.76pt>
 File: imagenes/tymio.jpg Graphic file (type jpg)
  <use imagenes/tymio.jpg>
 Package pdftex.def Info: imagenes/tymio.jpg used on input line 167.
 (pdftex.def)             Requested size: 247.54149pt x 151.81877pt.
 LaTeX Info: Redefining \. on input line 174.
 LaTeX Info: Redefining \% on input line 174.
- [26 <./imagenes/zowi.png>] <imagenes/dashanddot.jpg, id=193, 602.25pt x 384.43625pt>
+ [28 <./imagenes/zowi.png>] <imagenes/dashanddot.jpg, id=200, 602.25pt x 384.43625pt>
 File: imagenes/dashanddot.jpg Graphic file (type jpg)
  <use imagenes/dashanddot.jpg>
 Package pdftex.def Info: imagenes/dashanddot.jpg used on input line 177.
 (pdftex.def)             Requested size: 247.54149pt x 158.0129pt.
-)
+LaTeX Info: Redefining \. on input line 189.
+LaTeX Info: Redefining \% on input line 189.
+ [29 <./imagenes/tymio.jpg>])
 LaTeX Info: Redefining \. on input line 98.
 LaTeX Info: Redefining \% on input line 98.
- [27 <./imagenes/tymio.jpg>]
-LaTeX Info: Redefining \. on input line 98.
-LaTeX Info: Redefining \% on input line 98.
- [28 <./imagenes/dashanddot.jpg>]
+ [30 <./imagenes/dashanddot.jpg>]
 \openout2 = `tech_fundaments.aux'.
 
  (./tech_fundaments.tex
 Cap\'{\i }tulo 4.
-[29
-
-
-
-]) [30]
-\openout2 = `implementation.aux'.
-
- (./implementation.tex
-Cap\'{\i }tulo 5.
 [31
 
 
 
-]
-LaTeX Info: Redefining \. on input line 32.
-LaTeX Info: Redefining \% on input line 32.
- [32] <imagenes/diagramas/PaquetesGenerales.png, id=214, 499.8675pt x 283.0575pt>
+])
+LaTeX Info: Redefining \. on input line 99.
+LaTeX Info: Redefining \% on input line 99.
+ [32]
+\openout2 = `implementation.aux'.
+
+ (./implementation.tex
+Cap\'{\i }tulo 5.
+[33
+
+
+
+] <imagenes/rob_schema.png, id=217, 463.7325pt x 628.3475pt>
+File: imagenes/rob_schema.png Graphic file (type png)
+ <use imagenes/rob_schema.png>
+Package pdftex.def Info: imagenes/rob_schema.png used on input line 38.
+(pdftex.def)             Requested size: 247.54149pt x 335.41954pt.
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+ [34]
+LaTeX Info: Redefining \. on input line 59.
+LaTeX Info: Redefining \% on input line 59.
+ [35 <./imagenes/rob_schema.png>]
+LaTeX Info: Redefining \. on input line 71.
+LaTeX Info: Redefining \% on input line 71.
+ [36] <imagenes/diagramas/PaquetesGenerales.png, id=229, 499.8675pt x 283.0575pt>
 File: imagenes/diagramas/PaquetesGenerales.png Graphic file (type png)
  <use imagenes/diagramas/PaquetesGenerales.png>
-Package pdftex.def Info: imagenes/diagramas/PaquetesGenerales.png used on input line 40.
+Package pdftex.def Info: imagenes/diagramas/PaquetesGenerales.png used on input line 79.
 (pdftex.def)             Requested size: 412.56497pt x 233.62897pt.
-LaTeX Info: Redefining \. on input line 54.
-LaTeX Info: Redefining \% on input line 54.
- [33 <./imagenes/diagramas/PaquetesGenerales.png>]
-LaTeX Info: Redefining \. on input line 83.
-LaTeX Info: Redefining \% on input line 83.
- [34]
-LaTeX Info: Redefining \. on input line 100.
-LaTeX Info: Redefining \% on input line 100.
- [35]
-LaTeX Info: Redefining \. on input line 135.
-LaTeX Info: Redefining \% on input line 135.
- [36]
-LaTeX Info: Redefining \. on input line 156.
-LaTeX Info: Redefining \% on input line 156.
- [37] <imagenes/diagramas/Speech.png, id=232, 434.62375pt x 245.91875pt>
+LaTeX Info: Redefining \. on input line 93.
+LaTeX Info: Redefining \% on input line 93.
+ [37 <./imagenes/diagramas/PaquetesGenerales.png>]
+LaTeX Info: Redefining \. on input line 122.
+LaTeX Info: Redefining \% on input line 122.
+ [38]
+LaTeX Info: Redefining \. on input line 139.
+LaTeX Info: Redefining \% on input line 139.
+ [39]
+LaTeX Info: Redefining \. on input line 174.
+LaTeX Info: Redefining \% on input line 174.
+ [40]
+LaTeX Info: Redefining \. on input line 195.
+LaTeX Info: Redefining \% on input line 195.
+ [41] <imagenes/diagramas/Speech.png, id=247, 434.62375pt x 245.91875pt>
 File: imagenes/diagramas/Speech.png Graphic file (type png)
  <use imagenes/diagramas/Speech.png>
-Package pdftex.def Info: imagenes/diagramas/Speech.png used on input line 167.
+Package pdftex.def Info: imagenes/diagramas/Speech.png used on input line 207.
 (pdftex.def)             Requested size: 330.05322pt x 186.76134pt.
- <imagenes/diagramas/SpeechRecognitionModule.png, id=233, 981.6675pt x 901.3675pt>
+ <imagenes/diagramas/SpeechRecognitionModule.png, id=248, 981.6675pt x 901.3675pt>
 File: imagenes/diagramas/SpeechRecognitionModule.png Graphic file (type png)
  <use imagenes/diagramas/SpeechRecognitionModule.png>
-Package pdftex.def Info: imagenes/diagramas/SpeechRecognitionModule.png used on input line 176.
+Package pdftex.def Info: imagenes/diagramas/SpeechRecognitionModule.png used on input line 216.
 (pdftex.def)             Requested size: 412.56497pt x 378.81932pt.
-LaTeX Info: Redefining \. on input line 192.
-LaTeX Info: Redefining \% on input line 192.
- [38 <./imagenes/diagramas/Speech.png>]
-LaTeX Info: Redefining \. on input line 192.
-LaTeX Info: Redefining \% on input line 192.
- [39 <./imagenes/diagramas/SpeechRecognitionModule.png>]
-LaTeX Info: Redefining \. on input line 235.
-LaTeX Info: Redefining \% on input line 235.
- [40] <imagenes/diagramas/SpeechProductionModule.png, id=246, 925.4575pt x 756.8275pt>
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+ [42 <./imagenes/diagramas/Speech.png>]
+LaTeX Info: Redefining \. on input line 232.
+LaTeX Info: Redefining \% on input line 232.
+ [43 <./imagenes/diagramas/SpeechRecognitionModule.png>]
+LaTeX Info: Redefining \. on input line 275.
+LaTeX Info: Redefining \% on input line 275.
+ [44] <imagenes/diagramas/SpeechProductionModule.png, id=260, 925.4575pt x 756.8275pt>
 File: imagenes/diagramas/SpeechProductionModule.png Graphic file (type png)
  <use imagenes/diagramas/SpeechProductionModule.png>
-Package pdftex.def Info: imagenes/diagramas/SpeechProductionModule.png used on input line 248.
+Package pdftex.def Info: imagenes/diagramas/SpeechProductionModule.png used on input line 288.
 (pdftex.def)             Requested size: 412.56497pt x 337.39346pt.
-
-
-Package Listings Warning: Text dropped after begin of listing on input line 253.
-
-LaTeX Info: Redefining \. on input line 272.
-LaTeX Info: Redefining \% on input line 272.
-[41]
-LaTeX Info: Redefining \. on input line 272.
-LaTeX Info: Redefining \% on input line 272.
- [42 <./imagenes/diagramas/SpeechProductionModule.png>]
-LaTeX Info: Redefining \. on input line 292.
-LaTeX Info: Redefining \% on input line 292.
- [43] <imagenes/diagramas/TouchModule.png, id=258, 1134.2375pt x 953.5625pt>
+LaTeX Info: Redefining \. on input line 316.
+LaTeX Info: Redefining \% on input line 316.
+ [45]
+LaTeX Info: Redefining \. on input line 316.
+LaTeX Info: Redefining \% on input line 316.
+ [46 <./imagenes/diagramas/SpeechProductionModule.png>]
+LaTeX Info: Redefining \. on input line 334.
+LaTeX Info: Redefining \% on input line 334.
+ [47] <imagenes/diagramas/TouchModule.png, id=273, 1134.2375pt x 953.5625pt>
 File: imagenes/diagramas/TouchModule.png Graphic file (type png)
  <use imagenes/diagramas/TouchModule.png>
-Package pdftex.def Info: imagenes/diagramas/TouchModule.png used on input line 299.
+Package pdftex.def Info: imagenes/diagramas/TouchModule.png used on input line 341.
 (pdftex.def)             Requested size: 412.56497pt x 346.84703pt.
-LaTeX Info: Redefining \. on input line 313.
-LaTeX Info: Redefining \% on input line 313.
- [44 <./imagenes/diagramas/TouchModule.png>]
-LaTeX Info: Redefining \. on input line 333.
-LaTeX Info: Redefining \% on input line 333.
- [45] <imagenes/diagramas/Sound.png, id=266, 772.8875pt x 331.2375pt>
+LaTeX Info: Redefining \. on input line 355.
+LaTeX Info: Redefining \% on input line 355.
+ [48 <./imagenes/diagramas/TouchModule.png>]
+LaTeX Info: Redefining \. on input line 375.
+LaTeX Info: Redefining \% on input line 375.
+ [49] <imagenes/diagramas/Sound.png, id=281, 772.8875pt x 331.2375pt>
 File: imagenes/diagramas/Sound.png Graphic file (type png)
  <use imagenes/diagramas/Sound.png>
-Package pdftex.def Info: imagenes/diagramas/Sound.png used on input line 340.
+Package pdftex.def Info: imagenes/diagramas/Sound.png used on input line 382.
 (pdftex.def)             Requested size: 412.56497pt x 176.81354pt.
- <imagenes/diagramas/SoundDispatcherModule.png, id=267, 660.4675pt x 499.8675pt>
+ <imagenes/diagramas/SoundDispatcherModule.png, id=282, 660.4675pt x 499.8675pt>
 File: imagenes/diagramas/SoundDispatcherModule.png Graphic file (type png)
  <use imagenes/diagramas/SoundDispatcherModule.png>
-Package pdftex.def Info: imagenes/diagramas/SoundDispatcherModule.png used on input line 348.
+Package pdftex.def Info: imagenes/diagramas/SoundDispatcherModule.png used on input line 390.
 (pdftex.def)             Requested size: 412.56497pt x 312.25624pt.
-LaTeX Info: Redefining \. on input line 365.
-LaTeX Info: Redefining \% on input line 365.
- [46 <./imagenes/diagramas/Sound.png>]
-LaTeX Info: Redefining \. on input line 365.
-LaTeX Info: Redefining \% on input line 365.
- [47 <./imagenes/diagramas/SoundDispatcherModule.png>] <imagenes/diagramas/PitchDetectionModule.png, id=277, 861.2175pt x 692.5875pt>
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+ [50 <./imagenes/diagramas/Sound.png>]
+LaTeX Info: Redefining \. on input line 407.
+LaTeX Info: Redefining \% on input line 407.
+ [51 <./imagenes/diagramas/SoundDispatcherModule.png>] <imagenes/diagramas/PitchDetectionModule.png, id=291, 861.2175pt x 692.5875pt>
 File: imagenes/diagramas/PitchDetectionModule.png Graphic file (type png)
  <use imagenes/diagramas/PitchDetectionModule.png>
-Package pdftex.def Info: imagenes/diagramas/PitchDetectionModule.png used on input line 372.
+Package pdftex.def Info: imagenes/diagramas/PitchDetectionModule.png used on input line 414.
 (pdftex.def)             Requested size: 412.56497pt x 331.79356pt.
-LaTeX Info: Redefining \. on input line 378.
-LaTeX Info: Redefining \% on input line 378.
- [48 <./imagenes/diagramas/PitchDetectionModule.png>] <imagenes/diagramas/NoteDetectionModule.png, id=282, 941.5175pt x 845.1575pt>
+LaTeX Info: Redefining \. on input line 420.
+LaTeX Info: Redefining \% on input line 420.
+ [52 <./imagenes/diagramas/PitchDetectionModule.png>] <imagenes/diagramas/NoteDetectionModule.png, id=297, 941.5175pt x 845.1575pt>
 File: imagenes/diagramas/NoteDetectionModule.png Graphic file (type png)
  <use imagenes/diagramas/NoteDetectionModule.png>
-Package pdftex.def Info: imagenes/diagramas/NoteDetectionModule.png used on input line 388.
+Package pdftex.def Info: imagenes/diagramas/NoteDetectionModule.png used on input line 430.
 (pdftex.def)             Requested size: 412.56497pt x 370.33582pt.
-LaTeX Info: Redefining \. on input line 405.
-LaTeX Info: Redefining \% on input line 405.
- [49]
-LaTeX Info: Redefining \. on input line 405.
-LaTeX Info: Redefining \% on input line 405.
- [50 <./imagenes/diagramas/NoteDetectionModule.png>] <imagenes/diagramas/ClapDetectionModule.png, id=290, 941.5175pt x 612.2875pt>
+LaTeX Info: Redefining \. on input line 447.
+LaTeX Info: Redefining \% on input line 447.
+ [53]
+LaTeX Info: Redefining \. on input line 447.
+LaTeX Info: Redefining \% on input line 447.
+ [54 <./imagenes/diagramas/NoteDetectionModule.png>] <imagenes/diagramas/ClapDetectionModule.png, id=305, 941.5175pt x 612.2875pt>
 File: imagenes/diagramas/ClapDetectionModule.png Graphic file (type png)
  <use imagenes/diagramas/ClapDetectionModule.png>
-Package pdftex.def Info: imagenes/diagramas/ClapDetectionModule.png used on input line 410.
+Package pdftex.def Info: imagenes/diagramas/ClapDetectionModule.png used on input line 452.
 (pdftex.def)             Requested size: 412.56497pt x 268.29555pt.
-LaTeX Info: Redefining \. on input line 419.
-LaTeX Info: Redefining \% on input line 419.
- [51 <./imagenes/diagramas/ClapDetectionModule.png>] <imagenes/diagramas/NoteGenerationModule.png, id=295, 973.6375pt x 859.21pt>
+LaTeX Info: Redefining \. on input line 461.
+LaTeX Info: Redefining \% on input line 461.
+ [55 <./imagenes/diagramas/ClapDetectionModule.png>] <imagenes/diagramas/NoteGenerationModule.png, id=310, 973.6375pt x 859.21pt>
 File: imagenes/diagramas/NoteGenerationModule.png Graphic file (type png)
  <use imagenes/diagramas/NoteGenerationModule.png>
-Package pdftex.def Info: imagenes/diagramas/NoteGenerationModule.png used on input line 422.
+Package pdftex.def Info: imagenes/diagramas/NoteGenerationModule.png used on input line 464.
 (pdftex.def)             Requested size: 412.56497pt x 364.0778pt.
-LaTeX Info: Redefining \. on input line 432.
-LaTeX Info: Redefining \% on input line 432.
- [52 <./imagenes/diagramas/NoteGenerationModule.png>] <imagenes/diagramas/EmotionSoundModule.png, id=301, 740.7675pt x 477.785pt>
+LaTeX Info: Redefining \. on input line 474.
+LaTeX Info: Redefining \% on input line 474.
+ [56 <./imagenes/diagramas/NoteGenerationModule.png>] <imagenes/diagramas/EmotionSoundModule.png, id=315, 740.7675pt x 477.785pt>
 File: imagenes/diagramas/EmotionSoundModule.png Graphic file (type png)
  <use imagenes/diagramas/EmotionSoundModule.png>
-Package pdftex.def Info: imagenes/diagramas/EmotionSoundModule.png used on input line 437.
+Package pdftex.def Info: imagenes/diagramas/EmotionSoundModule.png used on input line 479.
 (pdftex.def)             Requested size: 412.56497pt x 266.09969pt.
-LaTeX Info: Redefining \. on input line 448.
-LaTeX Info: Redefining \% on input line 448.
- [53 <./imagenes/diagramas/EmotionSoundModule.png>]
-LaTeX Info: Redefining \. on input line 456.
-LaTeX Info: Redefining \% on input line 456.
- [54] <imagenes/diagramas/Vision.png, id=309, 564.1075pt x 266.9975pt>
+LaTeX Info: Redefining \. on input line 490.
+LaTeX Info: Redefining \% on input line 490.
+ [57 <./imagenes/diagramas/EmotionSoundModule.png>]
+LaTeX Info: Redefining \. on input line 521.
+LaTeX Info: Redefining \% on input line 521.
+ [58] <imagenes/diagramas/Vision.png, id=324, 564.1075pt x 266.9975pt>
 File: imagenes/diagramas/Vision.png Graphic file (type png)
  <use imagenes/diagramas/Vision.png>
-Package pdftex.def Info: imagenes/diagramas/Vision.png used on input line 463.
+Package pdftex.def Info: imagenes/diagramas/Vision.png used on input line 528.
 (pdftex.def)             Requested size: 330.05322pt x 156.21938pt.
- <imagenes/diagramas/BasicCameraModule.png, id=310, 965.6075pt x 965.6075pt>
+ <imagenes/diagramas/BasicCameraModule.png, id=325, 965.6075pt x 965.6075pt>
 File: imagenes/diagramas/BasicCameraModule.png Graphic file (type png)
  <use imagenes/diagramas/BasicCameraModule.png>
-Package pdftex.def Info: imagenes/diagramas/BasicCameraModule.png used on input line 472.
+Package pdftex.def Info: imagenes/diagramas/BasicCameraModule.png used on input line 537.
 (pdftex.def)             Requested size: 412.56497pt x 412.56575pt.
- <imagenes/diagramas/FaceDetectionModule.png, id=311, 997.7275pt x 764.8575pt>
+ <imagenes/diagramas/FaceDetectionModule.png, id=326, 997.7275pt x 764.8575pt>
 File: imagenes/diagramas/FaceDetectionModule.png Graphic file (type png)
  <use imagenes/diagramas/FaceDetectionModule.png>
-Package pdftex.def Info: imagenes/diagramas/FaceDetectionModule.png used on input line 486.
+Package pdftex.def Info: imagenes/diagramas/FaceDetectionModule.png used on input line 551.
 (pdftex.def)             Requested size: 412.56497pt x 316.2662pt.
-LaTeX Info: Redefining \. on input line 489.
-LaTeX Info: Redefining \% on input line 489.
- [55 <./imagenes/diagramas/Vision.png>]
-LaTeX Info: Redefining \. on input line 489.
-LaTeX Info: Redefining \% on input line 489.
- [56 <./imagenes/diagramas/BasicCameraModule.png>]
-LaTeX Info: Redefining \. on input line 494.
-LaTeX Info: Redefining \% on input line 494.
- [57 <./imagenes/diagramas/FaceDetectionModule.png>] <imagenes/diagramas/ColorDetectionModule.png, id=324, 909.3975pt x 767.86874pt>
+LaTeX Info: Redefining \. on input line 554.
+LaTeX Info: Redefining \% on input line 554.
+ [59 <./imagenes/diagramas/Vision.png>]
+LaTeX Info: Redefining \. on input line 554.
+LaTeX Info: Redefining \% on input line 554.
+ [60 <./imagenes/diagramas/BasicCameraModule.png>]
+LaTeX Info: Redefining \. on input line 559.
+LaTeX Info: Redefining \% on input line 559.
+ [61 <./imagenes/diagramas/FaceDetectionModule.png>] <imagenes/diagramas/ColorDetectionModule.png, id=339, 909.3975pt x 767.86874pt>
 File: imagenes/diagramas/ColorDetectionModule.png Graphic file (type png)
-
-<use imagenes/diagramas/ColorDetectionModule.png>
-Package pdftex.def Info: imagenes/diagramas/ColorDetectionModule.png used on input line 500.
+ <use imagenes/diagramas/ColorDetectionModule.png>
+Package pdftex.def Info: imagenes/diagramas/ColorDetectionModule.png used on input line 565.
 (pdftex.def)             Requested size: 412.56497pt x 348.36147pt.
-LaTeX Info: Redefining \. on input line 510.
-LaTeX Info: Redefining \% on input line 510.
- [58 <./imagenes/diagramas/ColorDetectionModule.png>] <imagenes/diagramas/MessagingModule.png, id=330, 596.2275pt x 756.8275pt>
+LaTeX Info: Redefining \. on input line 575.
+LaTeX Info: Redefining \% on input line 575.
+ [62 <./imagenes/diagramas/ColorDetectionModule.png>] <imagenes/color_detection_blue.png, id=344, 1084.05pt x 1927.2pt>
+File: imagenes/color_detection_blue.png Graphic file (type png)
+ <use imagenes/color_detection_blue.png>
+Package pdftex.def Info: imagenes/color_detection_blue.png used on input line 593.
+(pdftex.def)             Requested size: 185.65297pt x 330.03102pt.
+ <imagenes/color_detection_cyan.png, id=345, 1084.05pt x 1927.2pt>
+File: imagenes/color_detection_cyan.png Graphic file (type png)
+ <use imagenes/color_detection_cyan.png>
+Package pdftex.def Info: imagenes/color_detection_cyan.png used on input line 600.
+(pdftex.def)             Requested size: 185.65297pt x 330.03102pt.
+ <imagenes/color_detection_red.png, id=346, 1084.05pt x 1927.2pt>
+File: imagenes/color_detection_red.png Graphic file (type png)
+ <use imagenes/color_detection_red.png>
+Package pdftex.def Info: imagenes/color_detection_red.png used on input line 612.
+(pdftex.def)             Requested size: 185.65297pt x 330.03102pt.
+ <imagenes/color_detection_green.png, id=347, 1084.05pt x 1927.2pt>
+File: imagenes/color_detection_green.png Graphic file (type png)
+ <use imagenes/color_detection_green.png>
+Package pdftex.def Info: imagenes/color_detection_green.png used on input line 619.
+(pdftex.def)             Requested size: 185.65297pt x 330.03102pt.
+LaTeX Info: Redefining \. on input line 627.
+LaTeX Info: Redefining \% on input line 627.
+ [63]
+LaTeX Info: Redefining \. on input line 627.
+LaTeX Info: Redefining \% on input line 627.
+ [64 <./imagenes/color_detection_blue.png> <./imagenes/color_detection_cyan.png>]
+LaTeX Info: Redefining \. on input line 627.
+LaTeX Info: Redefining \% on input line 627.
+ [65 <./imagenes/color_detection_red.png> <./imagenes/color_detection_green.png>] <imagenes/diagramas/MessagingModule.png, id=358, 596.2275pt x 756.8275pt>
 File: imagenes/diagramas/MessagingModule.png Graphic file (type png)
  <use imagenes/diagramas/MessagingModule.png>
-Package pdftex.def Info: imagenes/diagramas/MessagingModule.png used on input line 532.
+Package pdftex.def Info: imagenes/diagramas/MessagingModule.png used on input line 636.
 (pdftex.def)             Requested size: 288.79422pt x 366.58742pt.
-LaTeX Info: Redefining \. on input line 540.
-LaTeX Info: Redefining \% on input line 540.
- [59]
-LaTeX Info: Redefining \. on input line 540.
-LaTeX Info: Redefining \% on input line 540.
- [60 <./imagenes/diagramas/MessagingModule.png>]
-LaTeX Info: Redefining \. on input line 540.
-LaTeX Info: Redefining \% on input line 540.
- [61])
+LaTeX Info: Redefining \. on input line 644.
+LaTeX Info: Redefining \% on input line 644.
+ [66 <./imagenes/diagramas/MessagingModule.png>] <imagenes/mail_example.png, id=363, 509.905pt x 318.18875pt>
+File: imagenes/mail_example.png Graphic file (type png)
+ <use imagenes/mail_example.png>
+Package pdftex.def Info: imagenes/mail_example.png used on input line 652.
+(pdftex.def)             Requested size: 412.56497pt x 257.45958pt.
+)
 LaTeX Info: Redefining \. on input line 100.
 LaTeX Info: Redefining \% on input line 100.
- [62]
+ [67 <./imagenes/mail_example.png>]
 \openout2 = `evaluation.aux'.
 
  (./evaluation.tex
-Cap\'{\i }tulo 6.
-[63
-
-
-
-]
-LaTeX Info: Redefining \. on input line 40.
-LaTeX Info: Redefining \% on input line 40.
- [64] <imagenes/pentatonic-scale-a-minor.jpg, id=351, 399.4925pt x 118.4425pt>
-File: imagenes/pentatonic-scale-a-minor.jpg Graphic file (type jpg)
- <use imagenes/pentatonic-scale-a-minor.jpg>
-Package pdftex.def Info: imagenes/pentatonic-scale-a-minor.jpg used on input line 43.
-(pdftex.def)             Requested size: 247.54149pt x 73.39201pt.
-LaTeX Info: Redefining \. on input line 62.
-LaTeX Info: Redefining \% on input line 62.
- [65 <./imagenes/pentatonic-scale-a-minor.jpg>]
-LaTeX Info: Redefining \. on input line 81.
-LaTeX Info: Redefining \% on input line 81.
- [66])
-LaTeX Info: Redefining \. on input line 101.
-LaTeX Info: Redefining \% on input line 101.
- [67]
-\openout2 = `conclusions.aux'.
-
- (./conclusions.tex
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
  [68
@@ -1715,20 +1734,95 @@ LaTeX Info: Redefining \% on input line 1.
 
 
 ]
+Cap\'{\i }tulo 6.
+[69] <imagenes/simon_flowchart.png, id=374, 926.46124pt x 729.72626pt>
+File: imagenes/simon_flowchart.png Graphic file (type png)
+ <use imagenes/simon_flowchart.png>
+Package pdftex.def Info: imagenes/simon_flowchart.png used on input line 40.
+(pdftex.def)             Requested size: 412.56497pt x 324.95543pt.
+LaTeX Info: Redefining \. on input line 49.
+LaTeX Info: Redefining \% on input line 49.
+ [70]
+LaTeX Info: Redefining \. on input line 49.
+LaTeX Info: Redefining \% on input line 49.
+ [71 <./imagenes/simon_flowchart.png>]
+
+Package Listings Warning: Text dropped after begin of listing on input line 52.
+
+
+Package Listings Warning: Text dropped after begin of listing on input line 76.
+
+
+Overfull \hbox (24.78961pt too wide) in paragraph at lines 78--80
+[][][][][][][][][][][][][][][][][][][] 
+
+\hbox(11.81424+5.06331)x371.86984 []
+
+LaTeX Info: Redefining \. on input line 83.
+LaTeX Info: Redefining \% on input line 83.
+[72]
+
+Package Listings Warning: Text dropped after begin of listing on input line 106.
+
+<imagenes/pentatonic-scale-a-minor.jpg, id=387, 399.4925pt x 118.4425pt>
+File: imagenes/pentatonic-scale-a-minor.jpg Graphic file (type jpg)
+ <use imagenes/pentatonic-scale-a-minor.jpg>
+Package pdftex.def Info: imagenes/pentatonic-scale-a-minor.jpg used on input line 126.
+(pdftex.def)             Requested size: 247.54149pt x 73.39201pt.
+LaTeX Info: Redefining \. on input line 129.
+LaTeX Info: Redefining \% on input line 129.
+ [73]
+LaTeX Info: Redefining \. on input line 153.
+LaTeX Info: Redefining \% on input line 153.
+ [74 <./imagenes/pentatonic-scale-a-minor.jpg>]
+Overfull \hbox (4.09013pt too wide) in paragraph at lines 153--154
+[]\OT1/cmr/bx/n/12 IRobInterfaceModule\twelverm : Pro-por-cio-na un m^^Seto-do pa-ra ob-te-ner la cla-se IRob,
+
+\hbox(8.33331+2.33331)x383.19028, glue set - 1.0 []
+
+LaTeX Info: Redefining \. on input line 187.
+LaTeX Info: Redefining \% on input line 187.
+[75] <imagenes/vigilante_diagram.png, id=397, 1520.68124pt x 1087.06125pt>
+File: imagenes/vigilante_diagram.png Graphic file (type png)
+ <use imagenes/vigilante_diagram.png>
+Package pdftex.def Info: imagenes/vigilante_diagram.png used on input line 191.
+(pdftex.def)             Requested size: 453.82397pt x 324.4124pt.
+
+Overfull \hbox (41.259pt too wide) in paragraph at lines 191--192
+ [][] 
+
+\hbox(324.4124+0.0)x412.56497 []
+
+LaTeX Info: Redefining \. on input line 199.
+LaTeX Info: Redefining \% on input line 199.
+[76 <./imagenes/vigilante_diagram.png>])
+LaTeX Info: Redefining \. on input line 101.
+LaTeX Info: Redefining \% on input line 101.
+ [77]
+\openout2 = `conclusions.aux'.
+
+ (./conclusions.tex
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+ [78
+
+
+
+]
 Cap\'{\i }tulo 7.
-) [69]
+) [79]
 \openout2 = `appendix.aux'.
 
  (./appendix.tex
 LaTeX Info: Redefining \. on input line 6.
 LaTeX Info: Redefining \% on input line 6.
- [70
+ [80
 
 
 
 ]
 Ap\'{e}ndice A.
-<imagenes/moduledeclaration.png, id=371, 842.14626pt x 173.64874pt>
+<imagenes/moduledeclaration.png, id=416, 842.14626pt x 173.64874pt>
 File: imagenes/moduledeclaration.png Graphic file (type png)
  <use imagenes/moduledeclaration.png>
 Package pdftex.def Info: imagenes/moduledeclaration.png used on input line 17.
@@ -1739,7 +1833,7 @@ Overfull \hbox (41.259pt too wide) in paragraph at lines 17--18
 
 \hbox(93.57814+0.0)x412.56497 []
 
-[71 <./imagenes/moduledeclaration.png>] <imagenes/moduleinstantiation.png, id=376, 555.07375pt x 632.3625pt>
+[81 <./imagenes/moduledeclaration.png>] <imagenes/moduleinstantiation.png, id=421, 555.07375pt x 632.3625pt>
 File: imagenes/moduleinstantiation.png Graphic file (type png)
  <use imagenes/moduleinstantiation.png>
 Package pdftex.def Info: imagenes/moduleinstantiation.png used on input line 26.
@@ -1752,20 +1846,20 @@ Overfull \hbox (30.53493pt too wide) in paragraph at lines 48--48
 
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
-[72]
+[82]
 LaTeX Info: Redefining \. on input line 54.
 LaTeX Info: Redefining \% on input line 54.
- [73 <./imagenes/moduleinstantiation.png>] <imagenes/feedingtouchevent.png, id=385, 373.395pt x 120.45pt>
+ [83 <./imagenes/moduleinstantiation.png>] <imagenes/feedingtouchevent.png, id=430, 373.395pt x 120.45pt>
 File: imagenes/feedingtouchevent.png Graphic file (type png)
  <use imagenes/feedingtouchevent.png>
 Package pdftex.def Info: imagenes/feedingtouchevent.png used on input line 80.
 (pdftex.def)             Requested size: 288.79422pt x 93.16397pt.
 LaTeX Info: Redefining \. on input line 91.
 LaTeX Info: Redefining \% on input line 91.
- [74]
+ [84]
 LaTeX Info: Redefining \. on input line 112.
 LaTeX Info: Redefining \% on input line 112.
- [75 <./imagenes/feedingtouchevent.png>]
+ [85 <./imagenes/feedingtouchevent.png>]
 Overfull \hbox (2.65497pt too wide) in paragraph at lines 120--121
 []\twelverm El m^^Sodu-lo \OT1/cmr/m/it/12 Sound-Dis-pat-cher \twelverm de-be ser con-fi-gu-ra-do en el ar-chi-vo \OT1/cmr/m/it/12 sound.properties
 
@@ -1779,10 +1873,10 @@ Overfull \hbox (1.16023pt too wide) in paragraph at lines 136--136
 
 LaTeX Info: Redefining \. on input line 151.
 LaTeX Info: Redefining \% on input line 151.
-[76]
+[86]
 LaTeX Info: Redefining \. on input line 183.
 LaTeX Info: Redefining \% on input line 183.
- [77]
+ [87]
 Overfull \hbox (73.75995pt too wide) in paragraph at lines 200--200
  []\OT1/cmtt/m/n/12 <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />[] 
 
@@ -1802,7 +1896,7 @@ Overfull \hbox (86.10995pt too wide) in paragraph at lines 200--200
 
 LaTeX Info: Redefining \. on input line 202.
 LaTeX Info: Redefining \% on input line 202.
-[78]) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.bbl
+[88]) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.bbl
 Underfull \hbox (badness 10000) in paragraph at lines 38--41
 []\twelverm ``Worker at volks-wa-gen plant ki-lled in ro-bot ac-ci-dent,''
 
@@ -1826,11 +1920,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 72--74
 
 \hbox(9.0+3.0)x370.78763, glue set 11.15117 []
 
-[79
+[89
 
 
 ]
-Overfull \hbox (21.0027pt too wide) in paragraph at lines 100--102
+Overfull \hbox (21.0027pt too wide) in paragraph at lines 84--86
 []\twelverm ``Gmail back-ground li-brary,'' https://github.com/yesidlazaro/GmailBackground,
 
 \hbox(9.0+3.0)x370.78763, glue set - 1.0 []
@@ -1849,7 +1943,7 @@ Package minitoc(hints) Warning: W0024
 
 LaTeX Info: Redefining \. on input line 115.
 LaTeX Info: Redefining \% on input line 115.
-[80] (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/cover.aux)
+[90] (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.aux (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/cover.aux)
 LaTeX Info: Redefining \. on input line 11.
 LaTeX Info: Redefining \% on input line 11.
  (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/draft.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/director-agreement.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/dedication.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/gratefulnesses.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/abstract.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/keywords.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/introduction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/contextualization.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/human-robot-interaction.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/tech_fundaments.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/implementation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/evaluation.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/conclusions.aux) (/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/appendix.aux))
@@ -1858,18 +1952,18 @@ LaTeX Warning: There were multiply-defined labels.
 
  ) 
 Here is how much of TeX's memory you used:
- 12792 strings out of 493014
- 173419 string characters out of 6133352
- 295996 words of memory out of 5000000
- 15640 multiletter control sequences out of 15000+600000
+ 12870 strings out of 493014
+ 175276 string characters out of 6133352
+ 299996 words of memory out of 5000000
+ 15709 multiletter control sequences out of 15000+600000
  50094 words of font info for 174 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 39i,13n,72p,1388b,1201s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 39i,13n,72p,1388b,1996s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb>
-Output written on "/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.pdf" (101 pages, 5136730 bytes).
+Output written on "/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.pdf" (111 pages, 7852418 bytes).
 PDF statistics:
- 462 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
+ 507 PDF objects out of 1000 (max. 8388607)
+ 294 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 206 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 251 words of extra memory for PDF output out of 10000 (max. 10000000)
 

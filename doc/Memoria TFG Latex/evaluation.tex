@@ -9,9 +9,9 @@
  
 \lettrine{E}{n} este capítulo se expondrán los resultados y el funcionamiento de los módulos desarrollados en este trabajo mediante tres aplicaciones de ejemplo.
 \section{Ejemplos de uso}
-Para probar el correcto funcionamiento de los módulos de interacción, a parte de los ejemplos de desarrollo que se comentaron en el capítulo \ref{sec:InteractionLibraries}, se desarrollaron tres aplicaciones Android que utilizan en conjunto los diferentes módulos de interacción.
+Para probar el correcto funcionamiento de los módulos de interacción, a parte de los ejemplos de desarrollo que se comentaron en el capítulo \ref{sec:InteractionLibraries}, se desarrollaron tres aplicaciones para ROBOBO utilizando las librerías de interacción diseñadas y desarrolladas en este proyecto.
 
-\subsection{Simon dice músical}
+\subsection{Simon dice musical}
 \label{subsec:simon-musical}
 El primero de los ejemplos desarrollados es un juego educativo musical, similar al juego Simón, en el que los participantes deben repetir una secuencia de colores que se va ampliando en cada iteración de la partida, pero utilizando notas musicales. El objetivo final de este juego es que el usuario consiga asociar los tonos escuchados con la nota musical correspondiente, además de ejercitar la memoria.
 En este ejemplo se han utilizado los siguientes módulos:
@@ -34,7 +34,90 @@ Además de los módulos creados en este trabajo, se emplean varios módulos que 
 	\item IRobInterfaceModule: Proporciona un método para obtener la clase IRob, que se emplea para un control más avanzado del Rob, por ejemplo, para utilizar los leds de la base.
 \end{itemize}
 
-El jugador inicia la partida dando una palmada, momento en el que el robot pronunciará a través del modulo de voz \enquote{Ready}, una segunda palmada comenzará la partida en si, el robot dirá una frase retando al usuario, por ejemplo \enquote{follow me if you can}, y procederá a reproducir un tono musical. En el momento en el que termine el tono, cambiará la cara dando a entender que está escuchando al usuario, en el momento en el que el jugador termine de producir la nota se comprueba si corresponde al tono original, si coincide el robot realizará una pequeña celebración y volverá a producir tonos, añadiendo uno más a los reproducidos anteriormente. En caso de que el jugador falle, el robot pondrá cara de disgusto, producirá un sonido de abucheo y volverá al estado inicial, esperando a una palmada para iniciar el juego.
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1\linewidth]{imagenes/simon_flowchart.png}
+	\caption{Diagrama de flujo del ejemplo musical}
+	\label{fig:simon-flowchart}
+\end{figure} 
+
+
+El jugador inicia la partida dando una palmada, momento en el que el robot pronunciará a través del modulo de voz \enquote{Ready}, una segunda palmada comenzará la partida en si, el robot dirá una frase retando al usuario, por ejemplo \enquote{follow me if you can}, y procederá a reproducir un tono musical. En el momento en el que termine el tono, cambiará la cara dando a entender que está escuchando al usuario, en el momento en el que el jugador termine de producir la nota se comprueba si corresponde al tono original, si coincide el robot realizará una pequeña celebración y volverá a producir tonos, añadiendo uno más a los reproducidos anteriormente. En caso de que el jugador falle, el robot pondrá cara de disgusto, producirá un sonido de abucheo y volverá al estado inicial, esperando a una palmada para iniciar el juego. Este proceso puede observarse en el diagrama de flujo que se muestra en la figura \ref{fig:simon-flowchart}.
+
+En este ejemplo se pueden ver en funcionamiento múltiples módulos de interacción, por ejemplo a continuación puede verse el código empleado para iniciar la partida, que hace uso del listener \textit{OnClap} que proporciona el \textit{ClapDetectionModule}.
+
+\vspace{5mm} %5mm vertical space
+
+\begin{lstlisting}[language=Java][frame=single]
+ @Override
+    public void onClap(double time) {
+        if ((ready)&&(!playing)){
+            Log.d(TAG,"PLAYING");
+            playing = true;
+            startGame();
+        }
+        if ((!ready)&&(!playing)){
+            Log.d(TAG,"READY");
+            ready = true;
+            emotionModule.setCurrentEmotion(Emotion.SMYLING);
+            speechModule.sayText("Ready",0);
+        }
+    }
+
+\end{lstlisting}
+
+\vspace{5mm} %5mm vertical space
+
+El siguiente fragmento de código es la implementación del listener \textit{onNoteEnd} del módulo \textit{NoteDetectionModule}, que es usado a la hora de detectar las notas que el jugador hace sonar. Para evitar falsos positivos, solo se tienen en cuenta las notas cuya duración supera los 200 milisegundos.
+
+ \vspace{5mm} %5mm vertical space 
+ 
+\begin{lstlisting}[language=Java][frame=single]
+@Override
+    public void onNoteEnd(com.mytechia.robobo.framework.hri.sound.noteDetection.Note note, long time) {
+
+        Log.d(TAG, "NOTEEND!!!!!!! Playing: "+playing+" playingnotes "+playingnotes+" listening "+listening);
+
+        if ((time>200)&&(playing)&&(!playingnotes)&&(listening)) {
+            try {
+                Log.d(TAG,"CheckResult");
+                boolean checkresult = checkNote(convertNote(note));
+                if (!checkresult){
+                    Log.d(TAG,"GameOver");
+                    gameOver();
+                }
+            }catch (NoSuchElementException e){
+                Log.d(TAG,"EndList");
+                listening = false;
+                movTask = new AsienteClass();
+                timermovement.schedule(movTask,0);
+            }
+        }
+    }
+\end{lstlisting}
+
+\vspace{5mm} %5mm vertical space
+
+También se ha implementado el listener de final de reproducción de secuencia \textit{onNoteSequenceEnd} en el que se crea la lista de notas a comprobar y se indica al sistema que debe comenzar a escuchar.
+
+\vspace{5mm} %5mm vertical space
+
+\begin{lstlisting}[language=Java][frame=single]
+    @Override
+    public void onSequencePlayEnd() {
+        emotionModule.setCurrentEmotion(Emotion.SURPRISED);
+        Log.d("TAG","PLAYING = FALSE");
+        playingnotes = false;
+
+        listening = true;
+        checkNotes = new LinkedList<>(notes);
+        Log.d("TAG", checkNotes.toString());
+
+    }
+\end{lstlisting}
+
+\vspace{5mm} %5mm vertical space
 
 En esta implementación del juego, para que tenga una sonoridad agradable, solamente se producen tonos dentro de la escala pentatónica menor de La (figura \ref{fig:pentatonic-scale})
 
@@ -52,36 +135,66 @@ El siguiente ejemplo es un sistema de seguridad que utiliza las capacidades del 
 En este ejemplo se han utilizado los siguientes módulos desarrollados en el trabajo:
 
 \begin{itemize}
-	\item SoundDispatcherModule: Necesario para el funcionamiento de los módulos de sonido
-	\item ClapDetectionModule: Se usa, con un umbral de detección sensible, para detectar sonidos en la zona.
-	\item EmotionSoundModule: Diferentes sonidos son reproducidos en función del resultado del juego.
-	\item SpeechProductionModule: Se usa para dar información al usuario y dar una mayor sensación de interacción con el robot
-	\item SpeechRecognitionModule: Usado para activar y desactivar el modo de vigilancia
-	\item BasicCameraModule: Permite la captura de imágenes desde la cámara en segundo plano
-	\item FaceDetectionModule: Permite la detección de caras para poder notificar al usuario.
-	\item MessagingModule: Usado para comunicar al usuario por correo electrónico cualquier posible intrusión del espacio vigilado.
+	%\item SoundDispatcherModule: Necesario para el funcionamiento de los módulos de sonido
+	%\item ClapDetectionModule: Se usa, con un umbral de detección sensible, para detectar sonidos en la zona.
+	\item \textbf{EmotionSoundModule}: Diferentes sonidos son reproducidos en función del resultado del juego.
+	\item \textbf{SpeechProductionModule}: Se usa para dar información al usuario y dar una mayor sensación de interacción con el robot
+	\item \textbf{SpeechRecognitionModule}: Usado para activar y desactivar el modo de vigilancia
+	\item \textbf{BasicCameraModule}: Permite la captura de imágenes desde la cámara en segundo plano
+	\item \textbf{FaceDetectionModule}: Permite la detección de caras para poder notificar al usuario.
+	\item \textbf{MessagingModule}: Usado para comunicar al usuario por correo electrónico cualquier posible intrusión del espacio vigilado.
 \end{itemize}
 
 Además de los módulos creados en este trabajo, se emplean varios módulos proporcionados ROBOBO! Framework:
 
 \begin{itemize}
-	\item EmotionModule: Provee la cara del robot, con la posibilidad de cambiar sus expresiones, es la interfaz gráfica que se le muestra al usuario.
-	\item DefaultMovementModule: Permite el uso de la plataforma robótica de forma simple, permitiendo el movimiento del robot.
-	\item IRobInterfaceModule: Proporciona un método para obtener la clase IRob, que se emplea para un control más avanzado del ROB, por ejemplo, para utilizar los leds de la base.
+	\item \textbf{EmotionModule}: Provee la cara del robot, con la posibilidad de cambiar sus expresiones, es la interfaz gráfica que se le muestra al usuario.
+	\item \textbf{DefaultMovementModule}: Permite el uso de la plataforma robótica de forma simple, permitiendo el movimiento del robot.
+	\item \textbf{IRobInterfaceModule}: Proporciona un método para obtener la clase IRob, que se emplea para un control más avanzado del ROB, por ejemplo, para utilizar los leds de la base.
 \end{itemize}
-
+En la figura \ref{fig:vigilante-diagram} se puede ver el diagrama del flujo de ejecución de este ejemplo.
 El usuario activará el modo de vigilancia mediante comandos de voz, con la frase \enquote{Rob activate now}, en este momento el \textit{Pan} del ROB comenzará a girar describiendo un arco de 180 grados y se activarán los diferentes sistemas de seguridad.
 Con el modo de seguridad activado, y la configuración por defecto, el  robot notificará al usuario cada vez que detecte una cara enviándole un correo electrónico una notificación con una imagen adjunta de la cara que hizo saltar el detector. También enviará un correo al usuario en caso de detectar varios sonidos bruscos en un determinado intervalo de tiempo.
 En el momento en que es detectado un intruso, el ROB activará las luces de alarma, parpadeo en azul y rojo, activará una alarma acústica y pondrá una expresión de enfado en su cara.
 Los modos de actuación del robot podrán ser configurados mediante voz, siempre y cuando el modo de vigilancia esté desactivado, mediante los siguientes comandos:
 \begin{itemize}
-	\item \textit{Rob switch silent mode}: En este modo el ROBOBO no se mueve ni activa ninguna clase de alarma que pueda ser detectada por el intruso, pero sigue notificando al usuario.
-	\item \textit{Rob switch face detection}: Activa y desactiva los avisos por detección de caras.
-	\item \textit{Rob switch sound detection}: Activa y desactiva las alarmas por detección de sonidos
-	\item \textit{Rob switch movement}: Activa y desactiva el movimiento del robot.
+	\item \textit{Rob switch silent mode now}: En este modo el ROBOBO no se mueve ni activa ninguna clase de alarma que pueda ser detectada por el intruso, pero sigue notificando al usuario.
+	\item \textit{Rob switch face detection now}: Activa y desactiva los avisos por detección de caras.
+	%\item \textit{Rob switch sound detection}: Activa y desactiva las alarmas por detección de sonidos
+	\item \textit{Rob switch movement now}: Activa y desactiva el movimiento del robot.
 \end{itemize}
 También podrá consultar el estado de las opciones de vigilancia mediante el comando de voz \textit{Rob status}.
-Para desactivar la vigilancia se utilizará el comando \textit{Rob deactivate now}
+Para desactivar la vigilancia se utilizará el comando \textit{Rob deactivate now}.
+
+La gramática definida para este ejemplo es la siguiente:
+
+\begin{verbatim}
+
+
+#JSGF V1.0;
+grammar voicecontrol;
+
+<starter> = rob;
+<activation> =activate|deactivate;
+<mode>= face detection|sound detection|silent mode|movement;
+<ending> = now;
+
+<options> = <starter> switch <mode> <ending>;
+<activations> = <starter> <activation> <ending>;
+
+public <order> = <options>|<activations>;
+
+\end{verbatim}
+
+\begin{figure}
+	\centering
+	\includegraphics[width=1.1\linewidth]{imagenes/vigilante_diagram.png}
+	\caption{Diagrama del flujo  ejecución del ejemplo de vigilancia}
+	\label{fig:vigilante-diagram}
+\end{figure} 
+
+
+
 Este ejemplo no trata de ser un sistema de seguridad eficaz, sino demostrar una posible aplicación de los módulos desarrollados en este trabajo.
 
 \subsection{ROBOBO Mascota}
@@ -95,6 +208,7 @@ Este ejemplo no trata de ser un sistema de seguridad eficaz, sino demostrar una 
 	\item El \textit{ColorDetectionModule} puede confundirse si el fondo no es homogéneo, se recomienda usar tarjetas con colores sobre fondo blanco.
 	\item El \textit{EmailModule} puede causar el bloqueo de la cuenta de Gmail si esta no es configurada previamente para usar mediante IMAP.
 	\item El \textit{TouchModule} requiere el paso explícito de los TouchEvents de la actividad en pantalla.
+	\item El sistema Android no permite el uso del micrófono por más un thread al mismo tiempo, lo que hace que los módulos que usan el micrófono de la librería Sound sean incompatibles con el módulo \textit{SpeechRecognition}.
 \end{itemize}
 \label{sec:known_issues}
     

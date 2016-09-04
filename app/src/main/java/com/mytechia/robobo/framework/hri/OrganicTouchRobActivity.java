@@ -94,7 +94,7 @@ public class OrganicTouchRobActivity extends Activity implements ITouchListener 
         try {
 
 
-            this.movementModule = this.roboboManager.getModuleInstance(IRobMovementModule.class);
+this.movementModule = this.roboboManager.getModuleInstance(IRobMovementModule.class);
             this.touchModule = this.roboboManager.getModuleInstance(ITouchModule.class);
 
 

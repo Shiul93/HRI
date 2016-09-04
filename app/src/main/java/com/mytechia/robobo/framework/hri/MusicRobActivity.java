@@ -114,7 +114,7 @@ public class MusicRobActivity extends Activity implements IPitchListener,INoteLi
         }
         pitchModule.suscribe(this);
         noteDetectionModule.suscribe(this);
-        emotionSoundMoudle.playSound(IEmotionSoundModule.BOOOOO_SOUND);
+
 
         dispatcher.runDispatcher();
 

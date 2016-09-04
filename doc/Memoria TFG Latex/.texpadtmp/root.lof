@@ -7,52 +7,61 @@
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Disposici\IeC {\'o}n de los sensores en el ROBOBO 2.0}}{5}
 \addvspace {10\p@ }
 \contentsline {xchapter}{Fundamentos te\IeC {\'o}ricos}{9}
-\contentsline {figure}{\numberline {2.1}{\ignorespaces Estructura de ROBOBO! framework dentro del entorno ROBOBO}}{10}
-\contentsline {figure}{\numberline {2.2}{\ignorespaces Clase IRob}}{12}
-\contentsline {figure}{\numberline {2.3}{\ignorespaces Clase IRobMovementModule}}{12}
-\contentsline {figure}{\numberline {2.4}{\ignorespaces Interfaz IModule}}{13}
+\contentsline {figure}{\numberline {2.1}{\ignorespaces ROBOBO completo,Base robotizada(ROB) + smartphone(OBO)}}{10}
+\contentsline {figure}{\numberline {2.2}{\ignorespaces Estructura de ROBOBO! framework dentro del entorno ROBOBO}}{11}
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Clase IRob}}{13}
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Clase IRobMovementModule}}{14}
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Interfaz IModule}}{15}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Antecedentes}{17}
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de una jaula de seguridad para un robot industrial}}{18}
-\contentsline {figure}{\numberline {3.2}{\ignorespaces Robot terapeutico Paro}}{20}
-\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema de caracter\IeC {\'\i }sticas del robot NAO}}{21}
-\contentsline {figure}{\numberline {3.4}{\ignorespaces Sistema quir\IeC {\'u}rgico daVinci}}{22}
-\contentsline {figure}{\numberline {3.5}{\ignorespaces Robot mascota Aibo de Sony}}{23}
-\contentsline {figure}{\numberline {3.6}{\ignorespaces Robot mascota Smartpet de Bandai}}{23}
-\contentsline {figure}{\numberline {3.7}{\ignorespaces Beebot}}{24}
-\contentsline {figure}{\numberline {3.8}{\ignorespaces Escornabot}}{24}
-\contentsline {figure}{\numberline {3.9}{\ignorespaces Kit b\IeC {\'a}sico Lego Mindstorms EV3}}{25}
-\contentsline {figure}{\numberline {3.10}{\ignorespaces Robot Zowi de BQ}}{26}
-\contentsline {figure}{\numberline {3.11}{\ignorespaces Robot Thymio}}{27}
-\contentsline {figure}{\numberline {3.12}{\ignorespaces Robots Dash y Dot}}{28}
+\contentsline {xchapter}{Antecedentes}{19}
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Esquema de una jaula de seguridad para un robot industrial}}{20}
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Robot terapeutico Paro}}{22}
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Esquema de caracter\IeC {\'\i }sticas del robot NAO}}{23}
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Sistema quir\IeC {\'u}rgico daVinci}}{24}
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Robot mascota Aibo de Sony}}{25}
+\contentsline {figure}{\numberline {3.6}{\ignorespaces Robot mascota Smartpet de Bandai}}{25}
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Beebot}}{26}
+\contentsline {figure}{\numberline {3.8}{\ignorespaces Escornabot}}{26}
+\contentsline {figure}{\numberline {3.9}{\ignorespaces Kit b\IeC {\'a}sico Lego Mindstorms EV3}}{27}
+\contentsline {figure}{\numberline {3.10}{\ignorespaces Robot Zowi de BQ}}{28}
+\contentsline {figure}{\numberline {3.11}{\ignorespaces Robot Thymio}}{29}
+\contentsline {figure}{\numberline {3.12}{\ignorespaces Robots Dash y Dot}}{30}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Fundamentos tecnol\IeC {\'o}gicos}{29}
+\contentsline {xchapter}{Fundamentos tecnol\IeC {\'o}gicos}{31}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Desarrollo}{31}
-\contentsline {figure}{\numberline {5.1}{\ignorespaces Estructura de paquetes dentro del paquete HRI del Robobo}}{33}
-\contentsline {figure}{\numberline {5.2}{\ignorespaces Paquete Speech}}{38}
-\contentsline {figure}{\numberline {5.3}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{39}
-\contentsline {figure}{\numberline {5.4}{\ignorespaces M\IeC {\'o}dulo SpeechProduction}}{42}
-\contentsline {figure}{\numberline {5.5}{\ignorespaces M\IeC {\'o}dulo Touch}}{44}
-\contentsline {figure}{\numberline {5.6}{\ignorespaces Paquete Sound}}{46}
-\contentsline {figure}{\numberline {5.7}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{47}
-\contentsline {figure}{\numberline {5.8}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{48}
-\contentsline {figure}{\numberline {5.9}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{50}
-\contentsline {figure}{\numberline {5.10}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{51}
-\contentsline {figure}{\numberline {5.11}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{52}
-\contentsline {figure}{\numberline {5.12}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{53}
-\contentsline {figure}{\numberline {5.13}{\ignorespaces Paquete Vision}}{55}
-\contentsline {figure}{\numberline {5.14}{\ignorespaces M\IeC {\'o}dulo BasicCamera}}{56}
-\contentsline {figure}{\numberline {5.15}{\ignorespaces M\IeC {\'o}dulo FaceDetection}}{57}
-\contentsline {figure}{\numberline {5.16}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{58}
-\contentsline {figure}{\numberline {5.17}{\ignorespaces M\IeC {\'o}dulo Email}}{60}
+\contentsline {xchapter}{Desarrollo}{33}
+\contentsline {figure}{\numberline {5.1}{\ignorespaces Esquema de sensores y actuadores del ROB}}{35}
+\contentsline {figure}{\numberline {5.2}{\ignorespaces Estructura de paquetes dentro del paquete HRI del Robobo}}{37}
+\contentsline {figure}{\numberline {5.3}{\ignorespaces Paquete Speech}}{42}
+\contentsline {figure}{\numberline {5.4}{\ignorespaces M\IeC {\'o}dulo SpeechRecognition}}{43}
+\contentsline {figure}{\numberline {5.5}{\ignorespaces M\IeC {\'o}dulo SpeechProduction}}{46}
+\contentsline {figure}{\numberline {5.6}{\ignorespaces M\IeC {\'o}dulo Touch}}{48}
+\contentsline {figure}{\numberline {5.7}{\ignorespaces Paquete Sound}}{50}
+\contentsline {figure}{\numberline {5.8}{\ignorespaces M\IeC {\'o}dulo SoundDispatcher}}{51}
+\contentsline {figure}{\numberline {5.9}{\ignorespaces M\IeC {\'o}dulo PitchDetection}}{52}
+\contentsline {figure}{\numberline {5.10}{\ignorespaces M\IeC {\'o}dulo NoteDetection}}{54}
+\contentsline {figure}{\numberline {5.11}{\ignorespaces M\IeC {\'o}dulo ClapDetection}}{55}
+\contentsline {figure}{\numberline {5.12}{\ignorespaces M\IeC {\'o}dulo NoteGenerator}}{56}
+\contentsline {figure}{\numberline {5.13}{\ignorespaces M\IeC {\'o}dulo EmotionSound}}{57}
+\contentsline {figure}{\numberline {5.14}{\ignorespaces Paquete Vision}}{59}
+\contentsline {figure}{\numberline {5.15}{\ignorespaces M\IeC {\'o}dulo BasicCamera}}{60}
+\contentsline {figure}{\numberline {5.16}{\ignorespaces M\IeC {\'o}dulo FaceDetection}}{61}
+\contentsline {figure}{\numberline {5.17}{\ignorespaces M\IeC {\'o}dulo ColorDetection}}{62}
+\contentsline {figure}{\numberline {5.18}{\ignorespaces Color azul detectado}}{64}
+\contentsline {figure}{\numberline {5.19}{\ignorespaces Color c\IeC {\'\i }an detectado}}{64}
+\contentsline {figure}{\numberline {5.20}{\ignorespaces Color rojo detectado}}{65}
+\contentsline {figure}{\numberline {5.21}{\ignorespaces Color verde detectado}}{65}
+\contentsline {figure}{\numberline {5.22}{\ignorespaces M\IeC {\'o}dulo Email}}{66}
+\contentsline {figure}{\numberline {5.23}{\ignorespaces Ejemplo de correo electr\IeC {\'o}nico enviado}}{67}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Resultados y pruebas}{63}
-\contentsline {figure}{\numberline {6.1}{\ignorespaces Escala pentatonica menor de La}}{65}
+\contentsline {xchapter}{Resultados y pruebas}{69}
+\contentsline {figure}{\numberline {6.1}{\ignorespaces Diagrama de flujo del ejemplo musical}}{71}
+\contentsline {figure}{\numberline {6.2}{\ignorespaces Escala pentatonica menor de La}}{74}
+\contentsline {figure}{\numberline {6.3}{\ignorespaces Diagrama del flujo ejecuci\IeC {\'o}n del ejemplo de vigilancia}}{76}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Conclusiones}{69}
+\contentsline {xchapter}{Conclusiones}{79}
 \addvspace {10\p@ }
-\contentsline {xchapter}{Manual de uso}{71}
-\contentsline {figure}{\numberline {A.1}{\ignorespaces Declaraci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{71}
-\contentsline {figure}{\numberline {A.2}{\ignorespaces Instanciaci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{73}
-\contentsline {figure}{\numberline {A.3}{\ignorespaces Paso de los TouchEvents al m\IeC {\'o}dulo Touch}}{75}
+\contentsline {xchapter}{Manual de uso}{81}
+\contentsline {figure}{\numberline {A.1}{\ignorespaces Declaraci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{81}
+\contentsline {figure}{\numberline {A.2}{\ignorespaces Instanciaci\IeC {\'o}n de los m\IeC {\'o}dulos para el ejemplo del Simon dice musical}}{83}
+\contentsline {figure}{\numberline {A.3}{\ignorespaces Paso de los TouchEvents al m\IeC {\'o}dulo Touch}}{85}
