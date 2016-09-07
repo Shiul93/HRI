@@ -11,6 +11,7 @@ import android.content.DialogInterface;
 import android.graphics.PointF;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.speech.SpeechRecognizer;
 import android.util.Log;
 import android.view.MotionEvent;
 
@@ -19,6 +20,7 @@ import com.mytechia.robobo.framework.RoboboManager;
 import com.mytechia.robobo.framework.exception.ModuleNotFoundException;
 import com.mytechia.robobo.framework.hri.emotion.Emotion;
 import com.mytechia.robobo.framework.hri.emotion.IEmotionModule;
+import com.mytechia.robobo.framework.hri.emotion.ITouchEventListener;
 import com.mytechia.robobo.framework.hri.emotion.webgl.WebGLEmotionDisplayActivity;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapDetectionModule;
 import com.mytechia.robobo.framework.hri.sound.clapDetection.IClapListener;
@@ -42,9 +44,12 @@ import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceDetectionModu
 import com.mytechia.robobo.framework.hri.vision.faceDetection.IFaceListener;
 import com.mytechia.robobo.framework.service.RoboboServiceHelper;
 import com.mytechia.robobo.rob.BluetoothRobInterfaceModule;
+import com.mytechia.robobo.rob.IRob;
 import com.mytechia.robobo.rob.IRobInterfaceModule;
+import com.mytechia.robobo.rob.MoveMTMode;
 import com.mytechia.robobo.rob.movement.IRobMovementModule;
 import com.mytechia.robobo.rob.util.RoboboDeviceSelectionDialog;
+import com.mytechia.robobo.util.Color;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -55,7 +60,7 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 
-public class MainActivity extends Activity implements  INotePlayListener, ITouchListener, ISpeechRecognitionListener, IFaceListener, IColorListener {
+public class MainActivity extends Activity implements  INotePlayListener, ITouchListener, ISpeechRecognitionListener, IFaceListener, IColorListener, ITouchEventListener {
 
     private RoboboServiceHelper roboboHelper;
     private RoboboManager robobo;
@@ -78,6 +83,7 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
     private IRobInterfaceModule interfaceModule;
     private IRobMovementModule movementModule;
 
+    private IRob iRob;
 
     private static Random r = new Random();
 
@@ -90,13 +96,30 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
     private boolean playingnotes = false;
     private boolean listening = false;
 
+    private int waterlevel = 5;
+    private int foodlevel = 5;
+
     Timer timer = new Timer();
     TimerTask speechTask;
     Timer timermovement = new Timer();
     TimerTask movTask;
+
+    Timer eventTimer;
+    TimerTask eventTask;
     int negatecount = 0;
 
-    private boolean seeingLight = false;
+    private boolean firstface = true;
+
+    private int nextEvent = 10000;
+
+
+    private boolean wantspetting = true;
+
+    private int caresscount = 0;
+
+    private int caresslevel = 50;
+
+    private int expectedColor;
 
 
     //region Listeners
@@ -120,12 +143,6 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
         finish();
     }
 
-    @Override
-    public boolean onTouchEvent(MotionEvent event) {
-
-        touchModule.feedTouchEvent(event);
-        return super.onTouchEvent(event);
-    }
 
     //endregion
 
@@ -158,13 +175,46 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
     @Override
     public void onNewColor(int colorrgb, int nearest_color) {
 
+        Log.d(TAG,"Expected color " + expectedColor);
+        if (expectedColor == nearest_color){
+            speechModule.sayText("Thank You!", ISpeechProductionModule.PRIORITY_LOW);
+            if ((expectedColor == android.graphics.Color.GREEN)||(expectedColor == android.graphics.Color.RED)){
+                foodlevel=5;
+            }else{
+                waterlevel= 5;
+            }
+            colorDetectionModule.pauseDetection();
+        }else{
+            speechModule.sayText("I did not ask for this!", ISpeechProductionModule.PRIORITY_HIGH);
+        }
     }
     //endregion
 
     //region FaceListener
     @Override
     public void onFaceDetected(PointF faceCoords, float eyesDistance) {
+        Log.d(TAG,"Eyes distance: "+eyesDistance);
+        if (eyesDistance>120){
+            emotionModule.setTemporalEmotion(Emotion.EMBARRASED,2000,Emotion.NORMAL);
+            speechModule.sayText("You are too close!",ISpeechProductionModule.PRIORITY_HIGH);
+            try {
+                movementModule.moveBackwardsTime((short)20,2000);
 
+            } catch (InternalErrorException e) {
+                e.printStackTrace();
+            }
+        }else if (eyesDistance<20){
+            emotionModule.setTemporalEmotion(Emotion.SURPRISED,2000,Emotion.NORMAL);
+            speechModule.sayText("You are too far! Come here!",ISpeechProductionModule.PRIORITY_HIGH);
+
+        }else{
+            if (firstface){
+                firstface = false;
+                emotionModule.setTemporalEmotion(Emotion.HAPPY,5000,Emotion.NORMAL);
+                speechModule.sayText("Hey there! Im robobo!", ISpeechProductionModule.PRIORITY_HIGH);
+
+            }
+        }
     }
     //endregion
 
@@ -172,33 +222,100 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
     //region SpeechListener
     @Override
     public void phraseRecognized(String phrase, Long timestamp) {
+        if (phrase.equals("Hi")) {
+
+        }
+        else if (phrase.equals("whats up")) {
+
+        }
+        else if (phrase.equals("here comes the food")) {
+            expectedColor = android.graphics.Color.GREEN;
+
+            colorDetectionModule.startDetection();
+
+        }
+        else if (phrase.equals("here comes the drink")) {
+            expectedColor = android.graphics.Color.BLUE;
+            colorDetectionModule.startDetection();
+
+        }
+        else if (phrase.equals("Hi")) {
+
+        }else if (phrase.equals("Hi")) {
+
+        }
 
     }
 
     @Override
     public void onModuleStart() {
-
+        Log.d(TAG,"ONMODULESTART SPEECH)");
+        recognitionModule.setGrammarSearch("voicecontrolsearch","voicecontrol.gram");
     }
     //endregion
 
     //region TouchListener
     @Override
     public void tap(Integer x, Integer y) {
-        noteGeneratorModule.playNote(Note.A4,250);
+        Log.d(TAG,"X: "+x+" Y: "+y);
+        if ((x>230)&&(x<900)&&(y>425)&&(y<1025)){
+            emotionModule.setTemporalEmotion(Emotion.ANGRY,2000,Emotion.NORMAL);
+            speechModule.sayText("Ouch! Don't poke my eye!",ISpeechProductionModule.PRIORITY_HIGH);
+
+        }else if ((x>250)&&(x<800)&&(y>1285)&&(y<1500)){
+            emotionModule.setTemporalEmotion(Emotion.ANGRY,2000,Emotion.NORMAL);
+            speechModule.sayText("Dont put your finger in my mouth!",ISpeechProductionModule.PRIORITY_HIGH);
+
+        }else{
+            emotionModule.setTemporalEmotion(Emotion.LAUGHING,2000,Emotion.NORMAL);
+            speechModule.sayText("That tickles!",ISpeechProductionModule.PRIORITY_HIGH);
+        }
     }
 
     @Override
     public void touch(Integer x, Integer y) {
-
+        try {
+            movementModule.moveTilt((short)5,90);
+        } catch (InternalErrorException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     public void fling(TouchGestureDirection dir, double angle, long time, double distance) {
+        try {
 
+
+            switch (dir) {
+                case UP:
+                    movementModule.moveTilt((short)5,80);
+                    break;
+                case DOWN:
+                    movementModule.moveTilt((short)5,100);
+                    break;
+                case LEFT:
+                    iRob.moveMT(MoveMTMode.FORWARD_REVERSE,(short)50,720,(short)50,720);
+                    break;
+                case RIGHT:
+                    iRob.moveMT(MoveMTMode.REVERSE_FORWARD,(short)50,720,(short)50,720);
+                    break;
+            }
+        }catch (InternalErrorException e){
+
+        }
     }
 
     @Override
     public void caress(TouchGestureDirection dir) {
+        if (wantspetting){
+            caresscount++;
+            if (caresscount>=caresslevel){
+                wantspetting = false;
+                caresscount = 0;
+                speechModule.sayText("Thanks for the petting!", ISpeechProductionModule.PRIORITY_HIGH);
+                emotionModule.setTemporalEmotion(Emotion.IN_LOVE, 3000, Emotion.NORMAL);
+            }
+        }
 
     }
     //endregion
@@ -215,7 +332,7 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
 
     protected void startRoboboApplication() {
 
-        //roboboHelper.launchDisplayActivity(WebGLEmotionDisplayActivity.class);
+        roboboHelper.launchDisplayActivity(WebGLEmotionDisplayActivity.class);
 
         try {
 
@@ -255,10 +372,18 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
             });
         }
 
+        emotionModule.subscribeTouchListener(this);
         colorDetectionModule.suscribe(this);
         faceDetectionModule.suscribe(this);
         noteGeneratorModule.suscribe(this);
         touchModule.suscribe(this);
+
+        recognitionModule.suscribe(this);
+        colorDetectionModule.pauseDetection();
+        iRob = interfaceModule.getRobInterface();
+
+        eventTimer = new Timer();
+        eventTimer.schedule(new EventTask(),nextEvent);
 
 
         try {
@@ -404,19 +529,7 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
 
     //region Game Methods
 
-    boolean checkNote(Note note)throws NoSuchElementException {
 
-        Note actualnote = checkNotes.pop();
-
-        if (actualnote.note.equals(note.note)){
-            if (checkNotes.isEmpty()){
-                throw  new NoSuchElementException();
-            }
-            return true;
-        }else {
-            return false;
-        }
-    }
 
     private static int generateRandom(int min, int max) {
         // max - min + 1 will create a number in the range of min and max, including max. If you don´t want to include it, just delete the +1.
@@ -458,42 +571,21 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
 
     }
 
-    void playNoteSequence(){
+    void playNoteSequence(int numberofnotes){
         int i;
         emotionModule.setCurrentEmotion(Emotion.SMYLING);
-        for (i=0;i<notes.size();i++){
-            noteGeneratorModule.addNoteToSequence(notes.get(i),750);
+        for (i=0;i<numberofnotes;i++){
+            noteGeneratorModule.addNoteToSequence(generateRandomNote(),200);
         }
         playingnotes = true;
         noteGeneratorModule.playSequence();
     }
 
-    void startGame(){
-        playing = true;
-        notes = new ArrayList<Note>();
-        notes.add(generateRandomNote());
-        sayPhrase();
 
-        //playNoteSequence();
 
-    }
 
-    void continueGame(){
-        notes.add(generateRandomNote());
-        sayPhrase();
-        //playNoteSequence();
-    }
 
-    void gameOver(){
-        playing=false;
-        ready = false;
-        playingnotes = false;
-        emotionSoundModule.playSound(IEmotionSoundModule.RIMSHOT_SOUND);
-        emotionModule.setTemporalEmotion(Emotion.SAD,3000,Emotion.NORMAL);
-        movTask = new NegateClass();
-        timermovement.schedule(movTask,100);
 
-    }
 
 
     void sayPhrase(){
@@ -519,6 +611,11 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
         timer.schedule(speechTask,2000);
     }
 
+    @Override
+    public void onScreenTouchEvent(MotionEvent event) {
+        touchModule.feedTouchEvent(event);
+    }
+
 
     private class WaitForSpeech extends TimerTask {
 
@@ -526,7 +623,7 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
 
         @Override
         public void run() {
-            playNoteSequence();
+            playNoteSequence(5);
         }
     }
 
@@ -640,7 +737,7 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
                     case 5:
                         Log.d(TAG, "NegateCount: "+negatecount);
                         negatecount=0;
-                        continueGame();
+
                         break;
 
                 }
@@ -650,7 +747,77 @@ public class MainActivity extends Activity implements  INotePlayListener, ITouch
         }
     }
 
+    private class EventTask extends TimerTask{
 
+        @Override
+        public void run() {
+            int option = generateRandom(0,6);
+            Log.d(TAG,"Event: "+option);
+
+            switch (option){
+                case 0:
+                    emotionModule.setTemporalEmotion(Emotion.SMYLING,2500,Emotion.NORMAL);
+                    playNoteSequence(10);
+                    break;
+                case 1:
+                    emotionModule.setTemporalEmotion(Emotion.HAPPY,2500,Emotion.NORMAL);
+                    break;
+                case 2:
+                    try {
+                        iRob.moveMT(MoveMTMode.REVERSE_FORWARD,(short)50,720,(short)50,720);
+                    } catch (InternalErrorException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 3:
+                    try {
+                        iRob.moveMT(MoveMTMode.FORWARD_REVERSE,(short)50,720,(short)50,720);
+                    } catch (InternalErrorException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                case 4:
+                    if (foodlevel>0) {
+                        foodlevel = foodlevel - 1;
+                    }
+                    break;
+                case 5:
+                    if (waterlevel>0) {
+                        waterlevel = waterlevel -1;
+                    }
+                    break;
+                case 6:
+                    speechModule.sayText("Pet me!",ISpeechProductionModule.PRIORITY_HIGH);
+                    wantspetting = true;
+
+                    break;
+                case 7:
+                    break;
+                case 8:
+                    break;
+                case 9:
+                    break;
+                case 10:
+                    break;
+            }
+
+
+            checkLevels();
+            eventTimer = new Timer();
+            eventTask = new EventTask();
+            eventTimer.schedule(eventTask,generateRandom(30000,50000));
+        }
+    }
+
+
+    private void checkLevels(){
+        if (waterlevel<2){
+            speechModule.sayText("Im thirsty",ISpeechProductionModule.PRIORITY_LOW);
+        }
+        if (foodlevel<2){
+            speechModule.sayText("Im hungry",ISpeechProductionModule.PRIORITY_LOW);
+        }
+    }
 
     //endregion
 

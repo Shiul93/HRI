@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <script src="jquery-2.2.4.min.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    </head>
+
+    <style media="screen" type="text/css">
+
+        html,body{
+            margin:0;
+            height:100%;
+            overflow:hidden;
+        }
+
+    </style>
+
+    <body>
+        <script type="text/javascript">
+
+
+                  var currentEmotion = "images/face-normal.png";
+
+                  function changeImage(a) {
+                      document.getElementById("top").src=currentEmotion;
+                      document.getElementById("down").src=a;
+                      $('#top').fadeOut(300);
+                      currentEmotion = a;
+                  }
+
+                  function emotionAngry() {
+                    changeImage("images/face-angry.png");
+                  }
+
+                  function emotionHappy() {
+                    changeImage("images/face-happy.png");
+                  }
+
+                  function emotionNormal() {
+                    changeImage("images/face-normal.png");
+                  }
+
+                  function emotionInLove() {
+                    changeImage("images/face-inlove.png");
+                  }
+
+                  function emotionSad() {
+                    changeImage("images/face-sad.png");
+                  }
+
+                  function emotionSmyling() {
+                    changeImage("images/face-smiling.png");
+                  }
+
+                  function emotionSurprised() {
+                    changeImage("images/face-surprised.png");
+                  }
+
+                  function emotionEmbarrased() {
+                    changeImage("images/face-embarrased.png");
+                  }
+
+                  function emotionLaughing() {
+                    changeImage("images/face-laughing.png");
+                  }
+
+        </script>
+
+        <div style="position: relative; left: 0; top: 0;">
+            <img id="down" style="position: relative; top: 0; left: 0;" src="images/face-normal.png">
+            <img id="top" style="position: absolute; top: 0px; left: 0px;" src="images/face-normal.png">
+        </div>
+
+
+    </body>
+</html>

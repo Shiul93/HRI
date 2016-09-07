@@ -207,10 +207,10 @@ public class PocketSphinxSpeechRecognitionModule extends ASpeechRecognitionModul
                     Log.d(TAG,"AT/Exception: "+result.toString());
                     Log.d(TAG,"AT/End");
                 } else {
-                    //TODO Manejar inicio
+
                     Log.d(TAG,"AT/Starting keyword listener");
                     //Update search and start listening
-                    updatePhrases();
+                    //updatePhrases();
                     Log.d(TAG,"AT/End");
                     Log.d(TAG, "AT/----------");
                     hasStarted = true;

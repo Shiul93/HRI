@@ -1,14 +1,7 @@
 #JSGF V1.0;
 grammar voicecontrol;
 
-<starter> = rob;
-<activation> =activate|deactivate;
-<mode>= face detection|sound detection|silent mode|movement;
-<ending> = now;
 
- <options> = <starter> switch <mode> <ending>;
- <activations> = <starter> <activation> <ending>;
-
-public <order> = <options>|<activations>;
+public <order> = here comes the food|how are you|hi|here comes the drink|do a trick;
 
 

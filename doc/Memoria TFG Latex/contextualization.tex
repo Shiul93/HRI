@@ -4,7 +4,7 @@
 
 
 
-\lettrine{E}{n} este capítulo se introduce la base teórica sobre los que la se desarrollará el trabajo, en concreto acerca del ROBOBO! Framework, un framework de desarrollo creado específicamente para el ROBOBO.
+\lettrine{E}{n} este capítulo se introduce la base teórica sobre la que se desarrollará el trabajo, en concreto acerca del ROBOBO! Framework, un framework de desarrollo creado específicamente para el ROBOBO.
 %Este capítulo debería pasar a ser "Fundamentos teóricos o Conceptos previos" y debería incluir una descripción del ROBOBO Framework, qué usa (Android, ROS, etc)
 
 
@@ -13,9 +13,9 @@
 \label{sec:robobo-framework}
 
 
-\begin{figure}
+\begin{figure}%todo [hbt]
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/rob_obo.JPG}
+	\includegraphics[width=0.5\linewidth]{imagenes/rob_obo.JPG}
 	\caption{ROBOBO completo,Base robotizada(ROB) + smartphone(OBO)}
 	\label{fig:rob_obo}
 \end{figure}
@@ -23,21 +23,15 @@
 \begin{figure}
 	\centering
 	\includegraphics[width=0.7\linewidth]{imagenes/robobo_framework_2.png}
-	\caption{Estructura de ROBOBO! framework dentro del entorno ROBOBO}
+	\caption{Entorno ROBOBO}
 	\label{fig:robobo_framework_estructure}
 \end{figure}
 
+El entorno ROBOBO está formado por la base robotizada ROB y el Smartphone OBO(figura \ref{fig:rob_obo}) y su estructura puede verse en la figura \ref{fig:robobo_framework_estructure}. En dicha figura se puede observar cual es el software contenido en las diferentes partes del hardware.
 
-
-
-El ROBOBO! Framework es el marco de trabajo empleado para desarrollar el software para el ROBOBO, formado por la base robotizada ROB y un smartphone OBO(figura \ref{fig:rob_obo}) y cuyas funcionalidades se expandirán mediante los módulos de interacción que se desarrollarán en este trabajo. 
-
-El framework está enfocado al desarrollo de aplicaciones Android, sistema operativo del que se hablará en la sección \ref{subsec:android}, mediante el lenguaje de programación Java.
+El ROBOBO! Framework es el marco de trabajo empleado para desarrollar el software para el ROBOBO, y cuyas funcionalidades se expandirán mediante los módulos de interacción que se desarrollarán en este trabajo. El framework está enfocado al desarrollo de aplicaciones Android, sistema operativo del que se hablará en la sección \ref{subsec:android}, mediante el lenguaje de programación Java. El framework, como se ve en la figura \ref{fig:robobo_framework_estructure} está contenido dentro del OBO.
  
-En la figura \ref{fig:robobo_framework_estructure} se puede ver como se estructura el sistema ROBOBO y cual es el rol del framework dentro del mismo.
-
-La \textit{ROBOBO! Custom App}, de la figura, representa la aplicación final que el usuario instalará en su teléfono móvil y está construida sobre el framework, utilizando los diferentes módulos que este ofrece.
-
+Las \textit{Android Native App} y \textit{ROS Embedded App}, de la figura, representan la aplicación final que el usuario instalará en su teléfono móvil(OBO) y está construida sobre el framework, utilizando los diferentes módulos que este ofrece.
 
 
 Dentro del framework se pueden encontrar diferentes módulos que proporcionan funcionalidades para el desarrollo de aplicaciones. Dos de ellos resultan especialmente importantes:
@@ -50,9 +44,9 @@ Dentro del framework se pueden encontrar diferentes módulos que proporcionan fu
 		\item La cámara del dispositivo
 		\item Los datos de los sensores del Smartphone
 	\end{itemize} 
-	Permite desarrollar tanto aplicaciones remotas, que no están alojadas en el smartphone pero  hacen uso de los servicios o temas ejecutándose en el ROBOBO, como aplicaciones ROS nativas.
+	Permite desarrollar tanto aplicaciones remotas(\textit{ROS Remote App} en la figura), que no están alojadas en el smartphone pero  hacen uso de los servicios o temas ejecutándose en el ROBOBO, como aplicaciones ROS nativas(\textit{Ros Embedded App}).
 	
-Más adelante, en la sección \ref{subsec:ros}, se hablará con mas detalle de ROS .
+Más adelante, en la sección \ref{subsec:ros}, se hablará con mas detalle de ROS, pese a que no ha sido empleado para el desarrollo de este trabajo.
 
 \paragraph*{rob-interface-module:\\}
 Este modulo nos permite obtener la interfaz de control de bajo nivel del robot, la clase \textit{IRob}(figura \ref{fig:irob}) , mediante el uso de esta interfaz se puede:
@@ -80,8 +74,18 @@ Enviar comandos al ROB:
 	\label{fig:irob}
 \end{figure}
 
+Existen módulos para facilitar el uso del robot y evitar tener que usar la clase IRob, un ejemplo es el \textit{rob-movement-module}(figura \ref{fig:irob-movement}) que proporciona una interfaz de alto nivel para manejar los movimientos del robot.
 
-En la base ROB se encuentra un software escrito en C, que representa el firmware de ROB y se encarga de tres tareas diferentes:
+
+\begin{figure}
+	\centering
+	\includegraphics[width=0.6\linewidth]{imagenes/diagramas/IRobMovementModule.png}
+	\caption{Clase IRobMovementModule}
+	\label{fig:irob-movement}
+\end{figure}
+
+
+En la base ROB, \textit{Robot Platform} en la figura \ref{fig:robobo_framework_estructure}, se encuentra un software escrito en C, que representa el firmware de ROB y se encarga de tres tareas diferentes:
 \begin{itemize}
 	\item Gestionar la comunicación (vía Bluetooth) con el Smartphone a través de la obo-interface. Esta comunicación se hace a través de un protocolo binario muy reducido que permite al smartphone enviar comandos al ROB, que este ejecuta en cuanto los recibe. Además, el ROB envía periódicamente (con una periodicidad programada por el OBO) información de los sensores y dispositivos al OBO, para que desde el smartphone se pueda conocer, en tiempo real, el estado del ROB. 
 	\item Controlar los diferentes dispositivos hardware de los que dispone: sensores infrarrojos, motores y luces LED. 
@@ -89,15 +93,6 @@ En la base ROB se encuentra un software escrito en C, que representa el firmware
 
 \end{itemize}
 
-Existen módulos para facilitar el uso del robot y evitar tener que usar la clase IRob, un ejemplo es el \textit{rob-movement-module}(figura \ref{fig:irob-movement}) que proporciona una interfaz de alto nivel para manejar los movimientos del robot.
-
-
-\begin{figure}
-	\centering
-	\includegraphics[width=0.9\linewidth]{imagenes/diagramas/IRobMovementModule.png}
-	\caption{Clase IRobMovementModule}
-	\label{fig:irob-movement}
-\end{figure}
 
 
 
@@ -114,7 +109,7 @@ A la hora de desarrollar nuevas funcionalidades el ROBOBO! Framework sigue una f
 
 \begin{figure}
 	\centering
-	\includegraphics[width=0.7\linewidth]{imagenes/diagramas/IModule.png}
+	\includegraphics[width=0.5\linewidth]{imagenes/diagramas/IModule.png}
 	\caption{Interfaz IModule}
 	\label{fig:imodule}
 \end{figure}
@@ -135,17 +130,17 @@ Android está construido sobre un núcleo Linux sobre el cual corre el \textit{A
 %\textbf{Sacado de la wikipedia a modo de placeholder}\\
 
 El Sistema Operativo Robótico\cite{Ros} , por sus siglas en inglés ROS, es un framework libre de desarrollo de software para robots que provee los servicios que se podrían esperar de un sistema operativo, tales como la abstracción del hardware, la gestión de dispositivos a bajo nivel, implementación de funcionalidades comunes, paso de mensajes entre procesos y gestión de paquetes, sin embargo, ROS no es un sistema operativo y debe ejecutarse sobre un entorno Linux.
-ROS esta organizado en forma de grafo en el cual los diferentes procesos procesan datos en red. En esta red podemos encontrar diferentes elementos:
-\begin{itemize}
-	\item Nodos: procesos que realizan una computación. Un sistema de control robótico suele contar con multitud de ellos que procesan datos en paralelo.
-	\item Master: provee servicios de registro de nombres y consulta al resto del grafo computacional, funciona como punto de encuentro entre varios nodos.
+%ROS esta organizado en forma de grafo en el cual los diferentes procesos procesan datos en red. En esta red podemos encontrar diferentes elementos:
+%\begin{itemize}
+%	\item Nodos: procesos que realizan una computación. Un sistema de control robótico suele contar con multitud de ellos que procesan datos en paralelo.
+%	\item Master: provee servicios de registro de nombres y consulta al resto del grafo computacional, funciona como punto de encuentro entre varios nodos.
 	
-	\item Servidor de parámetros: permite almacenar datos bajo un indice en una ubicación central, es parte del Master.
-	\item Mensajes: sistema de comunicación entre nodos, estructuras de datos formadas por tipos simples.
-	\item Temas(topics): semejante a un bus de datos, permite la generación de mensajes y la suscripción al mismo por parte de un nodo para recibirlos.
-	\item Servicios: Mecanismo que permite a un nodo recibir peticiones y responderlas de manera concreta.
-	\item Bolsas(bags): formato para almacenar y reproducir mensajes. Permite la reutilización de datos como los de sensorización para ser empleados posteriormente en desarrollo o pruebas.
-\end{itemize}
+%	\item Servidor de parámetros: permite almacenar datos bajo un indice en una ubicación central, es parte del Master.
+%	\item Mensajes: sistema de comunicación entre nodos, estructuras de datos formadas por tipos simples.
+%	\item Temas(topics): semejante a un bus de datos, permite la generación de mensajes y la suscripción al mismo por parte de un nodo para recibirlos.
+%	\item Servicios: Mecanismo que permite a un nodo recibir peticiones y responderlas de manera concreta.
+%	\item Bolsas(bags): formato para almacenar y reproducir mensajes. Permite la reutilización de datos como los de sensorización para ser empleados posteriormente en desarrollo o pruebas.
+%\end{itemize}
 
 ROS cuenta con una amplia comunidad a lo largo del mundo que contribuye de manera activa al proyecto. 
 El repositorio de software de ROS contiene multitud de paquetes que proporcionan funcionalidades de forma simple, de manera que el programador pueda centrarse en el desarrollo del control de su robot sin tener que preocuparse de implementar los algoritmos y técnicas más comunes.

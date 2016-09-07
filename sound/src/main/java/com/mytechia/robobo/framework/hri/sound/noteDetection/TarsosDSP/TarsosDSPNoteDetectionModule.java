@@ -19,7 +19,7 @@ import java.util.Properties;
 /**
  * Created by luis on 30/7/16.
  */
-//TODO Quizas renombrar esto, no usa la libreria directamente
+
 public class TarsosDSPNoteDetectionModule extends ANoteDetectionModule implements IPitchListener{
 
     private IPitchDetectionModule pitchDetectionModule;

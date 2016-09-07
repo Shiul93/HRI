@@ -11,7 +11,7 @@
 \section{Capacidades de interacción del ROBOBO}
 \label{sec:capacidades-interactivas}
 
-El ROBOBO siendo una combinación de Smartphone (OBO) y base motorizada (ROB) presenta un gran potencial de formas de interacción.
+El ROBOBO gracias a la combinación de Smartphone (OBO) y base motorizada (ROB) presenta un gran potencial de formas de interacción.
 
 El OBO, pone a nuestra disposición todas las características de un teléfono inteligente moderno que, diseñado específicamente para su uso por humanos, ofrece múltiples posibilidades y capacidades que facilitan el desarrollo de un sistema de interacción.
 \begin{itemize}
@@ -28,17 +28,17 @@ El OBO, pone a nuestra disposición todas las características de un teléfono i
 	\item \textbf{Altavoces}, permiten interacción mediante sonidos, música y habla.
 \end{itemize}
 
-
-El ROB, cuyo esquema de sensores y actuadores podemos ver en la figura \ref{fig:rob-schema}, proporciona multitud de posibilidades de interacción ya sea mediante sus motores, por ejemplo mediante bailes y gestos, como utilizando los 9 leds RGB que se encuentran a lo largo del chasis para expresar diferentes cosas.
-
-Combinando ambas partes se obtiene un robot con un gran potencial para establecer interacción con personas.
-
-\begin{figure}
+\begin{figure}[h]
 	\centering
-	\includegraphics[width=0.6\linewidth]{imagenes/rob_schema.png}
+	\includegraphics[width=0.4\linewidth]{imagenes/rob_schema.png}
 	\caption{Esquema de sensores y actuadores del ROB}
 	\label{fig:rob-schema}
 \end{figure}
+El ROB, cuyo esquema de sensores y actuadores podemos ver en la figura \ref{fig:rob-schema}, proporciona ciertas posibilidades de interacción ya sea mediante sus motores, por ejemplo a través de bailes y gestos, como utilizando los 9 leds RGB que se encuentran a lo largo del chasis para expresar diferentes cosas.
+
+Combinando ambas partes se obtiene un robot con un gran potencial para establecer interacción con personas.
+
+
 
 %Gervasio: Las secciones 5.1 y 5.2 las veo bastante bien, pero me falta un analisis del Robobo en terminas de sus capadiaddes de interacción. Es decir, en la 5.1 entras ya muy a saco, ya vas al granto, queremos esto, estoy y esto.
 %Creo que quedaría bien añadir una sección anterior en la que presentas al ROBOBO (como en la 2) pero en términos de sus capacidades de interacción. Por ejemplo (pero con más chicha):
@@ -177,7 +177,7 @@ Actualizaciones de módulos:
 
 \subsection{Cuarta iteración}
 
-En esta iteración se añadieron dos módulos de producción de sonidos, y se eliminaron clases abstractas inútiles de los módulos ya existentes.
+En esta iteración se añadieron dos módulos de producción de sonidos.
 
 
 Nuevas implementaciones esta iteración:
@@ -190,7 +190,6 @@ Actualizaciones de módulos:
 
 \begin{itemize}
 	\item \textit{ColorDetectionModule}: Añadida una comprobación de la varianza del color para evitar falsos positivos.
-	\item \textit{SoundDispatcherModule}: Eliminada clase Abstracta vacía.
 \end{itemize}
 \newpage
 
@@ -315,7 +314,7 @@ La implementación de la interfaz se ha realizado con las librerías del propio 
 
 \subsubsection*{Ejemplos de desarrollo}
 
-Para la prueba de los módulos de voz se realizaron dos ejemplos básicos, una aplicación simple en la que el usuario introduce un texto y el teléfono lo pronuncia y un sistema de control mediante voz en el que el usuario le daba ordenes básicas al Robobo mediante la voz y este, al terminar la frase, ejecutaba los movimientos indicados.
+Para la prueba de los módulos de voz se realizaron dos ejemplos básicos, una aplicación simple en la que el usuario introduce un texto y el teléfono lo pronuncia, y un sistema de control mediante voz en el que el usuario le daba ordenes básicas al Robobo mediante la voz y este, al terminar la frase, ejecutaba los movimientos indicados.
 A continuación se puede observar una muestra del log de la aplicación de control por voz:
 
 \begin{verbatim}
@@ -331,6 +330,40 @@ D/SpeechRecognizer: Starting decoding
 \end{verbatim}
 
 En este log se puede ver cómo el reconocedor detecta las tres partes de la frase, detiene el reconocimiento al detectar una frase válida en la gramática, se ejecuta un movimiento a través del módulo \textit{Rob-Interface} y se reanuda la escucha.
+En el siguiente fragmento de código se puede ver la implementación del listener del reconocedor de frases.
+\begin{lstlisting}
+	 @Override
+    public void phraseRecognized(final String phrase, Long timestamp) {
+        try {
+            Log.d("SpeechROB",phrase);
+            if (phrase.equals("rob up now")) {
+                movementModule.moveTilt(90);
+            }
+            if (phrase.equals("rob down now")) {
+                movementModule.moveTilt(45);
+            }
+            if (phrase.equals("rob left now")) {
+                movementModule.turnLeftAngle((short) 50, 360);
+            }
+            if (phrase.equals("rob right now")) {
+                movementModule.turnRightAngle((short) 50, 360);
+            }
+            if (phrase.equals("rob front now")) {
+                movementModule.moveForwardsAngle((short) 50, 360);
+            }
+            if (phrase.equals("rob back now")) {
+                movementModule.moveBackwardsAngle((short) 50, 360);
+            }
+        } catch (InternalErrorException e){
+        }
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                textView.setText(phrase);
+            }
+        });
+    }
+\end{lstlisting}
 \newpage
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \subsection{Paquete Touch}
@@ -359,7 +392,7 @@ El módulo(figura \ref{fig:touch-module}) contiene las interfaces \textit{ITouch
 \end{itemize}
 
 
-\textit{ITouchModule} es la interfaz que debe cualquier implementación del módulo. El único método destacado de la misma es \textit{FeedTouchEvent}, en el cual se le pasan los eventos táctiles al módulo desde la aplicación principal, que debe sobrecargar el método \textit{OnTouchEvent} de la clase \textit{Activity}, esto es debido a que el módulo no puede extender la clase \textit{Activity}.
+\textit{ITouchModule} es la interfaz que debe implementar cualquier implementación del módulo. El único método destacado de la misma es \textit{FeedTouchEvent}, en el cual se le pasan los eventos táctiles al módulo desde la aplicación principal, que debe sobrecargar el método \textit{OnTouchEvent} de la clase \textit{Activity}, esto es debido a que el módulo no puede extender la clase \textit{Activity}.
 
 \paragraph*{Detección táctil de Android\\}
 
@@ -370,6 +403,16 @@ Se han simplificado dichos eventos, para producir los definidos en \textit{ITouc
 \subsubsection*{Ejemplos de desarrollo}
 
 Se implementó una simple aplicación que mostraba por pantalla los diferentes eventos producidos por el módulo \textit{TouchModule}.
+ A continuación se ve la implementación del listener \textit{fling} en el ejemplo anterior:
+ 
+ \begin{lstlisting}
+ 	@Override
+    public void fling(TouchGestureDirection dir, double angle, long time, double distance) {
+        speechProductionModule.sayText("Fling",ISpeechProductionModule.PRIORITY_HIGH);
+        Log.d(TAG,"FLING");
+        textView.setText("FLING: "+dir.toString()+" Time: "+time+" Distance: "+distance+" Angle: "+Math.toDegrees(angle));
+    }
+ \end{lstlisting}
 
 
 \newpage
@@ -514,7 +557,47 @@ D/MusicActivity: Executing command $NoteCommand@a8f2add
 D/ROB-INTERFACE: Turn right: 60 - 1816
 \end{verbatim} 
 
-Se puede ver como la nota A(La) abre la secuencia de comandos, As(La sostenido) y Ds(Re sostenido) son ignorados al no estar en la escala definida (A, C, D, E, G), son añadidos tres comandos de movimiento (Corespondientes a las notas D(Re), E(Mi) y G(Sol)) y la nota A cierra la secuencia de comandos que serán ejecutados a través de la \textit{Rob-Interface}.
+Se puede ver como la nota A(La) abre la secuencia de comandos, As(La sostenido) y Ds(Re sostenido) son ignorados al no estar en la escala definida (A, C, D, E, G), son añadidos tres comandos de movimiento (Correspondientes a las notas D(Re), E(Mi) y G(Sol)) y la nota A cierra la secuencia de comandos que serán ejecutados a través de la \textit{Rob-Interface}.
+
+
+A continuación se muestra la implementación del listener \textit{onNoteEnd} usada en el módulo anterior:
+
+\begin{lstlisting}
+	 @Override
+    public void onNoteEnd(Note note, long time) {
+        Log.d(TAG,"Note: "+note.note);
+        if (!executing) {
+            if (note.note == (triggerNote)) {
+                if ((recording)&&(time>100)) {
+                    recording = false;
+                    executing = true;
+                    Log.d(TAG,"executing");
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            rellayout.setBackgroundColor(Color.BLUE);
+                        }
+                    });
+                    executeCommands(commandList);
+                } else {
+                    Log.d(TAG,"recording");
+                    recording = true;
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                           rellayout.setBackgroundColor(Color.GREEN);
+                        }
+                    });
+                }
+            } else {
+                if (recording) {
+                    if (scale.contains(note.note)) {
+                        Log.d(TAG,"adding command");
+                        commandList.add(new NoteCommand(note, time));
+                    } else {
+                        //Bad note
+     }}}}}
+\end{lstlisting}
 
 
 
@@ -538,7 +621,7 @@ Este subsistema(figura \ref{fig:vision-package}) contiene los diferentes módulo
 	\caption{Módulo BasicCamera}
 	\label{fig:basic-camera-module}
 \end{figure}
-Este es el módulo básico de cámara(figura \ref{fig:basic-camera-module}) , del cual hacen uso el resto de módulos de procesado de imagen. Este modulo produce un stream constante de imágenes, que no deben ser necesariamente mostradas, capturadas de la cámara frontal del dispositivo y notifica a los listeners suscritos.
+Este es el módulo básico de cámara(figura \ref{fig:basic-camera-module}) , del cual hacen uso el resto de módulos de procesado de imagen. Este modulo produce un stream constante de imágenes capturadas de la cámara frontal del dispositivo y notifica a los listeners suscritos.
 La interfaz del módulo se encuentra en \textit{ICameraModule}, la clase abstracta que gestiona los listeners en \textit{ACameraModule} y la interfaz del listener en el que se notifica la captura de las imágenes en \textit{ICameraListener}. Además, el modulo proporciona una clase Frame, que representa a las imágenes capturadas con sus características.
 
 \paragraph*{Android Camera2\\}
@@ -584,7 +667,36 @@ Para realizar la implementación de este módulo se ha empleado la librería Ope
 \subsubsection*{Ejemplos de desarrollo}
 
 Se desarrolló una aplicación que podría considerarse el primer prototipo del ejemplo \textit{ROBOBO Vigilante}(sección \ref{subsec:robobo-vigilante}) que cuando detectaba una cara en la imagen capturada por la cámara mandaba un mensaje por correo electrónico al usuario adjuntando la imagen, se puede ver un ejemplo de este mensaje en la figura \ref{fig:mail-example}.
+A continuación se muestra la implementación del listener de caras del ejemplo:
+
+\begin{lstlisting}
+	    @Override
+    public void onFaceDetected(PointF faceCoords, float eyesDistance) {
+        if ((System.currentTimeMillis()-lastDetection)>10000) {
+            lastDetection = System.currentTimeMillis();
+            msgModule.sendMessage("FACE DETECTED", "xxxxxxxxxx@gmail.com", actualFrame.getBitmap());
+        }}
+\end{lstlisting}
+
+
 Para probar el módulo de detección de color se programó una pequeña aplicación que cambiaba el color de fondo de la pantalla acorde al color detectado por el módulo(figuras \ref{fig:blue_color},\ref{fig:cyan_color},\ref{fig:red_color},\ref{fig:green_color}).
+
+A continuación se puede ver la implementación del listener de color del ejemplo anterior:
+
+\begin{lstlisting}
+	 @Override
+    public void onNewColor(final int colorrgb,final int nearest_color) {
+      runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                imageView.setImageBitmap(lastFrame.getBitmap());
+                rellayout.setBackgroundColor(nearest_color);
+            }
+        });
+    }
+\end{lstlisting}
+
+
 
 \begin{figure}
 \centering

@@ -83,7 +83,7 @@ public class AndroidTouchModule extends ATouchModule implements GestureDetector.
         Log.d(TAG,"Event "+motionEvent.getDownTime()+"ms");
         Log.d(TAG,"Difference "+(motionEvent.getEventTime()-(int)motionEvent.getDownTime())+"ms");
         if((motionEvent.getEventTime()-(int)motionEvent.getDownTime())>=500){
-            //TODO Mirar por que no salta bien el otro listener
+
             onLongPress(motionEvent);
 
         }else {

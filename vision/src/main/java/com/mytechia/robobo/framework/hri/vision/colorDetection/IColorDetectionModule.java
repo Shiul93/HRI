@@ -8,7 +8,6 @@ import com.mytechia.robobo.framework.IModule;
  * Created by luis on 9/8/16.
  */
 public interface IColorDetectionModule extends IModule {
-    //TODO Procesar externamente o invocar al cameramodule dentro?
 
     void suscribe(IColorListener listener);
     void unsuscribe(IColorListener listener);

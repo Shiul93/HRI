@@ -40,9 +40,13 @@ M.~A. Goodrich and A.~C. Schultz, ``Human-robot interaction: a survey,''
   accessed: 2016-08-19.
 
 \bibitem{corrales2012cooperative}
-J.~A. Corrales~Ram{\'o}n, G.~J. Garc{\'\i}a~G{\'o}mez, F.~Torres~Medina, and
-  V.~Perdereau, ``Cooperative tasks between humans and robots in industrial
-  environments,'' 2012.
+\BIBentryALTinterwordspacing
+J.~A. Corrales~Ramon, G.~J. Garcia~Gomez, F.~Torres~Medina, and V.~Perdereau,
+  ``{Cooperative Tasks between Humans and Robots in Industrial Environments},''
+  \emph{{International Journal of Advanced Robotic Systems}}, vol.~9, no.~94,
+  pp. 1--10, Jun. 2012. [Online]. Available:
+  \url{http://hal.upmc.fr/hal-00737775}
+\BIBentrySTDinterwordspacing
 
 \bibitem{ifr-service-robots}
 ``Definition of service robots,'' \url{http://www.ifr.org/service-robots/ },

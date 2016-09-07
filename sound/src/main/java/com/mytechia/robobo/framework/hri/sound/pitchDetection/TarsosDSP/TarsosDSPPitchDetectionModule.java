@@ -71,7 +71,7 @@ public class TarsosDSPPitchDetectionModule extends APitchDetectionModule{
 
                 if (pitch>0){
                     previous = true;
-                    //TODO Comprobar que el x2 no fuera por la mitad del samplerate del dispatcher
+
                     notifyPitch(pitch*2);
                 }else {
                     if (previous){

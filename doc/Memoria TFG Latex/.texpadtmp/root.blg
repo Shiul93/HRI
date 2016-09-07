@@ -31,48 +31,47 @@ I'm skipping whatever remains of this entry
 -- IEEEtran.bst version 1.14 (2015/08/26) by Michael Shell.
 -- http://www.michaelshell.org/tex/ieeetran/bibtex/
 -- See the "IEEEtran_bst_HOWTO.pdf" manual for usage information.
-Warning--empty journal in corrales2012cooperative
 
 Done.
 You've used 18 entries,
             4087 wiz_defined-function locations,
-            916 strings with 9807 characters,
-and the built_in function-call counts, 7202 in all, are:
-= -- 540
-> -- 79
-< -- 22
-+ -- 50
+            920 strings with 9882 characters,
+and the built_in function-call counts, 7616 in all, are:
+= -- 585
+> -- 83
+< -- 29
++ -- 53
 - -- 11
-* -- 275
-:= -- 1130
+* -- 302
+:= -- 1201
 add.period$ -- 36
 call.type$ -- 18
 change.case$ -- 31
-chr.to.int$ -- 51
-cite$ -- 19
-duplicate$ -- 634
-empty$ -- 712
+chr.to.int$ -- 63
+cite$ -- 18
+duplicate$ -- 656
+empty$ -- 733
 format.name$ -- 15
-if$ -- 1645
+if$ -- 1743
 int.to.chr$ -- 0
 int.to.str$ -- 18
-missing$ -- 131
-newline$ -- 79
+missing$ -- 134
+newline$ -- 81
 num.names$ -- 4
-pop$ -- 388
+pop$ -- 382
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 2
-skip$ -- 565
+skip$ -- 598
 stack$ -- 0
-substring$ -- 163
-swap$ -- 365
-text.length$ -- 5
+substring$ -- 190
+swap$ -- 399
+text.length$ -- 8
 text.prefix$ -- 0
 top$ -- 5
 type$ -- 18
-warning$ -- 1
-while$ -- 11
+warning$ -- 0
+while$ -- 14
 width$ -- 20
-write$ -- 158
+write$ -- 165
 (There was 1 error message)
