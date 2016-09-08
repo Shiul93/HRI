@@ -19,14 +19,15 @@
 \lettrine{E}{n} el primer capítulo se presentó el objetivo de este proyecto, que era el \textit{desarrollo de un framework de interacción básica para el ROBOBO}, a continuación se resumen los resultados:
 
 \begin{itemize}
- 	\item \textbf{Librería de interacción por voz:} Se diseñaron e implementaron módulos de producción y reconocimiento de habla, que permiten una interacción a través de la voz con el ROBOBO, el módulo de producción de voz fue implementado mediante el propio motor de síntesis de voz de Android, mientras que en el de reconocimiento se empleó la librería \textit{PocketSphinx}, para permitir el reconocimiento sin conexión a internet. 
+ 	\item \textbf{Librería de interacción por voz:} Se diseñaron e implementaron módulos de producción y reconocimiento de habla, que permiten una interacción a través de la voz. El módulo de producción de voz fue implementado mediante el propio motor de síntesis de voz de Android, mientras que en el de reconocimiento se empleó la librería \textit{PocketSphinx}, para permitir el reconocimiento sin conexión a internet. 
 	\item \textbf{Librería de interacción por sonido:} Se diseñaron y desarrollaron múltiples módulos que permiten la interacción mediante sonidos en ambas direcciones, tanto reconocimiento como producción. Los módulos de reconocimiento de sonidos fueron implementados mediante la librería \textit{Tarsos DSP}, mientras que los de producción utilizan las propias herramientas disponibles en la API de Android.
 	\item \textbf{Librería de interacción táctil:} Se diseñó e implementó una librería que permite la detección de gestos táctiles. Se implementó usando el reconocedor de gestos táctiles provisto por Android.
 	\item \textbf{Librería de interacción por imagen:} Se diseñó e implementó una librería que permite el fácil acceso a la cámara sin mostrar las imágenes y permite detectar caras y colores. Tanto el módulo básico de cámara como el de reconocimiento facial no requieren de librerías adicionales, mientras que el de detección de colores utiliza la librería \textit{OpenCV}.
 	\item \textbf{Librería de interacción mediante mensajes:} Se diseñó e implementó una librería que permite al ROBOBO interactuar mediante correos electrónicos con el usuario. Se empleó la librería \textit{GmailBackground} para su implementación.
  \end{itemize} 
  
- Para comprobar el correcto funcionamiento de las diferentes librerías de interacción se desarrollaron tres ejemplos diferentes:
+Para comprobar la validez del framework de interacción, así como sus capacidades para dotar a los desarrolladores de una multitud de opciones de interacción Humano-Robot con las que crear aplicaciones interactivas para el ROBOBO, se han desarrollado tres aplicaciones de ejemplo completas. Estas aplicaciones, en forma de juegos educativos y utilidades, permiten demostrar la utilidad del framework, que con el conjunto de “sentidos” propuesto posibilita la construcción de aplicaciones capaces de interactuar de una forma natural y atractiva para los usuarios: 
+
  \begin{itemize}
  	\item \textbf{Simón dice musical}: Este juego fue desarrollado con la intención de demostrar el correcto funcionamiento de la librería de sonido, y se emplean todos los módulos de la misma.
  	\item \textbf{ROBOBO vigilante}: En este ejemplo se demuestra el buen funcionamiento del módulo de detección de caras, la librería de mensajería, y la librería de interacción por voz.

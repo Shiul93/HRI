@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  7 SEP 2016 14:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2016.8.3)  8 SEP 2016 12:13
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -1265,8 +1265,8 @@ LaTeX Info: Redefining \% on input line 2.
  [1
 
 ]
-LaTeX Info: Redefining \. on input line 61.
-LaTeX Info: Redefining \% on input line 61.
+LaTeX Info: Redefining \. on input line 62.
+LaTeX Info: Redefining \% on input line 62.
  [2])
 \tf@toc=\write6
 \openout6 = `root.toc'.
@@ -1803,10 +1803,13 @@ Package pdftex.def Info: imagenes/simon_sad.png used on input line 85.
 (pdftex.def)             Requested size: 185.65297pt x 226.9786pt.
 
 
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+
 Package Listings Warning: Text dropped after begin of listing on input line 98.
 
-LaTeX Info: Redefining \. on input line 104.
-LaTeX Info: Redefining \% on input line 104.
+LaTeX Info: Redefining \. on input line 105.
+LaTeX Info: Redefining \% on input line 105.
 [70 <./imagenes/pentatonic-scale-a-minor.jpg> <./imagenes/simon_normal.png> <./imagenes/simon_smile.png>]
 
 Package Listings Warning: Text dropped after begin of listing on input line 122.
@@ -1962,8 +1965,8 @@ Overfull \hbox (57.67725pt too wide) in paragraph at lines 500--501
 LaTeX Info: Redefining \. on input line 517.
 LaTeX Info: Redefining \% on input line 517.
 [84]
-LaTeX Info: Redefining \. on input line 548.
-LaTeX Info: Redefining \% on input line 548.
+LaTeX Info: Redefining \. on input line 550.
+LaTeX Info: Redefining \% on input line 550.
  [85])
 LaTeX Info: Redefining \. on input line 101.
 LaTeX Info: Redefining \% on input line 101.
@@ -2135,7 +2138,7 @@ Here is how much of TeX's memory you used:
  1141 hyphenation exceptions out of 8191
  39i,13n,72p,1388b,1999s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmssbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/latxfont/lasy10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/urw/avantgar/uagk8a.pfb>
-Output written on "/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.pdf" (122 pages, 15092754 bytes).
+Output written on "/Users/luis/Documents/Universidad/TFG/NUEVO/HRI/doc/Memoria TFG Latex/.texpadtmp/root.pdf" (122 pages, 15093678 bytes).
 PDF statistics:
  569 PDF objects out of 1000 (max. 8388607)
  318 compressed objects within 4 object streams
